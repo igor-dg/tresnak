@@ -1,10 +1,16 @@
 <script setup>
-// Aditzak - Verbs component
+import { onMounted } from 'vue'
+import AditzLaguntzaileakView from '@/components/Aditzak/AditzLaguntzaileakView.vue'
+
+// Si necesitas cargar datos o hacer alguna inicialización
+onMounted(() => {
+  // Inicialización si es necesaria
+})
 </script>
 
 <template>
   <div class="aditzak">
-    <h1>Aditz Laguntzaileak</h1>
+    <AditzLaguntzaileakView />
   </div>
 </template>
 

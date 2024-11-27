@@ -1,0 +1,4123 @@
+{
+    "sistema": {
+        "nor": {
+                "NI": {
+                    "orain": [
+                        "naiz"
+                    ],
+                    "lehen": [
+                        "nintzen"
+                    ],
+                    "bal_hip": [
+                        "banintz"
+                    ],
+                    "ond_or": [
+                        "nintzateke"
+                    ],
+                    "ond_leh": [
+                        "nintzatekeen"
+                    ],
+                    "ahal_or": [
+                        "naiteke"
+                    ],
+                    "ahal_leh": [
+                        "nintekeen"
+                    ],
+                    "ahal_hip": [
+                        "ninteke"
+                    ],
+                    "subj_or": [
+                        "nadin"
+                    ],
+                    "subj_leh": [
+                        "nendin"
+                    ]
+                },
+                "HI": {
+                    "orain": [
+                        "haiz"
+                    ],
+                    "lehen": [
+                        "hintzen"
+                    ],
+                    "bal_hip": [
+                        "bahintz"
+                    ],
+                    "ond_or": [
+                        "hintzateke"
+                    ],
+                    "ond_leh": [
+                        "hintzatekeen"
+                    ],
+                    "ahal_or": [
+                        "haiteke"
+                    ],
+                    "ahal_leh": [
+                        "hintekeen"
+                    ],
+                    "ahal_hip": [
+                        "hinteke"
+                    ],
+                    "subj_or": [
+                        "hadin"
+                    ],
+                    "subj_leh": [
+                        "hendin"
+                    ],
+                    "agintera": [
+                        "hadi"
+                    ]
+                },
+                "HURA": {
+                    "orain": [
+                        "da"
+                    ],
+                    "lehen": [
+                        "zen"
+                    ],
+                    "bal_hip": [
+                        "balitz"
+                    ],
+                    "ond_or": [
+                        "litzateke"
+                    ],
+                    "ond_leh": [
+                        "zatekeen"
+                    ],
+                    "ahal_or": [
+                        "daiteke"
+                    ],
+                    "ahal_leh": [
+                        "zitekeen"
+                    ],
+                    "ahal_hip": [
+                        "liteke"
+                    ],
+                    "subj_or": [
+                        "dadin"
+                    ],
+                    "subj_leh": [
+                        "zedin"
+                    ],
+                    "agintera": [
+                        "bedi"
+                    ]
+                },
+                "GU": {
+                    "orain": [
+                        "gara"
+                    ],
+                    "lehen": [
+                        "ginen"
+                    ],
+                    "bal_hip": [
+                        "bagina"
+                    ],
+                    "ond_or": [
+                        "ginateke"
+                    ],
+                    "ond_leh": [
+                        "ginatekeen"
+                    ],
+                    "ahal_or": [
+                        "gaitezke"
+                    ],
+                    "ahal_leh": [
+                        "gintezkeen"
+                    ],
+                    "ahal_hip": [
+                        "gintezke"
+                    ],
+                    "subj_or": [
+                        "gaitezen"
+                    ],
+                    "subj_leh": [
+                        "gintezen"
+                    ]
+                },
+                "ZU": {
+                    "orain": [
+                        "zara"
+                    ],
+                    "lehen": [
+                        "zinen"
+                    ],
+                    "bal_hip": [
+                        "bazina"
+                    ],
+                    "ond_or": [
+                        "zinateke"
+                    ],
+                    "ond_leh": [
+                        "zinatekeen"
+                    ],
+                    "ahal_or": [
+                        "zaitezke"
+                    ],
+                    "ahal_leh": [
+                        "zintezkeen"
+                    ],
+                    "ahal_hip": [
+                        "zintezke"
+                    ],
+                    "subj_or": [
+                        "zaitezen"
+                    ],
+                    "subj_leh": [
+                        "zintezen"
+                    ],
+                    "agintera": [
+                        "zaitez"
+                    ]
+                },
+                "ZUEK": {
+                    "orain": [
+                        "zarete"
+                    ],
+                    "lehen": [
+                        "zineten"
+                    ],
+                    "bal_hip": [
+                        "bazinete"
+                    ],
+                    "ond_or": [
+                        "zinatekete"
+                    ],
+                    "ond_leh": [
+                        "zinateketen"
+                    ],
+                    "ahal_or": [
+                        "zaitezkete"
+                    ],
+                    "ahal_leh": [
+                        "zintezketen"
+                    ],
+                    "ahal_hip": [
+                        "zintezkete"
+                    ],
+                    "subj_or": [
+                        "zaitezten"
+                    ],
+                    "subj_leh": [
+                        "zintezten"
+                    ],
+                    "agintera": [
+                        "zaitezte"
+                    ]
+                },
+                "HAIEK": {
+                    "orain": [
+                        "dira"
+                    ],
+                    "lehen": [
+                        "ziren"
+                    ],
+                    "bal_hip": [
+                        "balira"
+                    ],
+                    "ond_or": [
+                        "lirateke"
+                    ],
+                    "ond_leh": [
+                        "ziratekeen"
+                    ],
+                    "ahal_or": [
+                        "daitezke"
+                    ],
+                    "ahal_leh": [
+                        "zitezkeen"
+                    ],
+                    "ahal_hip": [
+                        "litezke"
+                    ],
+                    "subj_or": [
+                        "daitezen"
+                    ],
+                    "subj_leh": [
+                        "zitezen"
+                    ],
+                    "agintera": [
+                        "bitez"
+                    ]
+                }
+        },
+        "nor-nork": {
+            "NI": {
+                "HIK": {
+                    "orain": [
+                        "nauk",
+                        "naun"
+                    ],
+                    "lehen": [
+                        "ninduan",
+                        "nindunan"
+                    ],
+                    "bal_hip": [
+                        "baninduk",
+                        "banindun"
+                    ],
+                    "ond_or": [
+                        "nindukek",
+                        "ninduken"
+                    ],
+                    "ond_leh": [
+                        "nindukean",
+                        "nindukenan"
+                    ],
+                    "ahal_or": [
+                        "nazakek",
+                        "nazaken"
+                    ],
+                    "ahal_hip": [
+                        "nintzakek",
+                        "nintzaken"
+                    ],
+                    "ahal_leh": [
+                        "nintzakean",
+                        "nintzakenan"
+                    ],
+                    "subj_or": [
+                        "nazaan",
+                        "nazanan"
+                    ],
+                    "subj_leh": [
+                        "nintzaan",
+                        "nintzanan"
+                    ],
+                    "agintera": [
+                        "nazak",
+                        "nazan"
+                    ]
+                },
+                "HARK": {
+                    "orain": [
+                        "nau"
+                    ],
+                    "lehen": [
+                        "ninduen"
+                    ],
+                    "bal_hip": [
+                        "banindu"
+                    ],
+                    "ond_or": [
+                        "ninduke"
+                    ],
+                    "ond_leh": [
+                        "nindukeen"
+                    ],
+                    "ahal_or": [
+                        "nazake"
+                    ],
+                    "ahal_hip": [
+                        "nintzake"
+                    ],
+                    "ahal_leh": [
+                        "nintzakeen"
+                    ],
+                    "subj_or": [
+                        "nazan"
+                    ],
+                    "subj_leh": [
+                        "nintzan"
+                    ],
+                    "agintera": [
+                        "(naza-)"
+                    ]
+                },
+                "ZUK": {
+                    "orain": [
+                        "nauzu"
+                    ],
+                    "lehen": [
+                        "ninduzun"
+                    ],
+                    "bal_hip": [
+                        "baninduzu"
+                    ],
+                    "ond_or": [
+                        "nindukezu"
+                    ],
+                    "ond_leh": [
+                        "nindukezun"
+                    ],
+                    "ahal_or": [
+                        "nazakezu"
+                    ],
+                    "ahal_hip": [
+                        "nintzakezu"
+                    ],
+                    "ahal_leh": [
+                        "nintzakezun"
+                    ],
+                    "subj_or": [
+                        "nazazun"
+                    ],
+                    "subj_leh": [
+                        "nintzazun"
+                    ],
+                    "agintera": [
+                        "nazazu"
+                    ]
+                },
+                "ZUEK": {
+                    "orain": [
+                        "nauzue"
+                    ],
+                    "lehen": [
+                        "ninduzuen"
+                    ],
+                    "bal_hip": [
+                        "baninduzue"
+                    ],
+                    "ond_or": [
+                        "nindukezue"
+                    ],
+                    "ond_leh": [
+                        "nindukezuen"
+                    ],
+                    "ahal_or": [
+                        "nazakezue"
+                    ],
+                    "ahal_hip": [
+                        "nintzakezue"
+                    ],
+                    "ahal_leh": [
+                        "nintzakezuen"
+                    ],
+                    "subj_or": [
+                        "nazazuen"
+                    ],
+                    "subj_leh": [
+                        "nintzazuen"
+                    ],
+                    "agintera": [
+                        "nazazue"
+                    ]
+                },
+                "HAIEK": {
+                    "orain": [
+                        "naute"
+                    ],
+                    "lehen": [
+                        "ninduten"
+                    ],
+                    "bal_hip": [
+                        "banindute"
+                    ],
+                    "ond_or": [
+                        "nindukete"
+                    ],
+                    "ond_leh": [
+                        "ninduketen"
+                    ],
+                    "ahal_or": [
+                        "nazakete"
+                    ],
+                    "ahal_hip": [
+                        "nintzakete"
+                    ],
+                    "ahal_leh": [
+                        "nintzaketen"
+                    ],
+                    "subj_or": [
+                        "nazaten"
+                    ],
+                    "subj_leh": [
+                        "nintzaten"
+                    ],
+                    "agintera": [
+                        "(nazate-)"
+                    ]
+                }
+            },
+            "HI": {
+                "NIK": {
+                    "orain": [
+                        "haut"
+                    ],
+                    "lehen": [
+                        "hindudan"
+                    ],
+                    "bal_hip": [
+                        "bahindut"
+                    ],
+                    "ond_or": [
+                        "hinduket"
+                    ],
+                    "ond_leh": [
+                        "hindukedan"
+                    ],
+                    "ahal_or": [
+                        "hazaket"
+                    ],
+                    "ahal_hip": [
+                        "hintzaket"
+                    ],
+                    "ahal_leh": [
+                        "hintzakedan"
+                    ],
+                    "subj_or": [
+                        "hazadan"
+                    ],
+                    "subj_leh": [
+                        "hintzadan"
+                    ],
+                    "agintera": [
+                        "(hazat)"
+                    ]
+                },
+                "HARK": {
+                    "orain": [
+                        "hau"
+                    ],
+                    "lehen": [
+                        "hinduen"
+                    ],
+                    "bal_hip": [
+                        "bahindu"
+                    ],
+                    "ond_or": [
+                        "hinduke"
+                    ],
+                    "ond_leh": [
+                        "hindukeen"
+                    ],
+                    "ahal_or": [
+                        "hazake"
+                    ],
+                    "ahal_hip": [
+                        "hintzake"
+                    ],
+                    "ahal_leh": [
+                        "hintzakeen"
+                    ],
+                    "subj_or": [
+                        "hazan"
+                    ],
+                    "subj_leh": [
+                        "hintzan"
+                    ],
+                    "agintera": [
+                        "(haza)"
+                    ]
+                },
+                "GUK": {
+                    "orain": [
+                        "haugu"
+                    ],
+                    "lehen": [
+                        "hindugun"
+                    ],
+                    "bal_hip": [
+                        "bahindugu"
+                    ],
+                    "ond_or": [
+                        "hindukegu"
+                    ],
+                    "ond_leh": [
+                        "hindukegun"
+                    ],
+                    "ahal_or": [
+                        "hazakegu"
+                    ],
+                    "ahal_hip": [
+                        "hintzakegu"
+                    ],
+                    "ahal_leh": [
+                        "hintzakegun"
+                    ],
+                    "subj_or": [
+                        "hazagun"
+                    ],
+                    "subj_leh": [
+                        "hintzagun"
+                    ],
+                    "agintera": [
+                        "(hazagu)"
+                    ]
+                },
+                "HAIEK": {
+                    "orain": [
+                        "haute"
+                    ],
+                    "lehen": [
+                        "hinduten"
+                    ],
+                    "bal_hip": [
+                        "bahindute"
+                    ],
+                    "ond_or": [
+                        "hindukete"
+                    ],
+                    "ond_leh": [
+                        "hinduketen"
+                    ],
+                    "ahal_or": [
+                        "hazakete"
+                    ],
+                    "ahal_hip": [
+                        "hintzakete"
+                    ],
+                    "ahal_leh": [
+                        "hintzaketen"
+                    ],
+                    "subj_or": [
+                        "hazaten"
+                    ],
+                    "subj_leh": [
+                        "hintzaten"
+                    ],
+                    "agintera": [
+                        "(hazate)"
+                    ]
+                }
+            },
+            "HURA": {
+                "NIK": {
+                    "orain": [
+                        "dut"
+                    ],
+                    "lehen": [
+                        "nuen"
+                    ],
+                    "bal_hip": [
+                        "banu"
+                    ],
+                    "ond_or": [
+                        "nuke"
+                    ],
+                    "ond_leh": [
+                        "nukeen"
+                    ],
+                    "ahal_or": [
+                        "dezaket"
+                    ],
+                    "ahal_hip": [
+                        "nezake"
+                    ],
+                    "ahal_leh": [
+                        "nezakeen"
+                    ],
+                    "subj_or": [
+                        "dezadan"
+                    ],
+                    "subj_leh": [
+                        "nezan"
+                    ]
+                },
+                "HIK": {
+                    "orain": [
+                        "duk",
+                        "dun"
+                    ],
+                    "lehen": [
+                        "huen"
+                    ],
+                    "bal_hip": [
+                        "bahu"
+                    ],
+                    "ond_or": [
+                        "huke"
+                    ],
+                    "ond_leh": [
+                        "hukeen"
+                    ],
+                    "ahal_or": [
+                        "dezakek",
+                        "dezaken"
+                    ],
+                    "ahal_hip": [
+                        "hezake"
+                    ],
+                    "ahal_leh": [
+                        "hezakeen"
+                    ],
+                    "subj_or": [
+                        "dezaan",
+                        "dezanan"
+                    ],
+                    "subj_leh": [
+                        "hezan"
+                    ],
+                    "agintera": [
+                        "ezak",
+                        "ezan"
+                    ]
+                },
+                "HARK": {
+                    "orain": [
+                        "du"
+                    ],
+                    "lehen": [
+                        "zuen"
+                    ],
+                    "bal_hip": [
+                        "balu"
+                    ],
+                    "ond_or": [
+                        "luke"
+                    ],
+                    "ond_leh": [
+                        "zukeen"
+                    ],
+                    "ahal_or": [
+                        "dezake"
+                    ],
+                    "ahal_hip": [
+                        "lezake"
+                    ],
+                    "ahal_leh": [
+                        "zezakeen"
+                    ],
+                    "subj_or": [
+                        "dezan"
+                    ],
+                    "subj_leh": [
+                        "zezan"
+                    ],
+                    "agintera": [
+                        "beza"
+                    ]
+                },
+                "GUK": {
+                    "orain": [
+                        "dugu"
+                    ],
+                    "lehen": [
+                        "genuen"
+                    ],
+                    "bal_hip": [
+                        "bagenu"
+                    ],
+                    "ond_or": [
+                        "genuke"
+                    ],
+                    "ond_leh": [
+                        "genukeen"
+                    ],
+                    "ahal_or": [
+                        "dezakegu"
+                    ],
+                    "ahal_hip": [
+                        "genezake"
+                    ],
+                    "ahal_leh": [
+                        "genezakeen"
+                    ],
+                    "subj_or": [
+                        "dezagun"
+                    ],
+                    "subj_leh": [
+                        "genezan"
+                    ]
+                },
+                "ZUK": {
+                    "orain": [
+                        "duzu"
+                    ],
+                    "lehen": [
+                        "zenuen"
+                    ],
+                    "bal_hip": [
+                        "bazenu"
+                    ],
+                    "ond_or": [
+                        "zenuke"
+                    ],
+                    "ond_leh": [
+                        "zenukeen"
+                    ],
+                    "ahal_or": [
+                        "dezakezu"
+                    ],
+                    "ahal_hip": [
+                        "zenezake"
+                    ],
+                    "ahal_leh": [
+                        "zenezakeen"
+                    ],
+                    "subj_or": [
+                        "dezazun"
+                    ],
+                    "subj_leh": [
+                        "zenezan"
+                    ],
+                    "agintera": [
+                        "ezazu"
+                    ]
+                },
+                "ZUEK": {
+                    "orain": [
+                        "duzue"
+                    ],
+                    "lehen": [
+                        "zenuten"
+                    ],
+                    "bal_hip": [
+                        "bazenute"
+                    ],
+                    "ond_or": [
+                        "zenukete"
+                    ],
+                    "ond_leh": [
+                        "zenuketen"
+                    ],
+                    "ahal_or": [
+                        "dezakezue"
+                    ],
+                    "ahal_hip": [
+                        "zenezakete"
+                    ],
+                    "ahal_leh": [
+                        "zenezaketen"
+                    ],
+                    "subj_or": [
+                        "dezazuen"
+                    ],
+                    "subj_leh": [
+                        "zenezaten"
+                    ],
+                    "agintera": [
+                        "ezazue"
+                    ]
+                },
+                "HAIEK": {
+                    "orain": [
+                        "dute"
+                    ],
+                    "lehen": [
+                        "zuten"
+                    ],
+                    "bal_hip": [
+                        "balute"
+                    ],
+                    "ond_or": [
+                        "lukete"
+                    ],
+                    "ond_leh": [
+                        "zuketen"
+                    ],
+                    "ahal_or": [
+                        "dezakete"
+                    ],
+                    "ahal_hip": [
+                        "lezakete"
+                    ],
+                    "ahal_leh": [
+                        "zezaketen"
+                    ],
+                    "subj_or": [
+                        "dezaten"
+                    ],
+                    "subj_leh": [
+                        "zezaten"
+                    ],
+                    "agintera": [
+                        "bezate"
+                    ]
+                }
+            },
+            "GU": {
+                "HIK": {
+                    "orain": [
+                        "gaituk",
+                        "gaitun"
+                    ],
+                    "lehen": [
+                        "gintuan",
+                        "gintunan"
+                    ],
+                    "bal_hip": [
+                        "bagintuk",
+                        "bagintun"
+                    ],
+                    "ond_or": [
+                        "gintuzkek",
+                        "gintuzken"
+                    ],
+                    "ond_leh": [
+                        "gintuzkean",
+                        "gintuzkenan"
+                    ],
+                    "ahal_or": [
+                        "gaitzakek",
+                        "gaitzaken"
+                    ],
+                    "ahal_hip": [
+                        "gintzakek",
+                        "gintzaken"
+                    ],
+                    "ahal_leh": [
+                        "gintzakean",
+                        "gintzakenan"
+                    ],
+                    "subj_or": [
+                        "gaitzaan",
+                        "gaitzanan"
+                    ],
+                    "subj_leh": [
+                        "gintzaan",
+                        "gintzanan"
+                    ],
+                    "agintera": [
+                        "gaitzak",
+                        "gaitzan"
+                    ]
+                },
+                "HARK": {
+                    "orain": [
+                        "gaitu"
+                    ],
+                    "lehen": [
+                        "gintuen"
+                    ],
+                    "bal_hip": [
+                        "bagintu"
+                    ],
+                    "ond_or": [
+                        "gintuzke"
+                    ],
+                    "ond_leh": [
+                        "gintuzkeen"
+                    ],
+                    "ahal_or": [
+                        "gaitzake"
+                    ],
+                    "ahal_hip": [
+                        "gintzake"
+                    ],
+                    "ahal_leh": [
+                        "gintzakeen"
+                    ],
+                    "subj_or": [
+                        "gaitzan"
+                    ],
+                    "subj_leh": [
+                        "gintzan"
+                    ],
+                    "agintera": [
+                        "(gaitza-)"
+                    ]
+                },
+                "ZUK": {
+                    "orain": [
+                        "gaituzu"
+                    ],
+                    "lehen": [
+                        "gintuzun"
+                    ],
+                    "bal_hip": [
+                        "bagintuzu"
+                    ],
+                    "ond_or": [
+                        "gintuzkezu"
+                    ],
+                    "ond_leh": [
+                        "gintuzkezun"
+                    ],
+                    "ahal_or": [
+                        "gaitzakezu"
+                    ],
+                    "ahal_hip": [
+                        "gintzakezu"
+                    ],
+                    "ahal_leh": [
+                        "gintzakezun"
+                    ],
+                    "subj_or": [
+                        "gaitzazun"
+                    ],
+                    "subj_leh": [
+                        "gintzazun"
+                    ],
+                    "agintera": [
+                        "gaitzazu"
+                    ]
+                },
+                "ZUEK": {
+                    "orain": [
+                        "gaituzue"
+                    ],
+                    "lehen": [
+                        "gintuzuen"
+                    ],
+                    "bal_hip": [
+                        "bagintuzue"
+                    ],
+                    "ond_or": [
+                        "gintuzkezue"
+                    ],
+                    "ond_leh": [
+                        "gintuzkezuen"
+                    ],
+                    "ahal_or": [
+                        "gaitzakezue"
+                    ],
+                    "ahal_hip": [
+                        "gintzakezue"
+                    ],
+                    "ahal_leh": [
+                        "gintzakezuen"
+                    ],
+                    "subj_or": [
+                        "gaitzazuen"
+                    ],
+                    "subj_leh": [
+                        "gintzazuen"
+                    ],
+                    "agintera": [
+                        "gaitzazue"
+                    ]
+                },
+                "HAIEK": {
+                    "orain": [
+                        "gaituzte"
+                    ],
+                    "lehen": [
+                        "gintuzten"
+                    ],
+                    "bal_hip": [
+                        "bagintuzte"
+                    ],
+                    "ond_or": [
+                        "gintuzkete"
+                    ],
+                    "ond_leh": [
+                        "gintuzketen"
+                    ],
+                    "ahal_or": [
+                        "gaitzakete"
+                    ],
+                    "ahal_hip": [
+                        "gintzakete"
+                    ],
+                    "ahal_leh": [
+                        "gintzaketen"
+                    ],
+                    "subj_or": [
+                        "gaitzaten"
+                    ],
+                    "subj_leh": [
+                        "gintzaten"
+                    ],
+                    "agintera": [
+                        "(gaitzate-)"
+                    ]
+                }
+            },
+            "ZU": {
+                "NIK": {
+                    "orain": [
+                        "zaitut"
+                    ],
+                    "lehen": [
+                        "zintudan"
+                    ],
+                    "bal_hip": [
+                        "bazintut"
+                    ],
+                    "ond_or": [
+                        "zintuzket"
+                    ],
+                    "ond_leh": [
+                        "zintuzkedan"
+                    ],
+                    "ahal_or": [
+                        "zaitzaket"
+                    ],
+                    "ahal_hip": [
+                        "zintzaket"
+                    ],
+                    "ahal_leh": [
+                        "zintzakedan"
+                    ],
+                    "subj_or": [
+                        "zaitzadan"
+                    ],
+                    "subj_leh": [
+                        "zintzadan"
+                    ],
+                    "agintera": [
+                        "(zaitzat)"
+                    ]
+                },
+                "HARK": {
+                    "orain": [
+                        "zaitu"
+                    ],
+                    "lehen": [
+                        "zintuen"
+                    ],
+                    "bal_hip": [
+                        "bazintu"
+                    ],
+                    "ond_or": [
+                        "zintuzke"
+                    ],
+                    "ond_leh": [
+                        "zintuzkeen"
+                    ],
+                    "ahal_or": [
+                        "zaitzake"
+                    ],
+                    "ahal_hip": [
+                        "zintzake"
+                    ],
+                    "ahal_leh": [
+                        "zintzakeen"
+                    ],
+                    "subj_or": [
+                        "zaitzan"
+                    ],
+                    "subj_leh": [
+                        "zintzan"
+                    ],
+                    "agintera": [
+                        "(zaitza)"
+                    ]
+                },
+                "GUK": {
+                    "orain": [
+                        "zaitugu"
+                    ],
+                    "lehen": [
+                        "zintugun"
+                    ],
+                    "bal_hip": [
+                        "bazintugu"
+                    ],
+                    "ond_or": [
+                        "zintuzkegu"
+                    ],
+                    "ond_leh": [
+                        "zintuzkegun"
+                    ],
+                    "ahal_or": [
+                        "zaitzakegu"
+                    ],
+                    "ahal_hip": [
+                        "zintzakegu"
+                    ],
+                    "ahal_leh": [
+                        "zintzakegun"
+                    ],
+                    "subj_or": [
+                        "zaitzagun"
+                    ],
+                    "subj_leh": [
+                        "zintzagun"
+                    ],
+                    "agintera": [
+                        "(zaitzagu)"
+                    ]
+                },
+                "HAIEK": {
+                    "orain": [
+                        "zaituzte"
+                    ],
+                    "lehen": [
+                        "zintuzten"
+                    ],
+                    "bal_hip": [
+                        "bazintuzte"
+                    ],
+                    "ond_or": [
+                        "zintuzkete"
+                    ],
+                    "ond_leh": [
+                        "zintuzketen"
+                    ],
+                    "ahal_or": [
+                        "zaitzakete"
+                    ],
+                    "ahal_hip": [
+                        "zintzakete"
+                    ],
+                    "ahal_leh": [
+                        "zintzaketen"
+                    ],
+                    "subj_or": [
+                        "zaitzaten"
+                    ],
+                    "subj_leh": [
+                        "zintzaten"
+                    ],
+                    "agintera": [
+                        "(zaitzate)"
+                    ]
+                }
+            },
+            "ZUEK": {
+                "NIK": {
+                    "orain": [
+                        "zaituztet"
+                    ],
+                    "lehen": [
+                        "zintuztedan"
+                    ],
+                    "bal_hip": [
+                        "bazintuztet"
+                    ],
+                    "ond_or": [
+                        "zintuzketet"
+                    ],
+                    "ond_leh": [
+                        "zintuzketedan"
+                    ],
+                    "ahal_or": [
+                        "zaitzaketet"
+                    ],
+                    "ahal_hip": [
+                        "zintzaketet"
+                    ],
+                    "ahal_leh": [
+                        "zintzaketedan"
+                    ],
+                    "subj_or": [
+                        "zaitzatedan"
+                    ],
+                    "subj_leh": [
+                        "zintzatedan"
+                    ],
+                    "agintera": [
+                        "(zaitzatet)"
+                    ]
+                },
+                "HARK": {
+                    "orain": [
+                        "zaituzte"
+                    ],
+                    "lehen": [
+                        "zintuzten"
+                    ],
+                    "bal_hip": [
+                        "bazintuzte"
+                    ],
+                    "ond_or": [
+                        "zintuzkete"
+                    ],
+                    "ond_leh": [
+                        "zintuzketen"
+                    ],
+                    "ahal_or": [
+                        "zaitzakete"
+                    ],
+                    "ahal_hip": [
+                        "zintzakete"
+                    ],
+                    "ahal_leh": [
+                        "zintzaketen"
+                    ],
+                    "subj_or": [
+                        "zaitzaten"
+                    ],
+                    "subj_leh": [
+                        "zintzaten"
+                    ],
+                    "agintera": [
+                        "(zaitzate)"
+                    ]
+                },
+                "GUK": {
+                    "orain": [
+                        "zaituztegu"
+                    ],
+                    "lehen": [
+                        "zintuztegun"
+                    ],
+                    "bal_hip": [
+                        "bazintuztegu"
+                    ],
+                    "ond_or": [
+                        "zintuzketegu"
+                    ],
+                    "ond_leh": [
+                        "zintuzketegun"
+                    ],
+                    "ahal_or": [
+                        "zaitzaketegu"
+                    ],
+                    "ahal_hip": [
+                        "zintzaketegu"
+                    ],
+                    "ahal_leh": [
+                        "zintzaketegun"
+                    ],
+                    "subj_or": [
+                        "zaitzategun"
+                    ],
+                    "subj_leh": [
+                        "zintzategun"
+                    ],
+                    "agintera": [
+                        "(zaitzategu)"
+                    ]
+                },
+                "HAIEK": {
+                    "orain": [
+                        "zaituztete",
+                        "zaituzte"
+                    ],
+                    "lehen": [
+                        "zintuzteten",
+                        "zintuzten"
+                    ],
+                    "bal_hip": [
+                        "bazintuztete",
+                        "bazintuzte"
+                    ],
+                    "ond_or": [
+                        "zintuzketete",
+                        "zintuzkete"
+                    ],
+                    "ond_leh": [
+                        "zintuzketeten",
+                        "zintuzketen"
+                    ],
+                    "ahal_or": [
+                        "zaitzaketete",
+                        "zaitzakete"
+                    ],
+                    "ahal_hip": [
+                        "zintzaketete",
+                        "zintzakete"
+                    ],
+                    "ahal_leh": [
+                        "zintzaketeten",
+                        "zintzaketen"
+                    ],
+                    "subj_or": [
+                        "zaitzateten",
+                        "zaitzaten"
+                    ],
+                    "subj_leh": [
+                        "zintzateten",
+                        "zintzaten"
+                    ],
+                    "agintera": [
+                        "(zaitzatete)",
+                        "(zaitzate)"
+                    ]
+                }
+            },
+            "HAIEK": {
+                "NIK": {
+                    "orain": [
+                        "ditut"
+                    ],
+                    "lehen": [
+                        "nituen"
+                    ],
+                    "bal_hip": [
+                        "banitu"
+                    ],
+                    "ond_or": [
+                        "nituzke"
+                    ],
+                    "ond_leh": [
+                        "nituzkeen"
+                    ],
+                    "ahal_or": [
+                        "ditzaket"
+                    ],
+                    "ahal_hip": [
+                        "nitzake"
+                    ],
+                    "ahal_leh": [
+                        "nitzakeen"
+                    ],
+                    "subj_or": [
+                        "ditzadan"
+                    ],
+                    "subj_leh": [
+                        "nitzan"
+                    ]
+                },
+                "HIK": {
+                    "orain": [
+                        "dituk",
+                        "ditun"
+                    ],
+                    "lehen": [
+                        "hituen"
+                    ],
+                    "bal_hip": [
+                        "bahitu"
+                    ],
+                    "ond_or": [
+                        "hituzke"
+                    ],
+                    "ond_leh": [
+                        "hituzkeen"
+                    ],
+                    "ahal_or": [
+                        "ditzakek",
+                        "ditzaken"
+                    ],
+                    "ahal_hip": [
+                        "hitzake"
+                    ],
+                    "ahal_leh": [
+                        "hitzakeen"
+                    ],
+                    "subj_or": [
+                        "ditzaan",
+                        "ditzanan"
+                    ],
+                    "subj_leh": [
+                        "hitzan"
+                    ],
+                    "agintera": [
+                        "itzak",
+                        "itzan"
+                    ]
+                },
+                "HARK": {
+                    "orain": [
+                        "ditu"
+                    ],
+                    "lehen": [
+                        "zituen"
+                    ],
+                    "bal_hip": [
+                        "balitu"
+                    ],
+                    "ond_or": [
+                        "lituzke"
+                    ],
+                    "ond_leh": [
+                        "zituzkeen"
+                    ],
+                    "ahal_or": [
+                        "ditzake"
+                    ],
+                    "ahal_hip": [
+                        "litzake"
+                    ],
+                    "ahal_leh": [
+                        "zitzakeen"
+                    ],
+                    "subj_or": [
+                        "ditzan"
+                    ],
+                    "subj_leh": [
+                        "zitzan"
+                    ],
+                    "agintera": [
+                        "bitza"
+                    ]
+                },
+                "GUK": {
+                    "orain": [
+                        "ditugu"
+                    ],
+                    "lehen": [
+                        "genituen"
+                    ],
+                    "bal_hip": [
+                        "bagenitu"
+                    ],
+                    "ond_or": [
+                        "genituzke"
+                    ],
+                    "ond_leh": [
+                        "genituzkeen"
+                    ],
+                    "ahal_or": [
+                        "ditzakegu"
+                    ],
+                    "ahal_hip": [
+                        "genitzake"
+                    ],
+                    "ahal_leh": [
+                        "genitzakeen"
+                    ],
+                    "subj_or": [
+                        "ditzagun"
+                    ],
+                    "subj_leh": [
+                        "genitzan"
+                    ]
+                },
+                "ZUK": {
+                    "orain": [
+                        "dituzu"
+                    ],
+                    "lehen": [
+                        "zenituen"
+                    ],
+                    "bal_hip": [
+                        "bazenitu"
+                    ],
+                    "ond_or": [
+                        "zenituzke"
+                    ],
+                    "ond_leh": [
+                        "zenituzkeen"
+                    ],
+                    "ahal_or": [
+                        "ditzakezu"
+                    ],
+                    "ahal_hip": [
+                        "zenitzake"
+                    ],
+                    "ahal_leh": [
+                        "zenitzakeen"
+                    ],
+                    "subj_or": [
+                        "ditzazun"
+                    ],
+                    "subj_leh": [
+                        "zenitzan"
+                    ],
+                    "agintera": [
+                        "itzazu"
+                    ]
+                },
+                "ZUEK": {
+                    "orain": [
+                        "dituzue"
+                    ],
+                    "lehen": [
+                        "zenituzten"
+                    ],
+                    "bal_hip": [
+                        "bazenituzte"
+                    ],
+                    "ond_or": [
+                        "zenituzkete"
+                    ],
+                    "ond_leh": [
+                        "zenituzketen"
+                    ],
+                    "ahal_or": [
+                        "ditzakezue"
+                    ],
+                    "ahal_hip": [
+                        "zenitzakete"
+                    ],
+                    "ahal_leh": [
+                        "zenitzaketen"
+                    ],
+                    "subj_or": [
+                        "ditzazuen"
+                    ],
+                    "subj_leh": [
+                        "zenitzaten"
+                    ],
+                    "agintera": [
+                        "itzazue"
+                    ]
+                },
+                "HAIEK": {
+                    "orain": [
+                        "dituzte"
+                    ],
+                    "lehen": [
+                        "zituzten"
+                    ],
+                    "bal_hip": [
+                        "balituzte"
+                    ],
+                    "ond_or": [
+                        "lituzkete"
+                    ],
+                    "ond_leh": [
+                        "zituzketen"
+                    ],
+                    "ahal_or": [
+                        "ditzakete"
+                    ],
+                    "ahal_hip": [
+                        "litzakete"
+                    ],
+                    "ahal_leh": [
+                        "zitzaketen"
+                    ],
+                    "subj_or": [
+                        "ditzaten"
+                    ],
+                    "subj_leh": [
+                        "zitzaten"
+                    ],
+                    "agintera": [
+                        "bitzate"
+                    ]
+                }
+            }
+        },
+        "nor-nori": {
+            "HURA": {
+                "NIRI": {
+                        "orain": [
+                            "zait"
+                        ],
+                        "lehen": [
+                            "zitzaidan"
+                        ],
+                        "ahal_or": [
+                            "dakidake"
+                        ],
+                        "bal_hip": [
+                            "balitzait"
+                        ],
+                          "ond_or": [
+                            "litzaidake"
+                        ],
+                          "ond_leh": [
+                            "zitzaidakeen"
+                        ],
+                        "ahal_hip": [
+                            "lekidake"
+                        ],
+                        "ahal_leh": [
+                            "zekidakeen"
+                        ],
+                        "subj_or": [
+                            "dakidan"
+                        ],
+                        "subj_leh": [
+                            "zekidan"
+                        ],
+                        "agintera": [
+                            "bekit"
+                        ]
+                    },
+                "HIRI": {
+                        "orain": [
+                            "zaik",
+                            "zain"
+                        ],
+                        "lehen": [
+                            "zitzaian",
+                            "zitzainan"
+                        ],
+                        "bal_hip": ["balitzaik", "balitzain"],
+                  "ond_or": ["litzaiake", "litzainake"],
+                  "ond_leh": ["zitzaiakeen", "zitzainakeen"],
+                        "ahal_or": [
+                            "dakiake",
+                            "dakinake"
+                        ],
+                        "ahal_hip": [
+                            "lekiake",
+                            "lekinake"
+                        ],
+                        "ahal_leh": [
+                            "zekiakeen",
+                            "zekinakeen"
+                        ],
+                        "subj_or": [
+                            "dakian",
+                            "dakinan"
+                        ],
+                        "subj_leh": [
+                            "zekian",
+                            "zekinan"
+                        ],
+                        "agintera": [
+                            "bekik",
+                            "bekin"]
+                    },
+                "HARI": {
+                        "orain": [
+                            "zaio"
+                        ],
+                        "lehen": [
+                            "zitzaion"
+                        ],
+                        "bal_hip": [
+                            "balitzaio"
+                        ],
+                  "ond_or": [
+                    "litzaioke"
+                ],
+                  "ond_leh": [
+                    "zitzaiokeen"
+                ],
+                        "ahal_or": [
+                            "dakioke"
+                        ],
+                        "ahal_hip": [
+                            "lekioke"
+                        ],
+                        "ahal_leh": [
+                            "zekiokeen"
+                        ],
+                        "subj_or": [
+                            "dakion"
+                        ],
+                        "subj_leh": [
+                            "zekion"
+                        ]
+                    },
+                "GURI": {
+                        "orain": [
+                            "zaigu"
+                        ],
+                        "lehen": [
+                            "zitzaigun"
+                        ],
+                        "bal_hip": [
+                            "balitzaigu"
+                        ],
+                  "ond_or": [
+                    "litzaiguke"
+                ],
+                  "ond_leh": [
+                    "zitzaigukeen"
+                ],
+                        "ahal_or": [
+                            "dakiguke"
+                        ],
+                        "ahal_hip": [
+                            "lekiguke"
+                        ],
+                        "ahal_leh": [
+                            "zekigukeen"
+                        ],
+                        "subj_or": [
+                            "dakigun"
+                        ],
+                        "subj_leh": [
+                            "zekigun"
+                        ],
+                        "agintera": [
+                            "bekigu"
+                        ]
+                    },
+                "ZURI": {
+                        "orain": [
+                            "zaizu"
+                        ],
+                        "lehen": [
+                            "zitzaizun"
+                        ],
+                        "bal_hip": [
+                            "balitzaizu"
+                        ],
+                  "ond_or": [
+                    "litzaizuke"
+                ],
+                  "ond_leh": [
+                    "zitzaizukeen"
+                ],
+                        "ahal_or": [
+                            "dakizuke"
+                        ],
+                        "ahal_hip": [
+                            "lekizuke"
+                        ],
+                        "ahal_leh": [
+                            "zekizukeen"
+                        ],
+                        "subj_or": [
+                            "dakizun"
+                        ],
+                        "subj_leh": [
+                            "zekizun"
+                        ],
+                        "agintera": [
+                            "bekizu"
+                        ]
+                    },
+                "ZUEI": {
+                        "orain": [
+                            "zaizue"
+                        ],
+                        "lehen": [
+                            "zitzaizuen"
+                        ],
+                        "bal_hip": [
+                            "balitzaizue"
+                        ],
+                  "ond_or": [
+                    "litzaizueke"
+                ],
+                  "ond_leh": [
+                    "zitzaizuekeen"
+                ],
+                        "ahal_or": [
+                            "dakizueke"
+                        ],
+                        "ahal_hip": [
+                            "lekizueke"
+                        ],
+                        "ahal_leh": [
+                            "zekizuekeen"
+                        ],
+                        "subj_or": [
+                            "dakizuen"
+                        ],
+                        "subj_leh": [
+                            "zekizuen"
+                        ],
+                        "agintera": [
+                            "bekizue"
+                        ]
+                    },
+                "HAIEI": {
+                        "orain": [
+                            "zaie"
+                        ],
+                        "lehen": [
+                            "zitzaien"
+                        ],
+                        "bal_hip": [
+                            "balitzaie"
+                        ],
+                  "ond_or": [
+                    "litzaieke"
+                ],
+                  "ond_leh": [
+                    "zitzaiekeen"
+                ],
+                        "ahal_or": [
+                            "dakieke"
+                        ],
+                        "ahal_hip": [
+                            "lekieke"
+                        ],
+                        "ahal_leh": [
+                            "zekiekeen"
+                        ],
+                        "subj_or": [
+                            "dakien"
+                        ],
+                        "subj_leh": [
+                            "zekien"
+                        ],
+                        "agintera": [
+                            "bekie"
+                        ]
+                    }
+            },
+            "HAIEK": {
+                "NIRI": {
+                    "orain": [
+                        "zaizkit"
+                    ],
+                    "lehen": [
+                        "zitzaizkidan"
+                    ],
+                     "bal_hip": [
+                        "balitzaizkit"
+                    ],
+                      "ond_or": [
+                        "litzaizkidake"
+                    ],
+                      "ond_leh": [
+                        "zitzaizkidakeen"
+                    ],
+                    "ahal_or": [
+                        "dakizkidake"
+                    ],
+                    "ahal_hip": [
+                        "lekizkidake"
+                    ],
+                    "ahal_leh": [
+                        "zekizkidakeen"
+                    ],
+                    "subj_or": [
+                        "dakizkidan"
+                    ],
+                    "subj_leh": [
+                        "zekizkidan"
+                    ],
+                    "agintera": [
+                        "bekizkit"
+                    ]
+                },
+                "HIRI": {
+                    "orain": [
+                        "zaizkik",
+                        "zaizkin"
+                    ],
+                    "lehen": [
+                        "zitzaizkian",
+                        "zitzaizkinan"
+                    ],
+                    "bal_hip": [
+                        "balitzaizkik",
+                     "balitzaizkin"
+                    ],
+                      "ond_or": [
+                        "litzaizkiake", 
+                        "litzaizkinake"
+                    ],
+                      "ond_leh": [
+                        "zitzaizkiakeen", 
+                        "zitzaizkinakeen"
+                            ],
+                    "ahal_or": [
+                        "dakizkiake",
+                        "dakizkinake"
+                    ],
+                    "ahal_hip": [
+                        "lekizkiake",
+                        "lekizkinake"
+                    ],
+                    "ahal_leh": [
+                        "zekizkiakeen",
+                        "zekizkinakeen"
+                    ],
+                    "subj_or": [
+                        "dakizkian",
+                        "dakizkinan"
+                    ],
+                    "subj_leh": [
+                        "zekizkian",
+                        "zekizkinan"
+                    ],
+                    "agintera": [
+                        "bekizkik",
+                        "bekizkin"
+                    ]
+                },
+                "HARI": {
+                    "orain": [
+                        "zaizkio"
+                    ],
+                    "lehen": [
+                        "zitzaizkion"
+                    ],
+                    "bal_hip": [
+                        "balitzaizkio"
+                    ],
+                    "ond_or": [
+                        "litzaizkioke"
+                    ],
+                      "ond_leh": [
+                        "zitzaizkiokeen"
+                    ],
+                    "ahal_or": [
+                        "dakizkioke"
+                    ],
+                    "ahal_hip": [
+                        "lekizkioke"
+                    ],
+                    "ahal_leh": [
+                        "zekizkiokeen"
+                    ],
+                    "subj_or": [
+                        "dakizkion"
+                    ],
+                    "subj_leh": [
+                        "zekizkion"
+                    ],
+                    "agintera": [
+                        "bekizkio"
+                    ]
+                },
+                "GURI": {
+                    "orain": [
+                        "zaizkigu"
+                    ],
+                    "lehen": [
+                        "zitzaizkigun"
+                    ],
+                    "bal_hip": [
+                        "balitzaizkigu"
+                    ],
+              "ond_or": [
+                "litzaizkiguke"
+            ],
+              "ond_leh": [
+              "zitzaizkigukeen"
+          ],
+                    "ahal_or": [
+                        "dakizkiguke"
+                    ],
+                    "ahal_hip": [
+                        "lekizkiguke"
+                    ],
+                    "ahal_leh": [
+                        "zekizkigukeen"
+                    ],
+                    "subj_or": [
+                        "dakizkigun"
+                    ],
+                    "subj_leh": [
+                        "zekizkigun"
+                    ],
+                    "agintera": [
+                        "bekizkigu"
+                    ]
+                },
+                "ZURI": {
+                    "orain": [
+                        "zaizkizu"
+                    ],
+                    "lehen": [
+                        "zitzaizkizun"
+                    ],
+                    "bal_hip": [
+                        "balitzaizkizu"
+                    ],
+              "ond_or": [
+                "litzaizkizuke"
+            ],
+              "ond_leh": [
+                "zitzaizkizukeen"
+            ],
+                    "ahal_or": [
+                        "dakizkizuke"
+                    ],
+                    "ahal_hip": [
+                        "lekizkizuke"
+                    ],
+                    "ahal_leh": [
+                        "zekizkizukeen"
+                    ],
+                    "subj_or": [
+                        "dakizkizun"
+                    ],
+                    "subj_leh": [
+                        "zekizkizun"
+                    ],
+                    "agintera": [
+                        "bekizkizu"
+                    ]
+                },
+                "ZUEI": {
+                    "orain": [
+                        "zaizkizue"
+                    ],
+                    "lehen": [
+                        "zitzaizkizuen"
+                    ],
+                    "bal_hip": [
+                        "balitzaizkizue"
+                    ],
+              "ond_or": [
+                "litzaizkizueke"
+            ],
+              "ond_leh": [
+                "zitzaizkizuekeen"
+            ],
+                    "ahal_or": [
+                        "dakizkizueke"
+                    ],
+                    "ahal_hip": [
+                        "lekizkizueke"
+                    ],
+                    "ahal_leh": [
+                        "zekizkizuekeen"
+                    ],
+                    "subj_or": [
+                        "dakizkizuen"
+                    ],
+                    "subj_leh": [
+                        "zekizkizuen"
+                    ],
+                    "agintera": [
+                        "bekizkizue"
+                    ]
+                },
+                "HAIEI": {
+                    "orain": [
+                        "zaizkie"
+                    ],
+                    "lehen": [
+                        "zitzaizkien"
+                    ],
+                    "bal_hip": [
+                        "balitzaizkie"
+                    ],
+              "ond_or": [
+                "litzaizkieke"
+            ],
+              "ond_leh": [
+                "zitzaizkiekeen"
+            ],
+                    "ahal_or": [
+                        "dakizkieke"
+                    ],
+                    "ahal_hip": [
+                        "lekizkieke"
+                    ],
+                    "ahal_leh": [
+                        "zekizkiekeen"
+                    ],
+                    "subj_or": [
+                        "dakizkien"
+                    ],
+                    "subj_leh": [
+                        "zekizkien"
+                    ],
+                    "agintera": [
+                        "bekizkie"
+                    ]
+                }
+            },
+            "NI": {
+                "HIRI": {
+                    "orain": [
+                        "natzaik",
+                        "natzain"
+                      ],
+                      "lehen": [
+                        "nintzaian",
+                        "nintzainan"
+                      ],
+                      "bal_hip": [
+                        "banintzaik",
+                        "banintzain"
+                      ],
+                      "ond_or": [
+                        "nintzaiake",
+                        "nintzainake"
+                      ],
+                      "ond_leh": [
+                        "nintzaiakeen",
+                        "nintzainakeen"
+                      ],
+                    "ahal_or": [
+                        "nakiake",
+                        "nakinake"
+                    ],
+                    "ahal_hip": [
+                        "nenkiake",
+                        "nenkinake"
+                    ],
+                    "ahal_leh": [
+                        "nenkiakeen",
+                        "nenkinakeen"
+                    ],
+                    "subj_or": [
+                        "nakian",
+                        "nakinan"
+                    ],
+                    "subj_leh": [
+                        "nenkian",
+                        "nenkinan"
+                    ]
+                },
+                "HARI": {
+                    "orain": [
+        "natzaio"
+      ],
+      "lehen": [
+        "nintzaion"
+      ],
+      "bal_hip": [
+        "banintzaio"
+      ],
+      "ond_or": [
+        "nintzaioke"
+      ],
+      "ond_leh": [
+        "nintzaiokeen"
+      ],
+                    "ahal_or": [
+                        "nakioke"
+                    ],
+                    "ahal_hip": [
+                        "nenkioke"
+                    ],
+                    "ahal_leh": [
+                        "nenkiokeen"
+                    ],
+                    "subj_or": [
+                        "nakion"
+                    ],
+                    "subj_leh": [
+                        "nenkion"
+                    ]
+                },
+                "ZURI": {
+                    "orain": [
+        "natzaizu"
+      ],
+      "lehen": [
+        "nintzaizun"
+      ],
+      "bal_hip": [
+        "banintzaizu"
+      ],
+      "ond_or": [
+        "nintzaizuke"
+      ],
+      "ond_leh": [
+        "nintzaizukeen"
+      ],
+                    "ahal_or": [
+                        "nakizuke"
+                    ],
+                    "ahal_hip": [
+                        "nenkizuke"
+                    ],
+                    "ahal_leh": [
+                        "nenkizukeen"
+                    ],
+                    "subj_or": [
+                        "nakizun"
+                    ],
+                    "subj_leh": [
+                        "nenkizun"
+                    ]
+                },
+                "ZUEI": {
+                    "orain": [
+        "natzaizue"
+      ],
+      "lehen": [
+        "nintzaizuen"
+      ],
+      "bal_hip": [
+        "banintzaizue"
+      ],
+      "ond_or": [
+        "nintzaizueke"
+      ],
+      "ond_leh": [
+        "nintzaizuekeen"
+      ],
+                    "ahal_or": [
+                        "nakizueke"
+                    ],
+                    "ahal_hip": [
+                        "nenkizueke"
+                    ],
+                    "ahal_leh": [
+                        "nenkizuekeen"
+                    ],
+                    "subj_or": [
+                        "nakizuen"
+                    ],
+                    "subj_leh": [
+                        "nenkizuen"
+                    ]
+                },
+                "HAIEI": {
+                    "orain": [
+        "natzaie"
+      ],
+      "lehen": [
+        "nintzaien"
+      ],
+      "bal_hip": [
+        "banintzaie"
+      ],
+      "ond_or": [
+        "nintzaieke"
+      ],
+      "ond_leh": [
+        "nintzaiekeen"
+      ],
+                    "ahal_or": [
+                        "nakieke"
+                    ],
+                    "ahal_hip": [
+                        "nenkieke"
+                    ],
+                    "ahal_leh": [
+                        "nenkiekeen"
+                    ],
+                    "subj_or": [
+                        "nakien"
+                    ],
+                    "subj_leh": [
+                        "nenkien"
+                    ]
+                }
+            },
+            "HI": {
+                "NIRI": {
+                    "orain": [
+        "hatzait"
+      ],
+      "lehen": [
+        "hintzaidan"
+      ],
+      "bal_hip": [
+        "bahintzait"
+      ],
+      "ond_or": [
+        "hintzaidake"
+      ],
+      "ond_leh": [
+        "hintzaidakeen"
+      ],
+                    "ahal_or": [
+                        "hakidade"
+                    ],
+                    "ahal_hip": [
+                        "henkidake"
+                    ],
+                    "ahal_leh": [
+                        "henkidakeen"
+                    ],
+                    "subj_or": [
+                        "hakidan"
+                    ],
+                    "subj_leh": [
+                        "henkidan"
+                    ],
+                    "agintera": [
+                        "hakit"
+                    ]
+                },
+                "HARI": {
+                    "orain": [
+        "hatzaio"
+      ],
+      "lehen": [
+        "hintzaion"
+      ],
+      "bal_hip": [
+        "bahintzaio"
+      ],
+      "ond_or": [
+        "hintzaioke"
+      ],
+      "ond_leh": [
+        "hintzaiokeen"
+      ],
+                    "ahal_or": [
+                        "hakioke"
+                    ],
+                    "ahal_hip": [
+                        "henkioke"
+                    ],
+                    "ahal_leh": [
+                        "henkiokeen"
+                    ],
+                    "subj_or": [
+                        "hakion"
+                    ],
+                    "subj_leh": [
+                        "henkion"
+                    ],
+                    "agintera": [
+                        "hakio"
+                    ]
+                },
+                "GURI": {
+                    "orain": [
+        "hatzaigu"
+      ],
+      "lehen": [
+        "hintzaigun"
+      ],
+      "bal_hip": [
+        "bahintzaigu"
+      ],
+      "ond_or": [
+        "hintzaiguke"
+      ],
+      "ond_leh": [
+        "hintzaigukeen"
+      ],
+                    "ahal_or": [
+                        "hakiguke"
+                    ],
+                    "ahal_hip": [
+                        "henkiguke"
+                    ],
+                    "ahal_leh": [
+                        "henkigukeen"
+                    ],
+                    "subj_or": [
+                        "hakigun"
+                    ],
+                    "subj_leh": [
+                        "henkigun"
+                    ],
+                    "agintera": [
+                        "hakigu"
+                    ]
+                },
+                "HAIEI": {
+                    "orain": [
+        "hatzaie"
+      ],
+      "lehen": [
+        "hintzaien"
+      ],
+      "bal_hip": [
+        "bahintzaie"
+      ],
+      "ond_or": [
+        "hintzaieke"
+      ],
+      "ond_leh": [
+        "hintzaiekeen"
+      ],
+                    "ahal_or": [
+                        "hakieke"
+                    ],
+                    "ahal_hip": [
+                        "henkieke"
+                    ],
+                    "ahal_leh": [
+                        "henkiekeen"
+                    ],
+                    "subj_or": [
+                        "hakien"
+                    ],
+                    "subj_leh": [
+                        "henkien"
+                    ],
+                    "agintera": [
+                        "hakie"
+                    ]
+                }
+            },
+            "GU": {
+                "HIRI": {
+                    "orain": [
+        "gatzaizkik",
+        "gatzaizkin"
+      ],
+      "lehen": [
+        "gintzaizkian",
+        "gintzaizkinan"
+      ],
+      "bal_hip": [
+        "bagintzaizkik",
+        "gintzaizkin"
+      ],
+      "ond_or": [
+        "gintzaizkiake",
+        "gintzaizkinake"
+      ],
+      "ond_leh": [
+        "gintzaizkiakeen",
+        "gintzaizkinakeen"
+      ],
+                    "ahal_or": [
+                        "gakizkiake",
+                        "gakizkinake"
+                    ],
+                    "ahal_hip": [
+                        "genkizkiake",
+                        "genkizkinake"
+                    ],
+                    "ahal_leh": [
+                        "genkizkiakeen",
+                        "genkizkinakeen"
+                    ],
+                    "subj_or": [
+                        "gakizkian",
+                        "gakizkinan"
+                    ],
+                    "subj_leh": [
+                        "genkizkian",
+                        "genkizkinan"
+                    ]
+                },
+                "HARI": {
+                    "orain": [
+        "gatzaizkio"
+      ],
+      "lehen": [
+        "gintzaizkion"
+      ],
+      "bal_hip": [
+        "bagintzaizkio"
+      ],
+      "ond_or": [
+        "gintzaizkioke"
+      ],
+      "ond_leh": [
+        "gintzaizkiokeen"
+      ],
+                    "ahal_or": [
+                        "gakizkioke"
+                    ],
+                    "ahal_hip": [
+                        "genkizkioke"
+                    ],
+                    "ahal_leh": [
+                        "genkizkiokeen"
+                    ],
+                    "subj_or": [
+                        "gakizkion"
+                    ],
+                    "subj_leh": [
+                        "genkizkion"
+                    ]
+                },
+                "ZURI": {
+                    "orain": [
+        "gatzaizkizu"
+      ],
+      "lehen": [
+        "gintzaizkizun"
+      ],
+      "bal_hip": [
+        "bagintzaizkizu"
+      ],
+      "ond_or": [
+        "gintzaizkizuke"
+      ],
+      "ond_leh": [
+        "gintzaizkizukeen"
+      ],
+                    "ahal_or": [
+                        "gakizkizuke"
+                    ],
+                    "ahal_hip": [
+                        "genkizkizuke"
+                    ],
+                    "ahal_leh": [
+                        "genkizkizukeen"
+                    ],
+                    "subj_or": [
+                        "gakizkizun"
+                    ],
+                    "subj_leh": [
+                        "genkizkizun"
+                    ]
+                },
+                "ZUEI": {
+                    "orain": [
+        "gatzaizkizue"
+      ],
+      "lehen": [
+        "gintzaizkizuen"
+      ],
+      "bal_hip": [
+        "bagintzaizkizue"
+      ],
+      "ond_or": [
+        "gintzaizkizueke"
+      ],
+      "ond_leh": [
+        "gintzaizkizuekeen"
+      ],
+                    "ahal_or": [
+                        "gakizkizueke"
+                    ],
+                    "ahal_hip": [
+                        "genkizkizueke"
+                    ],
+                    "ahal_leh": [
+                        "genkizkizuekeen"
+                    ],
+                    "subj_or": [
+                        "gakizkizuen"
+                    ],
+                    "subj_leh": [
+                        "genkizkizuen"
+                    ]
+                },
+                "HAIEI": {
+                    "orain": [
+        "gatzaizkie"
+      ],
+      "lehen": [
+        "gintzaizkien"
+      ],
+      "bal_hip": [
+        "bagintzaizkie"
+      ],
+      "ond_or": [
+        "gintzaizkieke"
+      ],
+      "ond_leh": [
+        "gintzaizkiekeen"
+      ],
+                    "ahal_or": [
+                        "gakizkieke"
+                    ],
+                    "ahal_hip": [
+                        "genkizkieke"
+                    ],
+                    "ahal_leh": [
+                        "genkizkiekeen"
+                    ],
+                    "subj_or": [
+                        "gakizkien"
+                    ],
+                    "subj_leh": [
+                        "genkizkien"
+                    ]
+                }
+            },
+            "ZU": {
+                "NIRI": {
+                    "orain": [
+        "zatzaizkit"
+      ],
+      "lehen": [
+        "zintzaizkidan"
+      ],
+      "bal_hip": [
+        "bazintzaizkit"
+      ],
+      "ond_or": [
+        "zintzaizkidake"
+      ],
+      "ond_leh": [
+        "zintzaizkidakeen"
+      ],
+                    "ahal_or": [
+                        "zakizkidake"
+                    ],
+                    "ahal_hip": [
+                        "zenkizkidake"
+                    ],
+                    "ahal_leh": [
+                        "zenkizkidakeen"
+                    ],
+                    "subj_or": [
+                        "zakizkidan"
+                    ],
+                    "subj_leh": [
+                        "zenkizkidan"
+                    ],
+                    "agintera": [
+                        "zakizkit"
+                    ]
+                },
+                "HARI": {
+                    "orain": [
+        "zatzaizkio"
+      ],
+      "lehen": [
+        "zintzaizkion"
+      ],
+      "bal_hip": [
+        "bazintzaizkio"
+      ],
+      "ond_or": [
+        "zintzaizkioke"
+      ],
+      "ond_leh": [
+        "zintzaizkiokeen"
+      ],
+                    "ahal_or": [
+                        "zakizkioke"
+                    ],
+                    "ahal_hip": [
+                        "zenkizkioke"
+                    ],
+                    "ahal_leh": [
+                        "zenkizkiokeen"
+                    ],
+                    "subj_or": [
+                        "zakizkion"
+                    ],
+                    "subj_leh": [
+                        "zenkizkion"
+                    ],
+                    "agintera": [
+                        "zakizkio"
+                    ]
+                },
+                "GURI": {
+                    "orain": [
+        "zatzaizkigu"
+      ],
+      "lehen": [
+        "zintzaizkigun"
+      ],
+      "bal_hip": [
+        "bazintzaizkigu"
+      ],
+      "ond_or": [
+        "zintzaizkiguke"
+      ],
+      "ond_leh": [
+        "zintzaizkigukeen"
+      ],
+                    "ahal_or": [
+                        "zakizkiguke"
+                    ],
+                    "ahal_hip": [
+                        "zenkizkiguke"
+                    ],
+                    "ahal_leh": [
+                        "zenkizkigukeen"
+                    ],
+                    "subj_or": [
+                        "zakizkigun"
+                    ],
+                    "subj_leh": [
+                        "zenkizkigun"
+                    ],
+                    "agintera": [
+                        "zakizkigu"
+                    ]
+                },
+                "HAIEI": {
+                    "orain": [
+        "zatzaizkie"
+      ],
+      "lehen": [
+        "zintzaizkien"
+      ],
+      "bal_hip": [
+        "bazintzaizkie"
+      ],
+      "ond_or": [
+        "zintzaizkieke"
+      ],
+      "ond_leh": [
+        "zintzaizkiekeen"
+      ],
+                    "ahal_or": [
+                        "zakizkieke"
+                    ],
+                    "ahal_hip": [
+                        "zenkizkieke"
+                    ],
+                    "ahal_leh": [
+                        "zenkizkiekeen"
+                    ],
+                    "subj_or": [
+                        "zakizkien"
+                    ],
+                    "subj_leh": [
+                        "zenkizkien"
+                    ],
+                    "agintera": [
+                        "zakizkie"
+                    ]
+                }
+            },
+            "ZUEK": {
+                "NIRI": {
+                    "orain": [
+        "zatzaizkidate"
+      ],
+      "lehen": [
+        "zintzaizkidaten"
+      ],
+      "bal_hip": [
+        "bazintzaizkidate"
+      ],
+      "ond_or": [
+        "zintzaizkidakete"
+      ],
+      "ond_leh": [
+        "zintzaizkidaketen"
+      ],
+                    "ahal_or": [
+                        "zakizkidakete"
+                    ],
+                    "ahal_hip": [
+                        "zenkizkidakete"
+                    ],
+                    "ahal_leh": [
+                        "zenkizkidaketen"
+                    ],
+                    "subj_or": [
+                        "zakizkidaten"
+                    ],
+                    "subj_leh": [
+                        "zenkizkidaten"
+                    ],
+                    "agintera": [
+                        "zakizkidate"
+                    ]
+                },
+                "HARI": {
+                    "orain": [
+        "zatzaizkiote"
+      ],
+      "lehen": [
+        "zintzaizkioten"
+      ],
+      "bal_hip": [
+        "bazintzaizkiote"
+      ],
+      "ond_or": [
+        "zintzaizkiokete"
+      ],
+      "ond_leh": [
+        "zintzaizkioketen"
+      ],
+                    "ahal_or": [
+                        "zakizkiokete"
+                    ],
+                    "ahal_hip": [
+                        "zenkizkiokete"
+                    ],
+                    "ahal_leh": [
+                        "zenkizkioketen"
+                    ],
+                    "subj_or": [
+                        "zakizkioten"
+                    ],
+                    "subj_leh": [
+                        "zenkizkioten"
+                    ],
+                    "agintera": [
+                        "zakizkiote"
+                    ]
+                },
+                "GURI": {
+                    "orain": [
+        "zatzaizkigute"
+      ],
+      "lehen": [
+        "zintzaizkiguten"
+      ],
+      "bal_hip": [
+        "bazintzaizkigute"
+      ],
+      "ond_or": [
+        "zintzaizkigukete"
+      ],
+      "ond_leh": [
+        "zintzaizkiguketen"
+      ],
+                    "ahal_or": [
+                        "zakizkigukete"
+                    ],
+                    "ahal_hip": [
+                        "zenkizkigukete"
+                    ],
+                    "ahal_leh": [
+                        "zenkizkiguketen"
+                    ],
+                    "subj_or": [
+                        "zakizkiguten"
+                    ],
+                    "subj_leh": [
+                        "zenkizkiguten"
+                    ],
+                    "agintera": [
+                        "zakizkigute"
+                    ]
+                },
+                "HAIEI": {
+                    "orain": [
+        "zatzaizkiete"
+      ],
+      "lehen": [
+        "zintzaizkieten"
+      ],
+      "bal_hip": [
+        "bazintzaizkiete"
+      ],
+      "ond_or": [
+        "zintzaizkiekete"
+      ],
+      "ond_leh": [
+        "zintzaizkieketen"
+      ],
+                    "ahal_or": [
+                        "zakizkiekete"
+                    ],
+                    "ahal_hip": [
+                        "zenkizkiekete"
+                    ],
+                    "ahal_leh": [
+                        "zenkizkieketen"
+                    ],
+                    "subj_or": [
+                        "zakizkieten"
+                    ],
+                    "subj_leh": [
+                        "zenkizkieten"
+                    ],
+                    "agintera": [
+                        "zakizkiete"
+                    ]
+                }
+            }
+        },
+        "nor-nori-nork": {
+            "Sing": {
+                "NIK": {
+                    "HIRI": {
+                        "orain": [
+                            "diat",
+                            "dinat"
+                        ],
+                        "lehen": [
+                            "nian",
+                            "ninan"
+                        ],
+                        "bal_hip": [
+                            "banik",
+                            "banin"
+                        ],
+                        "ond_or": [
+                            "niake",
+                            "ninake"
+                        ],
+                        "ond_leh": [
+                            "niakeen",
+                            "ninakeen"
+                        ],
+                        "ahal_or": [
+                            "diezaaket",
+                            "diezanaket"
+                        ],
+                        "ahal_hip": [
+                            "niezaake",
+                            "niezanake"
+                        ],
+                        "ahal_leh": [
+                            "niezaakeen",
+                            "niezanakeen"
+                        ],
+                        "subj_or": [
+                            "diezaadan",
+                            "diezanadan"
+                        ],
+                        "subj_leh": [
+                            "niezaan",
+                            "niezanan"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": ["diot"],
+                        "lehen": ["nion"],
+                        "bal_hip": ["banio"],
+                        "ond_or": ["nioke"],
+                        "ond_leh": ["niokeen"],
+                        "ahal_or": ["diezaioket"],
+                        "ahal_hip": ["niezaioke"],
+                        "ahal_leh": ["niezaiokeen"],
+                        "subj_or": ["diezaiodan"],
+                        "subj_leh": ["niezaion"]
+                    },
+                    "ZURI": {
+                        "orain": ["dizut"],
+                        "lehen": ["nizun"],
+                        "bal_hip": ["banizu"],
+                        "ond_or": ["nizuke"],
+                        "ond_leh": ["nizukeen"],
+                        "ahal_or": ["diezazuket"],
+                        "ahal_hip": ["niezazuke"],
+                        "ahal_leh": ["niezazukeen"],
+                        "subj_or": ["diezazudan"],
+                        "subj_leh": ["niezazun"]
+                    },
+                    "ZUEI": {
+                        "orain": ["dizuet"],
+                        "lehen": ["nizuen"],
+                        "bal_hip": ["banizue"],
+                        "ond_or": ["nizueke"],
+                        "ond_leh": ["nizuekeen"],
+                        "ahal_or": ["diezazueket"],
+                        "ahal_hip": ["niezazueke"],
+                        "ahal_leh": ["niezazuekeen"],
+                        "subj_or": ["diezazuedan"],
+                        "subj_leh": ["niezazuen"]
+                    },
+                    "HAIEI": {
+                        "orain": ["diet"],
+                        "lehen": ["nien"],
+                        "bal_hip": ["banie"],
+                        "ond_or": ["nieke"],
+                        "ond_leh": ["niekeen"],
+                        "ahal_or": ["diezaieket"],
+                        "ahal_hip": ["niezaieke"],
+                        "ahal_leh": ["niezaiekeen"],
+                        "subj_or": ["diezaiedan"],
+                        "subj_leh": ["niezaien"]
+                    }
+                },
+                "HIK": {
+                    "NIRI": {
+                        "orain": [
+                            "didak",
+                            "didan"
+                        ],
+                        "lehen": ["hidan"],
+                        "bal_hip": ["bahit"],
+                        "ond_or": ["hidake"],
+                        "ond_leh": ["hidakeen"],
+                        "ahal_or": [
+                            "diezadakek",
+                            "diezadaken"
+                        ],
+                        "ahal_hip": ["hiezadake"],
+                        "ahal_leh": ["hiezadakeen"],
+                        "subj_or": [
+                            "diezadaan",
+                            "diezadanan"
+                        ],
+                        "subj_leh": ["hiezadan"],
+                        "agintera": [
+                            "iezadak",
+                            "iezadan"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": [
+                            "diok",
+                            "dion"
+                        ],
+                        "lehen": ["hion"],
+                        "bal_hip": ["bahio"],
+                        "ond_or": ["hioke"],
+                        "ond_leh": ["hiokeen"],
+                        "ahal_or": [
+                            "diezaiokek",
+                            "diezaioken"
+                        ],
+                        "ahal_hip": ["hiezaioke"],
+                        "ahal_leh": ["hiezaiokeen"],
+                        "subj_or": [
+                            "diezaioan",
+                            "diezaionan"
+                        ],
+                        "subj_leh": ["hiezaion"],
+                        "agintera": [
+                            "iezaiok",
+                            "iezaion"
+                        ]
+                    },
+                    "GURI": {
+                        "orain": [
+                            "diguk",
+                            "digun"
+                        ],
+                        "lehen": ["higun"],
+                        "bal_hip": ["bahigu"],
+                        "ond_or": ["higuke"],
+                        "ond_leh": ["higukeen"],
+                        "ahal_or": [
+                            "diezagukek",
+                            "diezaguken"
+                        ],
+                        "ahal_hip": ["hiezaguke"],
+                        "ahal_leh": ["hiezagukeen"],
+                        "subj_or": [
+                            "diezaguan",
+                            "diezagunan"
+                        ],
+                        "subj_leh": ["hiezagun"],
+                        "agintera": [
+                            "iezaguk",
+                            "iezagun"
+                        ]
+                    },
+                    "HAIEI": {
+                        "orain": [
+                            "diek",
+                            "dien"
+                        ],
+                        "lehen": ["hien"],
+                        "bal_hip": ["bahie"],
+                        "ond_or": ["hieke"],
+                        "ond_leh": ["hiekeen"],
+                        "ahal_or": [
+                            "diezaiekek",
+                            "diezaieken"
+                        ],
+                        "ahal_hip": ["hiezaieke"],
+                        "ahal_leh": ["hiezaiekeen"],
+                        "subj_or": [
+                            "diezaiean",
+                            "diezaienan"
+                        ],
+                        "subj_leh": ["hiezaien"],
+                        "agintera": [
+                            "iezaiek",
+                            "iezaien"
+                        ]
+                    }
+                },
+                "HARK": {
+                    "NIRI": {
+                        "orain": ["dit"],
+                        "lehen": ["zidan"],
+                        "bal_hip": ["balit"],
+                        "ond_or": ["lidake"],
+                        "ond_leh": ["zidakeen"],
+                        "ahal_or": ["diezadake"],
+                        "ahal_hip": ["liezadake"],
+                        "ahal_leh": ["ziezadakeen"],
+                        "subj_or": ["diezadan"],
+                        "subj_leh": ["ziezadan"],
+                        "agintera": ["biezat"]
+                    },
+                    "HIRI": {
+                        "orain": [
+                            "dik",
+                            "din"
+                        ],
+                        "lehen": [
+                            "zian",
+                            "zinan"
+                        ],
+                        "bal_hip": [
+                            "balik",
+                            "balin"
+                        ],
+                        "ond_or": [
+                            "liake",
+                            "linake"
+                        ],
+                        "ond_leh": [
+                            "ziakeen",
+                            "zinakeen"
+                        ],
+                        "ahal_or": [
+                            "diezaake",
+                            "diezanake"
+                        ],
+                        "ahal_hip": [
+                            "liezaake",
+                            "liezanake"
+                        ],
+                        "ahal_leh": [
+                            "ziezaakeen",
+                            "ziezanakeen"
+                        ],
+                        "subj_or": [
+                            "diezaan",
+                            "diezanan"
+                        ],
+                        "subj_leh": [
+                            "ziezaan",
+                            "ziezanan"
+                        ],
+                        "agintera": [
+                            "biezak",
+                            "biezan"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": ["dio"],
+                        "lehen": ["zion"],
+                        "bal_hip": ["balio"],
+                        "ond_or": ["lioke"],
+                        "ond_leh": ["ziokeen"],
+                        "ahal_or": ["diezaioke"],
+                        "ahal_hip": ["liezaioke"],
+                        "ahal_leh": ["ziezaiokeen"],
+                        "subj_or": ["diezaion"],
+                        "subj_leh": ["ziezaion"],
+                        "agintera": ["biezaio"]
+                    },
+                    "GURI": {
+                        "orain": ["digu"],
+                        "lehen": ["zigun"],
+                        "bal_hip": ["baligu"],
+                        "ond_or": ["liguke"],
+                        "ond_leh": ["zigukeen"],
+                        "ahal_or": ["diezaguke"],
+                        "ahal_hip": ["liezaguke"],
+                        "ahal_leh": ["ziezagukeen"],
+                        "subj_or": ["diezagun"],
+                        "subj_leh": ["ziezagun"],
+                        "agintera": ["biezagu"]
+                    },
+                    "ZURI": {
+                        "orain": ["dizu"],
+                        "lehen": ["zizun"],
+                        "bal_hip": ["balizu"],
+                        "ond_or": ["lizuke"],
+                        "ond_leh": ["zizukeen"],
+                        "ahal_or": ["diezazuke"],
+                        "ahal_hip": ["liezazuke"],
+                        "ahal_leh": ["ziezazukeen"],
+                        "subj_or": ["diezazun"],
+                        "subj_leh": ["ziezazun"],
+                        "agintera": ["biezazu"]
+                    },
+                    "ZUEI": {
+                        "orain": ["dizue"],
+                        "lehen": ["zizuen"],
+                        "bal_hip": ["balizue"],
+                        "ond_or": ["lizueke"],
+                        "ond_leh": ["zizuekeen"],
+                        "ahal_or": ["diezazueke"],
+                        "ahal_hip": ["liezazueke"],
+                        "ahal_leh": ["ziezazuekeen"],
+                        "subj_or": ["diezazuen"],
+                        "subj_leh": ["ziezazuen"],
+                        "agintera": ["biezazue"]
+                    },
+                    "HAIEI": {
+                        "orain": ["die"],
+                        "lehen": ["zien"],
+                        "bal_hip": ["balie"],
+                        "ond_or": ["lieke"],
+                        "ond_leh": ["ziekeen"],
+                        "ahal_or": ["diezaieke"],
+                        "ahal_hip": ["liezaieke"],
+                        "ahal_leh": ["ziezaiekeen"],
+                        "subj_or": ["diezaien"],
+                        "subj_leh": ["ziezaien"],
+                        "agintera": ["biezaie"]
+                    }
+                },
+                "GUK": {
+                    "HIRI": {
+                        "orain": [
+                            "diagu",
+                            "dinagu"
+                        ],
+                        "lehen": [
+                            "genian",
+                            "geninan"
+                        ],
+                        "bal_hip": [
+                            "bagenik",
+                            "bagenin"
+                        ],
+                        "ond_or": [
+                            "geniake",
+                            "geninake"
+                        ],
+                        "ond_leh": [
+                            "geniakeen",
+                            "geninakeen"
+                        ],
+                        "ahal_or": [
+                            "diezaakegu",
+                            "diezanakegu"
+                        ],
+                        "ahal_hip": [
+                            "geniezaake",
+                            "geniezanake"
+                        ],
+                        "ahal_leh": [
+                            "geniezaakeen",
+                            "geniezanakeen"
+                        ],
+                        "subj_or": [
+                            "diezaagun",
+                            "diezanagun"
+                        ],
+                        "subj_leh": [
+                            "geniezaan",
+                            "geniezanan"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": ["diogu"],
+                        "lehen": ["genion"],
+                        "bal_hip": ["bagenio"],
+                        "ond_or": ["genioke"],
+                        "ond_leh": ["geniokeen"],
+                        "ahal_or": ["diezaiokegu"],
+                        "ahal_hip": ["geniezaioke"],
+                        "ahal_leh": ["geniezaiokeen"],
+                        "subj_or": ["diezaiogun"],
+                        "subj_leh": ["geniezaion"]
+                    },
+                    "ZURI": {
+                        "orain": ["dizugu"],
+                        "lehen": ["genizun"],
+                        "bal_hip": ["bagenizu"],
+                        "ond_or": ["genizuke"],
+                        "ond_leh": ["genizukeen"],
+                        "ahal_or": ["diezazukegu"],
+                        "ahal_hip": ["geniezazuke"],
+                        "ahal_leh": ["geniezazukeen"],
+                        "subj_or": ["diezazugun"],
+                        "subj_leh": ["geniezazun"]
+                    },
+                    "ZUEI": {
+                        "orain": ["dizuegu"],
+                        "lehen": ["genizuen"],
+                        "bal_hip": ["bagenizue"],
+                        "ond_or": ["genizueke"],
+                        "ond_leh": ["genizuekeen"],
+                        "ahal_or": ["diezazuekegu"],
+                        "ahal_hip": ["geniezazueke"],
+                        "ahal_leh": ["geniezazuekeen"],
+                        "subj_or": ["diezazuegun"],
+                        "subj_leh": ["geniezazuen"]
+                    },
+                    "HAIEI": {
+                        "orain": ["diegu"],
+                        "lehen": ["genien"],
+                        "bal_hip": ["bagenie"],
+                        "ond_or": ["genieke"],
+                        "ond_leh": ["geniekeen"],
+                        "ahal_or": ["diezaiekegu"],
+                        "ahal_hip": ["geniezaieke"],
+                        "ahal_leh": ["geniezaiekeen"],
+                        "subj_or": ["diezaiegun"],
+                        "subj_leh": ["geniezaien"]
+                    }
+                },
+                "ZUK": {
+                    "NIRI": {
+                        "orain": ["didazu"],
+                        "lehen": ["zenidan"],
+                        "bal_hip": ["bazenit"],
+                        "ond_or": ["zenidake"],
+                        "ond_leh": ["zenidakeen"],
+                        "ahal_or": ["diezadakezu"],
+                        "ahal_hip": ["zeniezadake"],
+                        "ahal_leh": ["zeniezadakeen"],
+                        "subj_or": ["diezadazun"],
+                        "subj_leh": ["zeniezadan"],
+                        "agintera": ["iezadazu"]
+                    },
+                    "HARI": {
+                        "orain": ["diozu"],
+                        "lehen": ["zenion"],
+                        "bal_hip": ["bazenio"],
+                        "ond_or": ["zenioke"],
+                        "ond_leh": ["zeniokeen"],
+                        "ahal_or": ["diezaiokezu"],
+                        "ahal_hip": ["zeniezaioke"],
+                        "ahal_leh": ["zeniezaiokeen"],
+                        "subj_or": ["diezaiozun"],
+                        "subj_leh": ["zeniezaion"],
+                        "agintera": ["iezaiozu"]
+                    },
+                    "GURI": {
+                        "orain": ["diguzu"],
+                        "lehen": ["zenigun"],
+                        "bal_hip": ["bazenigu"],
+                        "ond_or": ["zeniguke"],
+                        "ond_leh": ["zenigukeen"],
+                        "ahal_or": ["diezagukezu"],
+                        "ahal_hip": ["zeniezaguke"],
+                        "ahal_leh": ["zeniezagukeen"],
+                        "subj_or": ["diezaguzun"],
+                        "subj_leh": ["zeniezagun"],
+                        "agintera": ["iezaguzu"]
+                    },
+                    "HAIEI": {
+                        "orain": ["diezu"],
+                        "lehen": ["zenien"],
+                        "bal_hip": ["bazenie"],
+                        "ond_or": ["zenieke"],
+                        "ond_leh": ["zeniekeen"],
+                        "ahal_or": ["diezaiekezu"],
+                        "ahal_hip": ["zeniezaieke"],
+                        "ahal_leh": ["zeniezaiekeen"],
+                        "subj_or": ["diezaiezun"],
+                        "subj_leh": ["zeniezaien"],
+                        "agintera": ["iezaiezu"]
+                    }
+                },
+                "ZUEK": {
+                    "NIRI": {
+                        "orain": ["didazue"],
+                        "lehen": ["zenidaten"],
+                        "bal_hip": ["bazenidate"],
+                        "ond_or": ["zenidakete"],
+                        "ond_leh": ["zenidaketen"],
+                        "ahal_or": ["diezadakezue"],
+                        "ahal_hip": ["zeniezadakete"],
+                        "ahal_leh": ["zeniezadaketen"],
+                        "subj_or": ["diezadazuen"],
+                        "subj_leh": ["zeniezadaten"],
+                        "agintera": ["iezadazue"]
+                    },
+                    "HARI": {
+                        "orain": ["diozue"],
+                        "lehen": ["zenioten"],
+                        "bal_hip": ["bazeniote"],
+                        "ond_or": ["zeniokete"],
+                        "ond_leh": ["zenioketen"],
+                        "ahal_or": ["diezaiokezue"],
+                        "ahal_hip": ["zeniezaiokete"],
+                        "ahal_leh": ["zeniezaioketen"],
+                        "subj_or": ["diezaiozuen"],
+                        "subj_leh": ["zeniezaioten"],
+                        "agintera": ["iezaiozue"]
+                    },
+                    "GURI": {
+                        "orain": ["diguzue"],
+                        "lehen": ["zeniguten"],
+                        "bal_hip": ["bazenigute"],
+                        "ond_or": ["zenigukete"],
+                        "ond_leh": ["zeniguketen"],
+                        "ahal_or": ["diezagukezue"],
+                        "ahal_hip": ["zeniezagukete"],
+                        "ahal_leh": ["zeniezaguketen"],
+                        "subj_or": ["diezaguzuen"],
+                        "subj_leh": ["zeniezaguten"],
+                        "agintera": ["iezaguzue"]
+                    },
+                    "HAIEI": {
+                        "orain": ["diezue"],
+                        "lehen": ["zenieten"],
+                        "bal_hip": ["bazeniete"],
+                        "ond_or": ["zeniekete"],
+                        "ond_leh": ["zenieketen"],
+                        "ahal_or": ["diezaiekezue"],
+                        "ahal_hip": ["zeniezaiekete"],
+                        "ahal_leh": ["zeniezaieketen"],
+                        "subj_or": ["diezaiezuen"],
+                        "subj_leh": ["zeniezaieten"],
+                        "agintera": ["iezaiezue"]
+                    }
+                },
+                "HAIEK": {
+                    "NIRI": {
+                        "orain": ["didate"],
+                        "lehen": ["zidaten"],
+                        "bal_hip": ["balidate"],
+                        "ond_or": ["lidakete"],
+                        "ond_leh": ["zidaketen"],
+                        "ahal_or": ["diezadakete"],
+                        "ahal_hip": ["liezadakete"],
+                        "ahal_leh": ["ziezadaketen"],
+                        "subj_or": ["diezadaten"],
+                        "subj_leh": ["ziezadaten"],
+                        "agintera": ["biezadate"]
+                    },
+                    "HIRI": {
+                        "orain": [
+                            "diate",
+                            "dinate"
+                        ],
+                        "lehen": [
+                            "ziaten",
+                            "zinaten"
+                        ],
+                        "bal_hip": [
+                            "baliate",
+                            "balinate"
+                        ],
+                        "ond_or": [
+                            "liakete",
+                            "linakete"
+                        ],
+                        "ond_leh": [
+                            "ziaketen",
+                            "zinaketen"
+                        ],
+                        "ahal_or": [
+                            "diezaakete",
+                            "diezanakete"
+                        ],
+                        "ahal_hip": [
+                            "liezaakete",
+                            "liezanakete"
+                        ],
+                        "ahal_leh": [
+                            "ziezaaketen",
+                            "ziezanaketen"
+                        ],
+                        "subj_or": [
+                            "diezaaten",
+                            "diezanaten"
+                        ],
+                        "subj_leh": [
+                            "ziezaaten",
+                            "ziezanaten"
+                        ],
+                        "agintera": [
+                            "biezaate",
+                            "biezanate"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": ["diote"],
+                        "lehen": ["zioten"],
+                        "bal_hip": ["baliote"],
+                        "ond_or": ["liokete"],
+                        "ond_leh": ["zioketen"],
+                        "ahal_or": ["diezaiokete"],
+                        "ahal_hip": ["liezaiokete"],
+                        "ahal_leh": ["ziezaioketen"],
+                        "subj_or": ["diezaioten"],
+                        "subj_leh": ["ziezaioten"],
+                        "agintera": ["biezaiote"]
+                    },
+                    "GURI": {
+                        "orain": ["digute"],
+                        "lehen": ["ziguten"],
+                        "bal_hip": ["baligute"],
+                        "ond_or": ["ligukete"],
+                        "ond_leh": ["ziguketen"],
+                        "ahal_or": ["diezagukete"],
+                        "ahal_hip": ["liezagukete"],
+                        "ahal_leh": ["ziezaguketen"],
+                        "subj_or": ["diezaguten"],
+                        "subj_leh": ["ziezaguten"],
+                        "agintera": ["biezagute"]
+                    },
+                    "ZURI": {
+                        "orain": ["dizute"],
+                        "lehen": ["zizuten"],
+                        "bal_hip": ["balizute"],
+                        "ond_or": ["lizukete"],
+                        "ond_leh": ["zizuketen"],
+                        "ahal_or": ["diezazukete"],
+                        "ahal_hip": ["liezazukete"],
+                        "ahal_leh": ["ziezazuketen"],
+                        "subj_or": ["diezazuten"],
+                        "subj_leh": ["ziezazuten"],
+                        "agintera": ["biezazute"]
+                    },
+                    "ZUEI": {
+                        "orain": ["dizuete"],
+                        "lehen": ["zizueten"],
+                        "bal_hip": ["balizuete"],
+                        "ond_or": ["lizuekete"],
+                        "ond_leh": ["zizueketen"],
+                        "ahal_or": ["diezazuekete"],
+                        "ahal_hip": ["liezazuekete"],
+                        "ahal_leh": ["ziezazueketen"],
+                        "subj_or": ["diezaizueten"],
+                        "subj_leh": ["ziezazueten"],
+                        "agintera": ["biezazuete"]
+                    },
+                    "HAIEI": {
+                        "orain": ["diete"],
+                        "lehen": ["zieten"],
+                        "bal_hip": ["baliete"],
+                        "ond_or": ["liekete"],
+                        "ond_leh": ["zieketen"],
+                        "ahal_or": ["diezaiekete"],
+                        "ahal_hip": ["liezaiekete"],
+                        "ahal_leh": ["ziezaieketen"],
+                        "subj_or": ["diezaieten"],
+                        "subj_leh": ["ziezaieten"],
+                        "agintera": ["biezaiete"]
+                    }
+                }
+            },
+            "Plur": {
+                "NIK": {
+                    "HIRI": {
+                        "orain": [
+                            "dizkiat",
+                            "dizkinat"
+                        ],
+                        "lehen": [
+                            "nizkian",
+                            "nizkinan"
+                        ],
+                        "bal_hip": [
+                            "banizkik",
+                            "banizkin"
+                        ],
+                        "ond_or": [
+                            "nizkiake",
+                            "nizkinake"
+                        ],
+                        "ond_leh": [
+                            "nizkiakeen",
+                            "nizkinakeen"
+                        ],
+                        "ahal_or": [
+                            "diezazkiaket",
+                            "diezazkinaket"
+                        ],
+                        "ahal_hip": [
+                            "niezazkiake",
+                            "niezazkinake"
+                        ],
+                        "ahal_leh": [
+                            "niezazkiakeen",
+                            "niezazkinakeen"
+                        ],
+                        "subj_or": [
+                            "diezazkiadan",
+                            "diezazkinadan"
+                        ],
+                        "subj_leh": [
+                            "niezazkian",
+                            "niezazkinan"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": ["dizkiot"],
+                        "lehen": ["nizkion"],
+                        "bal_hip": ["banizkio"],
+                        "ond_or": ["nizkioke"],
+                        "ond_leh": ["nizkiokeen"],
+                        "ahal_or": ["diezazkioket"],
+                        "ahal_hip": ["niezazkioke"],
+                        "ahal_leh": ["niezazkiokeen"],
+                        "subj_or": ["diezazkiodan"],
+                        "subj_leh": ["niezazkion"]
+                    },
+                    "ZURI": {
+                        "orain": ["dizkizut"],
+                        "lehen": ["nizkizun"],
+                        "bal_hip": ["banizkizu"],
+                        "ond_or": ["nizkizuke"],
+                        "ond_leh": ["nizkizukeen"],
+                        "ahal_or": ["diezazkizuket"],
+                        "ahal_hip": ["niezazkizuke"],
+                        "ahal_leh": ["niezazkizukeen"],
+                        "subj_or": ["diezazkizudan"],
+                        "subj_leh": ["niezazkizun"]
+                    },
+                    "ZUEI": {
+                        "orain": ["dizkizuet"],
+                        "lehen": ["nizkizuen"],
+                        "bal_hip": ["banizkizue"],
+                        "ond_or": ["nizkizueke"],
+                        "ond_leh": ["nizkizuekeen"],
+                        "ahal_or": ["diezazkizueket"],
+                        "ahal_hip": ["niezazkizueke"],
+                        "ahal_leh": ["niezazkizuekeen"],
+                        "subj_or": ["diezazkizuedan"],
+                        "subj_leh": ["niezazkizuen"]
+                    },
+                    "HAIEI": {
+                        "orain": ["dizkiet"],
+                        "lehen": ["nizkien"],
+                        "bal_hip": ["banizkie"],
+                        "ond_or": ["nizkieke"],
+                        "ond_leh": ["nizkiekeen"],
+                        "ahal_or": ["diezazkieket"],
+                        "ahal_hip": ["niezazkieke"],
+                        "ahal_leh": ["niezazkiekeen"],
+                        "subj_or": ["diezazkiedan"],
+                        "subj_leh": ["niezazkien"]
+                    }
+                },
+                "HIK": {
+                    "NIRI": {
+                        "orain": [
+                            "dizkidak",
+                            "dizkidan"
+                        ],
+                        "lehen": ["hizkidan"],
+                        "bal_hip": ["bahizkit"],
+                        "ond_or": ["hizkidake"],
+                        "ond_leh": ["hizkidakeen"],
+                        "ahal_or": [
+                            "diezazkidakek",
+                            "diezazkidaken"
+                        ],
+                        "ahal_hip": ["hiezazkidake"],
+                        "ahal_leh": ["hiezazkidakeen"],
+                        "subj_or": [
+                            "diezazkidaan",
+                            "diezazkidanan"
+                        ],
+                        "subj_leh": ["hiezazkidan"],
+                        "agintera": [
+                            "iezazkidak",
+                            "iezazkidan"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": [
+                            "dizkiok",
+                            "dizkion"
+                        ],
+                        "lehen": ["hizkion"],
+                        "bal_hip": ["bahizkio"],
+                        "ond_or": ["hizkioke"],
+                        "ond_leh": ["hizkiokeen"],
+                        "ahal_or": [
+                            "diezazkiokek",
+                            "diezazkioken"
+                        ],
+                        "ahal_hip": ["hiezazkioke"],
+                        "ahal_leh": ["hiezazkiokeen"],
+                        "subj_or": [
+                            "diezazkioan",
+                            "diezazkionan"
+                        ],
+                        "subj_leh": ["hiezazkion"],
+                        "agintera": [
+                            "iezazkiok",
+                            "iezazkion"
+                        ]
+                    },
+                    "GURI": {
+                        "orain": [
+                            "dizkiguk",
+                            "dizkigun"
+                        ],
+                        "lehen": ["hizkigun"],
+                        "bal_hip": ["bahizkigu"],
+                        "ond_or": ["hizkiguke"],
+                        "ond_leh": ["hizkigukeen"],
+                        "ahal_or": [
+                            "diezazkigukek",
+                            "diezazkiguken"
+                        ],
+                        "ahal_hip": ["hiezazkiguke"],
+                        "ahal_leh": ["hiezazkigukeen"],
+                        "subj_or": [
+                            "diezazkiguan",
+                            "diezazkigunan"
+                        ],
+                        "subj_leh": ["hiezazkigun"],
+                        "agintera": [
+                            "iezazkiguk",
+                            "iezazkigun"
+                        ]
+                    },
+                    "HAIEI": {
+                        "orain": [
+                            "dizkiek",
+                            "dizkien"
+                        ],
+                        "lehen": ["hizkien"],
+                        "bal_hip": ["bahizkie"],
+                        "ond_or": ["hizkieke"],
+                        "ond_leh": ["hizkiekeen"],
+                        "ahal_or": [
+                            "diezazkiekek",
+                            "diezazkieken"
+                        ],
+                        "ahal_hip": ["hiezazkieke"],
+                        "ahal_leh": ["hiezazkiekeen"],
+                        "subj_or": [
+                            "diezazkiean",
+                            "diezazkienan"
+                        ],
+                        "subj_leh": ["hiezazkien"],
+                        "agintera": [
+                            "iezazkiek",
+                            "iezazkien"
+                        ]
+                    }
+                },
+                "HARK": {
+                    "NIRI": {
+                        "orain": ["dizkit"],
+                        "lehen": ["zizkidan"],
+                        "bal_hip": ["balizkit"],
+                        "ond_or": ["lizkidake"],
+                        "ond_leh": ["zizkidakeen"],
+                        "ahal_or": ["diezazkidake"],
+                        "ahal_hip": ["liezazkidake"],
+                        "ahal_leh": ["ziezazkidakeen"],
+                        "subj_or": ["diezazkidan"],
+                        "subj_leh": ["ziezazkidan"],
+                        "agintera": ["biezazkit"]
+                    },
+                    "HIRI": {
+                        "orain": [
+                            "dizkik",
+                            "dizkin"
+                        ],
+                        "lehen": [
+                            "zizkian",
+                            "zizkinan"
+                        ],
+                        "bal_hip": [
+                            "balizkik",
+                            "balizkin"
+                        ],
+                        "ond_or": [
+                            "lizkiake",
+                            "lizkinake"
+                        ],
+                        "ond_leh": [
+                            "zizkiakeen",
+                            "zizkinakeen"
+                        ],
+                        "ahal_or": [
+                            "diezazkiake",
+                            "diezazkinake"
+                        ],
+                        "ahal_hip": [
+                            "liezazkiake",
+                            "liezazkinake"
+                        ],
+                        "ahal_leh": [
+                            "ziezazkiakeen",
+                            "ziezazkinakeen"
+                        ],
+                        "subj_or": [
+                            "diezazkian",
+                            "diezazkinan"
+                        ],
+                        "subj_leh": [
+                            "ziezazkian",
+                            "ziezazkinan"
+                        ],
+                        "agintera": [
+                            "biezazkik",
+                            "biezazkin"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": ["dizkio"],
+                        "lehen": ["zizkion"],
+                        "bal_hip": ["balizkio"],
+                        "ond_or": ["lizkioke"],
+                        "ond_leh": ["zizkiokeen"],
+                        "ahal_or": ["diezazkioke"],
+                        "ahal_hip": ["liezazkioke"],
+                        "ahal_leh": ["ziezazkiokeen"],
+                        "subj_or": ["diezazkion"],
+                        "subj_leh": ["ziezazkion"],
+                        "agintera": ["biezazkio"]
+                    },
+                    "GURI": {
+                        "orain": ["dizkigu"],
+                        "lehen": ["zizkigun"],
+                        "bal_hip": ["balizkigu"],
+                        "ond_or": ["lizkiguke"],
+                        "ond_leh": ["zizkigukeen"],
+                        "ahal_or": ["diezazkiguke"],
+                        "ahal_hip": ["liezazkiguke"],
+                        "ahal_leh": ["ziezazkigukeen"],
+                        "subj_or": ["diezazkigun"],
+                        "subj_leh": ["ziezazkigun"],
+                        "agintera": ["biezazkigu"]
+                    },
+                    "ZURI": {
+                        "orain": ["dizkizu"],
+                        "lehen": ["zizkizun"],
+                        "bal_hip": ["balizkizu"],
+                        "ond_or": ["lizkizuke"],
+                        "ond_leh": ["zizkizukeen"],
+                        "ahal_or": ["diezazkizuke"],
+                        "ahal_hip": ["liezazkizuke"],
+                        "ahal_leh": ["ziezazkizukeen"],
+                        "subj_or": ["diezazkizun"],
+                        "subj_leh": ["ziezazkizun"],
+                        "agintera": ["biezazkizu"]
+                    },
+                    "ZUEI": {
+                        "orain": ["dizkizue"],
+                        "lehen": ["zizkizuen"],
+                        "bal_hip": ["balizkizue"],
+                        "ond_or": ["lizkizueke"],
+                        "ond_leh": ["zizkizuekeen"],
+                        "ahal_or": ["diezazkizueke"],
+                        "ahal_hip": ["liezazkizueke"],
+                        "ahal_leh": ["ziezazkizuekeen"],
+                        "subj_or": ["diezazkizuen"],
+                        "subj_leh": ["ziezazkizuen"],
+                        "agintera": ["biezazkizue"]
+                    },
+                    "HAIEI": {
+                        "orain": ["dizkie"],
+                        "lehen": ["zizkien"],
+                        "bal_hip": ["balizkie"],
+                        "ond_or": ["lizkieke"],
+                        "ond_leh": ["zizkiekeen"],
+                        "ahal_or": ["diezazkieke"],
+                        "ahal_hip": ["liezazkieke"],
+                        "ahal_leh": ["ziezazkiekeen"],
+                        "subj_or": ["diezazkien"],
+                        "subj_leh": ["ziezazkien"],
+                        "agintera": ["biezazkie"]
+                    }
+                },
+                "GUK": {
+                    "HIRI": {
+                        "orain": [
+                            "dizkiagu",
+                            "dizkinagu"
+                        ],
+                        "lehen": [
+                            "genizkian",
+                            "genizkinan"
+                        ],
+                        "bal_hip": [
+                            "bagenizkik",
+                            "bagenizkin"
+                        ],
+                        "ond_or": [
+                            "genizkiake",
+                            "genizkinake"
+                        ],
+                        "ond_leh": [
+                            "genizkiakeen",
+                            "genizkinakeen"
+                        ],
+                        "ahal_or": [
+                            "diezazkiakegu",
+                            "diezazkinakegu"
+                        ],
+                        "ahal_hip": [
+                            "geniezazkiake",
+                            "geniezazkinake"
+                        ],
+                        "ahal_leh": [
+                            "geniezazkiakeen",
+                            "geniezazkinakeen"
+                        ],
+                        "subj_or": [
+                            "diezazkiagun",
+                            "diezazkinagun"
+                        ],
+                        "subj_leh": [
+                            "geniezazkian",
+                            "geniezazkinan"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": ["dizkiogu"],
+                        "lehen": ["genizkion"],
+                        "bal_hip": ["bagenizkio"],
+                        "ond_or": ["genizkioke"],
+                        "ond_leh": ["genizkiokeen"],
+                        "ahal_or": ["diezazkiokegu"],
+                        "ahal_hip": ["geniezazkioke"],
+                        "ahal_leh": ["geniezazkiokeen"],
+                        "subj_or": ["diezazkiogun"],
+                        "subj_leh": ["geniezazkion"]
+                    },
+                    "ZURI": {
+                        "orain": ["dizkizugu"],
+                        "lehen": ["genizkizun"],
+                        "bal_hip": ["bagenizkizu"],
+                        "ond_or": ["genizkizuke"],
+                        "ond_leh": ["genizkizukeen"],
+                        "ahal_or": ["diezazkizukegu"],
+                        "ahal_hip": ["geniezazkizuke"],
+                        "ahal_leh": ["geniezazkizukeen"],
+                        "subj_or": ["diezazkizugun"],
+                        "subj_leh": ["geniezazkizun"]
+                    },
+                    "ZUEI": {
+                        "orain": ["dizkizuegu"],
+                        "lehen": ["genizkizuen"],
+                        "bal_hip": ["bagenizkizue"],
+                        "ond_or": ["genizkizueke"],
+                        "ond_leh": ["genizkizuekeen"],
+                        "ahal_or": ["diezazkizuekegu"],
+                        "ahal_hip": ["geniezazkizueke"],
+                        "ahal_leh": ["geniezazkizuekeen"],
+                        "subj_or": ["diezazkizuegun"],
+                        "subj_leh": ["geniezazkizuen"]
+                    },
+                    "HAIEI": {
+                        "orain": ["dizkiegu"],
+                        "lehen": ["genizkien"],
+                        "bal_hip": ["bagenizkie"],
+                        "ond_or": ["genizkieke"],
+                        "ond_leh": ["genizkiekeen"],
+                        "ahal_or": ["diezazkiekegu"],
+                        "ahal_hip": ["geniezazkieke"],
+                        "ahal_leh": ["geniezazkiekeen"],
+                        "subj_or": ["diezazkiegun"],
+                        "subj_leh": ["geniezazkien"]
+                    }
+                },
+                "ZUK": {
+                    "NIRI": {
+                        "orain": ["dizkidazu"],
+                        "lehen": ["zenizkidan"],
+                        "bal_hip": ["bazenizkit"],
+                        "ond_or": ["zenizkidake"],
+                        "ond_leh": ["zenizkidakeen"],
+                        "ahal_or": ["diezazkidakezu"],
+                        "ahal_hip": ["zeniezazkidake"],
+                        "ahal_leh": ["zeniezazkidakeen"],
+                        "subj_or": ["diezazkidazun"],
+                        "subj_leh": ["zeniezazkidan"],
+                        "agintera": ["iezazkidazu"]
+                    },
+                    "HARI": {
+                        "orain": ["dizkiozu"],
+                        "lehen": ["zenizkion"],
+                        "bal_hip": ["bazenizkio"],
+                        "ond_or": ["zenizkioke"],
+                        "ond_leh": ["zenizkiokeen"],
+                        "ahal_or": ["diezazkiokezu"],
+                        "ahal_hip": ["zeniezazkioke"],
+                        "ahal_leh": ["zeniezazkiokeen"],
+                        "subj_or": ["diezazkiozun"],
+                        "subj_leh": ["zeniezazkion"],
+                        "agintera": ["iezazkiozu"]
+                    },
+                    "GURI": {
+                        "orain": ["dizkiguzu"],
+                        "lehen": ["zenizkigun"],
+                        "bal_hip": ["bazenizkigu"],
+                        "ond_or": ["zenizkiguke"],
+                        "ond_leh": ["zenizkigukeen"],
+                        "ahal_or": ["diezazkigukezu"],
+                        "ahal_hip": ["zeniezazkiguke"],
+                        "ahal_leh": ["zeniezazkigukeen"],
+                        "subj_or": ["diezazkiguzun"],
+                        "subj_leh": ["zeniezazkigun"],
+                        "agintera": ["iezazkiguzu"]
+                    },
+                    "HAIEI": {
+                        "orain": ["dizkiezu"],
+                        "lehen": ["zenizkien"],
+                        "bal_hip": ["bazenizkie"],
+                        "ond_or": ["zenizkieke"],
+                        "ond_leh": ["zenizkiekeen"],
+                        "ahal_or": ["diezazkiekezu"],
+                        "ahal_hip": ["zeniezazkieke"],
+                        "ahal_leh": ["zeniezazkiekeen"],
+                        "subj_or": ["diezazkiezun"],
+                        "subj_leh": ["zeniezazkien"],
+                        "agintera": ["iezazkiezu"]
+                    }
+                },
+                "ZUEK": {
+                    "NIRI": {
+                        "orain": ["dizkidazue"],
+                        "lehen": ["zenizkidaten"],
+                        "bal_hip": ["bazenizkidate"],
+                        "ond_or": ["zenizkidakete"],
+                        "ond_leh": ["zenizkidaketen"],
+                        "ahal_or": ["diezazkidakezue"],
+                        "ahal_hip": ["zeniezazkidakete"],
+                        "ahal_leh": ["zeniezazkidaketen"],
+                        "subj_or": ["diezazkidazuen"],
+                        "subj_leh": ["zeniezazkidaten"],
+                        "agintera": ["iezazkidazue"]
+                    },
+                    "HARI": {
+                        "orain": ["dizkiozue"],
+                        "lehen": ["zenizkioten"],
+                        "bal_hip": ["bazenizkiote"],
+                        "ond_or": ["zenizkiokete"],
+                        "ond_leh": ["zenizkioketen"],
+                        "ahal_or": ["diezazkiokezue"],
+                        "ahal_hip": ["zeniezazkiokete"],
+                        "ahal_leh": ["zeniezazkioketen"],
+                        "subj_or": ["diezazkiozuen"],
+                        "subj_leh": ["zeniezazkioten"],
+                        "agintera": ["iezazkiozue"]
+                    },
+                    "GURI": {
+                        "orain": ["dizkiguzue"],
+                        "lehen": ["zenizkiguten"],
+                        "bal_hip": ["bazenizkigute"],
+                        "ond_or": ["zenizkigukete"],
+                        "ond_leh": ["zenizkiguketen"],
+                        "ahal_or": ["diezazkigukezue"],
+                        "ahal_hip": ["zeniezazkigukete"],
+                        "ahal_leh": ["zeniezazkiguketen"],
+                        "subj_or": ["diezazkiguzuen"],
+                        "subj_leh": ["zeniezazkiguten"],
+                        "agintera": ["iezazkiguzue"]
+                    },
+                    "HAIEI": {
+                        "orain": ["dizkiezue"],
+                        "lehen": ["zenizkieten"],
+                        "bal_hip": ["bazenizkiete"],
+                        "ond_or": ["zenizkiekete"],
+                        "ond_leh": ["zenizkieketen"],
+                        "ahal_or": ["diezazkiekezue"],
+                        "ahal_hip": ["zeniezazkiekete"],
+                        "ahal_leh": ["zeniezazkieketen"],
+                        "subj_or": ["diezazkiezuen"],
+                        "subj_leh": ["zeniezazkieten"],
+                        "agintera": ["iezazkiezue"]
+                    }
+                },
+                "HAIEK": {
+                    "NIRI": {
+                        "orain": ["dizkidate"],
+                        "lehen": ["zizkidaten"],
+                        "bal_hip": ["balizkidate"],
+                        "ond_or": ["lizkidakete"],
+                        "ond_leh": ["zizkidaketen"],
+                        "ahal_or": ["diezazkidakete"],
+                        "ahal_hip": ["liezazkidakete"],
+                        "ahal_leh": ["ziezazkidaketen"],
+                        "subj_or": ["diezazkidaten"],
+                        "subj_leh": ["ziezazkidaten"],
+                        "agintera": ["biezazkidate"]
+                    },
+                    "HIRI": {
+                        "orain": [
+                            "dizkiate",
+                            "dizkinate"
+                        ],
+                        "lehen": [
+                            "zizkiaten",
+                            "zizkinaten"
+                        ],
+                        "bal_hip": [
+                            "balizkiate",
+                            "balizkinate"
+                        ],
+                        "ond_or": [
+                            "lizkiakete",
+                            "lizkinakete"
+                        ],
+                        "ond_leh": [
+                            "zizkiaketen",
+                            "zizkinaketen"
+                        ],
+                        "ahal_or": [
+                            "diezazkiakete",
+                            "diezazkinakete"
+                        ],
+                        "ahal_hip": [
+                            "liezazkiakete",
+                            "liezazkinakete"
+                        ],
+                        "ahal_leh": [
+                            "ziezazkiaketen",
+                            "ziezazkinaketen"
+                        ],
+                        "subj_or": [
+                            "diezazkiaten",
+                            "diezazkinaten"
+                        ],
+                        "subj_leh": [
+                            "ziezazkiaten",
+                            "ziezazkinaten"
+                        ],
+                        "agintera": [
+                            "biezazkiate",
+                            "biezazkinate"
+                        ]
+                    },
+                    "HARI": {
+                        "orain": ["dizkiote"],
+                        "lehen": ["zizkioten"],
+                        "bal_hip": ["balizkiote"],
+                        "ond_or": ["lizkiokete"],
+                        "ond_leh": ["zizkioketen"],
+                        "ahal_or": ["diezazkiokete"],
+                        "ahal_hip": ["liezazkiokete"],
+                        "ahal_leh": ["ziezazkioketen"],
+                        "subj_or": ["diezazkioten"],
+                        "subj_leh": ["ziezazkioten"],
+                        "agintera": ["biezazkiote"]
+                    },
+                    "GURI": {
+                        "orain": ["dizkigute"],
+                        "lehen": ["zizkiguten"],
+                        "bal_hip": ["balizkigute"],
+                        "ond_or": ["lizkigukete"],
+                        "ond_leh": ["zizkiguketen"],
+                        "ahal_or": ["diezazkigukete"],
+                        "ahal_hip": ["liezazkigukete"],
+                        "ahal_leh": ["ziezazkiguketen"],
+                        "subj_or": ["diezazkiguten"],
+                        "subj_leh": ["ziezazkiguten"],
+                        "agintera": ["biezazkigute"]
+                    },
+                    "ZURI": {
+                        "orain": ["dizkizute"],
+                        "lehen": ["zizkizuten"],
+                        "bal_hip": ["balizkizute"],
+                        "ond_or": ["lizkizukete"],
+                        "ond_leh": ["zizkizuketen"],
+                        "ahal_or": ["diezazkizukete"],
+                        "ahal_hip": ["liezazkizukete"],
+                        "ahal_leh": ["ziezazkizuketen"],
+                        "subj_or": ["diezazkizuten"],
+                        "subj_leh": ["ziezazkizuten"],
+                        "agintera": ["biezazkizute"]
+                    },
+                    "ZUEI": {
+                        "orain": ["dizkizuete"],
+                        "lehen": ["zizkizueten"],
+                        "bal_hip": ["balizkizuete"],
+                        "ond_or": ["lizkizuekete"],
+                        "ond_leh": ["zizkizueketen"],
+                        "ahal_or": ["diezazkizuekete"],
+                        "ahal_hip": ["liezazkizuekete"],
+                        "ahal_leh": ["ziezazkizueketen"],
+                        "subj_or": ["diezazkizueten"],
+                        "subj_leh": ["ziezazkizueten"],
+                        "agintera": ["biezazkizuete"]
+                    },
+                    "HAIEI": {
+                        "orain": ["dizkiete"],
+                        "lehen": ["zizkieten"],
+                        "bal_hip": ["balizkiete"],
+                        "ond_or": ["lizkiekete"],
+                        "ond_leh": ["zizkieketen"],
+                        "ahal_or": ["diezazkiekete"],
+                        "ahal_hip": ["liezazkiekete"],
+                        "ahal_leh": ["ziezazkieketen"],
+                        "subj_or": ["diezazkieten"],
+                        "subj_leh": ["ziezazkieten"],
+                        "agintera": ["biezazkiete"]
+                    }
+                }
+            }
+            }
+        }
+}

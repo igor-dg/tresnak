@@ -1,0 +1,359 @@
+{
+    "sistema": {
+      "nor": [
+        {
+          "phrase": "{subject} hondartzara joan(go)"
+        },
+        {
+          "phrase": "{subject} menditik etor(ri)(ko)"
+        },
+        {
+          "phrase": "{subject} hirira joan(go)"
+        },
+        {
+          "phrase": "{subject} basoan ibil(i)(ko)"
+        },
+        {
+          "phrase": "{subject} berandu ailega(tu)(ko)"
+        },
+        {
+          "phrase": "Errege Magoak ekialdetik etor(ri)(ko)",
+          "variables": {
+            "subject_fixed": "Errege Magoak",
+            "subject_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "{subject} goizean jaiki(ko)"
+        }
+      ],
+      "nor-nork": [
+        {
+          "phrase": "{subject} {object} musuka(tu)(ko)",
+          "variables": {
+            "forbidden_combinations": [
+              {
+                "subject": "ZUK",
+                "object": "ZU"
+              },
+              {
+                "subject": "NIK",
+                "object": "NI"
+              }
+            ]
+          }
+        },
+        {
+          "phrase": "{subject} {object} eraman(go)"
+        },
+        {
+          "phrase": "{subject} lehengusinak eraman(go)",
+          "variables": {
+            "object_fixed": "lehengusinak",
+            "object_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "{subject} {object} musuka(tu)(ko)",
+          "variables": {
+            "forbidden_combinations": [
+              {
+                "subject": "ZUK",
+                "object": "ZU"
+              },
+              {
+                "subject": "NIK",
+                "object": "NI"
+              }
+            ]
+          }
+        },
+        {
+          "phrase": "{subject} {object} kopiatzen ikus(i)(ko)",
+          "variables": {
+            "forbidden_combinations": [
+              {
+                "subject": "ZUK",
+                "object": "ZU"
+              },
+              {
+                "subject": "GUK",
+                "object": "GU"
+              },
+              {
+                "subject": "NIK",
+                "object": "NI"
+              }
+            ]
+          }
+        },
+        {
+          "phrase": "Maisuak {object} kopiatzen ikus(i)(ko)",
+          "variables": {
+            "subject_fixed": "Maisuak",
+            "subject_conjugation": "HARK"
+          }
+        },
+        {
+          "phrase": "{subject} oparia eros(i)(ko)",
+          "variables": {
+            "object_fixed": "oparia",
+            "object_conjugation": "HURA"
+          }
+        },
+        {
+          "phrase": "Poliziek {object} lapurretan harrapa(tu)(ko)",
+          "variables": {
+            "subject_fixed": "Poliziek",
+            "subject_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "Gaiztoek C. Eastwood zintzilika(tu)(ko)",
+          "variables": {
+            "subject_fixed": "Gaiztoek C. Eastwood",
+            "subject_conjugation": "HAIEK",
+            "object_fixed": "C. Eastwood",
+            "object_conjugation": "HURA"
+          }
+        },
+        {
+          "phrase": "{subject} gabonetan turroi asko jan(go)",
+          "variables": {
+            "object_fixed": "turroi asko",
+            "object_conjugation": "HURA"
+          }
+        },
+        {
+          "phrase": "Anek {object} maite(ko)",
+          "variables": {
+            "subject_fixed": "Anek",
+            "subject_conjugation": "HARK"
+          }
+        },
+        {
+          "phrase": "Maiderrek lagunak kotxez eraman(go)",
+          "variables": {
+            "subject_fixed": "Maiderrek",
+            "subject_conjugation": "HARK",
+            "object_fixed": "lagunak",
+            "object_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "{subject} {object} kotxez eraman(go)"
+        },
+        {
+          "phrase": "{subject} {object} ohera eraman(go)"
+        },
+        {
+          "phrase": "Suhiltzaileek {object} etxetik atera(ko)",
+          "variables": {
+            "subject_fixed": "Suhiltzaileek",
+            "subject_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "{subject} {object} kalean ikus(i)(ko)"
+        },
+        {
+          "phrase": "{subject} {object} maita(tu)(ko)"
+        },
+        {
+          "phrase": "Mutiko horrek {object} gogorki jo(ko)",
+          "variables": {
+            "subject_fixed": "Mutiko horrek",
+            "subject_conjugation": "HARK"
+          }
+        },
+        {
+          "phrase": "{subject} ordenagailua honda(tu)(ko)",
+          "variables": {
+            "object_fixed": "ordenagailua",
+            "object_conjugation": "HURA"
+          }
+        },
+        {
+          "phrase": "Jonek {object} afaltzera gonbida(tu)(ko)",
+          "variables": {
+            "subject_fixed": "Jonek",
+            "subject_conjugation": "HARK"
+          }
+        },
+        {
+          "phrase": "{subject} {object} afaltzera gonbida(tu)(ko)"
+        },
+        {
+          "phrase": "Nagusiek {object} lantegitik bota(ko)",
+          "variables": {
+            "subject_fixed": "Nagusiek",
+            "subject_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "{subject} Leire esna(tu)(ko)",
+          "variables": {
+            "object_fixed": "Leire",
+            "object_conjugation": "HURA"
+          }
+        },
+        {
+          "phrase": "{subject} Jon eta Ane harrapa(tu)(ko)",
+          "variables": {
+            "object_fixed": "Jon eta Ane",
+            "object_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "Aberatsek angulak jan(go)",
+          "variables": {
+            "subject_fixed": "Aberatsek",
+            "subject_conjugation": "HAIEK",
+            "object_fixed": "angulak",
+            "object_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "{subject} {object} autoz eraman(go)"
+        },
+        {
+          "phrase": "{subject} freskagarriak edan(go)",
+          "variables": {
+            "object_fixed": "freskagarriak",
+            "object_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "{subject} {object} ezagut(u)(ko)"
+        },
+        {
+          "phrase": "{subject} Errege Magoak ikus(i)(ko)",
+          "variables": {
+            "object_fixed": "Errege Magoak",
+            "object_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "{subject} {object} min(du)(ko)"
+        },
+        {
+          "phrase": "Imanolek Alberto zigor(tu)(ko)",
+          "variables": {
+            "subject_fixed": "Imanolek",
+            "subject_conjugation": "HARK",
+            "object_fixed": "Alberto",
+            "object_conjugation": "HURA"
+          }
+        },
+        {
+          "phrase": "{subject} {object} zigor(tu)(ko)"
+        },
+        {
+          "phrase": "{subject} {object} diskotekara eraman(go)"
+        },
+        {
+          "phrase": "{subject} dirua aurrez(tu)(ko)",
+          "variables": {
+            "object_fixed": "dirua",
+            "object_conjugation": "HURA"
+          }
+        },
+        {
+          "phrase": "{subject} argazkiak atera(ko)",
+          "variables": {
+            "object_fixed": "argazkiak",
+            "object_conjugation": "HAIEK"
+          }
+        },
+        {
+          "phrase": "{subject} {object} gonbida(tu)(ko)"
+        },
+        {
+          "phrase": "{subject} futbol partida iraba(zi)(ko)",
+          "variables": {
+            "object_fixed": "futbol partida",
+            "object_conjugation": "HURA"
+          }
+        },
+        {
+          "phrase": "{subject} zurekin hitz egin(go)",
+          "variables": {
+            "object_fixed": "zurekin",
+            "object_conjugation": "HURA"
+          }
+        }
+      ],
+      "nor-nori": [
+        {
+          "phrase": "{subject} irakasleari harro joan(go)",
+          "variables": {
+            "object_fixed": "irakasleari",
+            "object_conjugation": "HARI"
+          }
+        },
+        {
+          "phrase": "{subject} {object} harro joan(go)",
+          "variables": {
+            "forbidden_combinations": [
+              {
+                "subject": "ZU",
+                "object": "ZURI"
+              },
+              {
+                "subject": "NI",
+                "object": "NIRI"
+              }
+            ]
+          }
+        },
+        {
+          "phrase": "{subject} Olentzerori kantari hurbil(du)(ko)",
+          "variables": {
+            "object_fixed": "Olentzerori",
+            "object_conjugation": "HARI"
+          }
+        },
+        {
+          "phrase": "{subject} {object} hurbil(du)(ko)"
+        },
+        {
+          "phrase": "{object} jertsearen mahuka apur(tu)(ko)",
+          "variables": {
+            "subject_fixed": "jertsearen mahuka",
+            "subject_conjugation": "HURA"
+          }
+        },
+        {
+          "phrase": "{object} inspirazioa joan(go)",
+          "variables": {
+            "subject_fixed": "inspirazioa",
+            "subject_conjugation": "HURA"
+          }
+        }
+      ],
+      "nor-nori-nork": [
+        {
+          "phrase": "{subject} {object} liburu bat opari(tu)(ko)",
+          "variables": {
+            "number": "Sing",
+            "forbidden_combinations": [
+              {
+                "subject": "ZUK",
+                "object": "ZURI"
+              },
+              {
+                "subject": "NIK",
+                "object": "NIRI"
+              }
+            ]
+          }
+        },
+        {
+          "phrase": "{subject} {object} auto berria erosi(ko)",
+          "variables": {
+            "number": "Sing"
+          }
+        }
+      ]
+    }
+  }
