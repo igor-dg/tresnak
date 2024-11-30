@@ -1,39 +1,50 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
+import { useTheme } from '@/composables/useTheme'
+import HitanoSelector from './HitanoSelector.vue'
+import GameArea from './GameArea.vue'
+import GameOverlay from '@/components/Aditzak/GameOverlay.vue'
 import SystemSelectors from '@/components/Aditzak/SystemSelectors.vue'
 import TimeSelectors from '@/components/Aditzak/TimeSelectors.vue'
-import GameArea from '@/components/Aditzak/GameArea.vue'
-import GameOverlay from '@/components/Aditzak/GameOverlay.vue'
 import aditzakJsonData from '@/data/aditzak.json'
 import esaldiakJsonData from '@/data/esaldiak.json'
+import { Settings } from 'lucide-vue-next'
 import {
-  seleccionarSujeto,
-  seleccionarObjeto,
-  aplicarReglasFrase,
-  obtenerConjugacionSujeto,
-  obtenerConjugacionObjeto,
-  obtenerConjugacion
+  selectValidPhrase,
+  composePhrase,
+  conjugacionExists,
+  obtenerConjugacion,
+  SISTEMA_NAMES,
+  TIEMPO_NAMES
 } from '@/utils.js'
 
+const showMobileSettings = ref(false)
+const hitanoEnabled = ref(false)
+const { setTheme } = useTheme()
+
+watch(hitanoEnabled, (newValue) => {
+  setTheme(newValue ? 'hitano' : 'default')
+}, { immediate: true })
+
 const sistemas = ref([
-  { id: 'nor', name: 'NOR', active: true },
-  { id: 'nor-nori', name: 'NOR-NORI', active: true },
-  { id: 'nor-nork', name: 'NOR-NORK', active: true },
-  { id: 'nor-nori-nork', name: 'NOR-NORI-NORK', active: true }
+  { id: 'nor', name: SISTEMA_NAMES['nor'], active: true },
+  { id: 'nor-nori', name: SISTEMA_NAMES['nor-nori'], active: true },
+  { id: 'nor-nork', name: SISTEMA_NAMES['nor-nork'], active: true },
+  { id: 'nor-nori-nork', name: SISTEMA_NAMES['nor-nori-nork'], active: true }
 ])
 
 const tiempos = ref([
-  { id: 'orain', name: 'ORAINALDIA', active: true },
-  { id: 'lehen', name: 'LEHENALDIA', active: true },
-  { id: 'bal_hip', name: 'BALDINTZA HIPOTETIKOA', active: true },
-  { id: 'ond_or', name: 'ONDORIOA ORAINALDIAN', active: true },
-  { id: 'ond_leh', name: 'ONDORIOA LEHENALDIAN', active: true },
-  { id: 'ahal_or', name: 'AHALERA ORAINALDIAN', active: true },
-  { id: 'ahal_leh', name: 'AHALERA LEHENALDIAN', active: true },
-  { id: 'ahal_hip', name: 'AHALERA HIPOTETIKOA', active: true },
-  { id: 'subj_or', name: 'SUBJUNTIBOA ORAINALDIAN', active: true },
-  { id: 'subj_leh', name: 'SUBJUNTIBOA LEHENALDIAN', active: true },
-  { id: 'agintera', name: 'AGINTERA', active: true }
+  { id: 'orain', name: TIEMPO_NAMES['orain'], active: true },
+  { id: 'lehen', name: TIEMPO_NAMES['lehen'], active: true },
+  { id: 'bal_hip', name: TIEMPO_NAMES['bal_hip'], active: true },
+  { id: 'ond_or', name: TIEMPO_NAMES['ond_or'], active: true },
+  { id: 'ond_leh', name: TIEMPO_NAMES['ond_leh'], active: true },
+  { id: 'ahal_or', name: TIEMPO_NAMES['ahal_or'], active: true },
+  { id: 'ahal_leh', name: TIEMPO_NAMES['ahal_leh'], active: true },
+  { id: 'ahal_hip', name: TIEMPO_NAMES['ahal_hip'], active: true },
+  { id: 'subj_or', name: TIEMPO_NAMES['subj_or'], active: true },
+  { id: 'subj_leh', name: TIEMPO_NAMES['subj_leh'], active: true },
+  { id: 'agintera', name: TIEMPO_NAMES['agintera'], active: true }
 ])
 
 const gameState = ref({
@@ -47,11 +58,14 @@ const gameState = ref({
   overlayMessage: '',
   isCorrect: false,
   aukerakMessage: 'Hiru aukera dituzu',
-  frasesUsadas: []
+  frasesUsadas: [],
+  currentSubject: null,
+  currentObject: null,
+  hitanoEnabled: false
 })
 
-const aditzakData = ref(null) // Aquí cargarás tus datos
-const esaldiak = ref(null) // Aquí cargarás tus datos
+const aditzakData = ref(null)
+const esaldiak = ref(null)
 
 const sistemasActivos = computed(() => {
   return sistemas.value.filter(s => s.active).map(s => s.id)
@@ -63,58 +77,117 @@ const tiemposActivos = computed(() => {
 
 const gruposActivos = computed(() => {
   if (!aditzakData.value || sistemasActivos.value.length === 0) return []
-  
-  // Filtrar por sistemas activos
   return aditzakData.value.filter(grupo => sistemasActivos.value.includes(grupo.sistema))
 })
 
-function cargarJuegoAditzak() {
-  if (sistemasActivos.value.length === 0 || tiemposActivos.value.length === 0) {
-    sistemas.value[0].active = true
-    return
-  }
+// Función para filtrar conjugaciones de hitano
+function filterHitanoConjugations(conjugations) {
+  if (hitanoEnabled.value) return conjugations
 
-  const grupoAleatorio = gruposActivos.value[Math.floor(Math.random() * gruposActivos.value.length)]
-  const tiempoAleatorio = tiemposActivos.value[Math.floor(Math.random() * tiemposActivos.value.length)]
-  
-  const frasesSistema = esaldiak.value.find(sistema => sistema.id === grupoAleatorio.sistema)?.frases || []
-  const fraseAleatoria = frasesSistema[Math.floor(Math.random() * frasesSistema.length)]
-  
-  if (!fraseAleatoria) return
-  
-  // Manejar sujeto y objeto
-  let fraseConjugada = fraseAleatoria.phrase
-  const variables = fraseAleatoria.variables || {}
-  
-  // Sujeto
-  const subject = variables.subject_fixed || seleccionarSujeto(grupoAleatorio.sistema)
-  const subject_conj = variables.subject_conjugation || obtenerConjugacionSujeto(subject)
-  fraseConjugada = fraseConjugada.replace('{subject}', subject)
-  
-  // Get object if needed
-  let object = null
-  let object_conj = null
-  if (fraseConjugada.includes('{object}')) {
-    object = variables.object_fixed || seleccionarObjeto(grupoAleatorio.sistema, subject)
-    object_conj = variables.object_conjugation || obtenerConjugacionObjeto(object)
-    fraseConjugada = fraseConjugada.replace('{object}', object)
-  }
-  
-  fraseConjugada = aplicarReglasFrase(fraseConjugada, tiempoAleatorio)
-  
-  const numero = variables.number || 'Sing'
-  const conjugacionCorrecta = obtenerConjugacion(grupoAleatorio, tiempoAleatorio, subject_conj, object_conj, numero)
-  
-  gameState.value = {
-    ...gameState.value,
-    currentPhrase: fraseConjugada,
-    selectedSistema: grupoAleatorio.sistema,
-    selectedTime: tiempoAleatorio, 
-    correctAnswer: conjugacionCorrecta,
-    intentos: 0,
-    respuestasIncorrectas: [],
-    currentSubject: subject,
-    currentObject: object
+  // Filtrar las conjugaciones que contengan HI, HIK, o HIRI cuando hitano está desactivado
+  return conjugations.filter(conj => {
+    const hitanoPatterns = ['HI', 'HIK', 'HIRI']
+    return !hitanoPatterns.some(pattern => 
+      conj.selectedSubject?.includes(pattern) || 
+      conj.selectedObject?.includes(pattern)
+    )
+  })
+}
+
+function handleHitanoChange(enabled) {
+  hitanoEnabled.value = enabled
+  // Reiniciar el juego para aplicar el filtro de hitano
+  cargarJuegoAditzak()
+}
+
+function cargarJuegoAditzak(retryCount = 0) {
+  try {
+    // Validación inicial de sistemas y tiempos activos
+    if (sistemasActivos.value.length === 0 || tiemposActivos.value.length === 0) {
+      sistemas.value[0].active = true
+      return
+    }
+
+    // Evitar bucles infinitos de retry
+    if (retryCount > 10) {
+      console.error('Demasiados intentos de cargar el juego')
+      return
+    }
+
+    // Seleccionar sistema y tiempo aleatorios
+    const grupoAleatorio = gruposActivos.value[Math.floor(Math.random() * gruposActivos.value.length)]
+    const tiempoAleatorio = tiemposActivos.value[Math.floor(Math.random() * tiemposActivos.value.length)]
+
+    // Obtener frase válida con sujeto/objeto
+    const phraseData = selectValidPhrase(grupoAleatorio.sistema, tiempoAleatorio)
+    if (!phraseData) {
+      console.warn(`No se encontraron combinaciones válidas para ${grupoAleatorio.sistema}, intentando otro sistema`)
+      return cargarJuegoAditzak(retryCount + 1)
+    }
+
+    
+
+    // Filtrar conjugaciones de hitano si es necesario
+    if (!hitanoEnabled.value && phraseData) {
+      const hitanoPatterns = ['HI', 'HIK', 'HIRI']
+      if (hitanoPatterns.some(pattern => 
+        phraseData.selectedSubject?.includes(pattern) || 
+        phraseData.selectedObject?.includes(pattern)
+      )) {
+        return cargarJuegoAditzak(retryCount + 1)
+      }
+    }
+
+    // Verificar que la conjugación existe
+    if (!conjugacionExists(
+      grupoAleatorio.sistema,
+      tiempoAleatorio,
+      phraseData.selectedSubject,
+      phraseData.selectedObject,
+      phraseData.variables?.number || 'Sing'
+    )) {
+      console.warn('Conjugación no encontrada, intentando otra combinación')
+      return cargarJuegoAditzak(retryCount + 1)
+    }
+
+    // Componer la frase
+    const composedPhrase = composePhrase(phraseData, grupoAleatorio.sistema, tiempoAleatorio)
+
+    // Obtener conjugación
+    const conjugacionCorrecta = obtenerConjugacion(
+      { [grupoAleatorio.sistema]: grupoAleatorio },
+      tiempoAleatorio,
+      phraseData.selectedSubject,
+      phraseData.selectedObject,
+      phraseData.variables?.number || 'Sing'
+    )
+
+    if (!conjugacionCorrecta) {
+      throw new Error('No se pudo obtener la conjugación correcta')
+    }
+
+    console.log('Debug auxiliar:', {
+      auxiliar: conjugacionCorrecta
+    })
+
+    // Actualizar estado del juego
+    gameState.value = {
+      ...gameState.value,
+      currentPhrase: composedPhrase,
+      selectedSistema: grupoAleatorio.sistema,
+      selectedTime: tiempoAleatorio,
+      correctAnswer: conjugacionCorrecta,
+      intentos: 0,
+      respuestasIncorrectas: [],
+      currentSubject: phraseData.selectedSubject,
+      currentObject: phraseData.selectedObject,
+      showOverlay: false,
+      isCorrect: false,
+      aukerakMessage: 'Hiru aukera dituzu'
+    }
+  } catch (error) {
+    console.error('Error al cargar el juego:', error)
+    return cargarJuegoAditzak(retryCount + 1)
   }
 }
 
@@ -163,7 +236,7 @@ function handleIncorrectAnswer(answer) {
 
 function handleOverlayClose() {
   gameState.value.showOverlay = false
-  cargarJuegoAditzak() // Reiniciar el juego seleccionando una nueva frase
+  cargarJuegoAditzak()
 }
 
 function handleSystemUpdate(newSistemas) {
@@ -180,12 +253,12 @@ function handleRestartGame() {
   cargarJuegoAditzak()
 }
 
-// Cargar datos iniciales y comenzar el juego
 onMounted(async () => {
   // Transformar aditzak
   aditzakData.value = Object.entries(aditzakJsonData.sistema).map(([sistema, conjugaciones]) => ({
     sistema,
-    ...conjugaciones
+    ...conjugaciones,
+    [sistema]: conjugaciones
   }))
 
   // Transformar esaldiak
@@ -196,40 +269,102 @@ onMounted(async () => {
 
   cargarJuegoAditzak()
 })
+
+
 </script>
 
 <template>
-  <div class="container mt-4">
-    <h1 class="display-4 text-center">Aditz Laguntzaileak Jokoa</h1>
-    
-    <div class="row">
-      <div class="col-md-3 d-none d-sm-block">
-        <SystemSelectors
-          v-model:sistemas="sistemas"
-          @update:sistema="handleSystemUpdate"
-        />
-        <TimeSelectors
-          v-model:tiempos="tiempos"
-          @update:tiempo="handleTimeUpdate"
-        />
+  <div class="min-h-screen bg-gradient-to-br from-[var(--gradient-from)] to-[var(--gradient-to)] py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="text-2xl md:text-4xl font-bold text-[var(--text-primary)]">
+          Aditz Laguntzaileak Jokoa
+        </h1>
+        
+        <!-- Botón móvil para mostrar/ocultar configuración -->
+        <button 
+  class="md:hidden p-2 rounded-lg bg-white/80 backdrop-blur-sm shadow-md text-gray-700 hover:bg-gray-50"
+  @click="showMobileSettings = !showMobileSettings"
+>
+  <Settings class="h-6 w-6" />
+</button>
       </div>
       
-      <div class="col-md-9">
-        <GameArea
-          v-model:gameState="gameState"
-          :sistemas="sistemas"
-          :tiempos="tiempos"
-          @answer-submitted="handleAnswer"
-          @restart-game="handleRestartGame"
-        />
-      </div>
-    </div>
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Panel de configuración móvil -->
+        <div 
+          class="md:hidden"
+          v-show="showMobileSettings"
+        >
+          <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg space-y-6 mb-6">
+            <HitanoSelector
+              v-model:hitanoEnabled="hitanoEnabled"
+            />
+            <SystemSelectors
+              v-model:sistemas="sistemas"
+              @update:sistema="handleSystemUpdate"
+            />
+            <TimeSelectors
+              v-model:tiempos="tiempos"
+              @update:tiempo="handleTimeUpdate"
+            />            
+          </div>
+        </div>
 
-    <GameOverlay
-      v-if="gameState.showOverlay"
-      :message="gameState.overlayMessage"
-      :is-correct="gameState.isCorrect"
-      @close="handleOverlayClose"
-    />
+        <!-- Panel de configuración desktop -->
+        <div class="hidden md:block w-64 space-y-6">
+          <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg">
+            <HitanoSelector
+              v-model:hitanoEnabled="hitanoEnabled"
+            />
+          </div>
+
+          <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg">
+            <SystemSelectors
+              v-model:sistemas="sistemas"
+              @update:sistema="handleSystemUpdate"
+            />
+          </div>
+          
+          <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg">
+            <TimeSelectors
+              v-model:tiempos="tiempos"
+              @update:tiempo="handleTimeUpdate"
+            />
+          </div>
+        </div>
+        
+        <!-- Área principal del juego -->
+        <div class="flex-1 flex justify-center">
+          <GameArea
+            v-model:gameState="gameState"
+            :sistemas="sistemas"
+            :tiempos="tiempos"
+            @answer-submitted="handleAnswer"
+            @restart-game="handleRestartGame"
+          />
+        </div>
+      </div>
+
+      <GameOverlay
+        v-if="gameState.showOverlay"
+        :message="gameState.overlayMessage"
+        :is-correct="gameState.isCorrect"
+        :sistema="gameState.selectedSistema"
+        :tiempo="gameState.selectedTime"
+        :phrase="gameState.currentPhrase"
+        :correct-answer="gameState.correctAnswer"
+        @close="handleOverlayClose"
+      />
+    </div>
   </div>
 </template>
+<style>
+:root {
+  color: black;
+}
+#app {
+  width: 100%;
+}
+
+</style>

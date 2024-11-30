@@ -18,6 +18,6 @@ onMounted(() => {
 .aditzak {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
 }
 </style>

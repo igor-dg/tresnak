@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Hasiera from '../views/Hasiera.vue'
 
+const baseUrl = import.meta.env.PROD ? '/tresnak/v2/' : '/';
+
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(baseUrl),
   routes: [
     {
       path: '/',
@@ -12,12 +14,12 @@ const router = createRouter({
     {
       path: '/sinonimoak-jokoa',
       name: 'sinonimoak-jokoa',
-      component: () => import('../views/SinimoakJokoa.vue')
+      component: () => import('../views/SinonimoakJokoa.vue')
     },
     {
       path: '/sinonimoak-zerrenda',
       name: 'sinonimoak-zerrenda',
-      component: () => import('../views/SinimoakZerrenda.vue')
+      component: () => import('../views/SinonimoakZerrenda.vue')
     },
     {
       path: '/hiztegia',

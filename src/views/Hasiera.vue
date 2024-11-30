@@ -3,82 +3,44 @@ import NavigationCard from '../components/NavigationCard.vue';
 </script>
 
 <template>
-  <div class="hasiera container py-5">
-    <header class="text-center mb-5">
-      <h1 class="display-4 fw-bold mb-4">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-6 sm:text-5xl">
         Ongi etorri euskara ikasteko gure plataformara
       </h1>
-      <p class="lead mb-4">
+      <p class="text-xl text-gray-600 mb-8">
         Orrialde honek hizkuntzaren ikaskuntza prozesua errazteko eta hobetzeko
         diseinatutako tresna espezifikoak eskaintzen ditu.
       </p>
-      <h2 class="h3 mb-5">Hona hemen eskura ditugun gure tresna nagusiak:</h2>
+      <h2 class="text-2xl font-semibold text-gray-900 mb-12">
+        Hona hemen eskura ditugun gure tresna nagusiak:
+      </h2>
     </header>
 
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-6">
-        <NavigationCard
-          title="Sinonimoen jokoa"
-          description="Hiztegia zabaltzeko tresna interaktiboa, hizkuntzaren sinonimoak ezagutuz eta praktikatuz."
-          route="/sinonimoak-jokoa"
-        />
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <NavigationCard
+        title="Sinonimoen jokoa"
+        description="Hiztegia zabaltzeko tresna interaktiboa, hizkuntzaren sinonimoak ezagutuz eta praktikatuz."
+        route="/sinonimoak-jokoa"
+      />
 
-      <div class="col-md-6 col-lg-6">
-        <NavigationCard
-          title="Sinonimoen Zerrenda"
-          description="Ikasgelan erabilitako euskarazko sinonimoen bilduma sakona, ikasteko eta erreferentzia gisa balio duena, sinonimoen jokoa osatuz."
-          route="/sinonimoak-zerrenda"
-        />
-      </div>
+      <NavigationCard
+        title="Sinonimoen Zerrenda"
+        description="Ikasgelan erabilitako euskarazko sinonimoen bilduma sakona, ikasteko eta erreferentzia gisa balio duena, sinonimoen jokoa osatuz."
+        route="/sinonimoak-zerrenda"
+      />
 
-      <div class="col-md-6 col-lg-6">
-        <NavigationCard
-          title="C1-eko hiztegia"
-          description="Euskarazko ikasgaietatik beren-beregi bildutako termino eta esamoldeen bilduma, azterketarako erreferentzia azkar eta eraginkorra emanez."
-          route="/hiztegia"
-        />
-      </div>
+      <NavigationCard
+        title="C1-eko hiztegia"
+        description="Euskarazko ikasgaietatik beren-beregi bildutako termino eta esamoldeen bilduma, azterketarako erreferentzia azkar eta eraginkorra emanez."
+        route="/hiztegia"
+      />
 
-      <div class="col-md-6 col-lg-6">
-        <NavigationCard
-          title="Aditz laguntzaileak"
-          description="Euskarazko aditz osagarrien ulermena eta erabilera indartzeko diseinatutako baliabidea, perpausak behar bezala eraikitzeko."
-          route="/aditzak"
-        />
-      </div>
+      <NavigationCard
+        title="Aditz laguntzaileak"
+        description="Euskarazko aditz osagarrien ulermena eta erabilera indartzeko diseinatutako baliabidea, perpausak behar bezala eraikitzeko."
+        route="/aditzak"
+      />
     </div>
   </div>
 </template>
-
-<style scoped>
-.hasiera {
-  max-width: 1200px;
-}
-
-h1 {
-  color: #2c3e50;
-}
-
-.lead {
-  color: #666;
-}
-
-h2 {
-  color: #2c3e50;
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  .lead {
-    font-size: 1.1rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-}
-</style>

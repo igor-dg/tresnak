@@ -1,3 +1,23 @@
+:root[data-theme="default"] {
+  --gradient-from: theme('colors.indigo.50');
+  --gradient-to: theme('colors.pink.50');
+  --text-primary: theme('colors.gray.900');
+  --text-secondary: theme('colors.gray.700');
+  --accent-color: theme('colors.indigo.500');
+  --header-gradient-from: theme('colors.indigo.600');
+  --header-gradient-to: theme('colors.blue.500');
+}
+
+:root[data-theme="hitano"] {
+  --gradient-from: theme('colors.red.50');
+  --gradient-to: theme('colors.pink.50');
+  --text-primary: theme('colors.pink.900');
+  --text-secondary: theme('colors.pink.700');
+  --accent-color: theme('colors.pink.500');
+  --header-gradient-from: theme('colors.pink.600');
+  --header-gradient-to: theme('colors.red.500');
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
