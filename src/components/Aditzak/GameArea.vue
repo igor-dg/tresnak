@@ -65,7 +65,7 @@ const emit = defineEmits(['answer-submitted', 'restart-game'])
 
 <template>
   <div class="w-full max-w-2xl px-4 mx-auto">
-    <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-lg">
+    <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-3xl p-6 shadow-lg">
       <!-- Sistema y Tiempo -->
       <div class="text-center text-gray-600 space-y-1">
         <div><span class="font-medium">Sistema:</span> {{ getSistemaDisplayName(gameState.selectedSistema) }}</div>
@@ -104,7 +104,13 @@ const emit = defineEmits(['answer-submitted', 'restart-game'])
           />
           <button
             type="submit"
-            class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700 transition-colors"
+            class="absolute right-2 top-1/2 -translate-y-1/2 text-white p-2 rounded-lg transition-colors"
+            :style="{
+              backgroundColor: 'var(--accent-color)',
+              '&:hover': {
+                backgroundColor: 'var(--header-gradient-from)'
+              }
+            }"
           >
             <ChevronRight class="size-5" />
           </button>
@@ -138,7 +144,7 @@ const emit = defineEmits(['answer-submitted', 'restart-game'])
       <div class="mt-6 flex justify-end">
         <button
           @click="nextQuestion"
-          class="p-3 rounded-xl bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors flex items-center gap-2"
+          class="p-3 rounded-xl bg-[var(--button-bg)] text-[var(--button-text-primary)] hover:bg-[var(--button-hover-bg)] transition-colors flex items-center gap-2"
         >
           <RefreshCw class="size-5" />
           <span>Hurrengoa</span>

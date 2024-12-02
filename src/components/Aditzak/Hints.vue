@@ -1,12 +1,15 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { ChevronRight, Lightbulb, RefreshCw } from 'lucide-vue-next';
+import HintOverlay from './HintOverlay.vue'
+import norConjugations from '@/data/nor-conjugations.json'
 import {
   selectValidPhrase,
   composePhrase,
   conjugacionExists,
   obtenerConjugacion,
-  obtenerSistemaData
+  obtenerSistemaData,
+  TIEMPO_NAMES
 } from '@/utils.js'
 
 const props = defineProps({
@@ -43,7 +46,27 @@ const props = defineProps({
   }
 })
 
+const tiempos = ref([
+  { id: 'orain', name: TIEMPO_NAMES['orain'], active: true },
+  { id: 'lehen', name: TIEMPO_NAMES['lehen'], active: true },
+  { id: 'bal_hip', name: TIEMPO_NAMES['bal_hip'], active: true },
+  { id: 'ond_or', name: TIEMPO_NAMES['ond_or'], active: true },
+  { id: 'ond_leh', name: TIEMPO_NAMES['ond_leh'], active: true },
+  { id: 'ahal_or', name: TIEMPO_NAMES['ahal_or'], active: true },
+  { id: 'ahal_leh', name: TIEMPO_NAMES['ahal_leh'], active: true },
+  { id: 'ahal_hip', name: TIEMPO_NAMES['ahal_hip'], active: true },
+  { id: 'subj_or', name: TIEMPO_NAMES['subj_or'], active: true },
+  { id: 'subj_leh', name: TIEMPO_NAMES['subj_leh'], active: true },
+  { id: 'agintera', name: TIEMPO_NAMES['agintera'], active: true }
+])
+
 const emit = defineEmits(['hint-used'])
+
+const isMobile = ref(false)
+
+const basePath = computed(() => {
+  return import.meta.env.PROD ? '/tresnak/v2/img/' : '/img/'
+})
 
 const activeSystemCount = computed(() => {
   return props.sistemas.filter(sistema => sistema.active).length
@@ -53,6 +76,18 @@ const canShowPista1 = computed(() => !props.hints.pista1.used && activeSystemCou
 const canShowPista2 = computed(() => !props.hints.pista2.used && activeSystemCount.value >= 3 && props.hints.pista1.used)
 const canShowSuperPista = computed(() => !props.hints.superPista.used)
 const canShowMegaPista = computed(() => !props.hints.megaPista.used)
+
+// Compute si la pista ya existe y se puede mostrar
+const canDisplayPista1 = computed(() => props.hints.pista1.frase && activeSystemCount.value >= 2)
+const canDisplayPista2 = computed(() => props.hints.pista2.frase && activeSystemCount.value >= 3)
+const canDisplaySuperPista = computed(() => props.hints.superPista.frase)
+const canDisplayMegaPista = computed(() => props.hints.megaPista.imagen)
+
+// Estados para los overlays móviles
+const showMobilePista1 = ref(false)
+const showMobilePista2 = ref(false)
+const showMobileSuperPista = ref(false)
+const showMobileMegaPista = ref(false)
 
 function createHintPhrase(systemId, isSuperpista = false, retryCount = 0) {
   try {
@@ -131,13 +166,41 @@ function createHintPhrase(systemId, isSuperpista = false, retryCount = 0) {
   }
 }
 
+// Add a function to get the tiempo display name
+function getTiempoDisplayName(tiempoId) {
+  return TIEMPO_NAMES[tiempoId] || tiempoId
+}
+
 function showHint(type) {
   try {
     if (type === 'megaPista') {
+      if (props.sistema.toLowerCase() === 'nor') {
+        const conjugationData = norConjugations[props.tiempo]
+        
+        if (!conjugationData) {
+          throw new Error(`No se encontraron conjugaciones para ${props.tiempo}`)
+        }
+
+        const subjects = ['ni', 'hi', 'hura', 'gu', 'zu', 'zuek', 'haiek']
+        const conjugationList = conjugationData.conjugations.map((conj, index) => {
+          return `${subjects[index]}: ${conj}`
+        })
+
+        emit('hint-used', {
+          type,
+          data: {
+            isNorSystem: true,
+            conjugations: conjugationList
+          }
+        })
+        return
+      }
+      
+      // Original image behavior for other systems
       emit('hint-used', {
         type,
         data: {
-          imagen: `/img/${props.sistema.toLowerCase()}_${props.tiempo}.png`
+          imagen: `${basePath.value}${props.sistema.toLowerCase()}_${props.tiempo}.png`
         }
       })
       return
@@ -184,6 +247,49 @@ function showHint(type) {
     })
   }
 }
+
+function handleHintClick(type) {
+  // Si la pista aún no se ha generado, generarla
+  if ((type === 'pista1' && canShowPista1.value) ||
+      (type === 'pista2' && canShowPista2.value) ||
+      (type === 'superPista' && canShowSuperPista.value) ||
+      (type === 'megaPista' && canShowMegaPista.value)) {
+    showHint(type)
+  }
+  
+  // Mostrar el overlay correspondiente
+  switch(type) {
+    case 'pista1':
+      showMobilePista1.value = true
+      break
+    case 'pista2':
+      showMobilePista2.value = true
+      break
+    case 'superPista':
+      showMobileSuperPista.value = true
+      break
+    case 'megaPista':
+      showMobileMegaPista.value = true
+      break
+  }
+}
+
+onMounted(() => {
+  const checkMobile = () => {
+    isMobile.value = window.matchMedia('(max-width: 768px)').matches
+  }
+  
+  // Comprobación inicial
+  checkMobile()
+  
+  // Listener para cambios de tamaño
+  window.addEventListener('resize', checkMobile)
+  
+  // Cleanup
+  onUnmounted(() => {
+    window.removeEventListener('resize', checkMobile)
+  })
+})
 </script>
 
 <template>
@@ -191,62 +297,64 @@ function showHint(type) {
     <!-- Botones de Pistas -->
     <div class="flex flex-wrap justify-center gap-3 mt-6">
       <button 
-        v-if="activeSystemCount >= 2"
-        :disabled="!canShowPista1"
-        @click="showHint('pista1')"
-        class="p-3 rounded-xl transition-all duration-200
-             disabled:opacity-50 disabled:cursor-not-allowed
-             bg-blue-100 text-blue-700 hover:bg-blue-200
-             disabled:hover:bg-blue-100"
-    >
-      <Lightbulb class="size-5" />
-      </button>
-      
-      <button 
-        v-if="activeSystemCount >= 3"
-        :disabled="!canShowPista2"
-        @click="showHint('pista2')"
-        class="p-3 rounded-xl transition-all duration-200
-             disabled:opacity-50 disabled:cursor-not-allowed
-             bg-blue-100 text-blue-700 hover:bg-blue-200
-             disabled:hover:bg-blue-100"
-    >
-      <Lightbulb class="size-5" />
-      </button>
-      
-      <button 
-        :disabled="!canShowSuperPista"
-        @click="showHint('superPista')"
-        class="p-3 rounded-xl transition-all duration-200
-             disabled:opacity-50 disabled:cursor-not-allowed
-             bg-amber-100 text-amber-700 hover:bg-amber-200
-             disabled:hover:bg-amber-100"
-    >
-      <Lightbulb class="size-5" />
-      </button>
-      
-      <button 
-        :disabled="!canShowMegaPista"
-        @click="showHint('megaPista')"
-        class="p-3 rounded-xl transition-all duration-200
-             disabled:opacity-50 disabled:cursor-not-allowed
-             bg-red-100 text-red-700 hover:bg-red-200
-             disabled:hover:bg-red-100"
-    >
-      <Lightbulb class="size-5" />
-      </button>
+  v-if="activeSystemCount >= 2"
+  :disabled="isMobile ? (!canShowPista1 && !canDisplayPista1) : !canShowPista1"
+  @click="handleHintClick('pista1')"
+  class="p-3 rounded-xl transition-all duration-200
+       disabled:opacity-50 disabled:cursor-not-allowed
+       bg-blue-100 text-blue-700 hover:bg-blue-200
+       disabled:hover:bg-blue-100"
+>
+  <Lightbulb class="size-5" />
+</button>
+
+<button 
+  v-if="activeSystemCount >= 3"
+  :disabled="isMobile ? (!canShowPista2 && !canDisplayPista2) : !canShowPista2"
+  @click="handleHintClick('pista2')"
+  class="p-3 rounded-xl transition-all duration-200
+       disabled:opacity-50 disabled:cursor-not-allowed
+       bg-blue-100 text-blue-700 hover:bg-blue-200
+       disabled:hover:bg-blue-100"
+>
+  <Lightbulb class="size-5" />
+</button>
+
+<button 
+  :disabled="isMobile ? (!canShowSuperPista && !canDisplaySuperPista) : !canShowSuperPista"
+  @click="handleHintClick('superPista')"
+  class="p-3 rounded-xl transition-all duration-200
+       disabled:opacity-50 disabled:cursor-not-allowed
+       bg-amber-100 text-amber-700 hover:bg-amber-200
+       disabled:hover:bg-amber-100"
+>
+  <Lightbulb class="size-5" />
+</button>
+
+<button 
+  :disabled="isMobile ? (!canShowMegaPista && !canDisplayMegaPista) : !canShowMegaPista"
+  @click="handleHintClick('megaPista')"
+  class="p-3 rounded-xl transition-all duration-200
+       disabled:opacity-50 disabled:cursor-not-allowed
+       bg-red-100 text-red-700 hover:bg-red-200
+       disabled:hover:bg-red-100"
+>
+  <Lightbulb class="size-5" />
+</button>
     </div>
 
     <!-- Contenedor de Pistas -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+    <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
       <!-- Pista 1 -->
       <div v-if="hints.pista1.frase"
            class="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-md">
         <h5 class="font-bold text-gray-800 mb-3">1. Pista</h5>
         <p class="text-gray-600 mb-3">{{ hints.pista1.frase }}</p>
         <p class="text-sm text-gray-500">
-          <span class="font-semibold">Sistema:</span> {{ hints.pista1.sistema }} | 
-          <span class="font-semibold">Aldia eta denbora:</span> {{ hints.pista1.tiempo }}
+          <span class="font-semibold">Sistema:</span> {{ hints.pista1.sistema }} 
+        </p>
+        <p class="text-sm text-gray-500">
+          <span class="font-semibold">Aldia eta denbora:</span> {{ getTiempoDisplayName(hints.pista1.tiempo).toLowerCase() }}
         </p>
       </div>
 
@@ -256,8 +364,10 @@ function showHint(type) {
         <h5 class="font-bold text-gray-800 mb-3">2. Pista</h5>
         <p class="text-gray-600 mb-3">{{ hints.pista2.frase }}</p>
         <p class="text-sm text-gray-500">
-          <span class="font-semibold">Sistema:</span> {{ hints.pista2.sistema }} | 
-          <span class="font-semibold">Aldia eta denbora:</span> {{ hints.pista2.tiempo }}
+          <span class="font-semibold">Sistema:</span> {{ hints.pista2.sistema }}
+        </p>
+        <p class="text-sm text-gray-500">
+          <span class="font-semibold">Aldia eta denbora:</span> {{ getTiempoDisplayName(hints.pista2.tiempo).toLowerCase() }}
         </p>
       </div>
 
@@ -267,22 +377,68 @@ function showHint(type) {
         <h5 class="font-bold text-gray-800 mb-3">Superpista</h5>
         <p class="text-gray-600 mb-3">{{ hints.superPista.frase }}</p>
         <p class="text-sm text-gray-500">
-          <span class="font-semibold">Sistema:</span> {{ hints.superPista.sistema }} | 
-          <span class="font-semibold">Aldia eta denbora:</span> {{ hints.superPista.tiempo }}
+          <span class="font-semibold">Sistema:</span> {{ hints.superPista.sistema }}
+        </p>
+        <p class="text-sm text-gray-500">
+          <span class="font-semibold">Aldia eta denbora:</span> {{ getTiempoDisplayName(hints.superPista.tiempo).toLowerCase() }}
         </p>
       </div>
     </div>
 
-    <!-- Megapista -->
-    <div v-if="hints.megaPista.imagen" class="mt-6">
-      <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-md">
-        <h5 class="font-bold text-gray-800 mb-3 text-center">Megapista</h5>
+    <!-- Vista móvil - Overlays -->
+    <HintOverlay
+      v-if="hints.pista1.frase"
+      :is-open="showMobilePista1"
+      title="1. Pista"
+      :hint="hints.pista1"
+      @close="showMobilePista1 = false"
+    />
+
+    <HintOverlay
+      v-if="hints.pista2.frase"
+      :is-open="showMobilePista2"
+      title="2. Pista"
+      :hint="hints.pista2"
+      @close="showMobilePista2 = false"
+    />
+
+    <HintOverlay
+      v-if="hints.superPista.frase"
+      :is-open="showMobileSuperPista"
+      title="Superpista"
+      :hint="hints.superPista"
+      @close="showMobileSuperPista = false"
+    />
+
+    <HintOverlay
+      v-if="hints.megaPista.imagen || hints.megaPista.isNorSystem"
+      :is-open="showMobileMegaPista"
+      title="Megapista"
+      :hint="hints.megaPista"
+      @close="showMobileMegaPista = false"
+    />
+
+    <!-- Megapista en desktop -->
+    <div v-if="hints.megaPista.imagen || hints.megaPista.isNorSystem" class="hidden md:block mt-6">
+    <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-md">
+      <h5 class="font-bold text-gray-800 mb-3 text-center">Megapista</h5>
+      <template v-if="hints.megaPista.isNorSystem">
+        <ul class="space-y-1">
+          <li v-for="(conj, index) in hints.megaPista.conjugations" 
+              :key="index"
+              class="text-gray-600">
+            {{ conj }}
+          </li>
+        </ul>
+      </template>
+      <template v-else>
         <img 
           :src="hints.megaPista.imagen" 
           alt="Megapista" 
           class="w-full rounded-lg"
         >
-      </div>
+      </template>
     </div>
+  </div>
   </div>
 </template>

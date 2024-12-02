@@ -1,16 +1,22 @@
+<script setup>
+import { useTheme } from '@/composables/useTheme'
+import NavMenu from './components/NavMenu.vue'
+
+const { setTheme } = useTheme()
+
+const onThemeChange = (theme) => {
+  setTheme(theme)
+}
+</script>
+
 <template>
-  <div class="app-container bg-light min-vh-100">
-    <router-view></router-view>
+  <div class="min-h-screen">
+    <NavMenu />
+    <router-view @theme-change="onThemeChange" />
   </div>
 </template>
 
 <style>
-.app-container {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   margin: 0;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',

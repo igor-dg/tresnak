@@ -8,10 +8,10 @@ defineProps({
 
 <template>
   <router-link :to="route" class="nav-card text-decoration-none">
-    <div class="card h-100 shadow-sm hover-effect">
+    <div class="card bg-[var(--bg-card)] h-100 shadow-sm hover-effect backdrop-blur-lg rounded-3xl p-6 shadow-lg">
       <div class="card-body">
         <h3 class="card-title h4 mb-3">{{ title }}</h3>
-        <p class="card-text text-muted">{{ description }}</p>
+        <p class="card-text text-muted text-gray-500">{{ description }}</p>
       </div>
     </div>
   </router-link>
@@ -26,11 +26,9 @@ defineProps({
   transform: translateY(-5px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
-
-.card {
-  border: none;
-  border-radius: 1rem;
-  background-color: #ffffff;
+.nav-card {
+  color: inherit;
+  text-decoration: none;
 }
 
 .card-title {

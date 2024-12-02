@@ -1,17 +1,112 @@
 <script setup>
-// Hiztegia - Dictionary component
+import { ref, onMounted, computed } from 'vue'
+import AlphabetNav from '@/components/Hiztegia/AlphabetNav.vue'
+import WordList from '@/components/Hiztegia/WordList.vue'
+import WordDefinition from '@/components/Hiztegia/WordDefinition.vue'
+import SearchBar from '@/components/Hiztegia/SearchBar.vue'
+import hiztegiaData from '@/data/hiztegia.json'
+
+const selectedWord = ref('')
+const isDefinitionOpen = ref(false)
+const searchTerm = ref('')
+const words = ref(hiztegiaData)
+const activeScrollLetter = ref('')
+
+
+const availableLetters = computed(() => {
+  if (!words.value.length) return []
+  return [...new Set(words.value.map(word => word[0].toUpperCase()))]
+})
+
+const filteredWords = computed(() => {
+  if (!searchTerm.value) return words.value
+  return words.value.filter(word => 
+    word.toLowerCase().includes(searchTerm.value.toLowerCase())
+  )
+})
+
+const handleSearch = (term) => {
+  searchTerm.value = term
+}
+
+const handleClear = () => {
+  searchTerm.value = ''
+}
+
+const scrollToLetter = (letter) => {
+  activeScrollLetter.value = letter
+}
+
+const handleWordClick = (word) => {
+  showDefinition(word)
+}
+
+const showDefinition = (word) => {
+  selectedWord.value = word
+  isDefinitionOpen.value = true
+}
 </script>
 
 <template>
-  <div class="hiztegia">
-    <h1>C1-eko Hiztegia</h1>
+  <div class="min-h-screen">
+    <!-- Header -->
+    <div class="top-0 z-20 py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl md:text-4xl font-bold text-[var(--text-primary)]">
+            C1-eko Hiztegia
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row gap-8 relative">
+        <!-- Panel de navegación alfabética - Fixed en desktop -->
+        <aside class="hidden md:block md:w-60 sticky" style="top: 0; height: fit-content;">
+          <AlphabetNav
+            :available-letters="availableLetters"
+            @letter-click="scrollToLetter"
+          />
+        </aside>
+
+        <!-- Panel principal -->
+        <main class="flex-1">
+          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl p-6 shadow-lg mb-20 md:mb-8">
+            <SearchBar
+              v-model="searchTerm"
+              @search="handleSearch"
+              @clear="handleClear"
+            >
+              <template #results-count>
+                {{ filteredWords.length }} emaitza aurkitu dira
+              </template>
+            </SearchBar>
+            
+            <WordList
+              :words="words"
+              :search-term="searchTerm"
+              :active-scroll-letter="activeScrollLetter"
+              @word-click="showDefinition"
+            />
+          </div>
+        </main>
+
+        <!-- Panel de navegación alfabética - Móvil -->
+        <div class="md:hidden">
+          <AlphabetNav
+            :available-letters="availableLetters"
+            @letter-click="scrollToLetter"
+          />
+        </div>
+      </div>
+
+      <!-- Modal de definición -->
+      <WordDefinition
+        v-model:isOpen="isDefinitionOpen"
+        :word="selectedWord"
+      />
+    </div>
   </div>
 </template>
-
-<style scoped>
-.hiztegia {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-</style>

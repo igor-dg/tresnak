@@ -18,6 +18,7 @@ import NavigationCard from '../components/NavigationCard.vue';
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
       <NavigationCard
         title="Sinonimoen jokoa"
         description="Hiztegia zabaltzeko tresna interaktiboa, hizkuntzaren sinonimoak ezagutuz eta praktikatuz."

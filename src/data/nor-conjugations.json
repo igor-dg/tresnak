@@ -1,0 +1,123 @@
+{
+    "ahal_hip": {
+      "conjugations": [
+        "ninteke",
+        "hinteke",
+        "liteke",
+        "gintezke",
+        "zintezke",
+        "zintezkete",
+        "litezke"
+      ]
+    },
+    "agintera": {
+      "conjugations": [
+        "-",
+        "hadi",
+        "bedi",
+        "-",
+        "zaitez",
+        "zaitezte",
+        "bitez"
+      ]
+    },
+    "lehen": {
+      "conjugations": [
+        "nintzen",
+        "hintzen",
+        "zen",
+        "ginen",
+        "zinen",
+        "zineten",
+        "ziren"
+      ]
+    },
+    "ahal_lehen": {
+      "conjugations": [
+        "nintekeen",
+        "hintekeen",
+        "zitekeen",
+        "gintazkeen",
+        "zintazkeen",
+        "zintezketeen",
+        "zitezkeen"
+      ]
+    },
+    "ahal_orain": {
+      "conjugations": [
+        "naiteke",
+        "haiteke",
+        "daiteke",
+        "gaitezke",
+        "zaitezke",
+        "zaitezkete",
+        "daitezke"
+      ]
+    },
+    "bal_hip": {
+      "conjugations": [
+        "banintz",
+        "bahintz",
+        "balitz",
+        "bagina",
+        "bazina",
+        "bazinete",
+        "balira"
+      ]
+    },
+    "ond_leh": {
+      "conjugations": [
+        "nintzatekeen",
+        "hintzatekeen",
+        "zatekeen",
+        "ginatekeen",
+        "zinatekeen",
+        "zinateketen",
+        "ziratekeen"
+      ]
+    },
+    "ond_or": {
+      "conjugations": [
+        "nintzateke",
+        "hintzateke",
+        "litzateke",
+        "ginateke",
+        "zinateke",
+        "zinatekete",
+        "lirateke"
+      ]
+    },
+    "orain": {
+      "conjugations": [
+        "naiz",
+        "haiz",
+        "da",
+        "gara",
+        "zara",
+        "zarete",
+        "dira"
+      ]
+    },
+    "subj_leh": {
+      "conjugations": [
+        "nendin",
+        "hendin",
+        "zedin",
+        "gintezen",
+        "zintezen",
+        "zintezten",
+        "zitezen"
+      ]
+    },
+    "subj_or": {
+      "conjugations": [
+        "nadin",
+        "hadin",
+        "dadin",
+        "gaitezen",
+        "zaitezen",
+        "zaitezten",
+        "daitezen"
+      ]
+    }
+}

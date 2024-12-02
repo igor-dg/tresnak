@@ -16,6 +16,7 @@
   --accent-color: theme('colors.pink.500');
   --header-gradient-from: theme('colors.pink.600');
   --header-gradient-to: theme('colors.red.500');
+  --bg-card: rgba(170, 26, 26, 0.8);
 }
 
 :root {
@@ -67,7 +68,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ff6492;
 }
 button:focus,
 button:focus-visible {
@@ -88,7 +89,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #ffb600;
   }
   a:hover {
     color: #747bff;

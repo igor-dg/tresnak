@@ -9,6 +9,7 @@ import TimeSelectors from '@/components/Aditzak/TimeSelectors.vue'
 import aditzakJsonData from '@/data/aditzak.json'
 import esaldiakJsonData from '@/data/esaldiak.json'
 import { Settings } from 'lucide-vue-next'
+import MobileSettingsModal from './MobileSettingsModal.vue'
 import {
   selectValidPhrase,
   composePhrase,
@@ -20,11 +21,17 @@ import {
 
 const showMobileSettings = ref(false)
 const hitanoEnabled = ref(false)
-const { setTheme } = useTheme()
+// const { setTheme } = useTheme()
+
+// watch(hitanoEnabled, (newValue) => {
+//   setTheme(newValue ? 'hitano' : 'default')
+// }, { immediate: true })
+
+const emit = defineEmits(['theme-change'])
 
 watch(hitanoEnabled, (newValue) => {
-  setTheme(newValue ? 'hitano' : 'default')
-}, { immediate: true })
+  emit('theme-change', newValue ? 'hitano' : 'default')
+})
 
 const sistemas = ref([
   { id: 'nor', name: SISTEMA_NAMES['nor'], active: true },
@@ -274,33 +281,27 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-[var(--gradient-from)] to-[var(--gradient-to)] py-8">
+  <div class="min-h-screen py-0">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center mb-8">
-        <h1 class="text-2xl md:text-4xl font-bold text-[var(--text-primary)]">
-          Aditz Laguntzaileak Jokoa
-        </h1>
-        
-        <!-- Botón móvil para mostrar/ocultar configuración -->
+      <!-- Header -->
+      <div class="flex-1 justify-between items-center mb-8">
         <button 
-  class="md:hidden p-2 rounded-lg bg-white/80 backdrop-blur-sm shadow-md text-gray-700 hover:bg-gray-50"
-  @click="showMobileSettings = !showMobileSettings"
->
-  <Settings class="h-6 w-6" />
-</button>
+          class="ezarpenak md:hidden backdrop-blur-card p-2 text-[var(--text-primary)] "
+          @click="showMobileSettings = !showMobileSettings"
+        >
+          <Settings class="h-6 w-6"></Settings>
+        </button>
       </div>
       
       <div class="flex flex-col md:flex-row gap-8">
         <!-- Panel de configuración móvil -->
-        <div 
-          class="md:hidden"
+        <!-- <div 
+          class="md:hidden slide-in"
           v-show="showMobileSettings"
         >
-          <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg space-y-6 mb-6">
-            <HitanoSelector
-              v-model:hitanoEnabled="hitanoEnabled"
-            />
-            <SystemSelectors
+          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl p-6 shadow-lg space-y-6">
+            <HitanoSelector v-model:hitanoEnabled="hitanoEnabled" />
+            <SystemSelectors 
               v-model:sistemas="sistemas"
               @update:sistema="handleSystemUpdate"
             />
@@ -309,43 +310,60 @@ onMounted(async () => {
               @update:tiempo="handleTimeUpdate"
             />            
           </div>
-        </div>
+        </div> -->
 
-        <!-- Panel de configuración desktop -->
+        <MobileSettingsModal v-model="showMobileSettings">
+      <div class="space-y-6">
+        <HitanoSelector v-model:hitanoEnabled="hitanoEnabled" />
+        <SystemSelectors 
+          v-model:sistemas="sistemas"
+          @update:sistema="handleSystemUpdate"
+        />
+        <TimeSelectors
+          v-model:tiempos="tiempos"
+          @update:tiempo="handleTimeUpdate"
+        />            
+      </div>
+    </MobileSettingsModal>
+
+        <!-- Panel de configuración desktop izquierdo -->
         <div class="hidden md:block w-64 space-y-6">
-          <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg">
-            <HitanoSelector
-              v-model:hitanoEnabled="hitanoEnabled"
-            />
+          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl shadow-lg">
+            <HitanoSelector v-model:hitanoEnabled="hitanoEnabled" />
           </div>
 
-          <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg">
+          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl shadow-lg">
             <SystemSelectors
               v-model:sistemas="sistemas"
               @update:sistema="handleSystemUpdate"
             />
           </div>
-          
-          <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg">
-            <TimeSelectors
-              v-model:tiempos="tiempos"
-              @update:tiempo="handleTimeUpdate"
-            />
-          </div>
         </div>
         
         <!-- Área principal del juego -->
-        <div class="flex-1 flex justify-center">
+        <div class="flex-1">
           <GameArea
             v-model:gameState="gameState"
             :sistemas="sistemas"
             :tiempos="tiempos"
             @answer-submitted="handleAnswer"
             @restart-game="handleRestartGame"
+            class="fade-in"
           />
+        </div>
+
+        <!-- Panel de configuración desktop derecho -->
+        <div class="hidden md:block w-64">
+          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl shadow-lg">
+            <TimeSelectors
+              v-model:tiempos="tiempos"
+              @update:tiempo="handleTimeUpdate"
+            />
+          </div>
         </div>
       </div>
 
+      <!-- Game Overlay -->
       <GameOverlay
         v-if="gameState.showOverlay"
         :message="gameState.overlayMessage"
@@ -355,14 +373,27 @@ onMounted(async () => {
         :phrase="gameState.currentPhrase"
         :correct-answer="gameState.correctAnswer"
         @close="handleOverlayClose"
+        class="fade-in"
       />
     </div>
   </div>
 </template>
 <style>
-:root {
-  color: black;
+.ezarpenak:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
 }
+.ezarpenak {
+    background: var(--button-transparent-bg);
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2), -8px -8px 16px rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    transition: box-shadow 0.3s ease;
+}
+
+.ezarpenak:active {
+    box-shadow: inset 8px 8px 16px rgba(0, 0, 0, 0.2), inset -8px -8px 16px rgba(255, 255, 255, 0.2);
+}
+
 #app {
   width: 100%;
 }

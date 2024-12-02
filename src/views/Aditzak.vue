@@ -2,22 +2,34 @@
 import { onMounted } from 'vue'
 import AditzLaguntzaileakView from '@/components/Aditzak/AditzLaguntzaileakView.vue'
 
-// Si necesitas cargar datos o hacer alguna inicialización
+const emit = defineEmits(['theme-change'])
+
+const onThemeChange = (theme) => {
+  emit('theme-change', theme)
+}
+
 onMounted(() => {
   // Inicialización si es necesaria
 })
 </script>
 
 <template>
-  <div class="aditzak">
-    <AditzLaguntzaileakView />
+  <div class="min-h-screen">
+    <div class="top-0 z-20 py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl md:text-4xl font-bold text-[var(--text-primary)]">
+            Aditz Laguntzaileak
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido principal con el mismo estilo que Hiztegia -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AditzLaguntzaileakView @theme-change="onThemeChange" />
+      
+    </div>
   </div>
 </template>
 
-<style scoped>
-.aditzak {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-</style>

@@ -1,0 +1,1144 @@
+[
+  {
+    "id": 1,
+    "grupo": [
+      "ADINA",
+      "beste",
+      "bezainbeste",
+      "adinbat"
+    ]
+  },
+  {
+    "id": 2,
+    "grupo": [
+      "adibidez",
+      "esaterako",
+      "kasu"
+    ]
+  },
+  {
+    "id": 3,
+    "grupo": [
+      "adierazi",
+      "azaldu",
+      "erakutsi"
+    ]
+  },
+  {
+    "id": 4,
+    "grupo": [
+      "ADITU",
+      "ulertu",
+      "konprenitu"
+    ]
+  },
+  {
+    "id": 5,
+    "grupo": [
+      "ADORE",
+      "kemen",
+      "ausardia",
+      "indar",
+      "kuraia",
+      "balentria"
+    ]
+  },
+  {
+    "id": 6,
+    "grupo": [
+      "AGERIKOA",
+      "bistakoa",
+      "nabarmena",
+      "ezaguna"
+    ]
+  },
+  {
+    "id": 7,
+    "grupo": [
+      "Ahaztu",
+      "atzendu",
+      "ahantzi"
+    ]
+  },
+  {
+    "id": 8,
+    "grupo": [
+      "AITZINEKO",
+      "aurreko",
+      "aurretiko",
+      "arteragoko"
+    ]
+  },
+  {
+    "id": 9,
+    "grupo": [
+      "AKASO",
+      "apika",
+      "agian",
+      "beharbada",
+      "ausaz"
+    ]
+  },
+  {
+    "id": 10,
+    "grupo": [
+      "Akatsak",
+      "hutsegiteak",
+      "erruak",
+      "hutsak"
+    ]
+  },
+  {
+    "id": 11,
+    "grupo": [
+      "ALBORATU",
+      "baztertu",
+      "zokoratu",
+      "utzi",
+      "saihestu",
+      "ekidin"
+    ]
+  },
+  {
+    "id": 12,
+    "grupo": [
+      "Aldiz",
+      "bidez"
+    ]
+  },
+  {
+    "id": 13,
+    "grupo": [
+      "Aldiz",
+      "ordea",
+      "berriz",
+      "ostera"
+    ]
+  },
+  {
+    "id": 14,
+    "grupo": [
+      "Aldarte",
+      "umore",
+      "tenple",
+      "sasoi"
+    ]
+  },
+  {
+    "id": 15,
+    "grupo": [
+      "Alor",
+      "arlo",
+      "sail"
+    ]
+  },
+  {
+    "id": 16,
+    "grupo": [
+      "AMULTSU",
+      "ezti",
+      "gozo",
+      "atsegin"
+    ]
+  },
+  {
+    "id": 17,
+    "grupo": [
+      "ANDANAK",
+      "tropelak",
+      "piloak",
+      "pilak",
+      "taldeak",
+      "tropelak"
+    ]
+  },
+  {
+    "id": 18,
+    "grupo": [
+      "Anker",
+      "krudel",
+      "gupidagabe",
+      "bihozgabe",
+      "errukigabe"
+    ]
+  },
+  {
+    "id": 19,
+    "grupo": [
+      "ANTZA",
+      "nonbait",
+      "dirudienez",
+      "itxuraz",
+      "aidanez"
+    ]
+  },
+  {
+    "id": 20,
+    "grupo": [
+      "Apal",
+      "umil",
+      "xume",
+      "otzan"
+    ]
+  },
+  {
+    "id": 21,
+    "grupo": [
+      "APETA",
+      "nahia",
+      "gogoa",
+      "guraria"
+    ]
+  },
+  {
+    "id": 22,
+    "grupo": [
+      "ARAKETA",
+      "miaketa",
+      "bilaketa",
+      "ikerketa"
+    ]
+  },
+  {
+    "id": 23,
+    "grupo": [
+      "Arras",
+      "zeharo",
+      "erabat",
+      "guztiz"
+    ]
+  },
+  {
+    "id": 24,
+    "grupo": [
+      "Arrasto",
+      "aztarna",
+      "zantzu",
+      "seinale"
+    ]
+  },
+  {
+    "id": 25,
+    "grupo": [
+      "AUKERA",
+      "egokiera",
+      "abagune",
+      "parada",
+      "okasio"
+    ]
+  },
+  {
+    "id": 26,
+    "grupo": [
+      "Aurki",
+      "laster",
+      "berehala"
+    ]
+  },
+  {
+    "id": 27,
+    "grupo": [
+      "AURRERATU",
+      "aurreztu",
+      "irabazi",
+      "atera"
+    ]
+  },
+  {
+    "id": 28,
+    "grupo": [
+      "Axola",
+      "ardura",
+      "kezka"
+    ]
+  },
+  {
+    "id": 29,
+    "grupo": [
+      "AZTORATU",
+      "asaldatu",
+      "larritu",
+      "kezkatu",
+      "urduritu"
+    ]
+  },
+  {
+    "id": 30,
+    "grupo": [
+      "AZTURAK",
+      "ohiturak",
+      "usadio",
+      "usantza",
+      "ekandu"
+    ]
+  },
+  {
+    "id": 31,
+    "grupo": [
+      "Bare",
+      "lasai",
+      "trankil"
+    ]
+  },
+  {
+    "id": 32,
+    "grupo": [
+      "BARRABASKERIA",
+      "bihurrikeria",
+      "okerkeria"
+    ]
+  },
+  {
+    "id": 33,
+    "grupo": [
+      "BARRUAK",
+      "erraiak",
+      "tripak",
+      "barneak"
+    ]
+  },
+  {
+    "id": 34,
+    "grupo": [
+      "Benetan",
+      "egiazki",
+      "egiatan",
+      "zinez"
+    ]
+  },
+  {
+    "id": 35,
+    "grupo": [
+      "berariaz",
+      "nahita",
+      "apropos"
+    ]
+  },
+  {
+    "id": 36,
+    "grupo": [
+      "BEREBIZIKO",
+      "izugarrizko",
+      "sekulako",
+      "egundoko"
+    ]
+  },
+  {
+    "id": 37,
+    "grupo": [
+      "bermatu",
+      "ziurtatu",
+      "segurtatu"
+    ]
+  },
+  {
+    "id": 38,
+    "grupo": [
+      "BETEKIZUN",
+      "zeregin",
+      "betebehar",
+      "eginbehar"
+    ]
+  },
+  {
+    "id": 39,
+    "grupo": [
+      "bikor",
+      "ale",
+      "garau",
+      "bihi"
+    ]
+  },
+  {
+    "id": 40,
+    "grupo": [
+      "burla",
+      "trufa",
+      "iseka"
+    ]
+  },
+  {
+    "id": 41,
+    "grupo": [
+      "BURRUNBA",
+      "zaratots",
+      "burrundara",
+      "habarrots"
+    ]
+  },
+  {
+    "id": 42,
+    "grupo": [
+      "DERRIGORREAN",
+      "nahitaez",
+      "ezinbestean",
+      "halabeharrez"
+    ]
+  },
+  {
+    "id": 43,
+    "grupo": [
+      "DIOSALA",
+      "agurra",
+      "adioa",
+      "olesa"
+    ]
+  },
+  {
+    "id": 44,
+    "grupo": [
+      "DOHAKABEA",
+      "zoritxarrekoa",
+      "zorigaiztokoa",
+      "malerusa"
+    ]
+  },
+  {
+    "id": 45,
+    "grupo": [
+      "EDIREN",
+      "aurkitu",
+      "topatu",
+      "kausitu",
+      "idoro"
+    ]
+  },
+  {
+    "id": 46,
+    "grupo": [
+      "EDOZELAN",
+      "nolanahi",
+      "edonola"
+    ]
+  },
+  {
+    "id": 47,
+    "grupo": [
+      "EGONARRIA",
+      "pazientzia",
+      "patxada",
+      "eroapena"
+    ]
+  },
+  {
+    "id": 48,
+    "grupo": [
+      "egotzi",
+      "leporatu",
+      "aurpegiratu",
+      "bota"
+    ]
+  },
+  {
+    "id": 49,
+    "grupo": [
+      "ERBESTE",
+      "atzerri",
+      "kanpo",
+      "deserri"
+    ]
+  },
+  {
+    "id": 50,
+    "grupo": [
+      "ERDEINATU",
+      "gutxietsi",
+      "mespretxatu"
+    ]
+  },
+  {
+    "id": 51,
+    "grupo": [
+      "ERDIETSI",
+      "lortu",
+      "eskuratu",
+      "jadetsi",
+      "irabazi"
+    ]
+  },
+  {
+    "id": 52,
+    "grupo": [
+      "ERNEA",
+      "argia",
+      "zuhurra",
+      "azkarra"
+    ]
+  },
+  {
+    "id": 53,
+    "grupo": [
+      "erori",
+      "jausi"
+    ]
+  },
+  {
+    "id": 54,
+    "grupo": [
+      "ERREZELOA",
+      "susmoa",
+      "itxura",
+      "irudipena"
+    ]
+  },
+  {
+    "id": 55,
+    "grupo": [
+      "ESTREINAKOZ",
+      "lehenengoz",
+      "aurrenekoz",
+      "lehenik",
+      "lehendabizikoz"
+    ]
+  },
+  {
+    "id": 56,
+    "grupo": [
+      "ETEKIN",
+      "irabazia",
+      "mozkina",
+      "hobaria"
+    ]
+  },
+  {
+    "id": 57,
+    "grupo": [
+      "etsai",
+      "arerio",
+      "aurkari"
+    ]
+  },
+  {
+    "id": 58,
+    "grupo": [
+      "EZBAIAN",
+      "dudan",
+      "zalantzan",
+      "duda-mudan"
+    ]
+  },
+  {
+    "id": 59,
+    "grupo": [
+      "GANDUTU",
+      "lurrindu",
+      "lausotu",
+      "lurrundu"
+    ]
+  },
+  {
+    "id": 60,
+    "grupo": [
+      "garo",
+      "iratze",
+      "ira"
+    ]
+  },
+  {
+    "id": 61,
+    "grupo": [
+      "GERTU",
+      "hurbil",
+      "hur",
+      "hurrean",
+      "ondoan",
+      "aldean"
+    ]
+  },
+  {
+    "id": 62,
+    "grupo": [
+      "GIBELEAN",
+      "atzean",
+      "ostean"
+    ]
+  },
+  {
+    "id": 63,
+    "grupo": [
+      "GOGOTIK",
+      "gogor",
+      "gogoz",
+      "erruz",
+      "barra-barra",
+      "indartsu"
+    ]
+  },
+  {
+    "id": 64,
+    "grupo": [
+      "GOIBELA",
+      "tristea",
+      "atsekabetua",
+      "beltzatua"
+    ]
+  },
+  {
+    "id": 65,
+    "grupo": [
+      "HAGITZ",
+      "guztiz",
+      "oso",
+      "erabat",
+      "arras",
+      "biziki"
+    ]
+  },
+  {
+    "id": 66,
+    "grupo": [
+      "HAUSNARKETA",
+      "gogoeta",
+      "azterketa",
+      "erreflexio"
+    ]
+  },
+  {
+    "id": 67,
+    "grupo": [
+      "HITZARMEN",
+      "akordio",
+      "itun"
+    ]
+  },
+  {
+    "id": 68,
+    "grupo": [
+      "HONDARREKO",
+      "azkeneko",
+      "amaierako",
+      "bukaerako"
+    ]
+  },
+  {
+    "id": 69,
+    "grupo": [
+      "IDOR",
+      "lehor",
+      "siku",
+      "agor"
+    ]
+  },
+  {
+    "id": 70,
+    "grupo": [
+      "ILDO",
+      "bide",
+      "hari",
+      "lerro"
+    ]
+  },
+  {
+    "id": 71,
+    "grupo": [
+      "ILE",
+      "bilo",
+      "adats"
+    ]
+  },
+  {
+    "id": 72,
+    "grupo": [
+      "INONDIK ERE",
+      "dudarik gabe",
+      "zalantza barik"
+    ]
+  },
+  {
+    "id": 73,
+    "grupo": [
+      "IRAUNGI",
+      "itzali",
+      "amatatu",
+      "emendatu",
+      "itzurugi"
+    ]
+  },
+  {
+    "id": 74,
+    "grupo": [
+      "IRMO",
+      "TINKO",
+      "sendo",
+      "finko",
+      "gotor"
+    ]
+  },
+  {
+    "id": 75,
+    "grupo": [
+      "ITZARRI",
+      "esnatu",
+      "itzartu",
+      "iratzarri",
+      "atzarri"
+    ]
+  },
+  {
+    "id": 76,
+    "grupo": [
+      "IZUTU",
+      "beldurtu",
+      "ikaratu"
+    ]
+  },
+  {
+    "id": 77,
+    "grupo": [
+      "JAGOLE",
+      "zaindari",
+      "begirale",
+      "zaindari"
+    ]
+  },
+  {
+    "id": 78,
+    "grupo": [
+      "JAZO",
+      "gertatu",
+      "pasatu",
+      "suertatu",
+      "agitu"
+    ]
+  },
+  {
+    "id": 79,
+    "grupo": [
+      "KAIKU",
+      "kirten",
+      "astakilo",
+      "lerdo",
+      "lelo",
+      "inozo"
+    ]
+  },
+  {
+    "id": 80,
+    "grupo": [
+      "KASKARRA",
+      "petrala",
+      "eskasa",
+      "okerra"
+    ]
+  },
+  {
+    "id": 81,
+    "grupo": [
+      "KONPARATU",
+      "alderatu",
+      "erkatu"
+    ]
+  },
+  {
+    "id": 82,
+    "grupo": [
+      "KORRIKA",
+      "lasterka",
+      "arineketan",
+      "arrapaladan",
+      "antxintxika"
+    ]
+  },
+  {
+    "id": 83,
+    "grupo": [
+      "LAKET",
+      "gustuko",
+      "gogoko",
+      "atsegin"
+    ]
+  },
+  {
+    "id": 84,
+    "grupo": [
+      "lapurtu",
+      "ebatsi",
+      "ostu",
+      "kendu"
+    ]
+  },
+  {
+    "id": 85,
+    "grupo": [
+      "lodi",
+      "gizen",
+      "potolo"
+    ]
+  },
+  {
+    "id": 86,
+    "grupo": [
+      "LUPETZA",
+      "lokatza",
+      "basatza"
+    ]
+  },
+  {
+    "id": 87,
+    "grupo": [
+      "MAINDIRE",
+      "izara",
+      "mihise"
+    ]
+  },
+  {
+    "id": 88,
+    "grupo": [
+      "MALDA",
+      "aldapa",
+      "aldatsa"
+    ]
+  },
+  {
+    "id": 89,
+    "grupo": [
+      "MANEATU",
+      "ondu",
+      "atondu",
+      "prestatu",
+      "gatzozpindu",
+      "apaindu"
+    ]
+  },
+  {
+    "id": 90,
+    "grupo": [
+      "NABARITU",
+      "antzeman",
+      "igerri",
+      "sumatu"
+    ]
+  },
+  {
+    "id": 91,
+    "grupo": [
+      "NAGIKERIA",
+      "alferkeria",
+      "utzikeria",
+      "zabarkeria",
+      "axolagabekeria"
+    ]
+  },
+  {
+    "id": 92,
+    "grupo": [
+      "nonbait",
+      "antza",
+      "itxuraz"
+    ]
+  },
+  {
+    "id": 93,
+    "grupo": [
+      "nozitu",
+      "jasan",
+      "pairatu",
+      "sufritu"
+    ]
+  },
+  {
+    "id": 94,
+    "grupo": [
+      "ODOLBILDU",
+      "ubeldura",
+      "ubelune",
+      "odolbatu",
+      "beltzune"
+    ]
+  },
+  {
+    "id": 95,
+    "grupo": [
+      "OHAIDE",
+      "maitale",
+      "amorante",
+      "ohelagun"
+    ]
+  },
+  {
+    "id": 96,
+    "grupo": [
+      "OMEN",
+      "izen",
+      "ospe",
+      "itzal",
+      "fama",
+      "entzute"
+    ]
+  },
+  {
+    "id": 97,
+    "grupo": [
+      "ONDU",
+      "umotu",
+      "gorritu",
+      "heldu"
+    ]
+  },
+  {
+    "id": 98,
+    "grupo": [
+      "ONURA",
+      "abantaila",
+      "mesedea"
+    ]
+  },
+  {
+    "id": 99,
+    "grupo": [
+      "ORATU",
+      "heldu",
+      "eutsi",
+      "atxiki"
+    ]
+  },
+  {
+    "id": 100,
+    "grupo": [
+      "otarre",
+      "saski"
+    ]
+  },
+  {
+    "id": 101,
+    "grupo": [
+      "otoi",
+      "arren",
+      "mesdez",
+      "faborez"
+    ]
+  },
+  {
+    "id": 102,
+    "grupo": [
+      "patrika",
+      "poltsiko",
+      "sakela"
+    ]
+  },
+  {
+    "id": 103,
+    "grupo": [
+      "PREST",
+      "gertu",
+      "pronto"
+    ]
+  },
+  {
+    "id": 104,
+    "grupo": [
+      "sendo",
+      "mardul",
+      "gogor"
+    ]
+  },
+  {
+    "id": 105,
+    "grupo": [
+      "SESIO",
+      "liskar",
+      "istilu",
+      "kalapita",
+      "iskanbila"
+    ]
+  },
+  {
+    "id": 106,
+    "grupo": [
+      "SETATI",
+      "TEMATI",
+      "EGOSKOR",
+      "burugogor",
+      "kaskagogor",
+      "setatsu"
+    ]
+  },
+  {
+    "id": 107,
+    "grupo": [
+      "sosik",
+      "dirurik",
+      "txanponik"
+    ]
+  },
+  {
+    "id": 108,
+    "grupo": [
+      "SUMINDUTA",
+      "haserre(tuta)",
+      "muturtuta",
+      "amorratuta"
+    ]
+  },
+  {
+    "id": 109,
+    "grupo": [
+      "SUNTSITU",
+      "txikitu",
+      "apurtu",
+      "triskatu"
+    ]
+  },
+  {
+    "id": 110,
+    "grupo": [
+      "TRABA",
+      "oztopo",
+      "eragozpen"
+    ]
+  },
+  {
+    "id": 111,
+    "grupo": [
+      "TRABESKA",
+      "alboz",
+      "zeharka",
+      "saiheska"
+    ]
+  },
+  {
+    "id": 112,
+    "grupo": [
+      "TRIKIMAILU",
+      "iruzur",
+      "amarru",
+      "engainu"
+    ]
+  },
+  {
+    "id": 113,
+    "grupo": [
+      "TXIRTXILATU",
+      "hautsi",
+      "puskatu",
+      "BIRRINDU",
+      "triskatu",
+      "txikitu"
+    ]
+  },
+  {
+    "id": 114,
+    "grupo": [
+      "TXOLIN",
+      "txoriburu",
+      "kaskarin",
+      "txepel"
+    ]
+  },
+  {
+    "id": 115,
+    "grupo": [
+      "UNATUA",
+      "nekatua",
+      "akitua",
+      "ahitua"
+    ]
+  },
+  {
+    "id": 116,
+    "grupo": [
+      "URDURITASUNA",
+      "artegatasuna",
+      "ezinegona",
+      "estutasuna",
+      "larritasuna",
+      "kezka"
+    ]
+  },
+  {
+    "id": 117,
+    "grupo": [
+      "UZTARTU",
+      "lotu",
+      "batu",
+      "elkartu",
+      "estekatu"
+    ]
+  },
+  {
+    "id": 118,
+    "grupo": [
+      "XEDEA",
+      "helburua",
+      "helmuga",
+      "jomuga"
+    ]
+  },
+  {
+    "id": 119,
+    "grupo": [
+      "Zabaldu",
+      "barreiatu",
+      "hedatu"
+    ]
+  },
+  {
+    "id": 120,
+    "grupo": [
+      "ZALU",
+      "azkar",
+      "bizkor",
+      "arin"
+    ]
+  },
+  {
+    "id": 121,
+    "grupo": [
+      "ZEHARO",
+      "erabat",
+      "guztiz"
+    ]
+  },
+  {
+    "id": 122,
+    "grupo": [
+      "ZERESAN",
+      "zurrumurru",
+      "kontu",
+      "esames"
+    ]
+  },
+  {
+    "id": 123,
+    "grupo": [
+      "ZERTZELADA",
+      "ezaugarri",
+      "lerro",
+      "hari",
+      "ildo"
+    ]
+  },
+  {
+    "id": 124,
+    "grupo": [
+      "ZIPLO",
+      "zerraldo"
+    ]
+  },
+  {
+    "id": 125,
+    "grupo": [
+      "ZIPLO",
+      "bat-batean",
+      "kolpean",
+      "berehala",
+      "supituki"
+    ]
+  },
+  {
+    "id": 126,
+    "grupo": [
+      "ZIZTRIN",
+      "eskas",
+      "gutxi"
+    ]
+  },
+  {
+    "id": 127,
+    "grupo": [
+      "beldurra",
+      "izua",
+      "ikara"
+    ]
+  }
+]
