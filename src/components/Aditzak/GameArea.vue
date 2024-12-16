@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { ChevronRight, RefreshCw } from 'lucide-vue-next'
+import { ArrowRight, RefreshCw } from 'lucide-vue-next'
 import Hints from './Hints.vue'
 import { getSistemaDisplayName, getTiempoDisplayName } from '@/utils'
 
@@ -15,7 +15,6 @@ const props = defineProps({
   }
 })
 
-// userAnswer ref-a gehitu
 const userAnswer = ref('')
 
 const hints = ref({
@@ -25,12 +24,12 @@ const hints = ref({
   megaPista: { used: false, imagen: '' }
 })
 
-// Add watcher to reset hints when currentPhrase changes
 watch(() => props.gameState.currentPhrase, () => {
   resetHints()
 })
 
 function submitAnswer() {
+  if (!userAnswer.value) return
   emit('answer-submitted', userAnswer.value)
   userAnswer.value = ''
 }
@@ -54,112 +53,129 @@ function handleHintUsed(hintData) {
   hints.value[type] = { ...data, used: true }
 }
 
-function getIntentoText(intento) {
-  const textos = ["Lehenengo", "Bigarren", "Hirugarren"]
-  return textos[intento - 1]
-}
-
-// Emits definitu
 const emit = defineEmits(['answer-submitted', 'restart-game'])
 </script>
 
 <template>
-  <div class="w-full max-w-2xl px-4 mx-auto">
-    <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-3xl p-6 shadow-lg">
-      <!-- Sistema y Tiempo -->
-      <div class="text-center text-gray-600 space-y-1">
-        <div><span class="font-medium">Sistema:</span> {{ getSistemaDisplayName(gameState.selectedSistema) }}</div>
-        <div><span class="font-medium">Denbora:</span> {{ getTiempoDisplayName(gameState.selectedTime) }}</div>
-      </div>
-
-      <!-- Mensaje de Intentos -->
-      <div class="text-center mt-4">
-        <span 
-          class="inline-block px-4 py-1.5 rounded-full font-medium"
-          :class="{
-            'bg-green-100 text-green-800': gameState.intentos === 0,
-            'bg-yellow-100 text-yellow-800': gameState.intentos === 1,
-            'bg-red-100 text-red-800': gameState.intentos === 2
-          }"
-        >
-          {{ gameState.aukerakMessage }}
-        </span>
-      </div>
-
-      <!-- Frase Principal -->
-      <div class="min-h-[6rem] flex items-center justify-center">
-        <p class="text-2xl font-medium text-gray-800 mb-6 text-center">
-          {{ gameState.currentPhrase }}...
-        </p>
-      </div>
-      
-      <!-- Formulario de Respuesta -->
-      <form @submit.prevent="submitAnswer" class="space-y-4">
-        <div class="relative">
-          <input
-            type="text"
-            v-model="userAnswer"
-            class="w-full px-4 py-3 rounded-xl bg-gray-50 border-2 border-indigo-100 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all"
-            placeholder="Idatzi zure erantzuna"
-          />
-          <button
-            type="submit"
-            class="absolute right-2 top-1/2 -translate-y-1/2 text-white p-2 rounded-lg transition-colors"
-            :style="{
-              backgroundColor: 'var(--accent-color)',
-              '&:hover': {
-                backgroundColor: 'var(--header-gradient-from)'
-              }
-            }"
-          >
-            <ChevronRight class="size-5" />
-          </button>
-        </div>
-      </form>
-
-      <!-- Respuestas Incorrectas -->
-      <div class="mt-6 space-y-2">
-        <div 
-          v-for="(intento, index) in gameState.respuestasIncorrectas" 
-          :key="index"
-          class="text-center text-red-600"
-        >
-          {{ getIntentoText(intento.numero) }} aukera: {{ intento.respuesta }} - okerra
+  <div class="w-full max-w-md mx-auto bg-white/30 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8">
+    <!-- Game Info -->
+    <div class="flex justify-between items-center">
+      <div class="space-y-1">
+        <div class="text-sm text-amber-700">Sistema:</div>
+        <div class="text-sm font-semibold text-white bg-gradient-to-r from-amber-500 to-orange-500 rounded-full px-4 py-1 inline-block">
+          {{ getSistemaDisplayName(gameState.selectedSistema) }}
         </div>
       </div>
-
-      <!-- Hints Component -->
-      <Hints
-        :sistema="gameState.selectedSistema"
-        :tiempo="gameState.selectedTime"
-        :current-subject="gameState.subject || ''"
-        :current-object="gameState.object || ''"
-        :hints="hints"
-        :sistemas="sistemas"
-        @hint-used="handleHintUsed"
-        class="mt-6"
-      />
-
-      <!-- Botón de Siguiente -->
-      <div class="mt-6 flex justify-end">
-        <button
-          @click="nextQuestion"
-          class="p-3 rounded-xl bg-[var(--button-bg)] text-[var(--button-text-primary)] hover:bg-[var(--button-hover-bg)] transition-colors flex items-center gap-2"
-        >
-          <RefreshCw class="size-5" />
-          <span>Hurrengoa</span>
-        </button>
+      <div class="space-y-1">
+        <div class="text-sm text-amber-700">Denbora:</div>
+        <div class="text-sm font-semibold text-white bg-gradient-to-r from-rose-500 to-pink-500 rounded-full px-4 py-1 inline-block">
+          {{ getTiempoDisplayName(gameState.selectedTime) }}
+        </div>
       </div>
     </div>
+
+    <!-- Attempts Left -->
+    <div class="text-center">
+      <span class="text-amber-600 text-sm">{{ gameState.aukerakMessage }}</span>
+      <div class="flex justify-center gap-2 mt-2">
+        <div
+          v-for="i in 3"
+          :key="i"
+          :class="{
+            'w-3 h-3 rounded-full transition-all': true,
+            'bg-white scale-100': i <= gameState.intentos,
+            'bg-white/50 scale-110': i === gameState.intentos + 1,
+            'bg-white/30': i > gameState.intentos + 1
+          }"
+        >
+      </div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div class="text-2xl font-bold text-center text-amber-700 drop-shadow-sm">
+      {{ gameState.currentPhrase }}...
+    </div>
+
+    <!-- Input Area -->
+    <form @submit.prevent="submitAnswer" class="relative">
+      <input
+        type="text"
+        v-model="userAnswer"
+        class="w-full bg-white/50 rounded-full py-4 px-6 text-lg text-center focus:outline-none focus:ring-2 focus:ring-amber-300"
+        :style="{ color: 'var(--text-primary)'}"
+        placeholder="Idatzi zure erantzuna"
+      />
+      <button 
+        type="submit"
+        :class="{
+        'absolute right-2 top-1/2 -translate-y-1/2 transition-all focus:outline-none focus:ring-2 rounded-full p-2': true,
+        'bg-gradient-to-r': true,
+        'from-[var(--gradient-from)]': true,
+        'to-[var(--gradient-to)]': true,
+        'hover:from-[var(--gradient-hover-from)]': true,
+        'hover:to-[var(--gradient-hover-to)]': true,
+        'focus:ring-[var(--gradient-from)]': true
+      }"
+      >
+        <ArrowRight class="w-6 h-6" />
+      </button>
+    </form>
+
+    <!-- Incorrect Answers -->
+    <div v-if="gameState.respuestasIncorrectas.length > 0" class="space-y-2">
+      <div 
+        v-for="(respuesta, index) in gameState.respuestasIncorrectas" 
+        :key="index"
+        class="text-center" :style="{ color: 'var(--text-secondary)'}"
+      >
+        {{ respuesta.respuesta }} - okerra
+      </div>
+    </div>
+
+    <!-- Hints -->
+    <Hints
+      :sistema="gameState.selectedSistema"
+      :tiempo="gameState.selectedTime"
+      :current-subject="gameState.subject || ''"
+      :current-object="gameState.object || ''"
+      :hints="hints"
+      :sistemas="sistemas"
+      @hint-used="handleHintUsed"
+      class="mt-6"
+    />
+
+    <!-- Next Button -->
+    <button 
+      @click="nextQuestion"
+      :class="{
+        'w-full text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+        'bg-gradient-to-r': true,
+        'from-[var(--gradient-from)]': true,
+        'to-[var(--gradient-to)]': true,
+        'hover:from-[var(--gradient-hover-from)]': true,
+        'hover:to-[var(--gradient-hover-to)]': true,
+        'focus:ring-[var(--gradient-from)]': true
+      }"
+    >
+      <RefreshCw class="w-5 h-5" />
+      Hurrengoa
+    </button>
   </div>
 </template>
 
 <style scoped>
-.form-control {
-  margin-left: 1rem;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
 }
 
-.btn {
-  margin: 0 0.5rem;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+input::placeholder {
+  color: var(--text-secondary);
 }
 </style>

@@ -48,16 +48,16 @@ const handleBlur = () => {
   <div class="relative mb-6">
     <!-- Contenedor principal con animación de foco -->
     <div
-      class="relative flex items-center transition-all duration-200 bg-[var(--bg-card)] backdrop-blur-sm rounded-xl"
+      class="relative flex items-center transition-all duration-200 backdrop-blur-sm rounded-xl"
       :class="{
-        'ring-2 ring-indigo-500 shadow-lg': isInputFocused,
+        'ring-2 ring-amber-400 shadow-lg': isInputFocused,
         'shadow': !isInputFocused
       }"
     >
       <!-- Icono de búsqueda -->
       <Search
-        class="absolute left-4 size-5 text-gray-400"
-        :class="{ 'text-indigo-500': isInputFocused }"
+        class="absolute left-4 size-5 text-amber-400"
+        :class="{ 'text-amber-500': isInputFocused }"
       />
 
       <!-- Campo de búsqueda -->
@@ -66,18 +66,27 @@ const handleBlur = () => {
         type="text"
         :placeholder="placeholder"
         @focus="handleFocus"
-        @blur="handleBlur"
-        class="w-full py-3 pl-12 pr-10 bg-transparent border-none rounded-xl focus:outline-none text-gray-800 placeholder-gray-400"
+        @blur="handleBlur"        
+        class="w-full py-3 pl-12 pr-10 bg-white/40 rounded-xl px-6 text-lg text-center focus:outline-none focus:ring-2 focus:ring-amber-300"
+        :style="{ color: 'var(--text-primary)'}"
       />
 
       <!-- Botón de limpiar -->
       <button
         v-show="searchInput"
         @click="clearSearch"
-        class="absolute right-4 p-1 rounded-full hover:bg-gray-100 transition-colors"
+        :class="{
+        'absolute right-2 top-1/2 -translate-y-1/2 transition-all focus:outline-none focus:ring-2 rounded-full p-2': true,
+        'bg-gradient-to-r': true,
+        'from-[var(--gradient-from)]': true,
+        'to-[var(--gradient-to)]': true,
+        'hover:from-[var(--gradient-hover-from)]': true,
+        'hover:to-[var(--gradient-hover-to)]': true,
+        'focus:ring-[var(--gradient-from)]': true
+      }"
         type="button"
       >
-        <X class="size-4 text-gray-500" />
+        <X class="size-4" />
       </button>
     </div>
 
@@ -95,10 +104,6 @@ const handleBlur = () => {
 
 <style scoped>
 input::placeholder {
-  transition: color 0.2s ease;
-}
-
-input:focus::placeholder {
-  color: #a5b4fc; /* Indigo-300 */
+  color: var(--text-secondary);
 }
 </style>

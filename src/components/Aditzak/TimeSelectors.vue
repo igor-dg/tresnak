@@ -39,9 +39,9 @@ function getTimeDescription(timeId) {
     <div class="space-y-0">
       <div v-for="tiempo in tiempos" 
            :key="tiempo.id" 
-           class="flex justify-between p-3 rounded-xl hover:bg-gray-50/50 transition-colors">
+           class="flex justify-between p-3 rounded-xl hover:bg-amber-50/50 transition-colors">
         <div class="flex flex-col text-start">
-          <span class="text-sm font-medium text-gray-700">
+          <span class="text-sm font-medium" :style="{ color: 'var(--text-primary)' }">
             {{ tiempo.name }}
           </span>
           <!-- <span class="text-xs text-gray-500 mt-0.5">
@@ -58,7 +58,7 @@ function getTimeDescription(timeId) {
           >
           <div class="w-12 h-7
                       rounded-full
-                      bg-gray-200
+                      bg-gray-400
                       transition-all duration-300
                       relative
                       before:content-['']
@@ -69,15 +69,14 @@ function getTimeDescription(timeId) {
                       before:rounded-full
                       before:h-6
                       before:w-6
-                      before:shadow-md
+                      before:shadow
                       before:transition-all
                       before:duration-300
-                      before:shadow-sm
                       peer-checked:before:translate-x-5
                       peer-checked:before:bg-white
                       peer-hover:before:scale-95"
                :style="{
-                 backgroundColor: tiempo.active ? 'var(--accent-color)' : ''
+                 background: tiempo.active ? 'linear-gradient(to right, var(--gradient-from), var(--gradient-to))' : ''
                }"
           >
           </div>

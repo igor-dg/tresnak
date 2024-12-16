@@ -35,9 +35,18 @@ const emit = defineEmits(['update:modelValue'])
             <!-- Close button -->
             <button
               @click="$emit('update:modelValue', false)"
-              class="absolute right-4 top-4 p-2 rounded-lg hover:bg-gray-100/50 transition-colors"
+              
+              :class="{
+        'absolute right-4 top-4 transition-all focus:outline-none focus:ring-2 rounded-full p-2': true,
+        'bg-gradient-to-r': true,
+        'from-[var(--gradient-from)]': true,
+        'to-[var(--gradient-to)]': true,
+        'hover:from-[var(--gradient-hover-from)]': true,
+        'hover:to-[var(--gradient-hover-to)]': true,
+        'focus:ring-[var(--gradient-from)]': true
+      }"
             >
-              <X class="h-6 w-6 text-gray-500" />
+              <X class="h-6 w-6" />
             </button>
             
             <!-- Settings content -->

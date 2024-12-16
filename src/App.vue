@@ -19,7 +19,7 @@ const onThemeChange = (theme) => {
 <style>
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+  font-family: 'Montserrat', -apple-system, 'Montserrat', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
 }
 </style>

@@ -73,28 +73,35 @@ const hoveredWord = ref(null)
            class="space-y-4">
         <!-- Cabecera de sección -->
         <div :id="`letter-section-${letter}`"
-             class="sticky top-0 bg-white/95 backdrop-blur-sm z-10 py-2 px-4 rounded-lg shadow-sm">
+             class="sticky top-0 bg-gradient-to-r from-rose-500 to-pink-500 z-10 py-2 px-4 rounded-lg shadow-sm">
              
-          <h2 class="text-2xl font-bold text-indigo-600">{{ letter }}</h2>
+          <h2 class="text-2xl font-bold text-white">{{ letter }}</h2>
           
         </div>
   
         <!-- Grid de palabras -->
         <div :id="'block-' + letter" class="letter-block">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> <!-- Ajustar el gap para más espacio -->
           <button
             v-for="word in words"
             :key="word"
             @click="$emit('word-click', word)"
             @mouseenter="hoveredWord = word"
             @mouseleave="hoveredWord = null"
-            class="text-left px-4 py-3 rounded-xl transition-all duration-200"
+            class="text-center px-2 py-3 rounded-xl transition-all duration-200"
             :class="{
               'bg-indigo-50 shadow-md transform scale-105': hoveredWord === word,
-              'bg-white/80 hover:bg-indigo-50': hoveredWord !== word
+              'bg-white/80 hover:bg-indigo-50': hoveredWord !== word,
+              'focus:outline-none focus:ring-2': true,
+              'bg-gradient-to-r': true,
+              'from-[var(--gradient-from)]': true,
+              'to-[var(--gradient-to)]': true,
+              'hover:from-[var(--gradient-hover-from)]': true,
+              'hover:to-[var(--gradient-hover-to)]': true,
+              'focus:ring-[var(--gradient-from)]': true
             }"
           >
-            <span class="text-lg">{{ word }}</span>
+            <span class="text-lg text-white">{{ word }}</span>
           </button>
         </div>
         </div>

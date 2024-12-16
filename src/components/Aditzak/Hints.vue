@@ -295,97 +295,59 @@ onMounted(() => {
 <template>
   <div class="w-full">
     <!-- Botones de Pistas -->
-    <div class="flex flex-wrap justify-center gap-3 mt-6">
+    <div class="flex flex-wrap justify-center gap-3">
       <button 
-  v-if="activeSystemCount >= 2"
-  :disabled="isMobile ? (!canShowPista1 && !canDisplayPista1) : !canShowPista1"
-  @click="handleHintClick('pista1')"
-  class="p-3 rounded-xl transition-all duration-200
-       disabled:opacity-50 disabled:cursor-not-allowed
-       bg-blue-100 text-blue-700 hover:bg-blue-200
-       disabled:hover:bg-blue-100"
->
-  <Lightbulb class="size-5" />
-</button>
+        v-if="activeSystemCount >= 2"
+        :disabled="isMobile ? (!canShowPista1 && !canDisplayPista1) : !canShowPista1"
+        @click="handleHintClick('pista1')"
+        class="p-3 rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-200
+               bg-gradient-to-r from-purple-400 to-purple-500
+               hover:shadow-xl hover:scale-105 
+               disabled:opacity-50 disabled:cursor-not-allowed
+               active:scale-95"
+      >
+        <Lightbulb class="w-5 h-5" />
+      </button>
 
-<button 
-  v-if="activeSystemCount >= 3"
-  :disabled="isMobile ? (!canShowPista2 && !canDisplayPista2) : !canShowPista2"
-  @click="handleHintClick('pista2')"
-  class="p-3 rounded-xl transition-all duration-200
-       disabled:opacity-50 disabled:cursor-not-allowed
-       bg-blue-100 text-blue-700 hover:bg-blue-200
-       disabled:hover:bg-blue-100"
->
-  <Lightbulb class="size-5" />
-</button>
+      <button 
+        v-if="activeSystemCount >= 3"
+        :disabled="isMobile ? (!canShowPista2 && !canDisplayPista2) : !canShowPista2"
+        @click="handleHintClick('pista2')"
+        class="p-3 rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-200
+               bg-gradient-to-r from-purple-400 to-purple-500
+               hover:shadow-xl hover:scale-105 
+               disabled:opacity-50 disabled:cursor-not-allowed
+               active:scale-95"
+      >
+        <Lightbulb class="w-5 h-5" />
+      </button>
 
-<button 
-  :disabled="isMobile ? (!canShowSuperPista && !canDisplaySuperPista) : !canShowSuperPista"
-  @click="handleHintClick('superPista')"
-  class="p-3 rounded-xl transition-all duration-200
-       disabled:opacity-50 disabled:cursor-not-allowed
-       bg-amber-100 text-amber-700 hover:bg-amber-200
-       disabled:hover:bg-amber-100"
->
-  <Lightbulb class="size-5" />
-</button>
+      <button 
+        :disabled="isMobile ? (!canShowSuperPista && !canDisplaySuperPista) : !canShowSuperPista"
+        @click="handleHintClick('superPista')"
+        class="p-3 rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-200
+               bg-gradient-to-r from-amber-400 to-amber-500
+               hover:shadow-xl hover:scale-105 
+               disabled:opacity-50 disabled:cursor-not-allowed
+               active:scale-95"
+      >
+        <Lightbulb class="w-5 h-5" />
+      </button>
 
-<button 
-  :disabled="isMobile ? (!canShowMegaPista && !canDisplayMegaPista) : !canShowMegaPista"
-  @click="handleHintClick('megaPista')"
-  class="p-3 rounded-xl transition-all duration-200
-       disabled:opacity-50 disabled:cursor-not-allowed
-       bg-red-100 text-red-700 hover:bg-red-200
-       disabled:hover:bg-red-100"
->
-  <Lightbulb class="size-5" />
-</button>
+      <button 
+        :disabled="isMobile ? (!canShowMegaPista && !canDisplayMegaPista) : !canShowMegaPista"
+        @click="handleHintClick('megaPista')"
+        class="p-3 rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-200
+               bg-gradient-to-r from-red-400 to-red-500
+               hover:shadow-xl hover:scale-105 
+               disabled:opacity-50 disabled:cursor-not-allowed
+               active:scale-95"
+      >
+        <Lightbulb class="w-5 h-5" />
+      </button>
     </div>
 
-    <!-- Contenedor de Pistas -->
-    <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-      <!-- Pista 1 -->
-      <div v-if="hints.pista1.frase"
-           class="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-md">
-        <h5 class="font-bold text-gray-800 mb-3">1. Pista</h5>
-        <p class="text-gray-600 mb-3">{{ hints.pista1.frase }}</p>
-        <p class="text-sm text-gray-500">
-          <span class="font-semibold">Sistema:</span> {{ hints.pista1.sistema }} 
-        </p>
-        <p class="text-sm text-gray-500">
-          <span class="font-semibold">Aldia eta denbora:</span> {{ getTiempoDisplayName(hints.pista1.tiempo).toLowerCase() }}
-        </p>
-      </div>
-
-      <!-- Pista 2 -->
-      <div v-if="hints.pista2.frase"
-           class="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-md">
-        <h5 class="font-bold text-gray-800 mb-3">2. Pista</h5>
-        <p class="text-gray-600 mb-3">{{ hints.pista2.frase }}</p>
-        <p class="text-sm text-gray-500">
-          <span class="font-semibold">Sistema:</span> {{ hints.pista2.sistema }}
-        </p>
-        <p class="text-sm text-gray-500">
-          <span class="font-semibold">Aldia eta denbora:</span> {{ getTiempoDisplayName(hints.pista2.tiempo).toLowerCase() }}
-        </p>
-      </div>
-
-      <!-- Superpista -->
-      <div v-if="hints.superPista.frase"
-           class="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-md">
-        <h5 class="font-bold text-gray-800 mb-3">Superpista</h5>
-        <p class="text-gray-600 mb-3">{{ hints.superPista.frase }}</p>
-        <p class="text-sm text-gray-500">
-          <span class="font-semibold">Sistema:</span> {{ hints.superPista.sistema }}
-        </p>
-        <p class="text-sm text-gray-500">
-          <span class="font-semibold">Aldia eta denbora:</span> {{ getTiempoDisplayName(hints.superPista.tiempo).toLowerCase() }}
-        </p>
-      </div>
-    </div>
-
-    <!-- Vista móvil - Overlays -->
+    <!-- Overlays para todas las pantallas -->
     <HintOverlay
       v-if="hints.pista1.frase"
       :is-open="showMobilePista1"
@@ -417,28 +379,31 @@ onMounted(() => {
       :hint="hints.megaPista"
       @close="showMobileMegaPista = false"
     />
-
-    <!-- Megapista en desktop -->
-    <div v-if="hints.megaPista.imagen || hints.megaPista.isNorSystem" class="hidden md:block mt-6">
-    <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-md">
-      <h5 class="font-bold text-gray-800 mb-3 text-center">Megapista</h5>
-      <template v-if="hints.megaPista.isNorSystem">
-        <ul class="space-y-1">
-          <li v-for="(conj, index) in hints.megaPista.conjugations" 
-              :key="index"
-              class="text-gray-600">
-            {{ conj }}
-          </li>
-        </ul>
-      </template>
-      <template v-else>
-        <img 
-          :src="hints.megaPista.imagen" 
-          alt="Megapista" 
-          class="w-full rounded-lg"
-        >
-      </template>
-    </div>
-  </div>
   </div>
 </template>
+
+<style scoped>
+.hint-button {
+  @apply p-3 rounded-full text-white transition-all duration-200 
+         shadow-lg backdrop-blur-sm
+         disabled:opacity-50 disabled:cursor-not-allowed
+         hover:shadow-xl hover:scale-105 
+         active:scale-95;
+}
+
+.hint-card {
+  @apply backdrop-blur-md rounded-xl p-4 shadow-lg
+         border border-white/10;
+}
+
+/* Animations */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

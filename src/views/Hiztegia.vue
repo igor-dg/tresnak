@@ -61,7 +61,7 @@ const showDefinition = (word) => {
     </div>
 
     <!-- Contenido principal -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row gap-8 relative">
         <!-- Panel de navegación alfabética - Fixed en desktop -->
         <aside class="hidden md:block md:w-60 sticky" style="top: 0; height: fit-content;">
@@ -73,7 +73,7 @@ const showDefinition = (word) => {
 
         <!-- Panel principal -->
         <main class="flex-1">
-          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl p-6 shadow-lg mb-20 md:mb-8">
+          <div class="w-full max-w-3xl mx-auto bg-white/30 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8 md:mb-8">
             <SearchBar
               v-model="searchTerm"
               @search="handleSearch"

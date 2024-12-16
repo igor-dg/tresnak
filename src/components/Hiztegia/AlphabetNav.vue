@@ -51,16 +51,16 @@ const handleLetterClick = (letter) => {
   <div class="relative">
     <!-- Navegación Desktop -->
     <div class="hidden md:block sticky top-20">
-      <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl p-4 shadow-lg">
+      <div class="w-full max-w-md mx-auto bg-white/30 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8">
         <div class="grid grid-cols-2 gap-2 place-items-center">
           <template v-for="letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'" :key="letter">
             <button
               v-if="letter"
               @click="handleLetterClick(letter)"
               :disabled="!availableLetters.includes(letter)"
-              class="flex items-center justify-center w-12 h-12 text-lg font-medium rounded-lg transition-all duration-200"
+              class="flex items-center justify-center w-12 h-12 text-lg text-white font-bold rounded-lg transition-all duration-200"
               :class="{
-                'bg-indigo-600 text-white hover:bg-indigo-700': availableLetters.includes(letter),
+                'bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)]': availableLetters.includes(letter),
                 'opacity-30 cursor-not-allowed bg-gray-100': !availableLetters.includes(letter)
               }"
             >
@@ -86,9 +86,9 @@ const handleLetterClick = (letter) => {
       :disabled="!availableLetters.includes(letter)"
       class="flex items-center justify-center min-w-9 h-9 text-sm font-medium rounded-lg transition-all duration-200"
       :class="{
-        'bg-indigo-600 text-white hover:bg-indigo-700': availableLetters.includes(letter),
-        'opacity-30 cursor-not-allowed bg-gray-100': !availableLetters.includes(letter)
-      }"
+                'bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)]': availableLetters.includes(letter),
+                'opacity-30 cursor-not-allowed bg-gray-100': !availableLetters.includes(letter)
+              }"
     >
       {{ letter }}
     </button>

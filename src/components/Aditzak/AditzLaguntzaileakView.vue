@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { useTheme } from '@/composables/useTheme'
+import { Settings, ArrowRight, RefreshCw } from 'lucide-vue-next'
 import HitanoSelector from './HitanoSelector.vue'
 import GameArea from './GameArea.vue'
 import GameOverlay from '@/components/Aditzak/GameOverlay.vue'
@@ -8,7 +8,6 @@ import SystemSelectors from '@/components/Aditzak/SystemSelectors.vue'
 import TimeSelectors from '@/components/Aditzak/TimeSelectors.vue'
 import aditzakJsonData from '@/data/aditzak.json'
 import esaldiakJsonData from '@/data/esaldiak.json'
-import { Settings } from 'lucide-vue-next'
 import MobileSettingsModal from './MobileSettingsModal.vue'
 import {
   selectValidPhrase,
@@ -16,11 +15,14 @@ import {
   conjugacionExists,
   obtenerConjugacion,
   SISTEMA_NAMES,
-  TIEMPO_NAMES
+  TIEMPO_NAMES,
+  getSistemaDisplayName,
+  getTiempoDisplayName
 } from '@/utils.js'
 
 const showMobileSettings = ref(false)
 const hitanoEnabled = ref(false)
+const userAnswer = ref('') 
 // const { setTheme } = useTheme()
 
 // watch(hitanoEnabled, (newValue) => {
@@ -207,6 +209,7 @@ function handleAnswer(answer) {
   } else {
     handleIncorrectAnswer(answer)
   }
+  userAnswer.value = '' // Clear input after submission
 }
 
 function handleCorrectAnswer() {
@@ -230,7 +233,7 @@ function handleIncorrectAnswer(answer) {
   if (gameState.value.intentos === 1) {
     gameState.value.aukerakMessage = "Bi aukera dituzu"
   } else if (gameState.value.intentos === 2) {
-    gameState.value.aukerakMessage = "Azken aukera duzu"
+    gameState.value.aukerakMessage = "Azken aukera!"
   } else {
     gameState.value = {
       ...gameState.value,
@@ -281,86 +284,85 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="min-h-screen py-0">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="h-full overflow-hidden py-4">
+    <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
-      <div class="flex-1 justify-between items-center mb-8">
-        <button 
-          class="ezarpenak md:hidden backdrop-blur-card p-2 text-[var(--text-primary)] "
-          @click="showMobileSettings = !showMobileSettings"
-        >
-          <Settings class="h-6 w-6"></Settings>
-        </button>
-      </div>
-      
-      <div class="flex flex-col md:flex-row gap-8">
-        <!-- Panel de configuración móvil -->
-        <!-- <div 
-          class="md:hidden slide-in"
-          v-show="showMobileSettings"
-        >
-          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl p-6 shadow-lg space-y-6">
-            <HitanoSelector v-model:hitanoEnabled="hitanoEnabled" />
-            <SystemSelectors 
-              v-model:sistemas="sistemas"
-              @update:sistema="handleSystemUpdate"
-            />
-            <TimeSelectors
-              v-model:tiempos="tiempos"
-              @update:tiempo="handleTimeUpdate"
-            />            
-          </div>
-        </div> -->
+      <header class="md:hidden w-full max-w-md mx-auto flex items-center justify-end mb-4 md:max-w-none">
+  <h4 class="font-bold text-white drop-shadow-md mr-4">Ezarpenak</h4>
+  <div class="flex items-center space-x-4">
+    <button 
+      :class="{
+        'transition-all focus:outline-none focus:ring-2 rounded-full p-2': true,
+        'bg-gradient-to-r': true,
+        'from-[var(--gradient-from)]': true,
+        'to-[var(--gradient-to)]': true,
+        'hover:from-[var(--gradient-hover-from)]': true,
+        'hover:to-[var(--gradient-hover-to)]': true,
+        'focus:ring-[var(--gradient-from)]': true
+        }"
+      @click="showMobileSettings = !showMobileSettings"
+    >
+      <Settings class="w-6 h-6" />
+    </button>
+  </div>
+</header>
 
-        <MobileSettingsModal v-model="showMobileSettings">
-      <div class="space-y-6">
-        <HitanoSelector v-model:hitanoEnabled="hitanoEnabled" />
-        <SystemSelectors 
-          v-model:sistemas="sistemas"
-          @update:sistema="handleSystemUpdate"
-        />
-        <TimeSelectors
-          v-model:tiempos="tiempos"
-          @update:tiempo="handleTimeUpdate"
-        />            
-      </div>
-    </MobileSettingsModal>
+      <!-- Mobile Settings Modal -->
+      <MobileSettingsModal v-model="showMobileSettings">
+        <div class="space-y-1">
+          <HitanoSelector v-model:hitanoEnabled="hitanoEnabled" />
+          <SystemSelectors 
+            v-model:sistemas="sistemas"
+            @update:sistema="handleSystemUpdate"
+          />
+          <TimeSelectors
+            v-model:tiempos="tiempos"
+            @update:tiempo="handleTimeUpdate"
+          />            
+        </div>
+      </MobileSettingsModal>
 
-        <!-- Panel de configuración desktop izquierdo -->
-        <div class="hidden md:block w-64 space-y-6">
-          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl shadow-lg">
+      <!-- Desktop Layout -->
+      <div class="hidden md:grid md:grid-cols-[250px_1fr_250px] md:gap-8 items-start">
+        <!-- Left Sidebar -->
+        <div class="space-y-6">
+          <div class="bg-white/30 backdrop-blur-md rounded-3xl shadow-lg">
             <HitanoSelector v-model:hitanoEnabled="hitanoEnabled" />
           </div>
-
-          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl shadow-lg">
+          <div class="bg-white/30 backdrop-blur-md rounded-3xl shadow-lg">
             <SystemSelectors
               v-model:sistemas="sistemas"
               @update:sistema="handleSystemUpdate"
             />
           </div>
         </div>
-        
-        <!-- Área principal del juego -->
-        <div class="flex-1">
-          <GameArea
-            v-model:gameState="gameState"
-            :sistemas="sistemas"
-            :tiempos="tiempos"
-            @answer-submitted="handleAnswer"
-            @restart-game="handleRestartGame"
-            class="fade-in"
+
+        <!-- Main Game Area -->
+        <GameArea
+          :game-state="gameState"
+          :sistemas="sistemas"
+          @answer-submitted="handleAnswer"
+          @restart-game="handleRestartGame"
+        />
+
+        <!-- Right Sidebar -->
+        <div class="bg-white/30 backdrop-blur-md rounded-3xl shadow-lg h-fit">
+          <TimeSelectors
+            v-model:tiempos="tiempos"
+            @update:tiempo="handleTimeUpdate"
           />
         </div>
+      </div>
 
-        <!-- Panel de configuración desktop derecho -->
-        <div class="hidden md:block w-64">
-          <div class="bg-[var(--bg-card)] backdrop-blur-lg rounded-2xl shadow-lg">
-            <TimeSelectors
-              v-model:tiempos="tiempos"
-              @update:tiempo="handleTimeUpdate"
-            />
-          </div>
-        </div>
+      <!-- Mobile Layout -->
+      <div class="md:hidden">
+        <GameArea
+          :game-state="gameState"
+          :sistemas="sistemas"
+          @answer-submitted="handleAnswer"
+          @restart-game="handleRestartGame"
+          class="w-full max-w-md mx-auto"
+        />
       </div>
 
       <!-- Game Overlay -->
