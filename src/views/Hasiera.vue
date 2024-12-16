@@ -5,19 +5,19 @@ import NavigationCard from '../components/NavigationCard.vue';
 <template>
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
     <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-gray-900 mb-6 sm:text-5xl">
+      <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-6 sm:text-5xl">
         Ongi etorri euskara ikasteko gure plataformara
       </h1>
-      <p class="text-xl text-gray-600 mb-8">
+      <p class="text-xl text-[var(--text-secondary)] mb-8">
         Orrialde honek hizkuntzaren ikaskuntza prozesua errazteko eta hobetzeko
         diseinatutako tresna espezifikoak eskaintzen ditu.
       </p>
-      <h2 class="text-2xl font-semibold text-gray-900 mb-12">
+      <h2 class="text-2xl font-semibold text-[var(--text-primary)] mb-12">
         Hona hemen eskura ditugun gure tresna nagusiak:
       </h2>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
       
       <NavigationCard
         title="Sinonimoen jokoa"

@@ -81,7 +81,7 @@ const hoveredWord = ref(null)
   
         <!-- Grid de palabras -->
         <div :id="'block-' + letter" class="letter-block">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> <!-- Ajustar el gap para más espacio -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <button
             v-for="word in words"
             :key="word"

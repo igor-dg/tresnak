@@ -11,8 +11,8 @@
   --gradient-hover-from: theme('colors.amber.600');
   --gradient-hover-via: theme('colors.orange.500');
   --gradient-hover-to: theme('colors.rose.500');
-  --text-primary: theme('colors.amber.700');
-  --text-secondary: theme('colors.amber.500');
+  --text-primary: theme('colors.amber.800');
+  --text-secondary: theme('colors.amber.600');
   --accent-color: theme('colors.indigo.500');
   --header-gradient-from: theme('colors.indigo.600');
   --header-gradient-to: theme('colors.pink.500');

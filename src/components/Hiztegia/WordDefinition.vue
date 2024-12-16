@@ -85,11 +85,20 @@ watch(() => props.isOpen, (newVal) => {
         <!-- Header -->
         <div class="flex items-center justify-between p-4 border-b">
           <div class="flex items-center gap-2">
-            <h2 class="text-xl font-bold text-indigo-600">{{ word }}</h2>
-            <span class="text-gray-500">- Definizioa</span>
+            <h2 class="text-xl font-bold text-amber-600">{{ word }}</h2>
+            <span class="text-amber-500">- Definizioa</span>
           </div>
           <button @click="closeModal"
-                  class="p-1 rounded-lg hover:bg-gray-100 transition-colors">
+          :class="{
+        'right-2  transition-all focus:outline-none focus:ring-2 rounded-full p-2': true,
+        'bg-gradient-to-r': true,
+        'from-[var(--gradient-from)]': true,
+        'to-[var(--gradient-to)]': true,
+        'hover:from-[var(--gradient-hover-from)]': true,
+        'hover:to-[var(--gradient-hover-to)]': true,
+        'focus:ring-[var(--gradient-from)]': true
+      }"
+      >
             <X class="size-5" />
           </button>
         </div>
@@ -115,7 +124,7 @@ watch(() => props.isOpen, (newVal) => {
 
           <!-- Empty -->
           <div v-else 
-               class="text-center py-8 text-gray-500">
+               class="text-center py-8 text-amber-500">
             Ez dago definiziorik
           </div>
         </div>
@@ -123,7 +132,15 @@ watch(() => props.isOpen, (newVal) => {
         <!-- Footer -->
         <div class="p-4 border-t">
           <button @click="closeModal"
-                  class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+          :class="{
+        'w-full text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+        'bg-gradient-to-r': true,
+        'from-[var(--gradient-from)]': true,
+        'to-[var(--gradient-to)]': true,
+        'hover:from-[var(--gradient-hover-from)]': true,
+        'hover:to-[var(--gradient-hover-to)]': true,
+        'focus:ring-[var(--gradient-from)]': true
+      }">
             Itxi
           </button>
         </div>

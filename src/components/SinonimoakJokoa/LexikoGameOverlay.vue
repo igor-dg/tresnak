@@ -23,7 +23,7 @@ const emit = defineEmits(['next', 'close'])
   <div class="fixed left-0 top-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50"
     @click.self="$emit('close')"
   >
-    <div class="bg-white/90 backdrop-blur-lg rounded-3xl p-8 max-w-md w-full mx-4 shadow-xl">
+    <div class="bg-white/100 backdrop-blur-lg rounded-3xl p-8 max-w-md w-full mx-4 shadow-xl">
       <!-- Respuestas correctas -->
       <div v-if="correctAnswers.length > 0" class="mb-6">
         <div class="flex items-center gap-2 mb-2">
@@ -31,7 +31,7 @@ const emit = defineEmits(['next', 'close'])
           <h3 class="font-medium text-green-600">Erantzun zuzenak:</h3>
         </div>
         <div class="pl-7">
-          <p v-for="answer in correctAnswers" :key="answer" class="text-gray-700">
+          <p v-for="answer in correctAnswers" :key="answer" class="text-green-700">
             {{ answer }}
           </p>
         </div>
@@ -44,7 +44,7 @@ const emit = defineEmits(['next', 'close'])
           <h3 class="font-medium text-red-600">Erantzun okerrak:</h3>
         </div>
         <div class="pl-7">
-          <p v-for="answer in incorrectAnswers" :key="answer" class="text-gray-700">
+          <p v-for="answer in incorrectAnswers" :key="answer" class="text-red-700">
             {{ answer }}
           </p>
         </div>
@@ -53,10 +53,10 @@ const emit = defineEmits(['next', 'close'])
       <!-- Respuestas que faltaron -->
       <div v-if="missingAnswers.length > 0" class="mb-6">
         <div class="flex items-center gap-2 mb-2">
-          <h3 class="font-medium text-gray-600">Falta ziren erantzunak:</h3>
+          <h3 class="font-medium text-amber-700">Falta ziren erantzunak:</h3>
         </div>
         <div class="pl-7">
-          <p v-for="answer in missingAnswers" :key="answer" class="text-gray-700">
+          <p v-for="answer in missingAnswers" :key="answer" class="text-amber-700">
             {{ answer }}
           </p>
         </div>
@@ -64,7 +64,15 @@ const emit = defineEmits(['next', 'close'])
 
       <button
         @click="$emit('next')"
-        class="w-full py-3 px-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors font-medium"
+        :class="{
+        'w-full text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+        'bg-gradient-to-r': true,
+        'from-[var(--gradient-from)]': true,
+        'to-[var(--gradient-to)]': true,
+        'hover:from-[var(--gradient-hover-from)]': true,
+        'hover:to-[var(--gradient-hover-to)]': true,
+        'focus:ring-[var(--gradient-from)]': true
+      }"
       >
         Hurrengoa
       </button>

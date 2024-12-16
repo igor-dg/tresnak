@@ -65,17 +65,26 @@ function handleDefinitionChange(isOpen) {
   <div class="max-w-4xl mx-auto p-4">
     <!-- Barra de búsqueda -->
     <div class="relative mb-6">
-      <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 size-5" />
+      <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-400 size-5" />
       <input
         type="text"
         v-model="searchTerm"
         placeholder="Bilatu hitza..."
-        class="w-full text-gray-100 pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all"
+        class="w-full pl-10 pr-4 py-2 bg-white/50 rounded-full px-6 text-lg text-left focus:outline-none focus:ring-2 focus:ring-amber-300 outline-none transition-all"
+        :style="{ color: 'var(--text-primary)'}"
       />
       <button
       v-if="searchTerm"
       @click="searchTerm = ''"
-      class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 text-white p-1 rounded-lg hover:bg-indigo-700 transition-colors"
+      :class="{
+        'absolute right-2 top-1/2 -translate-y-1/2 transition-all focus:outline-none focus:ring-2 rounded-full p-2': true,
+        'bg-gradient-to-r': true,
+        'from-[var(--gradient-from)]': true,
+        'to-[var(--gradient-to)]': true,
+        'hover:from-[var(--gradient-hover-from)]': true,
+        'hover:to-[var(--gradient-hover-to)]': true,
+        'focus:ring-[var(--gradient-from)]': true
+      }"
     >
     <RefreshCw class="size-5" />
     </button>
@@ -88,37 +97,39 @@ function handleDefinitionChange(isOpen) {
       <div
         v-for="(group, index) in filteredGroups"
         :key="index"
-        class="bg-[var(--bg-card)] backdrop-blur-lg rounded-xl shadow-sm border border-gray-100 overflow-hidden"
+        class="bg-white/30 backdrop-blur-lg rounded-xl shadow-sm overflow-hidden"
       >
         <!-- Versión móvil - expandible -->
         <div class="md:hidden">
           <button
-  v-for="(word, wordIndex) in group.grupo"
-  :key="wordIndex"
-  @click="handleWordClick(word)"
-  :class="{
-    'bg-indigo-600 text-white m-3 hover:bg-indigo-700': !shouldHighlight(word),
-    'bg-amber-600 text-white m-3 hover:bg-amber-700': shouldHighlight(word)
-  }"
-  class="font-medium rounded-lg px-3 py-2 transition-colors"
->
-  {{ word }}
-</button>
+        v-for="(word, wordIndex) in group.grupo"
+        :key="wordIndex"
+        @click="handleWordClick(word)"
+        :class="{
+          'bg-gradient-to-r from-fuchsia-600 to-pink-500 text-white m-3 hover:bg-gradient-to-r hover:from-fuchsia-700 hover:to-pink-600' : shouldHighlight(word),
+          'bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] text-white m-3 hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)] focus:ring-[var(--gradient-from)]': !shouldHighlight(word),
+          'focus:outline-none focus:ring-2': true,
+        }"
+        class="font-medium rounded-full px-4 py-2 transition-colors"
+      >
+        {{ word }}
+      </button>
         </div>
 
         <!-- Versión escritorio - todo visible -->
         <div class="hidden md:block p-4">
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-wrap gap-1">
             <button
   v-for="(word, wordIndex) in group.grupo"
   :key="wordIndex"
   @click="handleWordClick(word)"
   :class="{
-    'bg-indigo-600 text-white hover:bg-indigo-700': !shouldHighlight(word),
-    'bg-amber-600 text-white hover:bg-amber-700': shouldHighlight(word)
-  }"
-  class="font-medium rounded-lg px-3 py-2 transition-colors"
->
+          'bg-gradient-to-r from-fuchsia-600 to-pink-500 text-white m-3 hover:bg-gradient-to-r hover:from-fuchsia-700 hover:to-pink-600' : shouldHighlight(word),
+          'bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] text-white m-3 hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)] focus:ring-[var(--gradient-from)]': !shouldHighlight(word),
+          'focus:outline-none focus:ring-2': true,
+        }"
+        class="font-medium rounded-full px-4 py-2 transition-colors"
+      >
   {{ word }}
 </button>
           </div>
@@ -144,3 +155,8 @@ function handleDefinitionChange(isOpen) {
   </div>
 </div>
 </template>
+<style scoped>
+input::placeholder {
+  color: var(--text-secondary);
+}
+</style>
