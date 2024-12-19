@@ -11,7 +11,12 @@ const emit = defineEmits(['update:hitanoEnabled'])
         <span class="text-base font-medium bg-gradient-to-r from-pink-600 to-red-500 bg-clip-text text-transparent">
           Hika
         </span>
-        <span class="text-xs text-gray-500 mt-0.5">
+        <span class="text-xs text-gray-500 mt-0.5" :style="{
+        backgroundImage: `linear-gradient(to right, var(--header-gradient-from), var(--header-gradient-to))`,
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        color: 'transparent'
+      }">
             Hikako adizkiak erabili
         </span>
       </div>

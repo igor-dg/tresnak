@@ -15,7 +15,12 @@ const emit = defineEmits(['update:sistemas'])
       }">
         Sistemak
       </h4>
-      <p class="text-xs text-gray-500 mt-1">Aukeratu nahi dituzun sistemak</p>
+      <p class="text-xs text-gray-500 mt-1" :style="{
+        backgroundImage: `linear-gradient(to right, var(--header-gradient-from), var(--header-gradient-to))`,
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        color: 'transparent'
+      }">Aukeratu nahi dituzun sistemak</p>
     </div>
 
     <div class="space-y-0">

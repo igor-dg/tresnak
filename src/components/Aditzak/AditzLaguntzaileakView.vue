@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { Settings, ArrowRight, RefreshCw } from 'lucide-vue-next'
+import { Settings } from 'lucide-vue-next'
 import HitanoSelector from './HitanoSelector.vue'
 import GameArea from './GameArea.vue'
 import GameOverlay from '@/components/Aditzak/GameOverlay.vue'
@@ -14,6 +14,7 @@ import {
   composePhrase,
   conjugacionExists,
   obtenerConjugacion,
+  obtenerSistemaData,
   SISTEMA_NAMES,
   TIEMPO_NAMES,
   getSistemaDisplayName,
@@ -70,7 +71,8 @@ const gameState = ref({
   frasesUsadas: [],
   currentSubject: null,
   currentObject: null,
-  hitanoEnabled: false
+  hitanoEnabled: false,
+  correctAnswers: {}
 })
 
 const aditzakData = ref(null)
@@ -109,6 +111,31 @@ function handleHitanoChange(enabled) {
   cargarJuegoAditzak()
 }
 
+// Nueva función para obtener todas las conjugaciones
+function obtenerTodasLasConjugaciones(phraseData, grupoAleatorio) {
+  const conjugaciones = {}
+    
+  tiemposActivos.value.forEach(tiempoId => {
+    const sistemaData = { 
+      [grupoAleatorio.sistema]: aditzakJsonData.sistema[grupoAleatorio.sistema]
+    }
+    
+    const conjugacion = obtenerConjugacion(
+      sistemaData,
+      tiempoId,
+      phraseData.selectedSubject,
+      phraseData.selectedObject,
+      phraseData.variables?.number || 'Sing'
+    )
+    
+    if (conjugacion) {
+      conjugaciones[tiempoId] = conjugacion
+    }
+  })
+  
+  return conjugaciones
+}
+
 function cargarJuegoAditzak(retryCount = 0) {
   try {
     // Validación inicial de sistemas y tiempos activos
@@ -134,9 +161,7 @@ function cargarJuegoAditzak(retryCount = 0) {
       return cargarJuegoAditzak(retryCount + 1)
     }
 
-    
-
-    // Filtrar conjugaciones de hitano si es necesario
+    // Verificar filtro de hitano
     if (!hitanoEnabled.value && phraseData) {
       const hitanoPatterns = ['HI', 'HIK', 'HIRI']
       if (hitanoPatterns.some(pattern => 
@@ -148,23 +173,15 @@ function cargarJuegoAditzak(retryCount = 0) {
     }
 
     // Verificar que la conjugación existe
-    if (!conjugacionExists(
-      grupoAleatorio.sistema,
-      tiempoAleatorio,
-      phraseData.selectedSubject,
-      phraseData.selectedObject,
-      phraseData.variables?.number || 'Sing'
-    )) {
-      console.warn('Conjugación no encontrada, intentando otra combinación')
+    const conjugacionExists = aditzakJsonData.sistema[grupoAleatorio.sistema]
+    if (!conjugacionExists) {
+      console.warn('Sistema no encontrado, intentando otra combinación')
       return cargarJuegoAditzak(retryCount + 1)
     }
 
-    // Componer la frase
-    const composedPhrase = composePhrase(phraseData, grupoAleatorio.sistema, tiempoAleatorio)
-
-    // Obtener conjugación
+    // Obtener conjugación correcta primero
     const conjugacionCorrecta = obtenerConjugacion(
-      { [grupoAleatorio.sistema]: grupoAleatorio },
+      { [grupoAleatorio.sistema]: aditzakJsonData.sistema[grupoAleatorio.sistema] },
       tiempoAleatorio,
       phraseData.selectedSubject,
       phraseData.selectedObject,
@@ -172,20 +189,26 @@ function cargarJuegoAditzak(retryCount = 0) {
     )
 
     if (!conjugacionCorrecta) {
-      throw new Error('No se pudo obtener la conjugación correcta')
+      console.warn('Conjugación no encontrada, intentando otra combinación')
+      return cargarJuegoAditzak(retryCount + 1)
     }
 
-    console.log('Debug auxiliar:', {
-      auxiliar: conjugacionCorrecta
-    })
+    // Obtener todas las conjugaciones posibles
+    const todasLasConjugaciones = obtenerTodasLasConjugaciones(phraseData, grupoAleatorio)
+
+    // Componer la frase
+    const composedPhrase = composePhrase(phraseData, grupoAleatorio.sistema, tiempoAleatorio)
 
     // Actualizar estado del juego
     gameState.value = {
       ...gameState.value,
       currentPhrase: composedPhrase,
+      originalPhrase: phraseData.phrase,
+      variables: phraseData.variables,
       selectedSistema: grupoAleatorio.sistema,
-      selectedTime: tiempoAleatorio,
+      selectedTime: tiempoAleatorio, // Añadido selectedTime
       correctAnswer: conjugacionCorrecta,
+      correctAnswers: todasLasConjugaciones,
       intentos: 0,
       respuestasIncorrectas: [],
       currentSubject: phraseData.selectedSubject,
@@ -194,10 +217,28 @@ function cargarJuegoAditzak(retryCount = 0) {
       isCorrect: false,
       aukerakMessage: 'Hiru aukera dituzu'
     }
+
   } catch (error) {
     console.error('Error al cargar el juego:', error)
     return cargarJuegoAditzak(retryCount + 1)
   }
+}
+
+// Nueva función para validar respuestas individuales
+function handleValidateAnswer({ tiempo, answer }) {
+  // Limpiar la respuesta y la respuesta correcta de paréntesis
+  const cleanAnswer = answer.trim().replace(/\(|\)/g, '').toLowerCase()
+  const correctAnswer = gameState.value.correctAnswers[tiempo]
+  const cleanCorrect = correctAnswer?.replace(/\(|\)/g, '').toLowerCase()
+
+  // Verificar si existe una respuesta correcta para este tiempo
+  if (!correctAnswer) {
+    console.warn(`No hay respuesta correcta para el tiempo ${tiempo}`)
+    return null
+  }
+
+  // Comparar y devolver el resultado
+  return cleanAnswer === cleanCorrect ? 'zuzena' : 'okerra'
 }
 
 function handleAnswer(answer) {
@@ -284,7 +325,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="h-full overflow-hidden py-4">
+  <div class="h-full py-4">
     <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <header class="md:hidden w-full max-w-md mx-auto flex items-center justify-end mb-4 md:max-w-none">
@@ -339,11 +380,14 @@ onMounted(async () => {
 
         <!-- Main Game Area -->
         <GameArea
-          :game-state="gameState"
-          :sistemas="sistemas"
-          @answer-submitted="handleAnswer"
-          @restart-game="handleRestartGame"
-        />
+  :game-state="gameState"
+  :sistemas="sistemas"
+  :tiempos="tiempos"
+  :initial-active-tab="'allTimes'"
+  @answer-submitted="handleAnswer"
+  @validate-answer="handleValidateAnswer"
+  @restart-game="handleRestartGame"
+/>
 
         <!-- Right Sidebar -->
         <div class="bg-white/30 backdrop-blur-md rounded-3xl shadow-lg h-fit">
@@ -357,12 +401,15 @@ onMounted(async () => {
       <!-- Mobile Layout -->
       <div class="md:hidden">
         <GameArea
-          :game-state="gameState"
-          :sistemas="sistemas"
-          @answer-submitted="handleAnswer"
-          @restart-game="handleRestartGame"
-          class="w-full max-w-md mx-auto"
-        />
+      :game-state="gameState"
+      :sistemas="sistemas"
+      :tiempos="tiempos"
+      :initial-active-tab="'allTimes'"
+      @answer-submitted="handleAnswer"
+      @validate-answer="handleValidateAnswer"
+      @restart-game="handleRestartGame"
+      class="w-full max-w-md mx-auto"
+    />
       </div>
 
       <!-- Game Overlay -->

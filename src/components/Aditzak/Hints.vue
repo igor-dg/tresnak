@@ -65,7 +65,7 @@ const emit = defineEmits(['hint-used'])
 const isMobile = ref(false)
 
 const basePath = computed(() => {
-  return import.meta.env.PROD ? '/tresnak/v2/img/' : '/img/'
+  return import.meta.env.PROD ? '/tresnak/img/' : '/img/'
 })
 
 const activeSystemCount = computed(() => {
@@ -81,7 +81,13 @@ const canShowMegaPista = computed(() => !props.hints.megaPista.used)
 const canDisplayPista1 = computed(() => props.hints.pista1.frase && activeSystemCount.value >= 2)
 const canDisplayPista2 = computed(() => props.hints.pista2.frase && activeSystemCount.value >= 3)
 const canDisplaySuperPista = computed(() => props.hints.superPista.frase)
-const canDisplayMegaPista = computed(() => props.hints.megaPista.imagen)
+const canDisplayMegaPista = computed(() => props.hints?.megaPista?.used && (
+  props.hints?.megaPista?.imagen ||
+  props.hints?.megaPista?.isNorSystem ||
+  props.hints?.megaPista?.isNorNorkSystem ||
+  props.hints?.megaPista?.isNorNoriSystem ||
+  props.hints?.megaPista?.isNorNoriNorkSystem
+))
 
 // Estados para los overlays móviles
 const showMobilePista1 = ref(false)
@@ -174,37 +180,47 @@ function getTiempoDisplayName(tiempoId) {
 function showHint(type) {
   try {
     if (type === 'megaPista') {
-      if (props.sistema.toLowerCase() === 'nor') {
-        const conjugationData = norConjugations[props.tiempo]
-        
-        if (!conjugationData) {
-          throw new Error(`No se encontraron conjugaciones para ${props.tiempo}`)
-        }
-
-        const subjects = ['ni', 'hi', 'hura', 'gu', 'zu', 'zuek', 'haiek']
-        const conjugationList = conjugationData.conjugations.map((conj, index) => {
-          return `${subjects[index]}: ${conj}`
-        })
-
-        emit('hint-used', {
-          type,
-          data: {
-            isNorSystem: true,
-            conjugations: conjugationList
-          }
-        })
-        return
-      }
-      
-      // Original image behavior for other systems
-      emit('hint-used', {
-        type,
-        data: {
-          imagen: `${basePath.value}${props.sistema.toLowerCase()}_${props.tiempo}.png`
-        }
-      })
-      return
+  if (props.sistema.toLowerCase() === 'nor') {
+    const conjugationData = norConjugations[props.tiempo]
+    
+    if (!conjugationData) {
+      throw new Error(`No se encontraron conjugaciones para ${props.tiempo}`)
     }
+
+    // Usando el nuevo formato con personas
+    const subjects = ['ni', 'hi', 'hura', 'gu', 'zu', 'zuek', 'haiek']
+    const conjugations = conjugationData.conjugations.map((conj, index) => ({
+      person: subjects[index],
+      conjugation: conj
+    }))
+
+    emit('hint-used', {
+      type,
+      data: {
+        isNorSystem: true,
+        currentNor: props.currentSubject,
+        tiempo: props.tiempo,
+        conjugations: conjugations
+      }
+    })
+    return
+  }
+  
+  // Para otros sistemas, usamos las tablas de conjugación
+  emit('hint-used', {
+    type,
+    data: {
+      isNorNorkSystem: props.sistema.toLowerCase() === 'nor-nork',
+      isNorNoriSystem: props.sistema.toLowerCase() === 'nor-nori',
+      isNorNoriNorkSystem: props.sistema.toLowerCase() === 'nor-nori-nork',
+      currentNor: props.currentSubject,
+      currentNork: props.currentObject,
+      currentNori: props.sistema.toLowerCase() === 'nor-nori' ? props.currentObject : undefined,
+      tiempo: props.tiempo
+    }
+  })
+  return
+}
 
     // Seleccionar sistema según el tipo de pista
     const availableSystems = props.sistemas.filter(system => {
@@ -249,7 +265,6 @@ function showHint(type) {
 }
 
 function handleHintClick(type) {
-  // Si la pista aún no se ha generado, generarla
   if ((type === 'pista1' && canShowPista1.value) ||
       (type === 'pista2' && canShowPista2.value) ||
       (type === 'superPista' && canShowSuperPista.value) ||
@@ -373,12 +388,17 @@ onMounted(() => {
     />
 
     <HintOverlay
-      v-if="hints.megaPista.imagen || hints.megaPista.isNorSystem"
-      :is-open="showMobileMegaPista"
-      title="Megapista"
-      :hint="hints.megaPista"
-      @close="showMobileMegaPista = false"
-    />
+  v-if="hints.megaPista.used && (
+    hints.megaPista.isNorSystem ||
+    hints.megaPista.isNorNorkSystem ||
+    hints.megaPista.isNorNoriSystem ||
+    hints.megaPista.isNorNoriNorkSystem
+  )"
+  :is-open="showMobileMegaPista"
+  title="Megapista"
+  :hint="hints.megaPista"
+  @close="showMobileMegaPista = false"
+/>
   </div>
 </template>
 

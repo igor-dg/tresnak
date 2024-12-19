@@ -32,7 +32,12 @@ function getTimeDescription(timeId) {
       }">
       Aldia eta denbora
       </h4>
-      <p class="text-xs text-gray-500 mt-1">Aukeratu nahi dituzun denborak</p>
+      <p class="text-xs text-gray-500 mt-1" :style="{
+        backgroundImage: `linear-gradient(to right, var(--header-gradient-from), var(--header-gradient-to))`,
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        color: 'transparent'
+      }">Aukeratu nahi dituzun denborak</p>
     </div>
 
     <!-- Lista de toggles -->

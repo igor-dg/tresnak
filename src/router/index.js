@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Hasiera from '../views/Hasiera.vue'
 
-const baseUrl = import.meta.env.PROD ? '/tresnak/v2/' : '/';
+const baseUrl = import.meta.env.PROD ? '/tresnak/' : '/';
 
 const router = createRouter({
   history: createWebHistory(baseUrl),

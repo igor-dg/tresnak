@@ -254,26 +254,32 @@ function obtenerConjugacionObjeto(object) {
 // Get conjugation with safe access
 function obtenerConjugacion(grupo, tiempo, sujeto, objeto, numero = 'Sing') {
   try {
+    // Verificar que tenemos todos los datos necesarios
+    if (!grupo || !tiempo || !sujeto) {
+      console.warn('Faltan datos necesarios para obtener conjugación')
+      return null
+    }
+
     if (grupo['nor-nori-nork']) {
-      return grupo['nor-nori-nork'][numero][sujeto][objeto][tiempo][0]
+      return grupo['nor-nori-nork'][numero]?.[sujeto]?.[objeto]?.[tiempo]?.[0] || null
     } 
     if (grupo['nor-nori']) {
       const sujetoNorNori = numero === 'Sing' ? 'HURA' : 'HAIEK'
-      return grupo['nor-nori'][sujetoNorNori][objeto][tiempo][0]
+      return grupo['nor-nori'][sujetoNorNori]?.[objeto]?.[tiempo]?.[0] || null
     } 
     if (grupo['nor-nork']) {
       if (objeto === 'HAIEK' || (numero === 'Plur' && !objeto)) {
-        return grupo['nor-nork']['HAIEK'][sujeto][tiempo][0]
+        return grupo['nor-nork']['HAIEK']?.[sujeto]?.[tiempo]?.[0] || null
       }
-      return grupo['nor-nork'][objeto][sujeto][tiempo][0]
+      return grupo['nor-nork'][objeto]?.[sujeto]?.[tiempo]?.[0] || null
     } 
     if (grupo['nor']) {
-      return grupo['nor'][sujeto][tiempo][0]
+      return grupo['nor'][sujeto]?.[tiempo]?.[0] || null
     }
-    return ''
+    return null
   } catch (error) {
     console.error('Error en obtenerConjugacion:', error)
-    return ''
+    return null
   }
 }
 

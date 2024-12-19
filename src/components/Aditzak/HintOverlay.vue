@@ -1,6 +1,9 @@
 <script setup>
 import { X } from 'lucide-vue-next'
 import { TIEMPO_NAMES } from '@/utils.js'
+import NorNorkConjugationTable from './NorNorkConjugationTable.vue'
+import NorNoriConjugationTable from './NorNoriConjugationTable.vue'
+import NorNoriNorkConjugationTable from './NorNoriNorkConjugationTable.vue'
 
 defineProps({
   isOpen: {
@@ -42,7 +45,7 @@ function getTiempoDisplayName(tiempoId) {
         />
         
         <!-- Content -->
-        <div class="relative w-full max-w-sm mx-4 sm:mx-auto">
+        <div class="relative w-full max-w-md mx-4 sm:mx-auto">
           <div class="w-full max-w-md mx-auto bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8">
             <!-- Header with title and close button -->
             <div class="flex justify-between items-start mb-4">
@@ -58,16 +61,39 @@ function getTiempoDisplayName(tiempoId) {
             <!-- Hint content -->
             <div class="mt-2">
               <!-- Nor System Content -->
-              <div v-if="hint.isNorSystem">
-                <ul class="space-y-1">
-                  <li v-for="(conj, index) in hint.conjugations" 
-                      :key="index"
-                      class="text-amber-600 font-semibold text-center">
-                    {{ conj }}
-                  </li>
-                </ul>
-              </div>
-              
+<div v-if="hint.isNorSystem">
+  <ul class="space-y-2">
+    <li v-for="item in hint.conjugations" 
+        :key="item.person"
+        class="flex justify-between items-center px-4 py-2 bg-amber-50/50 rounded-lg">
+      <span class="text-amber-800 font-medium">{{ item.person }}:</span>
+      <span class="text-amber-600 font-semibold">{{ item.conjugation }}</span>
+    </li>
+  </ul>
+</div>
+
+              <div v-else-if="hint.isNorNorkSystem">
+  <NorNorkConjugationTable
+    :current-nor="hint.currentNor"
+    :current-nork="hint.currentNork"
+    :tiempo="hint.tiempo"
+  />
+</div>
+<div v-else-if="hint.isNorNoriSystem">
+  <NorNoriConjugationTable
+    :current-nor="hint.currentNor"
+    :current-nori="hint.currentNori"
+    :tiempo="hint.tiempo"
+  />
+</div>
+<div v-else-if="hint.isNorNoriNorkSystem">
+  <NorNoriNorkConjugationTable
+    :current-nor="hint.currentNor"
+    :current-nori="hint.currentNori"
+    :current-nork="hint.currentNork"
+    :tiempo="hint.tiempo"
+  />
+</div>     
               <!-- Image Content -->
               <div v-else-if="hint.imagen">
                 <img 
