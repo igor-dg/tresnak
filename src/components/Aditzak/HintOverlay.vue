@@ -49,7 +49,7 @@ function getTiempoDisplayName(tiempoId) {
           <div class="w-full max-w-md mx-auto bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8">
             <!-- Header with title and close button -->
             <div class="flex justify-between items-start mb-4">
-              <h5 class="font-bold text-amber-800">{{ title }}</h5>
+              <h5 class="font-bold text-amber-900">{{ title }}</h5>
               <button
                 @click="$emit('close')"
                 class="p-2 bg-gradient-to-r from-amber-400 to-orange-400 text-white rounded-full hover:from-amber-500 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-amber-300 transition-all"
@@ -67,7 +67,7 @@ function getTiempoDisplayName(tiempoId) {
         :key="item.person"
         class="flex justify-between items-center px-4 py-2 bg-amber-50/50 rounded-lg">
       <span class="text-amber-800 font-medium">{{ item.person }}:</span>
-      <span class="text-amber-600 font-semibold">{{ item.conjugation }}</span>
+      <span class="text-amber-700 font-semibold">{{ item.conjugation }}</span>
     </li>
   </ul>
 </div>
@@ -108,7 +108,7 @@ function getTiempoDisplayName(tiempoId) {
                 <div class="text-sm mb-3 font-semibold text-white bg-gradient-to-r from-amber-500 to-orange-500 rounded-full px-4 py-1 inline-block">
                          <p class="text-white">{{ hint.frase }}</p>
                 </div>
-                <div class="space-y-1 text-sm text-amber-600">
+                <div class="space-y-1 text-sm text-amber-700">
                   <p>
                     <span class="font-semibold">Sistema:</span> {{ hint.sistema }}
                   </p>

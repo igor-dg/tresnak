@@ -367,10 +367,10 @@ onMounted(async () => {
       <div class="hidden md:grid md:grid-cols-[250px_1fr_250px] md:gap-8 items-start">
         <!-- Left Sidebar -->
         <div class="space-y-6">
-          <div class="bg-white/30 backdrop-blur-md rounded-3xl shadow-lg">
+          <div class="bg-white/40 backdrop-blur-md rounded-3xl shadow-lg">
             <HitanoSelector v-model:hitanoEnabled="hitanoEnabled" />
           </div>
-          <div class="bg-white/30 backdrop-blur-md rounded-3xl shadow-lg">
+          <div class="bg-white/40 backdrop-blur-md rounded-3xl shadow-lg">
             <SystemSelectors
               v-model:sistemas="sistemas"
               @update:sistema="handleSystemUpdate"
@@ -390,7 +390,7 @@ onMounted(async () => {
 />
 
         <!-- Right Sidebar -->
-        <div class="bg-white/30 backdrop-blur-md rounded-3xl shadow-lg h-fit">
+        <div class="bg-white/40 backdrop-blur-md rounded-3xl shadow-lg h-fit">
           <TimeSelectors
             v-model:tiempos="tiempos"
             @update:tiempo="handleTimeUpdate"

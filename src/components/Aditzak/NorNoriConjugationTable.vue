@@ -78,7 +78,7 @@
               :class="{'bg-amber-50': normalizeValue(selectedNor) === person}">
             <td v-for="column in tableStructure.nor.showColumns" 
                 :key="column"
-                class="border p-2 text-center text-amber-500 min-h-[2.5rem] h-[2.5rem]">
+                class="border p-2 text-center text-amber-600 min-h-[2.5rem] h-[2.5rem]">
               {{ mapping[column] || '-' }}
             </td>
           </tr>
@@ -107,7 +107,7 @@
               :class="{'bg-amber-50': normalizeValue(selectedNori) === person}">
             <td v-for="column in tableStructure.nori.showColumns" 
                 :key="column"
-                class="border p-2 text-amber-500 text-center min-h-[2.5rem] h-[2.5rem]">
+                class="border p-2 text-amber-600 text-center min-h-[2.5rem] h-[2.5rem]">
               {{ mapping[column] || '-' }}
             </td>
           </tr>
@@ -134,7 +134,7 @@
                               person === 'Zuek'
               }">
             <template v-for="column in tableStructure.extraSuffix.showColumns" :key="column">
-  <td class="border p-2 text-center text-amber-500"
+  <td class="border p-2 text-center text-amber-600"
       :class="{
         'bg-amber-50': normalizeValue(selectedNor) === person
       }">

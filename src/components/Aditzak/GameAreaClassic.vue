@@ -1,8 +1,12 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { ArrowRight, RefreshCw } from 'lucide-vue-next'
+import { ArrowRight, RefreshCw, ChartLine } from 'lucide-vue-next'
 import Hints from './Hints.vue'
 import { getSistemaDisplayName, getTiempoDisplayName } from '@/utils'
+import { useStatsService } from '@/composables/useStatsService'
+import { useRouter } from 'vue-router'
+
+
 
 const props = defineProps({
   gameState: {
@@ -34,6 +38,26 @@ function submitAnswer() {
   userAnswer.value = ''
 }
 
+const { saveAditzakAttempt } = useStatsService()
+
+const handleAnswer = async () => {
+  if (!userAnswer.value) return
+  
+  // Asumiendo que props.gameState.selectedTime contiene el tiempo verbal actual
+  const tiempo = props.gameState.selectedTime
+  const isCorrect = userAnswer.value.toLowerCase().trim() === props.gameState.correctAnswer.toLowerCase().trim()
+  
+  // Guardar estadística
+  await saveAditzakAttempt(
+    props.gameState.selectedSistema,
+    tiempo,
+    isCorrect
+  )
+
+  emit('answer-submitted', userAnswer.value)
+  userAnswer.value = ''
+}
+
 function nextQuestion() {
   resetHints()
   emit('restart-game')
@@ -54,6 +78,12 @@ function handleHintUsed(hintData) {
 }
 
 const emit = defineEmits(['answer-submitted', 'restart-game'])
+
+const router = useRouter()
+
+const goToStats = () => {
+  router.push({ name: 'estatistikak' })
+}
 </script>
 
 <template>
@@ -76,7 +106,7 @@ const emit = defineEmits(['answer-submitted', 'restart-game'])
 
     <!-- Attempts Left -->
     <div class="text-center">
-      <span class="text-amber-600 text-sm">{{ gameState.aukerakMessage }}</span>
+      <span class="text-amber-700 text-sm">{{ gameState.aukerakMessage }}</span>
       <div class="flex justify-center gap-2 mt-2">
         <div
           v-for="i in 3"
@@ -84,8 +114,8 @@ const emit = defineEmits(['answer-submitted', 'restart-game'])
           :class="{
             'w-3 h-3 rounded-full transition-all': true,
             'bg-white scale-100': i <= gameState.intentos,
-            'bg-white/50 scale-110': i === gameState.intentos + 1,
-            'bg-white/30': i > gameState.intentos + 1
+            'bg-white/80 scale-110': i === gameState.intentos + 1,
+            'bg-white/50': i > gameState.intentos + 1
           }"
         >
       </div>
@@ -98,14 +128,22 @@ const emit = defineEmits(['answer-submitted', 'restart-game'])
     </div>
 
     <!-- Input Area -->
-    <form @submit.prevent="submitAnswer" class="relative">
+    <!-- <form @submit.prevent="submitAnswer" class="relative">
       <input
         type="text"
         v-model="userAnswer"
         class="w-full bg-white/50 rounded-full py-4 px-6 text-lg text-center focus:outline-none focus:ring-2 focus:ring-amber-300"
         :style="{ color: 'var(--text-primary)'}"
         placeholder="Idatzi zure erantzuna"
-      />
+      /> -->
+      <form @submit.prevent="handleAnswer" class="relative">
+    <input
+      type="text"
+      v-model="userAnswer"
+      class="w-full bg-white/50 rounded-full py-4 px-6 text-lg text-center focus:outline-none focus:ring-2 focus:ring-amber-300"
+      :style="{ color: 'var(--text-primary)'}"
+      placeholder="Idatzi zure erantzuna"
+    />
       <button 
         type="submit"
         :class="{
@@ -145,22 +183,42 @@ const emit = defineEmits(['answer-submitted', 'restart-game'])
       class="mt-6"
     />
 
-    <!-- Next Button -->
-    <button 
-      @click="nextQuestion"
-      :class="{
-        'w-full text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
-        'bg-gradient-to-r': true,
-        'from-[var(--gradient-from)]': true,
-        'to-[var(--gradient-to)]': true,
-        'hover:from-[var(--gradient-hover-from)]': true,
-        'hover:to-[var(--gradient-hover-to)]': true,
-        'focus:ring-[var(--gradient-from)]': true
-      }"
-    >
-      <RefreshCw class="w-5 h-5" />
-      Hurrengoa
-    </button>
+    <!-- Next and Stats Buttons -->
+    <div class="flex gap-2">
+      <button 
+        @click="nextQuestion"
+        title="Aldatu esaldia"
+        :class="{
+          'flex-1 text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+          'bg-gradient-to-r': true,
+          'from-[var(--gradient-from)]': true,
+          'to-[var(--gradient-to)]': true,
+          'hover:from-[var(--gradient-hover-from)]': true,
+          'hover:to-[var(--gradient-hover-to)]': true,
+          'focus:ring-[var(--gradient-from)]': true
+        }"
+      >
+        <RefreshCw class="w-5 h-5" />
+        Hurrengoa
+      </button>
+
+      <button 
+        @click="goToStats"
+        title="Estatistikak"
+        :class="{
+          'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+          'bg-gradient-to-r': true,
+          'from-[var(--gradient-from)]': true,
+          'to-[var(--gradient-to)]': true,
+          'hover:from-[var(--gradient-hover-from)]': true,
+          'hover:to-[var(--gradient-hover-to)]': true,
+          'focus:ring-[var(--gradient-from)]': true
+        }"
+      >
+        <ChartLine class="w-5 h-5" />
+      </button>
+    </div>
+    
   </div>
 </template>
 

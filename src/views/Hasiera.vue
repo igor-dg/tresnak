@@ -42,6 +42,11 @@ import NavigationCard from '../components/NavigationCard.vue';
         description="Euskarazko aditz osagarrien ulermena eta erabilera indartzeko diseinatutako baliabidea, perpausak behar bezala eraikitzeko."
         route="/aditzak"
       />
+      <NavigationCard
+      title="Estatistikak"
+      description="Zure erantzunak eta puntuazioa ikusi, eta hobetzeko aukerak aztertu."
+      route="/estatistikak"
+    />
     </div>
   </div>
 </template>

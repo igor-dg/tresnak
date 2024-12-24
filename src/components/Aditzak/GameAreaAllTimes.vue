@@ -1,10 +1,12 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { RefreshCw, Lightbulb } from 'lucide-vue-next'
+import { RefreshCw, Lightbulb, ChartLine } from 'lucide-vue-next'
 import { getSistemaDisplayName, composePhrase } from '@/utils'
 import HintOverlay from './HintOverlay.vue'
 import norConjugations from '@/data/nor-conjugations.json'
 import { useConjugations } from '@/composables/useConjugations'
+import { useStatsService } from '@/composables/useStatsService'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   gameState: {
@@ -41,7 +43,9 @@ watch(() => props.tiempos, (newTiempos) => {
   megaPistas.value = {} // Reset megaPistas when times change
 }, { immediate: true })
 
-const handleInputBlur = (tiempo) => {
+const { saveAditzakAttempt } = useStatsService()
+
+const handleInputBlur = async (tiempo) => {
   if (!answers.value[tiempo]) {
     results.value[tiempo] = null
     return
@@ -51,9 +55,18 @@ const handleInputBlur = (tiempo) => {
   const correctAnswer = props.gameState.correctAnswers[tiempo]
   const cleanCorrect = correctAnswer?.replace(/\(|\)/g, '').toLowerCase()
 
+  const isCorrect = cleanAnswer === cleanCorrect
+  
+  // Guardar estadística
+  await saveAditzakAttempt(
+    props.gameState.selectedSistema,
+    tiempo,
+    isCorrect
+  )
+
   results.value = {
     ...results.value,
-    [tiempo]: cleanAnswer === cleanCorrect ? 'zuzena' : 'okerra'
+    [tiempo]: isCorrect ? 'zuzena' : 'okerra'
   }
 }
 
@@ -160,6 +173,12 @@ function nextQuestion() {
 }
 
 const emit = defineEmits(['validate-answer', 'restart-game'])
+
+const router = useRouter()
+
+const goToStats = () => {
+  router.push({ name: 'estatistikak' })
+}
 </script>
 
 <template>
@@ -177,23 +196,41 @@ const emit = defineEmits(['validate-answer', 'restart-game'])
       </div>
     </div>
 
-    <!-- Next Button -->
-    <button 
-      v-if="gameState.currentPhrase"
-      @click="nextQuestion"
-      :class="{
-        'w-full text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
-        'bg-gradient-to-r': true,
-        'from-[var(--gradient-from)]': true,
-        'to-[var(--gradient-to)]': true,
-        'hover:from-[var(--gradient-hover-from)]': true,
-        'hover:to-[var(--gradient-hover-to)]': true,
-        'focus:ring-[var(--gradient-from)]': true
-      }"
-    >
-      <RefreshCw class="w-5 h-5" />
-      Hurrengoa
-    </button>
+    <!-- Next and Stats Buttons -->
+    <div class="flex gap-2">
+      <button 
+        @click="nextQuestion"
+        title="Aldatu esaldia"
+        :class="{
+          'flex-1 text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+          'bg-gradient-to-r': true,
+          'from-[var(--gradient-from)]': true,
+          'to-[var(--gradient-to)]': true,
+          'hover:from-[var(--gradient-hover-from)]': true,
+          'hover:to-[var(--gradient-hover-to)]': true,
+          'focus:ring-[var(--gradient-from)]': true
+        }"
+      >
+        <RefreshCw class="w-5 h-5" />
+        Hurrengoa
+      </button>
+
+      <button 
+        @click="goToStats"
+        title="Estatistikak"
+        :class="{
+          'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+          'bg-gradient-to-r': true,
+          'from-[var(--gradient-from)]': true,
+          'to-[var(--gradient-to)]': true,
+          'hover:from-[var(--gradient-hover-from)]': true,
+          'hover:to-[var(--gradient-hover-to)]': true,
+          'focus:ring-[var(--gradient-from)]': true
+        }"
+      >
+        <ChartLine class="w-5 h-5" />
+      </button>
+    </div>
 
     <!-- Input Fields -->
     <div v-if="gameState.currentPhrase" class="space-y-4">

@@ -56,7 +56,7 @@ function handleDefinitionChange(isOpen) {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
           <h1 class="text-2xl md:text-4xl font-bold text-[var(--text-primary)]">
-            Sinonimoen Zerrenda
+            Sinonimoen zerrenda
           </h1>
         </div>
       </div>

@@ -32,7 +32,7 @@ const emit = defineEmits(['answer-submitted', 'restart-game', 'validate-answer']
 </script>
 
 <template>
-  <div class="w-full max-w-md mx-auto bg-white/30 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8">
+  <div class="w-full max-w-md mx-auto bg-white/40 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8">
     <!-- Tab Navigation -->
     <div class="flex space-x-2">
       <!-- Botón 1 -->
@@ -41,7 +41,7 @@ const emit = defineEmits(['answer-submitted', 'restart-game', 'validate-answer']
   :class="{
     'flex-1 py-2 px-4 rounded-full transition-all duration-300 bg-transparent': true,
     'bg-gradient-to-r from-amber-500 to-orange-500 text-white focus:outline-none': activeTab === 'allTimes',
-    'text-amber-600 bg-transparent border-2 border-amber-500 border-solid hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-500 hover:text-white focus:outline-none': activeTab !== 'allTimes'
+    'text-amber-700 bg-transparent border-2 border-amber-500 border-solid hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-500 hover:text-white focus:outline-none': activeTab !== 'allTimes'
   }"
 >
   Denbora guztiak
@@ -53,7 +53,7 @@ const emit = defineEmits(['answer-submitted', 'restart-game', 'validate-answer']
   :class="{
     'flex-1 py-2 px-4 rounded-full transition-all duration-300 bg-transparent': true,
     'bg-gradient-to-r from-amber-500 to-orange-500 text-white focus:outline-none': activeTab === 'classic',
-    'text-amber-600 bg-transparent border-2 border-amber-500 border-solid hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-500 hover:text-white focus:outline-none': activeTab !== 'classic'
+    'text-amber-700 bg-transparent border-2 border-amber-500 border-solid hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-500 hover:text-white focus:outline-none': activeTab !== 'classic'
   }"
 >
   Aleatorioa

@@ -79,11 +79,11 @@
                                     }">
                                     <td v-for="column in tableStructure[tableType].showColumns"
                                         :key="column"
-                                        class="border p-2 text-center text-amber-500"
+                                        class="border p-2 text-center text-amber-600"
                                         :class="{
                                             'bg-amber-50': shouldHighlightCell(tableType, column, index, person)
                                         }">
-                                        {{ mappings[tableType][person][column] || '\u00A0' }}
+                                        {{ mappings[tableType][person][column] || '-' }}
                                     </td>
                                 </tr>
                             </tbody>

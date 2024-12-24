@@ -5,6 +5,7 @@ import GameOverlay from './LexikoGameOverlay.vue'
 import lexikoData from '@/data/lexiko.json'
 import LexikoWordList from './LexikoWordList.vue'
 import WordDefinition from '@/components/Hiztegia/WordDefinition.vue'
+import { useStatsService } from '@/composables/useStatsService'
 
 // Estado inicial por defecto
 const DEFAULT_GAME_STATE = {
@@ -96,7 +97,9 @@ function updateAnswers(newAnswers) {
   }
 }
 
-function handleSubmit(answers) {
+const { saveSinonimoAttempt } = useStatsService()
+
+async function handleSubmit(answers) {
   if (!gameState.value?.currentGroup) return
   
   const currentGroup = gameState.value.currentGroup
@@ -107,8 +110,8 @@ function handleSubmit(answers) {
   const missingAnswers = [...synonyms]
 
   if (Array.isArray(answers)) {
-    answers.forEach(answer => {
-      if (answer?.trim?.() === '') return
+    for (const answer of answers) {
+      if (answer?.trim?.() === '') continue
       
       const normalizedAnswer = normalizeWord(answer)
       if (synonyms.includes(normalizedAnswer)) {
@@ -117,10 +120,14 @@ function handleSubmit(answers) {
         if (index > -1) {
           missingAnswers.splice(index, 1)
         }
-      } else {
+        // Guardar cada acierto
+        await saveSinonimoAttempt(gameState.value.selectedWord, true)
+      } else if (normalizedAnswer) {  // Solo guardamos respuestas no vacías
         incorrectAnswers.push(normalizedAnswer)
+        // Guardar cada fallo
+        await saveSinonimoAttempt(gameState.value.selectedWord, false)
       }
-    })
+    }
   }
 
   gameState.value = {

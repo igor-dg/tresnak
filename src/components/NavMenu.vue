@@ -26,12 +26,17 @@ const navigationItems = [
   {
     name: 'Sinonimoak',
     route: '/sinonimoak-jokoa',
-    description: 'Sinonimoen jokoa'
+    description: 'Sinonimoen jolasa'
   },
   {
     name: 'Sinonimoen Zerrenda',
     route: '/sinonimoak-zerrenda',
     description: 'Sinonimoen zerrenda'
+  },
+  {
+    name: 'Estatistikak',
+    route: '/estatistikak',
+    description: 'Ikastearen estatistikak'
   }
 ]
 
