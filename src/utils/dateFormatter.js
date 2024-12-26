@@ -30,14 +30,30 @@ const MONTHS_EU = {
   }
   
   export function formatDateEU(date, short = true, includeYear = false) {
-    const d = new Date(date)
+    // Si es un número (timestamp), convertirlo a Date
+    const d = typeof date === 'number' ? new Date(date) : new Date(date)
+    
+    // Verificar si es una fecha válida
+    if (isNaN(d.getTime())) {
+      console.warn('Fecha inválida:', date)
+      return ''
+    }
+    
     const day = d.getDate()
     const month = String(d.getMonth() + 1).padStart(2, '0')
     const year = d.getFullYear()
     
     const monthName = short ? MONTHS_EU_SHORT[month] : MONTHS_EU[month]
     
+    // Si es hoy, mostrar "Gaur"
+    const today = new Date()
+    if (d.getDate() === today.getDate() && 
+        d.getMonth() === today.getMonth() && 
+        d.getFullYear() === today.getFullYear()) {
+      return 'Gaur'
+    }
+    
     return includeYear ? 
-    `${year}ko ${monthName}ren ${day}` : 
-    `${monthName} ${day} `
-}
+      `${year}ko ${monthName}ren ${day}` : 
+      `${monthName} ${day}`
+  }

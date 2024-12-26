@@ -7,36 +7,46 @@ import { X, Menu } from 'lucide-vue-next'
 const isOpen = ref(false)
 const router = useRouter()
 
-const navigationItems = [
+const navigationGroups = [
   {
-    name: 'Hasiera',
-    route: '/',
-    description: 'Orri nagusia'
+    title: 'Ikasteko erronkak',
+    items: [
+      {
+        name: 'Aditzak',
+        route: '/aditzak',
+        description: 'Aditz laguntzaileak'
+      },
+      {
+        name: 'Sinonimoak',
+        route: '/sinonimoak-jokoa',
+        description: 'Sinonimoen jolasa'
+      }
+    ]
   },
   {
-    name: 'Hiztegia',
-    route: '/hiztegia',
-    description: 'C1-eko hiztegia'
+    title: null, // Para elementos sueltos
+    items: [
+      {
+        name: 'Estatistikak',
+        route: '/estatistikak',
+        description: 'Ikastearen estatistikak'
+      }
+    ]
   },
   {
-    name: 'Aditzak',
-    route: '/aditzak',
-    description: 'Aditz laguntzaileak'
-  },
-  {
-    name: 'Sinonimoak',
-    route: '/sinonimoak-jokoa',
-    description: 'Sinonimoen jolasa'
-  },
-  {
-    name: 'Sinonimoen Zerrenda',
-    route: '/sinonimoak-zerrenda',
-    description: 'Sinonimoen zerrenda'
-  },
-  {
-    name: 'Estatistikak',
-    route: '/estatistikak',
-    description: 'Ikastearen estatistikak'
+    title: 'Baliabideak',
+    items: [
+      {
+        name: 'Hiztegia',
+        route: '/hiztegia',
+        description: 'C1-eko hiztegia'
+      },
+      {
+        name: 'Sinonimoen Zerrenda',
+        route: '/sinonimoak-zerrenda',
+        description: 'Sinonimoen zerrenda'
+      }
+    ]
   }
 ]
 
@@ -78,21 +88,29 @@ const navigateTo = (route) => {
     >
       <div class="pt-24 px-4">
         <nav>
-          <ul class="space-y-4">
-            <li v-for="item in navigationItems" :key="item.route">
-              <button
-                @click="navigateTo(item.route)"
-                class="w-full text-left p-4 rounded-lg bg-white/40 hover:bg-amber-100 transition-colors focus:ring-2 focus:amber-400 group"
-              >
-                <span class="block text-lg font-semibold text-[var(--text-primary)]">
-                  {{ item.name }}
-                </span>
-                <span class="text-sm text-[var(--text-secondary)]">
-                  {{ item.description }}
-                </span>
-              </button>
-            </li>
-          </ul>
+          <div v-for="(group, index) in navigationGroups" :key="index" class="mb-8">
+            <!-- Título del grupo si existe -->
+            <h2 v-if="group.title" class="text-lg font-bold text-[var(--text-primary)] mb-4">
+              {{ group.title }}
+            </h2>
+            
+            <!-- Elementos del grupo -->
+            <ul class="space-y-4">
+              <li v-for="item in group.items" :key="item.route">
+                <button
+                  @click="navigateTo(item.route)"
+                  class="w-full text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2 bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)] focus:ring-[var(--gradient-from)] group"
+                >
+                  <span >
+                    {{ item.name }}
+                  </span>
+                  <span class="text-sm text-[var(--text-primary)]">
+                    {{ item.description }}
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </div>

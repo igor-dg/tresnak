@@ -68,16 +68,22 @@ export function useStatsService() {
     
     // Calcular fecha inicio según el rango
     const startDate = new Date()
-    switch (timeRange) {
-      case '7d':
-        startDate.setDate(startDate.getDate() - 7)
-        break
-      case '30d':
-        startDate.setDate(startDate.getDate() - 30)
-        break
-      case '90d':
-        startDate.setDate(startDate.getDate() - 90)
-        break
+    
+    if (timeRange === 'today') {
+      // Para 'today', empezamos al inicio del día actual
+      startDate.setHours(0, 0, 0, 0);
+    } else {
+      switch (timeRange) {
+        case '7d':
+          startDate.setDate(startDate.getDate() - 7)
+          break
+        case '30d':
+          startDate.setDate(startDate.getDate() - 30)
+          break
+        case '90d':
+          startDate.setDate(startDate.getDate() - 90)
+          break
+      }
     }
 
     // Obtener datos
@@ -87,8 +93,8 @@ export function useStatsService() {
     ])
 
     return {
-      sinonimos: processSinonimoStats(sinonimosData),
-      aditzak: processAditzakStats(aditzakData)
+      sinonimos: processSinonimoStats(sinonimosData, timeRange),  // Pasamos timeRange
+    aditzak: processAditzakStats(aditzakData, timeRange)
     }
   }
 
@@ -118,14 +124,17 @@ export function useStatsService() {
     })
   }
 
-  const processSinonimoStats = (data) => {
+  const processSinonimoStats = (data, timeRange) => {
     // Rellenar días sin datos con ceros
     const today = startOfDay(new Date())
-    const filledData = Array.from({ length: 7 }, (_, i) => {
+    const days = timeRange === 'today' ? 1 : 7;
+    const filledData = Array.from({ length: days }, (_, i) => {
       const date = format(subDays(today, i), 'yyyy-MM-dd')
-      const dayData = data.filter(item => 
-        format(item.fecha, 'yyyy-MM-dd') === date
-      )
+      // Asegurarnos de que filtramos correctamente por la fecha local
+      const dayData = data.filter(item => {
+        const itemDate = format(new Date(item.fecha), 'yyyy-MM-dd')
+        return itemDate === date
+      })
       
       return {
         date,
@@ -151,14 +160,17 @@ export function useStatsService() {
     }
   }
 
-  const processAditzakStats = (data) => {
+  const processAditzakStats = (data, timeRange) => {
     // Timeline con días rellenados
     const today = startOfDay(new Date())
-    const filledData = Array.from({ length: 7 }, (_, i) => {
+    const days = timeRange === 'today' ? 1 : 7;
+    const filledData = Array.from({ length: days }, (_, i) => {
       const date = format(subDays(today, i), 'yyyy-MM-dd')
-      const dayData = data.filter(item => 
-        format(item.fecha, 'yyyy-MM-dd') === date
-      )
+      // Asegurarnos de que filtramos correctamente por la fecha local
+      const dayData = data.filter(item => {
+        const itemDate = format(new Date(item.fecha), 'yyyy-MM-dd')
+        return itemDate === date
+      })
       
       return {
         date,

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import { ChevronRight, RefreshCw, BookOpen } from 'lucide-vue-next'
+import { ChevronRight, RefreshCw, BookOpen, ChartLine } from 'lucide-vue-next'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   selectedWord: {
@@ -47,6 +48,12 @@ function handleEnter(event, index) {
 
 function handleDefinitionClick() {
   emit('definition-change', true)
+}
+
+const router = useRouter()
+
+const goToStats = () => {
+  router.push({ name: 'estatistikak' })
 }
 </script>
 
@@ -104,11 +111,33 @@ function handleDefinitionClick() {
         <button
           type="button"
           @click="handleNext"
-          class="px-4 py-3 rounded-xl bg-rose-100 text-rose-700 hover:bg-rose-200 transition-colors flex items-center gap-2"
-        >
-          <RefreshCw class="size-5" />
-          <span>Hurrengoa</span>
+          :class="{
+        'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,          
+          'bg-gradient-to-r': true,
+          'from-[var(--gradient-from)]': true,
+          'to-[var(--gradient-to)]': true,
+          'hover:from-[var(--gradient-hover-from)]': true,
+          'hover:to-[var(--gradient-hover-to)]': true,
+          'focus:ring-[var(--gradient-from)]': true
+        }"
+      >
+        <RefreshCw class="w-5 h-5" />
         </button>
+        <button 
+        @click="goToStats"
+        title="Estatistikak"
+        :class="{
+          'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+          'bg-gradient-to-r': true,
+          'from-[var(--gradient-from)]': true,
+          'to-[var(--gradient-to)]': true,
+          'hover:from-[var(--gradient-hover-from)]': true,
+          'hover:to-[var(--gradient-hover-to)]': true,
+          'focus:ring-[var(--gradient-from)]': true
+        }"
+      >
+        <ChartLine class="w-5 h-5" />
+      </button>
       </div>
     </form>
 

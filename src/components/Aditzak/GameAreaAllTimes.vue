@@ -288,6 +288,7 @@ const goToStats = () => {
 <style scoped>
 input::placeholder {
   color: var(--text-secondary);
+  font-size: small;
 }
 
 @media (max-width: 640px) {

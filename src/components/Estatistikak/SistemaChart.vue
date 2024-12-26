@@ -26,7 +26,7 @@ const initChart = () => {
   const sortedData = [...props.data].sort((a, b) => {
     const percentageA = Math.round((a.aciertos / a.total) * 100)
     const percentageB = Math.round((b.aciertos / b.total) * 100)
-    return percentageB - percentageA
+    return percentageA - percentageB // Cambiado de B-A a A-B para ordenar de menor a mayor
   })
 
   const percentages = sortedData.map(item => 

@@ -144,20 +144,7 @@ const goToStats = () => {
       :style="{ color: 'var(--text-primary)'}"
       placeholder="Idatzi zure erantzuna"
     />
-      <button 
-        type="submit"
-        :class="{
-        'absolute right-2 top-1/2 -translate-y-1/2 transition-all focus:outline-none focus:ring-2 rounded-full p-2': true,
-        'bg-gradient-to-r': true,
-        'from-[var(--gradient-from)]': true,
-        'to-[var(--gradient-to)]': true,
-        'hover:from-[var(--gradient-hover-from)]': true,
-        'hover:to-[var(--gradient-hover-to)]': true,
-        'focus:ring-[var(--gradient-from)]': true
-      }"
-      >
-        <ArrowRight class="w-6 h-6" />
-      </button>
+      
     </form>
 
     <!-- Incorrect Answers -->
@@ -186,10 +173,27 @@ const goToStats = () => {
     <!-- Next and Stats Buttons -->
     <div class="flex gap-2">
       <button 
+  @click="handleAnswer"
+  :class="{
+    'flex-1 text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+    'bg-gradient-to-r': true,
+    'from-[var(--gradient-from)]': true,
+    'to-[var(--gradient-to)]': true,
+    'hover:from-[var(--gradient-hover-from)]': true,
+    'hover:to-[var(--gradient-hover-to)]': true,
+    'focus:ring-[var(--gradient-from)]': true
+  }"
+>
+  <ArrowRight class="w-6 h-6" />
+  Baieztatu
+</button>
+
+
+      <button 
         @click="nextQuestion"
         title="Aldatu esaldia"
         :class="{
-          'flex-1 text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
+        'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,          
           'bg-gradient-to-r': true,
           'from-[var(--gradient-from)]': true,
           'to-[var(--gradient-to)]': true,
@@ -199,7 +203,6 @@ const goToStats = () => {
         }"
       >
         <RefreshCw class="w-5 h-5" />
-        Hurrengoa
       </button>
 
       <button 

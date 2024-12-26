@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  base: './',  // Cambiamos esto para usar rutas relativas
+  base: process.env.NODE_ENV === 'production' ? '/tresnak/' : '/',
   plugins: [vue()],
   resolve: {
     alias: {
