@@ -43,6 +43,11 @@ import NavigationCard from '../components/NavigationCard.vue';
         route="/aditzak"
       />
       <NavigationCard
+        title="Aditz taulak"
+        description="Euskal aditzak jokatzeko taulak."
+        route="/aditz-taulak"
+      />
+      <NavigationCard
       title="Estatistikak"
       description="Zure erantzunak eta puntuazioa ikusi, eta hobetzeko aukerak aztertu."
       route="/estatistikak"

@@ -45,6 +45,11 @@ const navigationGroups = [
         name: 'Sinonimoen Zerrenda',
         route: '/sinonimoak-zerrenda',
         description: 'Sinonimoen zerrenda'
+      },
+      {
+        name: 'Aditz taulak',
+        route: '/aditz-taulak',
+        description: 'Euskal aditzak jokatzeko taulak'
       }
     ]
   }
@@ -104,9 +109,9 @@ const navigateTo = (route) => {
                   <span >
                     {{ item.name }}
                   </span>
-                  <span class="text-sm text-[var(--text-primary)]">
+                  <!-- <span class="text-sm text-[var(--text-primary)]">
                     {{ item.description }}
-                  </span>
+                  </span> -->
                 </button>
               </li>
             </ul>

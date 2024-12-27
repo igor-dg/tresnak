@@ -68,7 +68,7 @@ const goToSinonimoak = () => {
     <div class="top-0 z-20 py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-          <h1 class="text-2xl md:text-4xl font-bold text-[var(--text-primary)]">
+          <h1 class="text-2xl md:text-4xl font-bold text-white">
             Ikastearen estatistikak
           </h1>
           <div class="flex gap-3">

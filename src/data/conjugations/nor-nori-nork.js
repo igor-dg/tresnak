@@ -21,6 +21,11 @@ export const norNoriNorkSystem = {
                 nork: {
                     headers: ['NORK'],
                     showColumns: ['particle']
+                },
+                primaryColumns: {
+                    nor: 0,
+                    nori: 0,
+                    nork: 0,
                 }
             },
             // El resto de las mappings permanecen igual
@@ -658,7 +663,7 @@ export const norNoriNorkSystem = {
                     showColumns: ['particle']
                 },
                 extraSuffix: {
-                    headers: ['', '', ''],
+                    headers: ['', ''],
                     showColumns: ['keSuffix', 'teSuffix']
                 },
                 primaryColumns: {

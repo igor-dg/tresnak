@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root[data-theme="default"] {
-  background: linear-gradient(to bottom right, #ffb600, theme('colors.orange.300'), theme('colors.rose.300'));
+  background: linear-gradient(to bottom right, #ffb600, #FF8500);
   --gradient-from: theme('colors.amber.500');
   --gradient-via: theme('colors.orange.400');
   --gradient-to: theme('colors.rose.400');
@@ -132,7 +132,7 @@
   }
   
   #app {
-    max-width: 1280px;
+    /* max-width: 1280px; */
     margin: 0 auto;
     text-align: center;
   }

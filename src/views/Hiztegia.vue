@@ -48,17 +48,16 @@ const showDefinition = (word) => {
 </script>
 
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen max-w-[1280px] mx-auto py-12 px-4 sm:px-6 xl:px-12">
     <!-- Header -->
-    <div class="top-0 z-20 py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center">
-          <h1 class="text-2xl md:text-4xl font-bold text-[var(--text-primary)]">
-            Ikastearen estatistikak
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-white mb-6">
+            C1-eko hiztegia
           </h1>
-        </div>
-      </div>
-    </div>
+          <p class="text-lg text-[var(--text-secondary)]">
+            Euskal hizkuntzaren ikasgaietan erabiltzen diren terminoen bilduma. 
+          </p>
+        </header>
 
     <!-- Contenido principal -->
     <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">

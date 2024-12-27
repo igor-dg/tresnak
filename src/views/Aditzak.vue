@@ -14,16 +14,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col">
-    <div class="flex-none z-20 py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center">
-          <h1 class="text-2xl md:text-4xl font-bold text-[var(--text-primary)]">
+  <div class="min-h-screen flex flex-col mx-auto py-12 px-4 sm:px-6 xl:px-12">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-white mb-6">
             Aditz Laguntzaileak
           </h1>
-        </div>
-      </div>
-    </div>
+        </header>
 
     <!-- Contenido principal con el mismo estilo que Hiztegia -->
     <div class="flex-1">

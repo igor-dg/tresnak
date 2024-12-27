@@ -37,6 +37,11 @@ const router = createRouter({
       name: 'estatistikak',
       component: StatsView
     },
+    {
+      path: '/aditz-taulak',
+      name: 'aditz-taulak',
+      component: () => import('../views/ConjugationTables.vue')
+    },
   ]
 })
 
