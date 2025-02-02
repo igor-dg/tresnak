@@ -20,6 +20,11 @@ const navigationGroups = [
         name: 'Sinonimoak',
         route: '/sinonimoak-jokoa',
         description: 'Sinonimoen jolasa'
+      },
+      {
+        name: 'Hiztegle',
+        route: '/hiztegle',
+        description: 'Hiztegia eta jolasak'
       }
     ]
   },

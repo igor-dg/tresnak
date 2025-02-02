@@ -28,6 +28,11 @@ const router = createRouter({
       component: () => import('../views/Hiztegia.vue')
     },
     {
+      path: '/hiztegle',
+      name: 'hiztegle',
+      component: () => import('../views/HiztegleView.vue')
+    },
+    {
       path: '/aditzak',
       name: 'aditzak',
       component: () => import('../views/Aditzak.vue')

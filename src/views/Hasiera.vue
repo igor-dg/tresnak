@@ -18,7 +18,16 @@ import NavigationCard from '../components/NavigationCard.vue';
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
-      
+      <div class="relative">
+        <div class="absolute -inset-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-lg blur opacity-75 animate-pulse group-hover:opacity-100 transition duration-1000"></div>
+        <NavigationCard
+          title="Hiztegle"
+          description="Asmakizun joko dibertigarria non definizio bat emanda hitza asmatu behar duzun. Wordle euskaraz, baina definizioarekin!"
+          route="/hiztegle"
+          class="relative"
+        />
+      </div>
+
       <NavigationCard
         title="Sinonimoen jokoa"
         description="Hiztegia zabaltzeko tresna interaktiboa, hizkuntzaren sinonimoak ezagutuz eta praktikatuz."
