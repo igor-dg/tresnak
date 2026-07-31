@@ -3,19 +3,38 @@ import { ref, onMounted, watch } from 'vue'
 import { useStatsService } from '@/composables/useStatsService'
 import TimelineChart from '@/components/Estatistikak/TimelineChart.vue'
 import SistemaChart from '@/components/Estatistikak/SistemaChart.vue'
+import TodayStat from '@/components/Estatistikak/TodayStat.vue'
 import { useRouter } from 'vue-router'
 import PageHeader from '@/components/ui/PageHeader.vue'
 import EmptyState from '@/components/ui/EmptyState.vue'
+import BaseModal from '@/components/ui/BaseModal.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
+import { Trash2 } from 'lucide-vue-next'
 
 const timeRange = ref('today')
 const stats = ref(null)
 const isLoading = ref(true)
+const showResetConfirm = ref(false)
+const isResetting = ref(false)
 
-const { getStats } = useStatsService()
+const { getStats, clearStats } = useStatsService()
 
 onMounted(async () => {
   await loadStats()
 })
+
+const confirmReset = async () => {
+  isResetting.value = true
+  try {
+    await clearStats()
+    showResetConfirm.value = false
+    await loadStats()
+  } catch (error) {
+    console.error('Ezin izan da historiala ezabatu:', error)
+  } finally {
+    isResetting.value = false
+  }
+}
 
 const getPercentage = (tiempo) => {
   if (!tiempo?.total) return 0
@@ -66,23 +85,62 @@ const goToSinonimoak = () => {
       title="Ikastearen estatistikak"
       description="Jarraitu zure aurrerapena eta aurkitu zer landu behar duzun."
     >
-          <div class="segmented-control max-w-sm mx-auto mt-6">
+          <div class="segmented-control max-w-md mx-auto mt-6">
             <button
               @click="timeRange = 'today'"
               class="segmented-control__option"
               :aria-pressed="timeRange === 'today'"
             >
-              Gaurko emaitzak
+              Gaur
             </button>
             <button
               @click="timeRange = '7d'"
               class="segmented-control__option"
               :aria-pressed="timeRange === '7d'"
             >
-              Historikoa
+              7 egun
+            </button>
+            <button
+              @click="timeRange = '30d'"
+              class="segmented-control__option"
+              :aria-pressed="timeRange === '30d'"
+            >
+              30 egun
+            </button>
+            <button
+              @click="timeRange = '90d'"
+              class="segmented-control__option"
+              :aria-pressed="timeRange === '90d'"
+            >
+              90 egun
             </button>
           </div>
+
+          <button
+            @click="showResetConfirm = true"
+            class="reset-history-link"
+          >
+            <Trash2 class="w-3.5 h-3.5" />
+            Ezabatu historiala
+          </button>
     </PageHeader>
+
+    <BaseModal v-model="showResetConfirm" max-width="max-w-sm" label="Historiala ezabatu">
+      <div class="p-6 space-y-4 text-center">
+        <h2 class="text-lg font-bold text-[var(--text-primary)]">Historiala ezabatu?</h2>
+        <p class="text-sm text-[var(--text-secondary)]">
+          Sinonimoak eta Aditzak jokoetako erregistro guztiak betiko ezabatuko dira. Ezin da desegin.
+        </p>
+        <div class="flex gap-3">
+          <BaseButton variant="secondary" class="flex-1" :disabled="isResetting" @click="showResetConfirm = false">
+            Utzi
+          </BaseButton>
+          <BaseButton variant="danger" class="flex-1" :disabled="isResetting" @click="confirmReset">
+            Ezabatu
+          </BaseButton>
+        </div>
+      </div>
+    </BaseModal>
 
     <div>
       <div v-if="isLoading" class="text-center py-12">
@@ -104,8 +162,19 @@ const goToSinonimoak = () => {
           <!-- Timeline Sinonimoak -->
           <div class="card p-6">
             <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">{{ timeRange === 'today' ? 'Gaurko emaitzak' : 'Eguneroko aurrerapena' }}</h3>
-            <template v-if="getTimelineData('sinonimos').length > 0">
-              <TimelineChart 
+            <template v-if="timeRange === 'today'">
+              <template v-if="getTimelineData('sinonimos')[0]?.respuestas">
+                <TodayStat
+                  :respuestas="getTimelineData('sinonimos')[0].respuestas"
+                  :aciertos="getTimelineData('sinonimos')[0].aciertos"
+                />
+              </template>
+              <template v-else>
+                <EmptyState message="Ez duzu oraindik ezer jokatu gaur" />
+              </template>
+            </template>
+            <template v-else-if="getTimelineData('sinonimos').length > 0">
+              <TimelineChart
                 :data="getTimelineData('sinonimos')"
                 type="Sinonimoak"
                 class="h-64"
@@ -158,8 +227,19 @@ const goToSinonimoak = () => {
           <!-- Timeline Aditzak -->
           <div class="card p-6">
             <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">{{ timeRange === 'today' ? 'Gaurko emaitzak' : 'Eguneroko aurrerapena' }}</h3>
-            <template v-if="getTimelineData('aditzak').length > 0">
-              <TimelineChart 
+            <template v-if="timeRange === 'today'">
+              <template v-if="getTimelineData('aditzak')[0]?.respuestas">
+                <TodayStat
+                  :respuestas="getTimelineData('aditzak')[0].respuestas"
+                  :aciertos="getTimelineData('aditzak')[0].aciertos"
+                />
+              </template>
+              <template v-else>
+                <EmptyState message="Ez duzu oraindik ezer jokatu gaur" />
+              </template>
+            </template>
+            <template v-else-if="getTimelineData('aditzak').length > 0">
+              <TimelineChart
                 :data="getTimelineData('aditzak')"
                 type="Aditzak"
                 class="h-64"
@@ -225,3 +305,19 @@ const goToSinonimoak = () => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.reset-history-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.875rem;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.reset-history-link:hover {
+  color: var(--accent-danger);
+}
+</style>

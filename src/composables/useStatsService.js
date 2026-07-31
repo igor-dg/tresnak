@@ -3,9 +3,23 @@ import { ref } from 'vue'
 import { format, subDays, startOfDay } from 'date-fns'
 import { getTiempoDisplayName } from '@/utils'
 
+const RANGE_DAYS = {
+  today: 1,
+  '7d': 7,
+  '30d': 30,
+  '90d': 90
+}
+
 export function useStatsService() {
   const db = ref(null)
-  
+
+  const requestToPromise = (request) => {
+    return new Promise((resolve, reject) => {
+      request.onsuccess = () => resolve(request.result)
+      request.onerror = () => reject(request.error)
+    })
+  }
+
   const initDB = async () => {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open('euskeraStats', 1)
@@ -41,49 +55,47 @@ export function useStatsService() {
     const dbInstance = db.value || await initDB()
     const tx = dbInstance.transaction('sinonimos', 'readwrite')
     const store = tx.objectStore('sinonimos')
-    
-    await store.add({
+
+    await requestToPromise(store.add({
       fecha: new Date(),
       palabra,
       correcto
-    })
+    }))
   }
 
   const saveAditzakAttempt = async (sistema, tiempo, correcto) => {
     const dbInstance = db.value || await initDB()
     const tx = dbInstance.transaction('aditzak', 'readwrite')
     const store = tx.objectStore('aditzak')
-    
-    await store.add({
+
+    await requestToPromise(store.add({
       fecha: new Date(),
       sistema,
       tiempo,
       correcto
-    })
+    }))
+  }
+
+  const clearStats = async () => {
+    const dbInstance = db.value || await initDB()
+    const tx = dbInstance.transaction(['sinonimos', 'aditzak'], 'readwrite')
+
+    await Promise.all([
+      requestToPromise(tx.objectStore('sinonimos').clear()),
+      requestToPromise(tx.objectStore('aditzak').clear())
+    ])
   }
 
   const getStats = async (timeRange = '7d') => {
     const dbInstance = db.value || await initDB()
     
-    // Calcular fecha inicio según el rango
+    // Calcular fecha inicio según el rango (siempre al inicio del día, para cubrir el día completo)
     const startDate = new Date()
-    
-    if (timeRange === 'today') {
-      // Para 'today', empezamos al inicio del día actual
-      startDate.setHours(0, 0, 0, 0);
-    } else {
-      switch (timeRange) {
-        case '7d':
-          startDate.setDate(startDate.getDate() - 7)
-          break
-        case '30d':
-          startDate.setDate(startDate.getDate() - 30)
-          break
-        case '90d':
-          startDate.setDate(startDate.getDate() - 90)
-          break
-      }
+    const days = RANGE_DAYS[timeRange] ?? RANGE_DAYS['7d']
+    if (timeRange !== 'today') {
+      startDate.setDate(startDate.getDate() - (days - 1))
     }
+    startDate.setHours(0, 0, 0, 0)
 
     // Obtener datos
     const [sinonimosData, aditzakData] = await Promise.all([
@@ -126,7 +138,7 @@ export function useStatsService() {
   const processSinonimoStats = (data, timeRange) => {
     // Rellenar días sin datos con ceros
     const today = startOfDay(new Date())
-    const days = timeRange === 'today' ? 1 : 7;
+    const days = RANGE_DAYS[timeRange] ?? RANGE_DAYS['7d']
     const filledData = Array.from({ length: days }, (_, i) => {
       const date = format(subDays(today, i), 'yyyy-MM-dd')
       // Asegurarnos de que filtramos correctamente por la fecha local
@@ -168,7 +180,7 @@ export function useStatsService() {
   const processAditzakStats = (data, timeRange) => {
     // Timeline con días rellenados
     const today = startOfDay(new Date())
-    const days = timeRange === 'today' ? 1 : 7;
+    const days = RANGE_DAYS[timeRange] ?? RANGE_DAYS['7d']
     const filledData = Array.from({ length: days }, (_, i) => {
       const date = format(subDays(today, i), 'yyyy-MM-dd')
       // Asegurarnos de que filtramos correctamente por la fecha local
@@ -221,6 +233,7 @@ export function useStatsService() {
     initDB,
     saveSinonimoAttempt,
     saveAditzakAttempt,
-    getStats
+    getStats,
+    clearStats
   }
 }
