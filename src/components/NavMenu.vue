@@ -8,6 +8,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 const isOpen = ref(false)
 const router = useRouter()
 const route = useRoute()
+const emit = defineEmits(['open-privacy'])
 
 const navigationGroups = [
   {
@@ -37,6 +38,11 @@ const navigationGroups = [
         name: 'Estatistikak',
         route: '/estatistikak',
         description: 'Ikastearen estatistikak'
+      },
+      {
+        name: 'Pribatutasuna',
+        action: 'privacy',
+        description: 'Datuen erabilerari buruzko informazioa'
       }
     ]
   },
@@ -66,8 +72,12 @@ const toggleMenu = () => {
   isOpen.value = !isOpen.value
 }
 
-const navigateTo = (route) => {
-  router.push(route)
+const navigateTo = (item) => {
+  if (item.action === 'privacy') {
+    emit('open-privacy')
+  } else {
+    router.push(item.route)
+  }
   isOpen.value = false
 }
 </script>
@@ -154,9 +164,9 @@ const navigateTo = (route) => {
             
             <!-- Elementos del grupo -->
             <ul class="space-y-4">
-              <li v-for="item in group.items" :key="item.route">
+              <li v-for="item in group.items" :key="item.route || item.action">
                 <button
-                  @click="navigateTo(item.route)"
+                  @click="navigateTo(item)"
                   class="w-full text-left rounded-md py-3 px-4 flex items-center gap-3 transition-all text-base font-semibold bg-[var(--bg-card)] border border-[var(--border-card)] text-[var(--text-primary)] hover:bg-[var(--accent-primary-soft)] hover:border-[var(--accent-primary)] group"
                 >
                   <span >

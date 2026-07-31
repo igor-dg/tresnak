@@ -8,6 +8,9 @@ const router = createRouter({
   history: isNativePlatform
     ? createWebHashHistory()
     : createWebHistory(webBase),
+  scrollBehavior() {
+    return { top: 0, left: 0 }
+  },
   routes: [
     {
       path: '/',
