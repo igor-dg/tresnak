@@ -75,12 +75,16 @@ const navigateTo = (route) => {
 <template>
   <div>
     <header class="mobile-topbar md:hidden">
-      <span class="flex items-center gap-2 min-w-0">
+      <router-link
+        to="/"
+        class="flex items-center gap-2 min-w-0 text-[var(--text-primary)] no-underline"
+        aria-label="Itzuli hasierara"
+      >
         <img src="/logo_basic.svg" alt="" class="w-5 h-5 shrink-0" />
         <span class="min-w-0 truncate text-base font-bold text-[var(--text-primary)]">
-          {{ route.meta.title || 'Jokatu' }}
+          {{ route.meta.title || 'Jokatu!' }}
         </span>
-      </span>
+      </router-link>
       <BaseButton
         variant="ghost"
         icon-only

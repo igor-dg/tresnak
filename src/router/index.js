@@ -13,7 +13,7 @@ const router = createRouter({
       path: '/',
       name: 'hasiera',
       component: () => import('../views/Hasiera.vue'),
-      meta: { section: 'home', title: 'Jokatu' }
+      meta: { section: 'home', title: 'Jokatu!' }
     },
     {
       path: '/sinonimoak-jokoa',
