@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:native": "vite build --mode capacitor",
     "preview": "vite preview",
-    "cap:sync": "npm run build && npx cap sync",
-    "cap:android": "npm run build && npx cap run android",
-    "cap:ios": "npm run build && npx cap run ios"
+    "cap:sync": "npm run build:native && npx cap sync",
+    "cap:android": "npm run build:native && npx cap run android",
+    "cap:ios": "npm run build:native && npx cap run ios"
   },
   "dependencies": {
     "@capacitor/android": "^8.4.2",

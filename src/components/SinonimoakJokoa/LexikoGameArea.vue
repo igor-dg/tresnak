@@ -58,7 +58,7 @@ const goToStats = () => {
 </script>
 
 <template>
-    <div class="card p-8 space-y-8 relative">
+    <div class="card p-4 sm:p-8 space-y-6 sm:space-y-8 relative">
       <!-- Palabra principal -->
       <div class="min-h-[6rem] flex items-center justify-center">
         <div class="flex flex-col items-center gap-4 mb-4">

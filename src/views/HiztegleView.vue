@@ -5,6 +5,7 @@ import KeyboardInput from '@/components/Hiztegle/KeyboardInput.vue'
 import { RefreshCw, Languages, BookOpen } from 'lucide-vue-next'
 import hiztegiaData from '@/data/hiztegia.json'
 import PageHeader from '@/components/ui/PageHeader.vue'
+import { fetchTranslation } from '@/services/dictionaryApi'
 
 const gameState = ref('initial')
 const currentWord = ref('')
@@ -146,9 +147,7 @@ const isCheckingWord = ref(false)
 
 async function checkWordExists(word) {
   try {
-    const response = await fetch(`https://idg.eus/tresnak/itzultzaile.php?hitza=${encodeURIComponent(word)}`)
-    if (!response.ok) return false
-    const data = await response.text()
+    const data = await fetchTranslation(word)
     return data && data.trim().length > 0
   } catch (error) {
     console.error('Error checking word:', error)
@@ -310,7 +309,7 @@ onUnmounted(() => {
 
       <!-- Fase de definición inicial -->
       <div v-else-if="gameState === 'definition'" 
-     class="card p-8">
+     class="card p-4 sm:p-8">
   <HiztegleDefinition 
     :word="currentWord"
     :time-left="timeLeft"
@@ -326,7 +325,7 @@ onUnmounted(() => {
         <Transition name="fade">
     <div v-if="showDefinition && gameState === 'game'"
          class="fixed inset-x-4 top-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full sm:max-w-lg z-50">
-      <div class="card p-6">
+      <div class="card p-4 sm:p-6">
         <HiztegleDefinition 
           :word="currentWord"
           :hide-timer="false"

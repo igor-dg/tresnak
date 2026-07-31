@@ -4,6 +4,7 @@ import { X, Loader2 } from 'lucide-vue-next'
 import BaseModal from '@/components/ui/BaseModal.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import EmptyState from '@/components/ui/EmptyState.vue'
+import { fetchTranslation } from '@/services/dictionaryApi'
 
 const props = defineProps({
   word: {
@@ -36,10 +37,7 @@ const fetchDefinition = async () => {
   error.value = null
   
   try {
-    const response = await fetch(`https://idg.eus/tresnak/itzultzaile.php?hitza=${encodeURIComponent(props.word)}`)
-    if (!response.ok) throw new Error('Zerbitzariarekin arazoak')
-    
-    const data = await response.text()
+    const data = await fetchTranslation(props.word)
     if (data) {
       definition.value = data
     } else {

@@ -1,57 +1,61 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
+import { Capacitor } from '@capacitor/core'
 
-const baseUrl = import.meta.env.PROD ? '/tresnak/' : '/';
+const isNativePlatform = Capacitor.isNativePlatform()
+const webBase = import.meta.env.DEV ? '/' : '/tresnak/'
 
 const router = createRouter({
-  history: createWebHistory(baseUrl),
+  history: isNativePlatform
+    ? createWebHashHistory()
+    : createWebHistory(webBase),
   routes: [
     {
       path: '/',
       name: 'hasiera',
       component: () => import('../views/Hasiera.vue'),
-      meta: { section: 'home' }
+      meta: { section: 'home', title: 'Tresnak' }
     },
     {
       path: '/sinonimoak-jokoa',
       name: 'sinonimoak-jokoa',
       component: () => import('../views/SinonimoakJokoa.vue'),
-      meta: { section: 'sinonimoak' }
+      meta: { section: 'sinonimoak', title: 'Sinonimoen jolasa' }
     },
     {
       path: '/sinonimoak-zerrenda',
       name: 'sinonimoak-zerrenda',
       component: () => import('../views/SinonimoakZerrenda.vue'),
-      meta: { section: 'sinonimoak' }
+      meta: { section: 'sinonimoak', title: 'Sinonimoen zerrenda' }
     },
     {
       path: '/hiztegia',
       name: 'hiztegia',
       component: () => import('../views/Hiztegia.vue'),
-      meta: { section: 'hiztegia' }
+      meta: { section: 'hiztegia', title: 'C1-eko hiztegia' }
     },
     {
       path: '/hiztegle',
       name: 'hiztegle',
       component: () => import('../views/HiztegleView.vue'),
-      meta: { section: 'hiztegle' }
+      meta: { section: 'hiztegle', title: 'Hiztegle' }
     },
     {
       path: '/aditzak',
       name: 'aditzak',
       component: () => import('../views/Aditzak.vue'),
-      meta: { section: 'aditzak' }
+      meta: { section: 'aditzak', title: 'Aditz laguntzaileak' }
     },
     {
       path: '/estatistikak',
       name: 'estatistikak',
       component: () => import('../views/StatsView.vue'),
-      meta: { section: 'estatistikak' }
+      meta: { section: 'estatistikak', title: 'Estatistikak' }
     },
     {
       path: '/aditz-taulak',
       name: 'aditz-taulak',
       component: () => import('../views/ConjugationTables.vue'),
-      meta: { section: 'taulak' }
+      meta: { section: 'taulak', title: 'Aditz taulak' }
     },
   ]
 })

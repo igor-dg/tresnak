@@ -65,7 +65,7 @@ const emit = defineEmits(['hint-used'])
 const isMobile = ref(false)
 
 const basePath = computed(() => {
-  return import.meta.env.PROD ? '/tresnak/img/' : '/img/'
+  return `${import.meta.env.BASE_URL}img/`
 })
 
 const activeSystemCount = computed(() => {

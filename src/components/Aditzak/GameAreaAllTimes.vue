@@ -29,7 +29,7 @@ const megaPistas = ref({})
 const showMegaPistaOverlay = ref(false)
 const currentMegaPista = ref(null)
 
-const basePath = import.meta.env.PROD ? '/tresnak/img/' : '/img/'
+const basePath = `${import.meta.env.BASE_URL}img/`
 
 // Initialize answers object with active times
 watch(() => props.tiempos, (newTiempos) => {

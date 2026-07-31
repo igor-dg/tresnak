@@ -1,12 +1,13 @@
 <!-- NavMenu.vue -->
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { X, Menu } from 'lucide-vue-next'
 import BaseButton from '@/components/ui/BaseButton.vue'
 
 const isOpen = ref(false)
 const router = useRouter()
+const route = useRoute()
 
 const navigationGroups = [
   {
@@ -73,12 +74,29 @@ const navigateTo = (route) => {
 
 <template>
   <div>
-    <!-- Botón del menú hamburguesa -->
+    <header class="mobile-topbar md:hidden">
+      <span class="min-w-0 truncate text-base font-bold text-[var(--text-primary)]">
+        {{ route.meta.title || 'Tresnak' }}
+      </span>
+      <BaseButton
+        variant="ghost"
+        icon-only
+        class="shrink-0"
+        :aria-label="isOpen ? 'Itxi menua' : 'Ireki menua'"
+        :aria-expanded="isOpen"
+        @click="toggleMenu"
+      >
+        <Menu v-if="!isOpen" class="w-6 h-6" />
+        <X v-else class="w-6 h-6" />
+      </BaseButton>
+    </header>
+
+    <!-- Botón flotante en escritorio -->
     <BaseButton
       variant="secondary"
       icon-only
       @click="toggleMenu"
-      class="fixed top-5 right-5 z-50 shadow-sm"
+      class="hidden md:inline-flex fixed top-5 right-5 z-50 shadow-sm"
       aria-label="Menua"
     >
       <Menu v-if="!isOpen" class="w-6 h-6" />
@@ -99,7 +117,7 @@ const navigateTo = (route) => {
         isOpen ? 'translate-x-0' : 'translate-x-full'
       ]"
     >
-      <div class="pt-24 px-4">
+      <div class="pt-20 md:pt-24 px-4">
         <nav>
           <div v-for="(group, index) in navigationGroups" :key="index" class="mb-8">
             <!-- Título del grupo si existe -->

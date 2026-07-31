@@ -156,14 +156,14 @@ body {
 .page-shell {
   width: 100%;
   max-width: 80rem;
-  min-height: 100vh;
+  min-height: calc(100dvh - 3.5rem);
   margin-inline: auto;
-  padding: 2.5rem 1rem 3rem;
+  padding: 1rem 1rem 2rem;
 }
 
 .page-header {
   max-width: 48rem;
-  margin: 0 auto 3rem;
+  margin: 0 auto 1rem;
   text-align: center;
 }
 
@@ -177,19 +177,38 @@ body {
 }
 
 .page-description {
-  margin: 1rem 0 0;
+  margin: 0;
   color: var(--text-secondary);
-  font-size: clamp(1rem, 2.5vw, 1.125rem);
-  line-height: 1.7;
+  font-size: 0.875rem;
+  line-height: 1.55;
 }
 
 .section-marker {
-  display: inline-block;
+  display: none;
   width: 3rem;
   height: 0.25rem;
   margin-bottom: 1.25rem;
   border-radius: var(--radius-sm);
   background-color: var(--accent-primary);
+}
+
+.page-title {
+  display: none;
+}
+
+.mobile-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.375rem 0.75rem 0.375rem 1rem;
+  background-color: color-mix(in srgb, var(--bg-page) 94%, transparent);
+  border-bottom: 1px solid var(--border-card);
+  box-shadow: 0 1px 4px rgb(41 37 45 / 0.06);
 }
 
 /* Surface primitives */
@@ -552,6 +571,36 @@ a:focus-visible {
 @media (min-width: 640px) {
   .page-shell {
     padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-topbar {
+    display: none;
+  }
+
+  .page-shell {
+    min-height: 100vh;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    display: block;
+  }
+
+  .page-description {
+    margin-top: 1rem;
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    line-height: 1.7;
+  }
+
+  .section-marker {
+    display: inline-block;
   }
 }
 

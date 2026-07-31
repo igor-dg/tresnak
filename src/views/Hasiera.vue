@@ -9,7 +9,7 @@ import PageHeader from '@/components/ui/PageHeader.vue'
       title="Ongi etorri euskara ikasteko gure plataformara"
       description="Orrialde honek hizkuntzaren ikaskuntza prozesua errazteko eta hobetzeko diseinatutako tresna espezifikoak eskaintzen ditu."
     >
-      <h2 class="text-2xl font-semibold text-[var(--text-primary)] mb-12">
+      <h2 class="hidden md:block text-2xl font-semibold text-[var(--text-primary)] mt-8">
         Hona hemen eskura ditugun gure tresna nagusiak:
       </h2>
     </PageHeader>

@@ -3,6 +3,7 @@
 import { ref, watch, onMounted } from 'vue'
 import { Loader2 } from 'lucide-vue-next'
 import { Timer } from 'lucide-vue-next'
+import { fetchDefinition, fetchTranslation } from '@/services/dictionaryApi'
 
 const emit = defineEmits(['timer-complete'])
 
@@ -46,14 +47,9 @@ const fetchContent = async () => {
   error.value = null
   
   try {
-    const endpoint = props.contentType === 'definition' 
-      ? 'definizioa.php' 
-      : 'itzultzaile.php'
-    
-    const response = await fetch(`https://idg.eus/tresnak/${endpoint}?hitza=${encodeURIComponent(props.word)}&definition_only=true`)
-    if (!response.ok) throw new Error('Zerbitzariarekin arazoak')
-    
-    const data = await response.text()
+    const data = props.contentType === 'definition'
+      ? await fetchDefinition(props.word)
+      : await fetchTranslation(props.word, true)
     if (data && data.trim()) {
       content.value = data
     } else {
