@@ -14,6 +14,10 @@ export default defineConfig(() => {
       }
     },
     build: {
+      // Keep route styles in the entry stylesheet. This avoids a cached app shell
+      // rendering a newly loaded view before (or without) its async CSS chunk,
+      // which is especially visible in the Capacitor WebView.
+      cssCodeSplit: false,
       chunkSizeWarningLimit: 600,
       rollupOptions: {
         output: {

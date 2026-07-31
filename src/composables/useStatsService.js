@@ -22,7 +22,7 @@ export function useStatsService() {
 
   const initDB = async () => {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open('euskeraStats', 1)
+      const request = indexedDB.open('euskeraStats', 2)
       
       request.onerror = () => reject(request.error)
       request.onsuccess = () => {
@@ -46,6 +46,12 @@ export function useStatsService() {
           aditzakStore.createIndex('fecha', 'fecha')
           aditzakStore.createIndex('sistema', 'sistema')
           aditzakStore.createIndex('tiempo', 'tiempo')
+        }
+
+        if (!db.objectStoreNames.contains('hiztegle')) {
+          const hiztegleStore = db.createObjectStore('hiztegle', { keyPath: 'id', autoIncrement: true })
+          hiztegleStore.createIndex('fecha', 'fecha')
+          hiztegleStore.createIndex('palabra', 'palabra')
         }
       }
     })
@@ -76,13 +82,26 @@ export function useStatsService() {
     }))
   }
 
+  const saveHiztegleAttempt = async (palabra, correcto, intentos) => {
+    const dbInstance = db.value || await initDB()
+    const tx = dbInstance.transaction('hiztegle', 'readwrite')
+
+    await requestToPromise(tx.objectStore('hiztegle').add({
+      fecha: new Date(),
+      palabra,
+      correcto,
+      intentos
+    }))
+  }
+
   const clearStats = async () => {
     const dbInstance = db.value || await initDB()
-    const tx = dbInstance.transaction(['sinonimos', 'aditzak'], 'readwrite')
+    const tx = dbInstance.transaction(['sinonimos', 'aditzak', 'hiztegle'], 'readwrite')
 
     await Promise.all([
       requestToPromise(tx.objectStore('sinonimos').clear()),
-      requestToPromise(tx.objectStore('aditzak').clear())
+      requestToPromise(tx.objectStore('aditzak').clear()),
+      requestToPromise(tx.objectStore('hiztegle').clear())
     ])
   }
 
@@ -98,15 +117,24 @@ export function useStatsService() {
     startDate.setHours(0, 0, 0, 0)
 
     // Obtener datos
-    const [sinonimosData, aditzakData] = await Promise.all([
+    const [sinonimosData, aditzakData, hiztegleData] = await Promise.all([
       getAllSinonimoStats(dbInstance, startDate),
-      getAllAditzakStats(dbInstance, startDate)
+      getAllAditzakStats(dbInstance, startDate),
+      getAllStoreStats(dbInstance, 'hiztegle', startDate)
     ])
 
     return {
-      sinonimos: processSinonimoStats(sinonimosData, timeRange),  // Pasamos timeRange
-    aditzak: processAditzakStats(aditzakData, timeRange)
+      sinonimos: processSinonimoStats(sinonimosData, timeRange),
+      aditzak: processAditzakStats(aditzakData, timeRange),
+      hiztegle: processHiztegleStats(hiztegleData, timeRange)
     }
+  }
+
+  const getAllStoreStats = async (dbInstance, storeName, startDate = null) => {
+    const tx = dbInstance.transaction(storeName, 'readonly')
+    const store = tx.objectStore(storeName)
+    if (!startDate) return requestToPromise(store.getAll())
+    return requestToPromise(store.index('fecha').getAll(IDBKeyRange.lowerBound(startDate)))
   }
 
   const getAllSinonimoStats = async (dbInstance, startDate) => {
@@ -229,11 +257,127 @@ export function useStatsService() {
     }
   }
 
+  const processHiztegleStats = (data, timeRange) => {
+    const today = startOfDay(new Date())
+    const days = RANGE_DAYS[timeRange] ?? RANGE_DAYS['7d']
+    const timeline = Array.from({ length: days }, (_, i) => {
+      const date = format(subDays(today, i), 'yyyy-MM-dd')
+      const dayData = data.filter(item => format(new Date(item.fecha), 'yyyy-MM-dd') === date)
+      return {
+        date,
+        respuestas: dayData.length,
+        aciertos: dayData.filter(item => item.correcto).length
+      }
+    }).reverse()
+
+    return {
+      timeline,
+      partidas: data.length,
+      aciertos: data.filter(item => item.correcto).length,
+      intentosMedios: data.length
+        ? Math.round((data.reduce((sum, item) => sum + (item.intentos || 0), 0) / data.length) * 10) / 10
+        : 0
+    }
+  }
+
+  const getLearningOverview = async (dailyGoal = 10) => {
+    const dbInstance = db.value || await initDB()
+    const [sinonimos, aditzak, hiztegle] = await Promise.all([
+      getAllStoreStats(dbInstance, 'sinonimos'),
+      getAllStoreStats(dbInstance, 'aditzak'),
+      getAllStoreStats(dbInstance, 'hiztegle')
+    ])
+    const allAttempts = [
+      ...sinonimos.map(item => ({ ...item, activity: 'Sinonimoak', route: '/sinonimoak-jokoa' })),
+      ...aditzak.map(item => ({ ...item, activity: 'Aditzak', route: '/aditzak' })),
+      ...hiztegle.map(item => ({ ...item, activity: 'Hiztegle', route: '/hiztegle' }))
+    ]
+    const today = startOfDay(new Date())
+    const dateKey = date => format(new Date(date), 'yyyy-MM-dd')
+    const attemptsByDate = new Map()
+    allAttempts.forEach(item => {
+      const key = dateKey(item.fecha)
+      attemptsByDate.set(key, [...(attemptsByDate.get(key) || []), item])
+    })
+
+    const todayKey = format(today, 'yyyy-MM-dd')
+    const yesterdayKey = format(subDays(today, 1), 'yyyy-MM-dd')
+    let cursor = attemptsByDate.has(todayKey) ? 0 : attemptsByDate.has(yesterdayKey) ? 1 : null
+    let streak = 0
+    while (cursor !== null && attemptsByDate.has(format(subDays(today, cursor), 'yyyy-MM-dd'))) {
+      streak++
+      cursor++
+    }
+
+    const week = Array.from({ length: 7 }, (_, offset) => {
+      const date = subDays(today, 6 - offset)
+      const key = format(date, 'yyyy-MM-dd')
+      const attempts = attemptsByDate.get(key) || []
+      return {
+        date: key,
+        day: format(date, 'EEEEE').toUpperCase(),
+        attempts: attempts.length,
+        correct: attempts.filter(item => item.correcto).length,
+        active: attempts.length > 0
+      }
+    })
+    const currentWeek = week.flatMap(day => attemptsByDate.get(day.date) || [])
+    const previousWeek = Array.from({ length: 7 }, (_, offset) => {
+      const key = format(subDays(today, 13 - offset), 'yyyy-MM-dd')
+      return attemptsByDate.get(key) || []
+    }).flat()
+    const accuracy = items => items.length
+      ? Math.round((items.filter(item => item.correcto).length / items.length) * 100)
+      : null
+    const currentAccuracy = accuracy(currentWeek)
+    const previousAccuracy = accuracy(previousWeek)
+    const sortedAttempts = [...allAttempts].sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+
+    const recentCutoff = subDays(today, 29)
+    const activityStats = [
+      { title: 'Sinonimoak', route: '/sinonimoak-jokoa', items: sinonimos },
+      { title: 'Aditzak', route: '/aditzak', items: aditzak },
+      { title: 'Hiztegle', route: '/hiztegle', items: hiztegle }
+    ].map(activity => ({
+      ...activity,
+      attempts: activity.items.filter(item => new Date(item.fecha) >= recentCutoff).length,
+      accuracy: accuracy(activity.items.filter(item => new Date(item.fecha) >= recentCutoff))
+    }))
+    const practiced = activityStats.filter(activity => activity.attempts > 0)
+    const recommended = practiced.length
+      ? [...practiced].sort((a, b) => (a.accuracy ?? 100) - (b.accuracy ?? 100))[0]
+      : activityStats[0]
+    const todayAttempts = attemptsByDate.get(todayKey)?.length || 0
+
+    return {
+      streak,
+      dailyGoal,
+      todayAttempts,
+      goalProgress: Math.min(100, Math.round((todayAttempts / dailyGoal) * 100)),
+      activeDays: week.filter(day => day.active).length,
+      week,
+      weeklyAttempts: currentWeek.length,
+      accuracy: currentAccuracy,
+      accuracyChange: currentAccuracy !== null && previousAccuracy !== null
+        ? currentAccuracy - previousAccuracy
+        : null,
+      recommendation: {
+        ...recommended,
+        reason: recommended.attempts
+          ? `${recommended.accuracy}% asmatu dituzu azken 30 egunetan`
+          : 'Hasi gaurko lehen erronka'
+      },
+      continueRoute: sortedAttempts[0]?.route || '/sinonimoak-jokoa'
+    }
+  }
+
   return {
     initDB,
     saveSinonimoAttempt,
     saveAditzakAttempt,
+    saveHiztegleAttempt,
     getStats,
+    getLearningOverview,
     clearStats
   }
 }

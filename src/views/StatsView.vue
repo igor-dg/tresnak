@@ -77,6 +77,9 @@ const goToAditzak = () => {
 const goToSinonimoak = () => {
   router.push({ name: 'sinonimoak-jokoa' })
 }
+const goToHiztegle = () => {
+  router.push({ name: 'hiztegle' })
+}
 </script>
 
 <template>
@@ -129,7 +132,7 @@ const goToSinonimoak = () => {
       <div class="p-6 space-y-4 text-center">
         <h2 class="text-lg font-bold text-[var(--text-primary)]">Historiala ezabatu?</h2>
         <p class="text-sm text-[var(--text-secondary)]">
-          Sinonimoak eta Aditzak jokoetako erregistro guztiak betiko ezabatuko dira. Ezin da desegin.
+          Sinonimoak, Aditzak eta Hiztegle jokoetako erregistro guztiak betiko ezabatuko dira. Ezin da desegin.
         </p>
         <div class="flex gap-3">
           <BaseButton variant="secondary" class="flex-1" :disabled="isResetting" @click="showResetConfirm = false">
@@ -302,6 +305,54 @@ const goToSinonimoak = () => {
           </div>
         </div>
       </div>
+
+      <section v-if="!isLoading" class="mt-6">
+        <button
+          @click="goToHiztegle"
+          title="Hiztegle"
+          class="w-full btn-primary rounded-md py-3 px-4 text-lg"
+        >
+          Hiztegle
+        </button>
+        <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-6 mt-6">
+          <div class="card p-6">
+            <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">
+              {{ timeRange === 'today' ? 'Gaurko emaitzak' : 'Eguneroko aurrerapena' }}
+            </h3>
+            <template v-if="timeRange === 'today'">
+              <TodayStat
+                v-if="getTimelineData('hiztegle')[0]?.respuestas"
+                :respuestas="getTimelineData('hiztegle')[0].respuestas"
+                :aciertos="getTimelineData('hiztegle')[0].aciertos"
+              />
+              <EmptyState v-else message="Ez duzu oraindik Hiztegle partidarik jokatu gaur" />
+            </template>
+            <TimelineChart
+              v-else
+              :data="getTimelineData('hiztegle')"
+              type="Hiztegle"
+              class="h-64"
+            />
+          </div>
+          <div class="card p-6">
+            <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Partiden laburpena</h3>
+            <dl class="space-y-5">
+              <div class="flex items-center justify-between gap-4">
+                <dt class="text-sm text-[var(--text-secondary)]">Partidak</dt>
+                <dd class="font-bold text-[var(--text-primary)]">{{ stats?.hiztegle?.partidas || 0 }}</dd>
+              </div>
+              <div class="flex items-center justify-between gap-4">
+                <dt class="text-sm text-[var(--text-secondary)]">Asmatutakoak</dt>
+                <dd class="font-bold text-[var(--accent-success)]">{{ stats?.hiztegle?.aciertos || 0 }}</dd>
+              </div>
+              <div class="flex items-center justify-between gap-4">
+                <dt class="text-sm text-[var(--text-secondary)]">Batez besteko saiakerak</dt>
+                <dd class="font-bold text-[var(--text-primary)]">{{ stats?.hiztegle?.intentosMedios || '—' }}</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </template>

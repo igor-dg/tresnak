@@ -6,6 +6,7 @@ import { RefreshCw, Languages, BookOpen } from 'lucide-vue-next'
 import hiztegiaData from '@/data/hiztegia.json'
 import PageHeader from '@/components/ui/PageHeader.vue'
 import { fetchTranslation } from '@/services/dictionaryApi'
+import { useStatsService } from '@/composables/useStatsService'
 
 const gameState = ref('initial')
 const currentWord = ref('')
@@ -21,6 +22,8 @@ const hints = ref(new Set())
 const showTranslation = ref(false)
 const translationTimeLeft = ref(5)
 const activeContent = ref('definition') // 'definition' or 'translation'
+const gameRecorded = ref(false)
+const { saveHiztegleAttempt } = useStatsService()
 let translationTimer = null
 let timer = null
 let definitionTimer = null // New timer for modal
@@ -75,6 +78,7 @@ function startGame() {
   showDefinition.value = false
   hints.value = new Set()
   definitionTimeLeft.value = 5 // Reset definition timer
+  gameRecorded.value = false
   if (timer) clearInterval(timer)
 }
 
@@ -141,7 +145,18 @@ function startTimer() {
   }, 1000)
 }
 
-function skipWord() {
+async function recordGame(correcto, attemptCount) {
+  if (gameRecorded.value) return
+  gameRecorded.value = true
+  try {
+    await saveHiztegleAttempt(currentWord.value, correcto, attemptCount)
+  } catch (error) {
+    console.error('Ezin izan da Hiztegle partida gorde:', error)
+  }
+}
+
+async function skipWord() {
+  await recordGame(false, attempts.value.length)
   statusMessages.value = `Hitza ${currentWord.value} zen.`
   setTimeout(() => {
     startGame()
@@ -228,10 +243,12 @@ async function handleAttempt() {
       gameState.value = 'complete'
       isGameOver.value = true
       statusMessages.value = '🎉 Zorionak! Asmatu duzu!'
+      await recordGame(true, attempts.value.length)
     } else if (attempts.value.length >= 6) {
       gameState.value = 'complete'
       isGameOver.value = true
       statusMessages.value = `Game Over! Hitza ${currentWord.value} zen.`
+      await recordGame(false, attempts.value.length)
     }
   } finally {
     isCheckingWord.value = false
