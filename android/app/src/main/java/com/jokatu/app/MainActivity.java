@@ -1,4 +1,4 @@
-package com.tresnak.app;
+package com.jokatu.app;
 
 import com.getcapacitor.BridgeActivity;
 

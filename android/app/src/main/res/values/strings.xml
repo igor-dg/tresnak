@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Tresnak</string>
-    <string name="title_activity_main">Tresnak</string>
-    <string name="package_name">com.tresnak.app</string>
-    <string name="custom_url_scheme">com.tresnak.app</string>
+    <string name="app_name">Jokatu!</string>
+    <string name="title_activity_main">Jokatu!</string>
+    <string name="package_name">com.jokatu.app</string>
+    <string name="custom_url_scheme">com.jokatu.app</string>
 </resources>

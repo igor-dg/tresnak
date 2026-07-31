@@ -76,7 +76,7 @@ const navigateTo = (route) => {
   <div>
     <header class="mobile-topbar md:hidden">
       <span class="min-w-0 truncate text-base font-bold text-[var(--text-primary)]">
-        {{ route.meta.title || 'Tresnak' }}
+        {{ route.meta.title || 'Jokatu' }}
       </span>
       <BaseButton
         variant="ghost"

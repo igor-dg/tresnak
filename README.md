@@ -1,4 +1,4 @@
-# Euskara Ikasteko Tresnak
+# Jokatu! — Euskara praktikatzeko jokoak
 
 ## Deskribapena
 
@@ -35,7 +35,7 @@ npm run dev
 
 Proiektua abiarazita, nabigatzailean `http://localhost:5173` helbidean (edo Vite-k adierazitako portuan) sartuko zara.
 
-### Tresnak
+### Jokoak
 
 - **Hiztegle**: Wordle bezalako joko bat, baina definizioetan oinarrituta, euskarazko hitzak asmatzeko jokoa.
 - **Sinonimoen jokoa**: Hitz batentzat sinonimo posible guztiak idaztea eskatzen duen jokoa.
