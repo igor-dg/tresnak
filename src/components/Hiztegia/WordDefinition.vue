@@ -98,9 +98,12 @@ const closeModal = () => {
           </div>
 
           <!-- Definition -->
-          <div v-else-if="definition" 
-               class="rich-definition"
-               v-html="definition" />
+          <template v-else-if="definition">
+            <div class="rich-definition" v-html="definition" />
+            <p class="text-xs text-[var(--text-muted)] text-right mt-3">
+              Iturria: Elhuyar Hiztegia
+            </p>
+          </template>
 
           <!-- Empty -->
           <EmptyState v-else message="Ez dago definiziorik" />

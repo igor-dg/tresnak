@@ -75,7 +75,7 @@ function startGame() {
   showDefinition.value = false
   hints.value = new Set()
   definitionTimeLeft.value = 5 // Reset definition timer
-  startTimer()
+  if (timer) clearInterval(timer)
 }
 
 function startDefinitionTimer() {
@@ -92,13 +92,18 @@ function startDefinitionTimer() {
   }, 1000)
 }
 
+function resetDefinitionTimer() {
+  if (definitionTimer) clearInterval(definitionTimer)
+  definitionTimeLeft.value = 5
+}
+
 function toggleDefinition() {
   if (showDefinition.value && activeContent.value === 'definition') {
     showDefinition.value = false
   } else {
     showDefinition.value = true
     activeContent.value = 'definition'
-    startDefinitionTimer()
+    resetDefinitionTimer()
   }
 }
 
@@ -108,7 +113,7 @@ function toggleTranslation() {
   } else {
     showDefinition.value = true
     activeContent.value = 'translation'
-    startDefinitionTimer()
+    resetDefinitionTimer()
   }
 }
 
@@ -310,10 +315,11 @@ onUnmounted(() => {
       <!-- Fase de definición inicial -->
       <div v-else-if="gameState === 'definition'"
      class="game-card md:p-4 lg:p-8">
-  <HiztegleDefinition 
+  <HiztegleDefinition
     :word="currentWord"
     :time-left="timeLeft"
     content-type="definition"
+    @content-ready="startTimer"
   />
 </div>
 
@@ -326,11 +332,12 @@ onUnmounted(() => {
     <div v-if="showDefinition && gameState === 'game'"
          class="fixed inset-x-4 top-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full sm:max-w-lg z-50">
       <div class="card p-4 sm:p-6">
-        <HiztegleDefinition 
+        <HiztegleDefinition
           :word="currentWord"
           :hide-timer="false"
           :time-left="definitionTimeLeft"
           :content-type="activeContent"
+          @content-ready="startDefinitionTimer"
         />
       </div>
     </div>

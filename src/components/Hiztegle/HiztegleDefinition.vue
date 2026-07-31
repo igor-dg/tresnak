@@ -1,11 +1,11 @@
 <!-- HiztegleDefinition.vue -->
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, computed } from 'vue'
 import { Loader2 } from 'lucide-vue-next'
 import { Timer } from 'lucide-vue-next'
 import { fetchDefinition, fetchTranslation } from '@/services/dictionaryApi'
 
-const emit = defineEmits(['timer-complete'])
+const emit = defineEmits(['timer-complete', 'content-ready'])
 
 const props = defineProps({
   word: {
@@ -62,8 +62,14 @@ const fetchContent = async () => {
     error.value = 'Arazo bat sortu da'
   } finally {
     isLoading.value = false
+    emit('content-ready')
   }
 }
+
+const source = computed(() => props.contentType === 'definition'
+  ? 'Harluxet Hiztegi Entziklopedikoa'
+  : 'Elhuyar Hiztegia'
+)
 </script>
 
 <template>
@@ -87,9 +93,12 @@ const fetchContent = async () => {
       </div>
 
       <!-- Content -->
-      <div v-else-if="content" 
-           class="rich-definition"
-           v-html="content" />
+      <template v-else-if="content">
+        <div class="rich-definition" v-html="content" />
+        <p class="text-xs text-[var(--text-muted)] text-right mt-3">
+          Iturria: {{ source }}
+        </p>
+      </template>
 
       <!-- Empty state -->
       <div v-else class="text-center py-8 text-[var(--text-secondary)] font-medium">
