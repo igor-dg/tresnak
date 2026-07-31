@@ -3,154 +3,116 @@
 @tailwind components;
 @tailwind utilities;
 
-:root[data-theme="default"] {
-  background: linear-gradient(to bottom right, #ffb600, #FF8500);
-  --gradient-from: theme('colors.amber.500');
-  --gradient-via: theme('colors.orange.400');
-  --gradient-to: theme('colors.rose.400');
-  --gradient-hover-from: theme('colors.amber.600');
-  --gradient-hover-via: theme('colors.orange.500');
-  --gradient-hover-to: theme('colors.rose.500');
-  --text-primary: theme('colors.amber.900');
-  --text-secondary: theme('colors.amber.700');
-  --accent-color: theme('colors.indigo.500');
-  --header-gradient-from: theme('colors.indigo.600');
-  --header-gradient-to: theme('colors.pink.500');
-  --bg-card: rgba(255, 255, 255, 0.8);
-  --peer-checked:bg-indigo-500;
-  --button-bg: theme('colors.indigo.100');
-  --button-hover-bg: theme('colors.indigo.200');
-  --button-text-primary: theme('colors.indigo.700');
-  --button-text-secondary: theme('colors.indigo.500');
-  --button-hover-text: theme('colors.gray.100');
-  --button-hover-text-secondary: theme('colors.gray.400');
-  --button-transparent-bg: rgba(255, 255, 255, 0.2);
+/* TEMA POR DEFECTO (Euskera estándar / Batua) - Paleta Slate + Emerald / Indigo moderna */
+:root[data-theme="default"],
+:root:not([data-theme]) {
+  background: #F8FAFC;
+  --bg-page: #F8FAFC;
+  --gradient-from: #059669; /* Emerald 600 */
+  --gradient-via: #0D9488;  /* Teal 600 */
+  --gradient-to: #2563EB;   /* Blue 600 */
+  --gradient-hover-from: #047857;
+  --gradient-hover-via: #0F766E;
+  --gradient-hover-to: #1D4ED8;
+  --text-primary: #0F172A;   /* Slate 900 - Contraste alto */
+  --text-secondary: #475569; /* Slate 600 */
+  --accent-color: #059669;
+  --header-gradient-from: #0F172A;
+  --header-gradient-to: #1E293B;
+  --bg-card: #FFFFFF;
+  --border-card: #E2E8F0;    /* Slate 200 */
+  --peer-checked: #059669;
+  --button-bg: #F1F5F9;
+  --button-hover-bg: #E2E8F0;
+  --button-text-primary: #0F172A;
+  --button-text-secondary: #475569;
+  --button-hover-text: #0F172A;
+  --button-hover-text-secondary: #334155;
+  --button-transparent-bg: rgba(255, 255, 255, 0.8);
 }
 
+/* TEMA HITANO - Paleta Granate / Borgoña + Warm Slate elegante */
 :root[data-theme="hitano"] {
-  background-color: #ff9900;
-  --gradient-from: theme('colors.fuchsia.500');
-  --gradient-via: theme('colors.pink.500');
-  --gradient-to: theme('colors.pink.400');
-  --gradient-hover-from: theme('colors.fuchsia.600');
-  --gradient-hover-via: theme('colors.pink.600');
-  --gradient-hover-to: theme('colors.pink.500');
-  --text-primary: theme('colors.rose.900');
-  --text-secondary: theme('colors.pink.700');
-  --accent-color: theme('colors.pink.500');
-  --header-gradient-from: theme('colors.pink.600');
-  --header-gradient-to: theme('colors.red.500');
-  --bg-card: rgba(255, 235, 235, 0.8);
-  --peer-checked:bg-pink-500;
-  --button-bg: theme('colors.pink.100');
-  --button-hover-bg: theme('colors.pink.200');
-  --button-text-primary: theme('colors.pink.500');
-  --button-text-secondary: theme('colors.pink.400');
-  --button-hover-text: theme('colors.gray.100');
-  --button-hover-text-secondary: theme('colors.gray.400');
-  --button-transparent-bg: rgba(255, 235, 235, 0.2);
+  background: #FAFAF9;
+  --bg-page: #FAFAF9;
+  --gradient-from: #991B1B; /* Red 800 */
+  --gradient-via: #9F1239;  /* Rose 800 */
+  --gradient-to: #881337;   /* Rose 900 */
+  --gradient-hover-from: #7F1D1D;
+  --gradient-hover-via: #881337;
+  --gradient-hover-to: #4C0519;
+  --text-primary: #1C1917;   /* Stone 900 */
+  --text-secondary: #57534E; /* Stone 600 */
+  --accent-color: #991B1B;
+  --header-gradient-from: #1C1917;
+  --header-gradient-to: #292524;
+  --bg-card: #FFFFFF;
+  --border-card: #E7E5E4;    /* Stone 200 */
+  --peer-checked: #991B1B;
+  --button-bg: #F5F5F4;
+  --button-hover-bg: #E7E5E4;
+  --button-text-primary: #1C1917;
+  --button-text-secondary: #57534E;
+  --button-hover-text: #1C1917;
+  --button-hover-text-secondary: #292524;
+  --button-transparent-bg: rgba(255, 255, 255, 0.8);
 }
-  
-  :root {
-    line-height: 1.5;
-    font-weight: 400;
-  
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-  
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
 
-  .fade-in {
-    animation: fadeIn 0.3s ease-in-out;
-  }
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  color: var(--text-primary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+body {
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
 
-  .backdrop-blur-card {
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
-  }
-  a:hover {
-    color: #535bf2;
-  }
-  
-  body {
-    font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-  }
-  
-  h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-  }
-  
-  button {
-    border-radius: 8px;
-    border: none;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
-  }
-  /* button:hover {
-    border-color: #646cff;
-  } */
-  button:focus,
-  button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
-  
-  .card {
-    padding: 2em;
-  }
-  
-  #app {
-    /* max-width: 1280px; */
-    margin: 0 auto;
-    text-align: center;
-  }
+#app {
+  margin: 0 auto;
+  min-height: 100vh;
+}
 
-  input {
-    color: #000;
+/* Clases de tarjetas limpias y legibles */
+.backdrop-blur-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+}
+
+.fade-in {
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
-  
-  @media (prefers-color-scheme: light) {
-    /* :root {
-      color: #213547;
-      background-color: #ffb600;
-    } */
-    a:hover {
-      color: #747bff;
-    }
-    button {
-      background-color: #f9f9f9;
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+/* Inputs e interactivos */
+input, select, textarea {
+  color: #0F172A;
+}
+
+button {
+  transition: all 0.2s ease-in-out;
+}
   

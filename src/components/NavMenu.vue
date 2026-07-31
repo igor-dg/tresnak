@@ -75,11 +75,11 @@ const navigateTo = (route) => {
     <!-- Botón del menú hamburguesa -->
     <button
       @click="toggleMenu"
-      class="menu fixed top-7 right-5 z-50 p-2 rounded-lg shadow-lg bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)] transition-colors"
+      class="menu fixed top-5 right-5 z-50 p-2.5 rounded-xl shadow-md bg-white border border-slate-200 text-slate-800 hover:bg-slate-100 transition-all"
       aria-label="Menu"
     >
-      <Menu v-if="!isOpen" class="w-6 h-6 text-[var(--text-primary)]" />
-      <X v-else class="w-6 h-6 text-[var(--text-primary)]" />
+      <Menu v-if="!isOpen" class="w-6 h-6 text-slate-800" />
+      <X v-else class="w-6 h-6 text-slate-800" />
     </button>
 
     <!-- Overlay del menú -->
@@ -92,7 +92,7 @@ const navigateTo = (route) => {
     <!-- Menú desplegable -->
     <div
       :class="[
-        'fixed right-0 top-0 h-full w-80 bg-white/50 z-40 transform transition-transform duration-300 ease-in-out shadow-lg',
+        'fixed right-0 top-0 h-full w-80 bg-white/95 backdrop-blur-md border-l border-slate-200 z-40 transform transition-transform duration-300 ease-in-out shadow-2xl',
         isOpen ? 'translate-x-0' : 'translate-x-full'
       ]"
     >

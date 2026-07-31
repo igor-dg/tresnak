@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Hasiera from '../views/Hasiera.vue'
-import StatsView from '@/views/StatsView.vue'
 
 const baseUrl = import.meta.env.PROD ? '/tresnak/' : '/';
 
@@ -10,7 +8,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'hasiera',
-      component: Hasiera
+      component: () => import('../views/Hasiera.vue')
     },
     {
       path: '/sinonimoak-jokoa',
@@ -40,7 +38,7 @@ const router = createRouter({
     {
       path: '/estatistikak',
       name: 'estatistikak',
-      component: StatsView
+      component: () => import('../views/StatsView.vue')
     },
     {
       path: '/aditz-taulak',

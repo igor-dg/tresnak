@@ -64,12 +64,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -158,12 +153,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -251,12 +241,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -344,12 +329,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -437,12 +417,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -530,12 +505,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -623,12 +593,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -716,12 +681,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -796,12 +756,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -889,12 +844,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas
@@ -969,12 +919,7 @@ export const norNoriNorkSystem = {
                     const normalizedNork = nork.toUpperCase()
                     const normalizedNori = nori.toUpperCase()
                     
-                    console.log('Accessing path:', {
-                        number,
-                        nork: normalizedNork,
-                        nori: normalizedNori,
-                        tiempo
-                    })
+                    
                     
                     const formas = aditzak.sistema["nor-nori-nork"][number][normalizedNork][normalizedNori][tiempo]
                     return Array.isArray(formas) ? formas.join(' / ') : formas

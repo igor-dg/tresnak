@@ -1,7 +1,6 @@
 // composables/useStatsService.js
 import { ref } from 'vue'
 import { format, subDays, startOfDay } from 'date-fns'
-import _ from 'lodash'
 import { getTiempoDisplayName } from '@/utils'
 
 export function useStatsService() {
@@ -144,19 +143,25 @@ export function useStatsService() {
     }).reverse()
 
     // Palabras más acertadas/falladas
-    const palabrasStats = _.chain(data)
-      .groupBy('palabra')
-      .map((items, palabra) => ({
-        palabra,
-        aciertos: items.filter(i => i.correcto).length,
-        fallos: items.filter(i => !i.correcto).length
-      }))
-      .value()
+    const palabrasMap = {}
+    for (const item of data) {
+      const key = item.palabra
+      if (!palabrasMap[key]) palabrasMap[key] = []
+      palabrasMap[key].push(item)
+    }
+
+    const palabrasStats = Object.entries(palabrasMap).map(([palabra, items]) => ({
+      palabra,
+      aciertos: items.filter(i => i.correcto).length,
+      fallos: items.filter(i => !i.correcto).length
+    }))
+
+    palabrasStats.sort((a, b) => b.aciertos - a.aciertos)
 
     return {
       timeline: filledData,
-      palabrasMasAcertadas: _.orderBy(palabrasStats, ['aciertos'], ['desc']).slice(0, 5),
-      palabrasMasFalladas: _.orderBy(palabrasStats, ['fallos'], ['desc']).slice(0, 5)
+      palabrasMasAcertadas: palabrasStats.slice(0, 5),
+      palabrasMasFalladas: [...palabrasStats].sort((a, b) => b.fallos - a.fallos).slice(0, 5)
     }
   }
 
@@ -180,24 +185,30 @@ export function useStatsService() {
     }).reverse()
 
     // Estadísticas por sistema
-    const sistemasStats = _.chain(data)
-      .groupBy('sistema')
-      .map((items, sistema) => ({
-        sistema,
-        total: items.length,
-        aciertos: items.filter(i => i.correcto).length
-      }))
-      .value()
+    const sistemasMap = {}
+    for (const item of data) {
+      const key = item.sistema
+      if (!sistemasMap[key]) sistemasMap[key] = []
+      sistemasMap[key].push(item)
+    }
+    const sistemasStats = Object.entries(sistemasMap).map(([sistema, items]) => ({
+      sistema,
+      total: items.length,
+      aciertos: items.filter(i => i.correcto).length
+    }))
 
     // Estadísticas por tiempo verbal
-    const tiemposStats = _.chain(data)
-      .groupBy('tiempo')
-      .map((items, tiempo) => ({
-        tiempo: getTiempoDisplayName(tiempo),
-        total: items.length,
-        aciertos: items.filter(i => i.correcto).length
-      }))
-      .value()
+    const tiemposMap = {}
+    for (const item of data) {
+      const key = item.tiempo
+      if (!tiemposMap[key]) tiemposMap[key] = []
+      tiemposMap[key].push(item)
+    }
+    const tiemposStats = Object.entries(tiemposMap).map(([tiempo, items]) => ({
+      tiempo: getTiempoDisplayName(tiempo),
+      total: items.length,
+      aciertos: items.filter(i => i.correcto).length
+    }))
 
     return {
       timeline: filledData,
