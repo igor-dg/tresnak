@@ -1,9 +1,11 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { useStatsService } from '@/composables/useStatsService'
+import { getDailyChallengeState } from '@/utils/dailyWord'
 import {
   ArrowRight,
   BookOpen,
+  CalendarCheck,
   Check,
   Flame,
   ListChecks,
@@ -15,12 +17,14 @@ import {
   Table,
   Target,
   TrendingUp,
+  Users,
 } from 'lucide-vue-next'
 
 const DAILY_GOAL = 10
 const { getLearningOverview } = useStatsService()
 const overview = ref(null)
 const isLoading = ref(true)
+const dailyChallenge = ref(null)
 
 const games = [
   {
@@ -53,6 +57,9 @@ const resources = [
 ]
 
 const goalCompleted = computed(() => overview.value?.todayAttempts >= DAILY_GOAL)
+const recommendationIcon = computed(() => (
+  games.find(game => game.route === overview.value?.recommendation?.route)?.icon || Puzzle
+))
 const accuracyLabel = computed(() => overview.value?.accuracy === null ? '—' : `${overview.value.accuracy}%`)
 const changeLabel = computed(() => {
   const change = overview.value?.accuracyChange
@@ -61,6 +68,7 @@ const changeLabel = computed(() => {
 })
 
 onMounted(async () => {
+  dailyChallenge.value = getDailyChallengeState()
   try {
     overview.value = await getLearningOverview(DAILY_GOAL)
   } catch (error) {
@@ -85,6 +93,29 @@ onMounted(async () => {
         <p class="home-hero__desc">Gaurko erronka laburra prest daukazu.</p>
       </div>
     </header>
+
+    <router-link to="/hiztegle" class="daily-hero" :class="{ 'daily-hero--done': dailyChallenge }">
+      <div class="daily-hero__icon">
+        <CalendarCheck v-if="dailyChallenge" class="w-6 h-6" />
+        <Puzzle v-else class="w-6 h-6" />
+      </div>
+      <div class="daily-hero__body">
+        <span class="daily-hero__eyebrow">
+          <Users class="w-3 h-3" /> Eguneroko erronka · denontzat hitz bera
+        </span>
+        <strong v-if="!dailyChallenge">Gaurko Hiztegle-a zure zain dago</strong>
+        <strong v-else-if="dailyChallenge.correct">Gaurkoa gainditu duzu! 🎉</strong>
+        <strong v-else>Gaurkoa amaituta duzu</strong>
+        <span class="daily-hero__desc">
+          <template v-if="!dailyChallenge">Egun honetan jokatzen duten guztiek hitz bera dute. Asma ezazu!</template>
+          <template v-else-if="dailyChallenge.correct">{{ dailyChallenge.attempts }} saiakeratan asmatu duzu. Bihar erronka berria!</template>
+          <template v-else>Hitza «{{ dailyChallenge.word }}» zen. Bihar beste aukera bat!</template>
+        </span>
+      </div>
+      <span class="daily-hero__cta">
+        {{ dailyChallenge ? 'Ikusi' : 'Jokatu orain' }} <ArrowRight class="w-4 h-4" />
+      </span>
+    </router-link>
 
     <section v-if="isLoading" class="dashboard-skeleton" aria-label="Aurrerapena kargatzen">
       <span></span><span></span><span></span>
@@ -121,7 +152,7 @@ onMounted(async () => {
       <div class="home-dashboard">
         <router-link :to="overview.recommendation.route" class="recommendation-card">
           <div class="recommendation-card__icon">
-            <Sparkles class="w-5 h-5" />
+            <component :is="recommendationIcon" class="w-5 h-5" />
           </div>
           <div class="recommendation-card__body">
             <span class="recommendation-card__eyebrow">Gaurko gomendioa</span>
@@ -268,6 +299,63 @@ onMounted(async () => {
 
 .home-hero__desc { margin: 0.5rem 0 0; color: var(--text-secondary); font-size: 0.875rem; }
 
+.daily-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: 42rem;
+  margin: 0 auto 1.25rem;
+  padding: 1.1rem 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #7C5CF5 0%, #5636C9 100%);
+  box-shadow: 0 16px 40px rgb(108 76 241 / 0.35);
+  color: white;
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.daily-hero:hover { box-shadow: 0 20px 46px rgb(108 76 241 / 0.45); transform: translateY(-2px); }
+.daily-hero--done { background: linear-gradient(135deg, #3D2F86 0%, #2A2147 100%); }
+
+.daily-hero__icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: 0.375rem;
+  background: rgb(255 255 255 / 0.16);
+}
+
+.daily-hero__body { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 0.15rem; }
+.daily-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: rgb(255 255 255 / 0.8);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.daily-hero__body strong { font-size: 1.05rem; font-weight: 800; }
+.daily-hero__desc { overflow: hidden; color: rgb(255 255 255 / 0.85); font-size: 0.78rem; text-overflow: ellipsis; white-space: nowrap; }
+
+.daily-hero__cta {
+  display: none;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.18);
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
 .today-card,
 .recommendation-card,
 .progress-card {
@@ -360,6 +448,7 @@ onMounted(async () => {
 
 @media (min-width: 640px) {
   .home-shell { padding-inline: 1.5rem; }
+  .daily-hero__cta { display: inline-flex; }
   .recommendation-card__action { display: inline-flex; }
   .game-grid { grid-template-columns: repeat(3, 1fr); }
   .game-tile { display: flex; min-height: 9rem; align-items: flex-start; flex-direction: column; }
@@ -371,7 +460,7 @@ onMounted(async () => {
   .home-shell { min-height: 100vh; padding-top: 3rem; }
   .home-hero { margin-bottom: 2rem; }
   .brand-mark__logo { width: 5.25rem; height: 5.25rem; }
-  .today-card, .home-dashboard { max-width: none; }
+  .today-card, .home-dashboard, .daily-hero { max-width: none; }
   .home-dashboard { grid-template-columns: 0.82fr 1.18fr; align-items: stretch; }
   .recommendation-card { align-items: flex-start; flex-direction: column; padding: 1.35rem; }
   .recommendation-card__icon { width: 3rem; height: 3rem; }

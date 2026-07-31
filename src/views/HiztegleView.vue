@@ -2,13 +2,18 @@
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import HiztegleDefinition from '@/components/Hiztegle/HiztegleDefinition.vue'
 import KeyboardInput from '@/components/Hiztegle/KeyboardInput.vue'
-import { RefreshCw, Languages, BookOpen } from 'lucide-vue-next'
+import { RefreshCw, Languages, BookOpen, CalendarCheck, Shuffle } from 'lucide-vue-next'
 import hiztegiaData from '@/data/hiztegia.json'
 import PageHeader from '@/components/ui/PageHeader.vue'
 import { fetchTranslation } from '@/services/dictionaryApi'
 import { useStatsService } from '@/composables/useStatsService'
+import { getDailyWord, getDailyChallengeState, saveDailyChallengeResult, isValidDailyGuess } from '@/utils/dailyWord'
+
+const MODE_KEY = 'hiztegle_mode'
 
 const gameState = ref('initial')
+const mode = ref(localStorage.getItem(MODE_KEY) === 'free' ? 'free' : 'daily')
+const dailyResult = ref(null)
 const currentWord = ref('')
 const timeLeft = ref(5)
 const attempts = ref([])
@@ -66,8 +71,28 @@ function selectRandomWord() {
   addToUsedWords(currentWord.value)
 }
 
+function setMode(newMode) {
+  if (mode.value === newMode) return
+  mode.value = newMode
+  localStorage.setItem(MODE_KEY, newMode)
+  dailyResult.value = newMode === 'daily' ? getDailyChallengeState() : null
+  gameState.value = 'initial'
+}
+
 function startGame() {
-  selectRandomWord()
+  if (mode.value === 'daily') {
+    const existing = getDailyChallengeState()
+    if (existing) {
+      dailyResult.value = existing
+      gameState.value = 'initial'
+      return
+    }
+    currentWord.value = getDailyWord()
+  } else {
+    selectRandomWord()
+  }
+
+  dailyResult.value = null
   gameState.value = 'definition'
   timeLeft.value = 5
   attempts.value = []
@@ -150,6 +175,13 @@ async function recordGame(correcto, attemptCount) {
   gameRecorded.value = true
   try {
     await saveHiztegleAttempt(currentWord.value, correcto, attemptCount)
+    if (mode.value === 'daily') {
+      dailyResult.value = saveDailyChallengeResult({
+        correct: correcto,
+        attempts: attemptCount,
+        word: currentWord.value
+      })
+    }
   } catch (error) {
     console.error('Ezin izan da Hiztegle partida gorde:', error)
   }
@@ -166,6 +198,10 @@ async function skipWord() {
 const isCheckingWord = ref(false)
 
 async function checkWordExists(word) {
+  if (mode.value === 'daily') {
+    return isValidDailyGuess(word)
+  }
+
   try {
     const data = await fetchTranslation(word)
     return data && data.trim().length > 0
@@ -296,6 +332,9 @@ function revealHint() {
 
 onMounted(() => {
   gameState.value = 'initial'
+  if (mode.value === 'daily') {
+    dailyResult.value = getDailyChallengeState()
+  }
   const usedWords = getUsedWords()
   const sevenDaysAgo = new Date()
   sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7)
@@ -319,9 +358,49 @@ onUnmounted(() => {
     <PageHeader title="Hiztegle" description="Ikusi definizioa eta asmatu hitza!" />
 
     <div class="max-w-2xl mx-auto mb-24">
+      <!-- Selector de modo -->
+      <div v-if="gameState === 'initial'" class="mode-toggle" role="tablist" aria-label="Hiztegle modua">
+        <button
+          role="tab"
+          :aria-selected="mode === 'daily'"
+          class="mode-toggle__btn"
+          :class="{ 'mode-toggle__btn--active': mode === 'daily' }"
+          @click="setMode('daily')"
+        >
+          <CalendarCheck class="w-4 h-4" /> Eguneroko erronka
+        </button>
+        <button
+          role="tab"
+          :aria-selected="mode === 'free'"
+          class="mode-toggle__btn"
+          :class="{ 'mode-toggle__btn--active': mode === 'free' }"
+          @click="setMode('free')"
+        >
+          <Shuffle class="w-4 h-4" /> Modu librea
+        </button>
+      </div>
+
       <!-- Estado inicial -->
       <div v-if="gameState === 'initial'" class="text-center">
+        <template v-if="mode === 'daily' && dailyResult">
+          <p class="daily-result-title">
+            {{ dailyResult.correct ? '🎉 Gaurkoa gainditu duzu!' : `Hitza ${dailyResult.word} zen.` }}
+          </p>
+          <p class="daily-result-desc">
+            {{ dailyResult.correct
+              ? `${dailyResult.attempts} saiakeratan asmatu duzu.`
+              : 'Ez duzu asmatu, baina bihar hitz berria izango duzu!' }}
+          </p>
+          <p class="daily-result-next">Bihar erronka berria izango duzu. Bitartean, jolastu nahi baduzu:</p>
+          <button
+            @click="setMode('free'); startGame()"
+            class="btn-secondary py-3 px-7 text-lg"
+          >
+            Jokatu modu librean
+          </button>
+        </template>
         <button
+          v-else
           @click="startGame"
           class="btn-primary py-3 px-7 text-lg"
         >
@@ -382,7 +461,7 @@ onUnmounted(() => {
     </button>
           
           <button
-            v-if="gameState === 'game'"
+            v-if="gameState === 'game' && mode === 'free'"
             @click="skipWord"
             class="btn-secondary p-3 rounded-md"
             title="Aldatu hitza"
@@ -474,11 +553,12 @@ onUnmounted(() => {
 
         <!-- Botón de reinicio cuando el juego está completo -->
         <div v-if="gameState === 'complete'" class="text-center">
+          <p v-if="mode === 'daily'" class="daily-result-next">Bihar erronka berria izango duzu!</p>
           <button
             @click="startGame"
             class="btn-primary py-3 px-6 text-lg"
           >
-            Berriro jolastu
+            {{ mode === 'daily' ? 'Ikusi emaitza' : 'Berriro jolastu' }}
           </button>
         </div>
       </div>
@@ -511,4 +591,48 @@ onUnmounted(() => {
   transform: translateY(-20px);
 }
 
+.mode-toggle {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.mode-toggle__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--border-card);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.mode-toggle__btn--active {
+  border-color: transparent;
+  background: #6C4CF1;
+  color: white;
+}
+
+.daily-result-title {
+  margin-bottom: 0.4rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.daily-result-desc {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.daily-result-next {
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
 </style>
