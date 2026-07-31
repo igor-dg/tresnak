@@ -1,4 +1,3 @@
-# HiztegleGrid.vue
 <script setup>
 const props = defineProps({
   attempts: {
@@ -21,11 +20,11 @@ const props = defineProps({
     >
       <div v-for="(letter, letterIndex) in attempt" 
            :key="letterIndex"
-           class="w-12 h-12 flex items-center justify-center rounded-lg text-white font-bold text-2xl"
+           class="w-12 h-12 flex items-center justify-center rounded-md text-white font-bold text-2xl border"
            :class="{
-             'bg-green-500': letter.status === 'correct',
-             'bg-yellow-500': letter.status === 'present',
-             'bg-gray-400': letter.status === 'absent'
+             'state-correct': letter.status === 'correct',
+             'state-present': letter.status === 'present',
+             'state-absent': letter.status === 'absent'
            }"
       >
         {{ letter.letter }}

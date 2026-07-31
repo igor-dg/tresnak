@@ -1,32 +1,25 @@
 <script setup>
 import NavigationCard from '../components/NavigationCard.vue';
+import PageHeader from '@/components/ui/PageHeader.vue'
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-    <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-6 sm:text-5xl">
-        Ongi etorri euskara ikasteko gure plataformara
-      </h1>
-      <p class="text-xl text-[var(--text-secondary)] mb-8">
-        Orrialde honek hizkuntzaren ikaskuntza prozesua errazteko eta hobetzeko
-        diseinatutako tresna espezifikoak eskaintzen ditu.
-      </p>
+  <div class="page-shell">
+    <PageHeader
+      title="Ongi etorri euskara ikasteko gure plataformara"
+      description="Orrialde honek hizkuntzaren ikaskuntza prozesua errazteko eta hobetzeko diseinatutako tresna espezifikoak eskaintzen ditu."
+    >
       <h2 class="text-2xl font-semibold text-[var(--text-primary)] mb-12">
         Hona hemen eskura ditugun gure tresna nagusiak:
       </h2>
-    </header>
+    </PageHeader>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
-      <div class="relative">
-        <div class="absolute -inset-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-lg blur opacity-75 animate-pulse group-hover:opacity-100 transition duration-1000"></div>
-        <NavigationCard
-          title="Hiztegle"
-          description="Asmakizun joko dibertigarria non definizio bat emanda hitza asmatu behar duzun. Wordle euskaraz, baina definizioarekin!"
-          route="/hiztegle"
-          class="relative"
-        />
-      </div>
+      <NavigationCard
+        title="Hiztegle"
+        description="Asmakizun joko dibertigarria non definizio bat emanda hitza asmatu behar duzun. Wordle euskaraz, baina definizioarekin!"
+        route="/hiztegle"
+      />
 
       <NavigationCard
         title="Sinonimoen jokoa"

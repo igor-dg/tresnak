@@ -3,6 +3,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { X, Menu } from 'lucide-vue-next'
+import BaseButton from '@/components/ui/BaseButton.vue'
 
 const isOpen = ref(false)
 const router = useRouter()
@@ -73,26 +74,28 @@ const navigateTo = (route) => {
 <template>
   <div>
     <!-- Botón del menú hamburguesa -->
-    <button
+    <BaseButton
+      variant="secondary"
+      icon-only
       @click="toggleMenu"
-      class="menu fixed top-5 right-5 z-50 p-2.5 rounded-xl shadow-md bg-white border border-slate-200 text-slate-800 hover:bg-slate-100 transition-all"
-      aria-label="Menu"
+      class="fixed top-5 right-5 z-50 shadow-sm"
+      aria-label="Menua"
     >
-      <Menu v-if="!isOpen" class="w-6 h-6 text-slate-800" />
-      <X v-else class="w-6 h-6 text-slate-800" />
-    </button>
+      <Menu v-if="!isOpen" class="w-6 h-6" />
+      <X v-else class="w-6 h-6" />
+    </BaseButton>
 
     <!-- Overlay del menú -->
     <div
       v-if="isOpen"
-      class="fixed inset-0 bg-black bg-opacity-50 z-40"
+      class="fixed inset-0 modal-backdrop z-40"
       @click="toggleMenu"
     ></div>
 
     <!-- Menú desplegable -->
     <div
       :class="[
-        'fixed right-0 top-0 h-full w-80 bg-white/95 backdrop-blur-md border-l border-slate-200 z-40 transform transition-transform duration-300 ease-in-out shadow-2xl',
+        'fixed right-0 top-0 h-full w-80 bg-[var(--bg-elevated)] border-l border-[var(--border-card)] z-40 transform transition-transform duration-300 ease-in-out shadow-xl',
         isOpen ? 'translate-x-0' : 'translate-x-full'
       ]"
     >
@@ -109,7 +112,7 @@ const navigateTo = (route) => {
               <li v-for="item in group.items" :key="item.route">
                 <button
                   @click="navigateTo(item.route)"
-                  class="w-full text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2 bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)] focus:ring-[var(--gradient-from)] group"
+                  class="w-full text-left rounded-md py-3 px-4 flex items-center gap-3 transition-all text-base font-semibold bg-[var(--bg-card)] border border-[var(--border-card)] text-[var(--text-primary)] hover:bg-[var(--accent-primary-soft)] hover:border-[var(--accent-primary)] group"
                 >
                   <span >
                     {{ item.name }}
@@ -126,23 +129,3 @@ const navigateTo = (route) => {
     </div>
   </div>
 </template>
-
-<style scoped>
-.menu:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-.menu {
-    background: var(--button-transparent-bg);
-    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2), -8px -8px 16px rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transition: box-shadow 0.3s ease;
-}
-
-.menu:active {
-    box-shadow: inset 8px 8px 16px rgba(0, 0, 0, 0.2), inset -8px -8px 16px rgba(255, 255, 255, 0.2);
-}
-.menu:focus {
-    outline: none;
-}
-</style>

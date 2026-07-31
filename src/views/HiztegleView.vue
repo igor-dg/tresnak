@@ -1,10 +1,10 @@
-# HiztegleView.vue
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import HiztegleDefinition from '@/components/Hiztegle/HiztegleDefinition.vue'
 import KeyboardInput from '@/components/Hiztegle/KeyboardInput.vue'
 import { RefreshCw, Languages, BookOpen } from 'lucide-vue-next'
 import hiztegiaData from '@/data/hiztegia.json'
+import PageHeader from '@/components/ui/PageHeader.vue'
 
 const gameState = ref('initial')
 const currentWord = ref('')
@@ -294,23 +294,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen mx-auto py-12 px-4 sm:px-6 xl:px-12">
-    <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-white mb-6">
-        Hiztegle
-      </h1>
-      <p class="text-lg text-orange-100">
-        Ikusi definizioa eta asmatu hitza!
-      </p>
-    </header>
+  <div class="page-shell">
+    <PageHeader title="Hiztegle" description="Ikusi definizioa eta asmatu hitza!" />
 
     <div class="max-w-2xl mx-auto mb-24">
       <!-- Estado inicial -->
       <div v-if="gameState === 'initial'" class="text-center">
         <button
           @click="startGame"
-          class="bg-white text-orange-500 rounded-full py-4 px-8 text-xl font-semibold
-                 hover:bg-orange-100 transition-all duration-300 shadow-lg"
+          class="btn-primary py-3 px-7 text-lg"
         >
           Hasi jolasten
         </button>
@@ -318,7 +310,7 @@ onUnmounted(() => {
 
       <!-- Fase de definición inicial -->
       <div v-else-if="gameState === 'definition'" 
-     class="bg-orange-100/30 backdrop-blur-md text-black rounded-3xl p-8 shadow-lg">
+     class="card p-8">
   <HiztegleDefinition 
     :word="currentWord"
     :time-left="timeLeft"
@@ -334,7 +326,7 @@ onUnmounted(() => {
         <Transition name="fade">
     <div v-if="showDefinition && gameState === 'game'"
          class="fixed inset-x-4 top-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full sm:max-w-lg z-50">
-      <div class="bg-orange-100/95 text-black backdrop-blur-sm rounded-3xl p-6 shadow-lg">
+      <div class="card p-6">
         <HiztegleDefinition 
           :word="currentWord"
           :hide-timer="false"
@@ -350,7 +342,7 @@ onUnmounted(() => {
           <button
       v-if="gameState === 'game'"
       @click="toggleDefinition"
-      class="bg-orange-100 text-orange-800 rounded-full p-3 hover:bg-orange-200 transition-colors shadow-md"
+      class="btn-secondary p-3 rounded-md"
       :title="showDefinition && activeContent === 'definition' ? 'Ezkutatu definizioa' : 'Ikusi definizioa'"
     >
       <BookOpen class="w-5 h-5" />
@@ -359,7 +351,7 @@ onUnmounted(() => {
     <button
       v-if="gameState === 'game'"
       @click="toggleTranslation"
-      class="bg-orange-100 text-orange-800 rounded-full p-3 hover:bg-orange-200 transition-colors shadow-md flex items-center gap-1"
+      class="btn-secondary p-3 rounded-md flex items-center gap-1"
       :title="showDefinition && activeContent === 'translation' ? 'Ezkutatu itzulpena' : 'Ikusi itzulpena'"
     >
       <Languages class="w-5 h-5" />
@@ -369,7 +361,7 @@ onUnmounted(() => {
           <button
             v-if="gameState === 'game'"
             @click="skipWord"
-            class="bg-orange-100 text-orange-800 rounded-full p-3 hover:bg-orange-200 transition-colors shadow-md"
+            class="btn-secondary p-3 rounded-md"
             title="Aldatu hitza"
           >
             <RefreshCw class="w-5 h-5" />
@@ -378,7 +370,7 @@ onUnmounted(() => {
           <button
     v-if="gameState === 'game'"
     @click="revealHint"
-    class="bg-blue-100 text-blue-800 rounded-full p-3 hover:bg-blue-200 transition-colors shadow-md"
+    class="btn-secondary p-3 rounded-md"
     title="Erakutsi letra bat"
   >
     <!-- Puedes usar un icono de bombilla o similar -->
@@ -402,12 +394,12 @@ onUnmounted(() => {
   >
     <div v-for="(letter, letterIndex) in attempt" 
          :key="letterIndex"
-         class="w-full aspect-square flex items-center justify-center rounded-xl text-white font-bold text-2xl
+         class="w-full aspect-square flex items-center justify-center rounded-md text-white font-bold text-2xl
                 transition-all duration-300 border-2"
          :class="{
-           'bg-green-500 border-green-600': letter.status === 'correct',
-           'bg-yellow-500 border-yellow-600': letter.status === 'present',
-           'bg-gray-400 border-gray-500': letter.status === 'absent'
+           'state-correct': letter.status === 'correct',
+           'state-present': letter.status === 'present',
+           'state-absent': letter.status === 'absent'
          }"
     >
       {{ letter.letter }}
@@ -421,8 +413,7 @@ onUnmounted(() => {
   >
     <div v-for="i in currentWord.length" 
          :key="i"
-         class="w-full aspect-square flex items-center justify-center rounded-xl 
-                bg-white/20 border-2 border-white/30 text-white font-bold text-2xl"
+         class="w-full aspect-square flex items-center justify-center rounded-md bg-[var(--bg-card)] border-2 border-[var(--border-strong)] text-[var(--text-primary)] font-bold text-2xl"
     >
       {{ currentAttempt[i - 1] || '' }}
     </div>
@@ -436,11 +427,9 @@ onUnmounted(() => {
   >
   <div v-for="col in currentWord.length" 
          :key="`empty-${row}-${col}`"
-         class="w-full aspect-square flex items-center justify-center rounded-xl border-2"
+         class="w-full aspect-square flex items-center justify-center rounded-md border-2"
          :class="[
-           hints.has(col - 1) 
-             ? 'bg-blue-400/20 border-blue-400/40 text-blue-200' 
-             : 'bg-white/10 border-white/20'
+           hints.has(col - 1) ? 'state-hint' : 'bg-[var(--bg-card)] border-[var(--border-card)]'
          ]"
     >
       {{ hints.has(col - 1) ? currentWord[col - 1] : '' }}
@@ -452,9 +441,9 @@ onUnmounted(() => {
         <p v-if="statusMessages" 
            class="text-center text-xl font-semibold"
            :class="{
-             'text-green-400': statusMessages.includes('Zorionak'),
-             'text-red-400': statusMessages.includes('Game Over'),
-             'text-white': !statusMessages.includes('Zorionak') && !statusMessages.includes('Game Over')
+             'text-[var(--accent-success)]': statusMessages.includes('Zorionak'),
+             'text-[var(--accent-danger)]': statusMessages.includes('Game Over'),
+             'text-[var(--text-primary)]': !statusMessages.includes('Zorionak') && !statusMessages.includes('Game Over')
            }"
         >
           {{ statusMessages }}
@@ -464,8 +453,7 @@ onUnmounted(() => {
         <div v-if="gameState === 'complete'" class="text-center">
           <button
             @click="startGame"
-            class="bg-white text-orange-500 rounded-full py-3 px-6 text-lg font-semibold
-                   hover:bg-orange-100 transition-all duration-300 shadow-lg"
+            class="btn-primary py-3 px-6 text-lg"
           >
             Berriro jolastu
           </button>
@@ -475,7 +463,7 @@ onUnmounted(() => {
     
     <div v-if="isCheckingWord" 
          class="fixed bottom-24 left-1/2 transform -translate-x-1/2 
-                bg-white/90 text-orange-600 px-4 py-2 rounded-full shadow-lg">
+                bg-[var(--bg-card)] text-[var(--accent-warning)] border border-[var(--border-card)] px-4 py-2 rounded-md shadow-sm">
       Hitza egiaztatzen...
     </div>
 
@@ -500,43 +488,4 @@ onUnmounted(() => {
   transform: translateY(-20px);
 }
 
-.definition-content :deep(ul) {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.definition-content :deep(li) {
-  margin-bottom: 0.75rem;
-  padding: 0.75rem;
-  border-radius: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgb(254 215 170); /* orange-200 */
-  color: rgb(51, 51, 51); /* Un gris oscuro casi negro */
-}
-
-.definition-content :deep(p) {
-  color: rgb(51, 51, 51);
-}
-
-.definition-content :deep(.azpisarrera) {
-  color: rgb(234 88 12); /* orange-600 */
-  font-weight: 500;
-}
-
-.definition-content :deep(.adibidea) {
-  color: rgb(120 113 108); /* stone-500 */
-  font-style: italic;
-  margin-top: 0.5rem;
-}
-
-.definition-content :deep(a) {
-  color: rgb(234 88 12); /* orange-600 */
-  text-decoration: underline;
-}
-
-/* Para cualquier otro texto que pueda estar sin estilo específico */
-.definition-content :deep(*) {
-  color: rgb(51, 51, 51);
-}
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="w-full max-w-4xl mx-auto">
-        <h3 class="text-amber-700 font-semibold text-center mb-4">{{ TIEMPO_NAMES[tiempo] }}</h3>
+        <h3 class="text-[var(--text-primary)] font-semibold text-center mb-4">{{ TIEMPO_NAMES[tiempo] }}</h3>
         
         <!-- Selectors -->
         <div class="flex gap-4 mb-6">
@@ -9,7 +9,7 @@
                 <div class="relative">
                     <select 
                         v-model="selectedNumber"
-                        class="transition-all focus:outline-none focus:ring-2 rounded-full p-2 pr-8 w-full bg-gradient-to-r appearance-none from-[var(--gradient-from)] to-[var(--gradient-to)] hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)] focus:ring-[var(--gradient-from)] placeholder:text-amber-700"
+                        class="input appearance-none pr-8 py-2"
                     >
                         <option value="" disabled selected>NOR</option>
                         <option value="singular">Hura (sing.)</option>
@@ -24,7 +24,7 @@
                 <div class="relative">
                     <select 
                         v-model="selectedNori"
-                        class="transition-all focus:outline-none focus:ring-2 rounded-full p-2 pr-8 w-full bg-gradient-to-r appearance-none from-[var(--gradient-from)] to-[var(--gradient-to)] hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)] focus:ring-[var(--gradient-from)] placeholder:text-amber-700"
+                        class="input appearance-none pr-8 py-2"
                     >
                         <option value="" disabled selected>NORI</option>
                         <option v-for="nori in ['NIRI', 'HIRI', 'HARI', 'GURI', 'ZURI', 'ZUEI', 'HAIEI']" :key="nori" :value="nori">
@@ -40,7 +40,7 @@
                 <div class="relative">
                     <select 
                         v-model="selectedNork"
-                        class="transition-all focus:outline-none focus:ring-2 rounded-full p-2 pr-8 w-full bg-gradient-to-r appearance-none from-[var(--gradient-from)] to-[var(--gradient-to)] hover:from-[var(--gradient-hover-from)] hover:to-[var(--gradient-hover-to)] focus:ring-[var(--gradient-from)] placeholder:text-amber-700"
+                        class="input appearance-none pr-8 py-2"
                     >
                         <option value="" disabled selected>NORK</option>
                         <option v-for="nork in ['NIK', 'HIK', 'HARK', 'GUK', 'ZUK', 'ZUEK', 'HAIEK']" :key="nork" :value="nork">
@@ -53,7 +53,7 @@
         </div>
 
         <!-- Tables section -->
-        <div class="relative overflow-x-auto bg-white/30 rounded-lg shadow-lg p-4">
+        <div class="relative overflow-x-auto card p-4">
             <div class="flex">
                 <template v-for="tableType in conjugationData.tableOrder" :key="tableType">
                     <div :class="{'flex-1': tableType !== 'extraSuffix', 'flex-none': tableType === 'extraSuffix'}">
@@ -64,8 +64,8 @@
                                         :key="index"
                                         :class="{
                                             'border p-2': true,
-                                            'bg-amber-400': index === tableStructure.primaryColumns?.[tableType],
-                                            'bg-amber-300': index !== tableStructure.primaryColumns?.[tableType]
+                                            'table-heading': index === tableStructure.primaryColumns?.[tableType],
+                                            'table-subheading': index !== tableStructure.primaryColumns?.[tableType]
                                         }">
                                         {{ header || '\u00A0' }}
                                     </th>
@@ -75,13 +75,13 @@
                                 <tr v-for="(person, index) in Object.keys(mappings[tableType])" 
                                     :key="index"
                                     :class="{
-                                        'bg-amber-50': getRowHighlight(tableType, person)
+                                        'table-highlight': getRowHighlight(tableType, person)
                                     }">
                                     <td v-for="column in tableStructure[tableType].showColumns"
                                         :key="column"
-                                        class="border p-2 text-center text-amber-600"
+                                        class="border p-2 text-center text-[var(--text-secondary)]"
                                         :class="{
-                                            'bg-amber-50': shouldHighlightCell(tableType, column, index, person)
+                                            'table-highlight': shouldHighlightCell(tableType, column, index, person)
                                         }">
                                         {{ mappings[tableType][person][column] || '-' }}
                                     </td>
@@ -94,8 +94,8 @@
         </div>
 
         <!-- Result -->
-        <div v-if="showResult" class="mt-4 p-4 bg-white/30 rounded-lg text-center">
-            <span class="font-bold text-amber-700 text-lg">{{ conjugationResult }}</span>
+        <div v-if="showResult" class="mt-4 p-4 card p-4 text-center">
+            <span class="font-bold text-[var(--text-primary)] text-lg">{{ conjugationResult }}</span>
         </div>
     </div>
 </template>

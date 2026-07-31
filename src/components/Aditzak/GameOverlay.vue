@@ -2,6 +2,8 @@
 import { Check, X } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { getSistemaDisplayName, getTiempoDisplayName } from '@/utils'
+import BaseModal from '@/components/ui/BaseModal.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 
 const props = defineProps({
   message: {
@@ -39,70 +41,43 @@ const emit = defineEmits(['close'])
 </script>
 
 <template>
-  <div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
-    <div class="bg-white/90 backdrop-blur-lg rounded-3xl p-8 max-w-md w-full mx-4 shadow-xl">
+  <BaseModal :model-value="true" max-width="max-w-md" labelledby="game-result" @close="$emit('close')">
+    <div class="p-6 sm:p-8">
       <div class="flex justify-center mb-4">
         <div 
-          class="p-4 rounded-full"
-          :class="isCorrect ? 'bg-green-100' : 'bg-red-100'"
+          class="p-4 rounded-md"
+          :class="isCorrect ? 'bg-[var(--accent-success-soft)]' : 'bg-[var(--accent-danger-soft)]'"
         >
           <component
             :is="isCorrect ? Check : X"
             class="size-8"
-            :class="isCorrect ? 'text-green-600' : 'text-red-600'"
+            :class="isCorrect ? 'text-[var(--accent-success)]' : 'text-[var(--accent-danger)]'"
           />
         </div>
       </div>
       
-      <p class="text-xl text-center font-medium mb-6" :class="isCorrect ? 'text-green-700' : 'text-red-700'">
+      <p id="game-result" class="text-xl text-center font-medium mb-6" :class="isCorrect ? 'text-[var(--accent-success)]' : 'text-[var(--accent-danger)]'">
         {{ message }}
       </p>
       
       <div class="space-y-2 mb-6 text-center">
-        <p class="text-gray-600">
+        <p class="text-[var(--text-secondary)]">
           <span class="font-medium">Sistema:</span> {{ getSistemaDisplayName(sistema) }}
         </p>
-        <p class="text-gray-600">
+        <p class="text-[var(--text-secondary)]">
           <span class="font-medium">Denbora:</span> {{ getTiempoDisplayName(tiempo) }}
         </p>
-        <p class="text-gray-800 font-medium mt-4">
+        <p class="text-[var(--text-primary)] font-medium mt-4">
           {{ completePhrase }}
         </p>
       </div>
       
-      <button
+      <BaseButton
         @click="$emit('close')"
-        class="w-full py-3 px-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors font-medium"
+        class="w-full py-3 px-4"
       >
         Hurrengoa
-      </button>
+      </BaseButton>
     </div>
-  </div>
+  </BaseModal>
 </template>
-
-<style scoped>
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.overlay-content {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.overlay-message {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-</style>

@@ -1,6 +1,9 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { X, Loader2 } from 'lucide-vue-next'
+import BaseModal from '@/components/ui/BaseModal.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
+import EmptyState from '@/components/ui/EmptyState.vue'
 
 const props = defineProps({
   word: {
@@ -57,50 +60,29 @@ const closeModal = () => {
   error.value = null
 }
 
-// Cerrar con Escape
-const handleKeyDown = (e) => {
-  if (e.key === 'Escape') closeModal()
-}
-
-// Añadir/remover event listener
-watch(() => props.isOpen, (newVal) => {
-  if (newVal) {
-    document.addEventListener('keydown', handleKeyDown)
-  } else {
-    document.removeEventListener('keydown', handleKeyDown)
-  }
-})
 </script>
 
 <template>
-  <!-- Backdrop -->
-  <div v-if="isOpen" 
-       class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
-       @click="closeModal">
-    
-    <!-- Modal -->
-    <div class="fixed inset-0 flex items-center justify-center p-4"
-         @click.stop>
-      <div class="bg-[var(--bg-card)] rounded-2xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-hidden">
+  <BaseModal
+    :model-value="isOpen"
+    max-width="max-w-lg"
+    :label="`${word} - Definizioa`"
+    @close="closeModal"
+  >
         <!-- Header -->
-        <div class="flex items-center justify-between p-4 border-b">
+        <div class="flex items-center justify-between p-4 border-b border-[var(--border-card)]">
           <div class="flex items-center gap-2">
-            <h2 class="text-xl font-bold text-amber-600">{{ word }}</h2>
-            <span class="text-amber-500">- Definizioa</span>
+            <h2 class="text-xl font-bold text-[var(--text-primary)]">{{ word }}</h2>
+            <span class="text-[var(--text-muted)]">- Definizioa</span>
           </div>
-          <button @click="closeModal"
-          :class="{
-        'right-2  transition-all focus:outline-none focus:ring-2 rounded-full p-2': true,
-        'bg-gradient-to-r': true,
-        'from-[var(--gradient-from)]': true,
-        'to-[var(--gradient-to)]': true,
-        'hover:from-[var(--gradient-hover-from)]': true,
-        'hover:to-[var(--gradient-hover-to)]': true,
-        'focus:ring-[var(--gradient-from)]': true
-      }"
-      >
+          <BaseButton
+            variant="secondary"
+            icon-only
+            @click="closeModal"
+            aria-label="Itxi definizioa"
+          >
             <X class="size-5" />
-          </button>
+          </BaseButton>
         </div>
 
         <!-- Content -->
@@ -108,70 +90,29 @@ watch(() => props.isOpen, (newVal) => {
           <!-- Loading -->
           <div v-if="isLoading" 
                class="flex justify-center items-center py-8">
-            <Loader2 class="size-8 animate-spin text-indigo-600" />
+            <Loader2 class="size-8 animate-spin text-[var(--accent-primary)]" />
           </div>
 
           <!-- Error -->
           <div v-else-if="error" 
-               class="text-center py-8 text-red-500">
+               class="text-center py-8 text-[var(--accent-danger)]">
             {{ error }}
           </div>
 
           <!-- Definition -->
           <div v-else-if="definition" 
-               class="definition-content"
+               class="rich-definition"
                v-html="definition" />
 
           <!-- Empty -->
-          <div v-else 
-               class="text-center py-8 text-amber-500">
-            Ez dago definiziorik
-          </div>
+          <EmptyState v-else message="Ez dago definiziorik" />
         </div>
 
         <!-- Footer -->
-        <div class="p-4 border-t">
-          <button @click="closeModal"
-          :class="{
-        'w-full text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
-        'bg-gradient-to-r': true,
-        'from-[var(--gradient-from)]': true,
-        'to-[var(--gradient-to)]': true,
-        'hover:from-[var(--gradient-hover-from)]': true,
-        'hover:to-[var(--gradient-hover-to)]': true,
-        'focus:ring-[var(--gradient-from)]': true
-      }">
+        <div class="p-4 border-t border-[var(--border-card)]">
+          <BaseButton @click="closeModal" class="w-full py-3 px-4 text-lg">
             Itxi
-          </button>
+          </BaseButton>
         </div>
-      </div>
-    </div>
-  </div>
+  </BaseModal>
 </template>
-
-<style scoped>
-.definition-content :deep(ul) {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  color: #000;
-}
-
-.definition-content :deep(li) {
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: rgb(249 250 251);
-}
-
-.definition-content :deep(.azpisarrera) {
-  color: rgb(79 70 229);
-  font-weight: 500;
-}
-
-.definition-content :deep(.adibidea) {
-  color: rgb(107 114 128);
-  font-style: italic;
-  margin-top: 0.25rem;
-}
-</style>

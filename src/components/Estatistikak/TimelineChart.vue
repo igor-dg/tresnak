@@ -1,6 +1,5 @@
-# TimelineChart.vue
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Chart from 'apexcharts'
 import { formatDateEU } from '@/utils/dateFormatter'
 
@@ -52,16 +51,13 @@ const initChart = () => {
       }
     },
     series: getSeries(),
-    colors: ['#22c55e', '#ef4444'], // Verde para aciertos, rojo para fallos
+    colors: ['#37805F', '#B9473A'],
     xaxis: {
   type: 'datetime',
   labels: {
     formatter: function(val) {
-      console.log('Valor recibido en formatter:', val);
-      // Asegurarnos de que val es un número válido
       const timestamp = typeof val === 'number' ? val : new Date(val).getTime();
       const date = new Date(timestamp);
-      console.log('Fecha convertida:', date);
       
       const today = new Date();
       if (date.getDate() === today.getDate() && 
@@ -96,12 +92,12 @@ const initChart = () => {
     const fecha = formatDateEU(w.globals.seriesX[0][dataPointIndex], false, true)
     
     return `
-      <div class="p-2 bg-gray-800 text-white rounded-lg shadow">
+      <div class="chart-tooltip">
         <div class="font-medium mb-1">${fecha}</div>
         <div class="space-y-1 text-sm">
           <div>Erantzunak: ${total}</div>
-          <div class="text-emerald-400">Asmatutakoak: ${aciertos}</div>
-          <div class="text-red-400">Hutsegiteak: ${fallos}</div>
+          <div class="chart-tooltip__success">Asmatutakoak: ${aciertos}</div>
+          <div class="chart-tooltip__danger">Hutsegiteak: ${fallos}</div>
         </div>
       </div>
     `
@@ -126,6 +122,10 @@ watch(() => props.data, () => {
 
 onMounted(() => {
   initChart()
+})
+
+onUnmounted(() => {
+  chart.value?.destroy()
 })
 </script>
 

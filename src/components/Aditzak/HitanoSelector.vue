@@ -6,17 +6,12 @@ const emit = defineEmits(['update:hitanoEnabled'])
 <template>
   <div class="p-4"> 
 
-    <div class="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50/50 transition-colors">
+    <div class="flex items-center justify-between p-3 rounded-md hover:bg-[var(--accent-primary-soft)] transition-colors">
       <div class="flex flex-col">
-        <span class="text-base font-medium bg-gradient-to-r from-pink-600 to-red-500 bg-clip-text text-transparent">
+        <span class="text-base font-medium text-[var(--text-primary)]">
           Hika
         </span>
-        <span class="text-xs text-gray-500 mt-0.5" :style="{
-        backgroundImage: `linear-gradient(to right, var(--header-gradient-from), var(--header-gradient-to))`,
-        WebkitBackgroundClip: 'text',
-        backgroundClip: 'text',
-        color: 'transparent'
-      }">
+        <span class="text-xs text-[var(--text-secondary)] mt-0.5">
             Hikako adizkiak erabili
         </span>
       </div>
@@ -30,7 +25,7 @@ const emit = defineEmits(['update:hitanoEnabled'])
         >
         <div class="w-12 h-7
                   rounded-full
-                  bg-gray-400
+                  bg-[var(--text-muted)]
                   peer-checked:bg-pink-500
                   transition-all duration-300
                   relative

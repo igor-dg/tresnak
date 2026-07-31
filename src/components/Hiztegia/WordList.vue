@@ -1,6 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
-import { Search } from 'lucide-vue-next'
+import { computed, watch } from 'vue'
 
 const props = defineProps({
   words: {
@@ -54,7 +53,6 @@ const scrollToLetter = (letter) => {
   }
 };
 
-const hoveredWord = ref(null)
 </script>
 
 <template>
@@ -62,7 +60,7 @@ const hoveredWord = ref(null)
       <!-- Mensaje cuando no hay resultados -->
       <div v-if="Object.keys(organizedWords).length === 0" 
            class="text-center py-12">
-        <p class="text-gray-500 text-lg">
+        <p class="text-[var(--text-muted)] text-lg">
           Ez da hitzik aurkitu
         </p>
       </div>
@@ -73,7 +71,7 @@ const hoveredWord = ref(null)
            class="space-y-4">
         <!-- Cabecera de sección -->
         <div :id="`letter-section-${letter}`"
-             class="sticky top-0 bg-gradient-to-r from-rose-500 to-pink-500 z-10 py-2 px-4 rounded-lg shadow-sm">
+             class="sticky top-0 bg-[var(--accent-primary)] z-10 py-2 px-4 rounded-md shadow-sm">
              
           <h2 class="text-2xl font-bold text-white">{{ letter }}</h2>
           
@@ -81,27 +79,14 @@ const hoveredWord = ref(null)
   
         <!-- Grid de palabras -->
         <div :id="'block-' + letter" class="letter-block">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <button
             v-for="word in words"
             :key="word"
             @click="$emit('word-click', word)"
-            @mouseenter="hoveredWord = word"
-            @mouseleave="hoveredWord = null"
-            class="text-center px-2 py-3 rounded-xl transition-all duration-200"
-            :class="{
-              'bg-indigo-50 shadow-md transform scale-105': hoveredWord === word,
-              'bg-white/80 hover:bg-indigo-50': hoveredWord !== word,
-              'focus:outline-none focus:ring-2': true,
-              'bg-gradient-to-r': true,
-              'from-[var(--gradient-from)]': true,
-              'to-[var(--gradient-to)]': true,
-              'hover:from-[var(--gradient-hover-from)]': true,
-              'hover:to-[var(--gradient-hover-to)]': true,
-              'focus:ring-[var(--gradient-from)]': true
-            }"
+            class="text-center px-2 py-3 rounded-md transition-all duration-200 border bg-[var(--bg-card)] border-[var(--border-card)] hover:bg-[var(--bg-page)] hover:border-[var(--border-strong)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)]"
           >
-            <span class="text-lg text-white">{{ word }}</span>
+            <span class="text-lg text-[var(--text-primary)]">{{ word }}</span>
           </button>
         </div>
         </div>
@@ -113,10 +98,6 @@ const hoveredWord = ref(null)
 .sticky {
   position: sticky;
   top: 1rem;
-}
-
-button {
-    color: #000;
 }
 
 @media (max-width: 768px) {

@@ -87,18 +87,18 @@ const goToStats = () => {
 </script>
 
 <template>
-  <div class="w-full max-w-md mx-auto bg-transparent rounded-3xl  space-y-8">
+  <div class="w-full max-w-md mx-auto space-y-6">
     <!-- Game Info -->
     <div class="flex justify-between items-center">
       <div class="space-y-1">
-        <div class="text-sm text-amber-700">Sistema:</div>
-        <div class="text-sm font-semibold text-white bg-gradient-to-r from-amber-500 to-orange-500 rounded-full px-4 py-1 inline-block">
+        <div class="text-sm text-[var(--text-secondary)]">Sistema:</div>
+        <div class="label-chip">
           {{ getSistemaDisplayName(gameState.selectedSistema) }}
         </div>
       </div>
       <div class="space-y-1">
-        <div class="text-sm text-amber-700">Denbora:</div>
-        <div class="text-sm font-semibold text-white bg-gradient-to-r from-rose-500 to-pink-500 rounded-full px-4 py-1 inline-block">
+        <div class="text-sm text-[var(--text-secondary)]">Denbora:</div>
+        <div class="text-sm font-semibold text-white bg-[var(--accent-primary)] rounded-md px-3 py-1 inline-block">
           {{ getTiempoDisplayName(gameState.selectedTime) }}
         </div>
       </div>
@@ -106,16 +106,16 @@ const goToStats = () => {
 
     <!-- Attempts Left -->
     <div class="text-center">
-      <span class="text-amber-700 text-sm">{{ gameState.aukerakMessage }}</span>
+      <span class="text-[var(--text-secondary)] text-sm">{{ gameState.aukerakMessage }}</span>
       <div class="flex justify-center gap-2 mt-2">
         <div
           v-for="i in 3"
           :key="i"
           :class="{
-            'w-3 h-3 rounded-full transition-all': true,
-            'bg-white scale-100': i <= gameState.intentos,
-            'bg-white/80 scale-110': i === gameState.intentos + 1,
-            'bg-white/50': i > gameState.intentos + 1
+            'w-3 h-3 rounded-full transition-all border border-[var(--border-strong)]': true,
+            'bg-[var(--accent-primary)] scale-100': i <= gameState.intentos,
+            'bg-white scale-110': i === gameState.intentos + 1,
+            'bg-[var(--bg-soft)]': i > gameState.intentos + 1
           }"
         >
       </div>
@@ -123,28 +123,19 @@ const goToStats = () => {
     </div>
 
     <!-- Question -->
-    <div class="text-2xl font-bold text-center text-amber-700 drop-shadow-sm">
+    <div class="text-2xl font-bold text-center text-[var(--text-primary)]">
       {{ gameState.currentPhrase }}...
     </div>
 
     <!-- Input Area -->
-    <!-- <form @submit.prevent="submitAnswer" class="relative">
+    <form @submit.prevent="handleAnswer" class="relative">
       <input
         type="text"
         v-model="userAnswer"
-        class="w-full bg-white/50 rounded-full py-4 px-6 text-lg text-center focus:outline-none focus:ring-2 focus:ring-amber-300"
+        class="input text-center text-lg py-4"
         :style="{ color: 'var(--text-primary)'}"
         placeholder="Idatzi zure erantzuna"
-      /> -->
-      <form @submit.prevent="handleAnswer" class="relative">
-    <input
-      type="text"
-      v-model="userAnswer"
-      class="w-full bg-white/50 rounded-full py-4 px-6 text-lg text-center focus:outline-none focus:ring-2 focus:ring-amber-300"
-      :style="{ color: 'var(--text-primary)'}"
-      placeholder="Idatzi zure erantzuna"
-    />
-      
+      />
     </form>
 
     <!-- Incorrect Answers -->
@@ -172,51 +163,26 @@ const goToStats = () => {
 
     <!-- Next and Stats Buttons -->
     <div class="flex gap-2">
-      <button 
-  @click="handleAnswer"
-  :class="{
-    'flex-1 text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
-    'bg-gradient-to-r': true,
-    'from-[var(--gradient-from)]': true,
-    'to-[var(--gradient-to)]': true,
-    'hover:from-[var(--gradient-hover-from)]': true,
-    'hover:to-[var(--gradient-hover-to)]': true,
-    'focus:ring-[var(--gradient-from)]': true
-  }"
->
-  <ArrowRight class="w-6 h-6" />
-  Baieztatu
-</button>
+      <button
+        @click="handleAnswer"
+        class="flex-1 btn-primary rounded-md py-3 px-4 text-lg"
+      >
+        <ArrowRight class="w-6 h-6" />
+        Baieztatu
+      </button>
 
-
-      <button 
+      <button
         @click="nextQuestion"
         title="Aldatu esaldia"
-        :class="{
-        'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,          
-          'bg-gradient-to-r': true,
-          'from-[var(--gradient-from)]': true,
-          'to-[var(--gradient-to)]': true,
-          'hover:from-[var(--gradient-hover-from)]': true,
-          'hover:to-[var(--gradient-hover-to)]': true,
-          'focus:ring-[var(--gradient-from)]': true
-        }"
+        class="btn-secondary rounded-md py-3 px-4"
       >
         <RefreshCw class="w-5 h-5" />
       </button>
 
-      <button 
+      <button
         @click="goToStats"
         title="Estatistikak"
-        :class="{
-          'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
-          'bg-gradient-to-r': true,
-          'from-[var(--gradient-from)]': true,
-          'to-[var(--gradient-to)]': true,
-          'hover:from-[var(--gradient-hover-from)]': true,
-          'hover:to-[var(--gradient-hover-to)]': true,
-          'focus:ring-[var(--gradient-from)]': true
-        }"
+        class="btn-secondary rounded-md py-3 px-4"
       >
         <ChartLine class="w-5 h-5" />
       </button>
@@ -224,19 +190,3 @@ const goToStats = () => {
     
   </div>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-input::placeholder {
-  color: var(--text-secondary);
-}
-</style>

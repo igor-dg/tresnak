@@ -5,6 +5,7 @@ import WordList from '@/components/Hiztegia/WordList.vue'
 import WordDefinition from '@/components/Hiztegia/WordDefinition.vue'
 import SearchBar from '@/components/Hiztegia/SearchBar.vue'
 import hiztegiaData from '@/data/hiztegia.json'
+import PageHeader from '@/components/ui/PageHeader.vue'
 
 const selectedWord = ref('')
 const isDefinitionOpen = ref(false)
@@ -48,19 +49,15 @@ const showDefinition = (word) => {
 </script>
 
 <template>
-  <div class="min-h-screen max-w-[1280px] mx-auto py-12 px-4 sm:px-6 xl:px-12">
+  <div class="page-shell">
     <!-- Header -->
-    <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-white mb-6">
-            C1-eko hiztegia
-          </h1>
-          <p class="text-lg text-[var(--text-secondary)]">
-            Euskal hizkuntzaren ikasgaietan erabiltzen diren terminoen bilduma. 
-          </p>
-        </header>
+    <PageHeader
+      title="C1-eko hiztegia"
+      description="Euskal hizkuntzaren ikasgaietan erabiltzen diren terminoen bilduma."
+    />
 
     <!-- Contenido principal -->
-    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-full mx-auto">
       <div class="flex flex-col md:flex-row gap-8 relative">
         <!-- Panel de navegación alfabética - Fixed en desktop -->
         <aside class="hidden md:block md:w-60 sticky" style="top: 0; height: fit-content;">
@@ -72,7 +69,7 @@ const showDefinition = (word) => {
 
         <!-- Panel principal -->
         <main class="flex-1">
-          <div class="w-full max-w-3xl mx-auto bg-white/30 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8 md:mb-8">
+          <div class="w-full max-w-3xl mx-auto card p-4 sm:p-8 space-y-8 md:mb-8">
             <SearchBar
               v-model="searchTerm"
               @search="handleSearch"

@@ -1,4 +1,3 @@
-# KeyboardInput.vue
 <script setup>
 import { computed } from 'vue'
 
@@ -21,25 +20,25 @@ const rows = [
 const specialLetters = ['TX', 'TZ', 'TS']
 
 const getKeyClass = computed(() => (key) => {
-  const baseClass = 'rounded-lg font-semibold text-sm sm:text-base transition-colors'
+  const baseClass = 'rounded-md font-semibold text-xs sm:text-sm transition-colors border'
   const state = props.letterStates[key]
   
   if (key === 'ENTER') {
-    return `${baseClass} bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-4 w-20 sm:w-24` // Tecla ENTER más ancha
+    return `${baseClass} bg-[var(--accent-primary)] hover:bg-[var(--accent-primary-hover)] border-[var(--accent-primary)] text-white px-3 sm:px-5`
   }
   if (key === '⌫') {
-    return `${baseClass} bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-4`
+    return `${baseClass} bg-[var(--bg-soft)] hover:bg-[var(--accent-primary-soft)] border-[var(--border-strong)] text-[var(--text-primary)] px-3`
   }
   
   switch (state) {
     case 'correct':
-      return `${baseClass} bg-green-500 text-white`
+      return `${baseClass} state-correct`
     case 'present':
-      return `${baseClass} bg-yellow-500 text-white`
+      return `${baseClass} state-present`
     case 'absent':
-      return `${baseClass} bg-gray-400 text-white`
+      return `${baseClass} state-absent`
     default:
-      return `${baseClass} bg-gray-200 hover:bg-gray-300 text-gray-800`
+      return `${baseClass} bg-[var(--bg-card)] hover:bg-[var(--accent-primary-soft)] border-[var(--border-strong)] text-[var(--text-primary)]`
   }
 })
 
@@ -49,7 +48,7 @@ function handleKey(key) {
 </script>
 
 <template>
-  <div class="fixed bottom-0 left-0 right-0 p-4 backdrop-blur-sm shadow-lg">
+  <div class="fixed bottom-0 left-0 right-0 z-40 px-2 sm:px-4 pt-3 safe-area-bottom bg-[var(--bg-card)] border-t border-[var(--border-card)] shadow-sm">
     <div class="max-w-2xl mx-auto space-y-2">
       <!-- Botones de letras especiales -->
       <div class="flex justify-center gap-2 mb-2">
@@ -57,8 +56,7 @@ function handleKey(key) {
           v-for="letter in specialLetters"
           :key="letter"
           @click="handleKey(letter)"
-          class="px-3 py-2 rounded-lg bg-orange-100 hover:bg-orange-200 text-orange-800 
-                 font-semibold transition-colors"
+          class="px-3 py-2 rounded-md bg-[var(--bg-soft)] hover:bg-[var(--accent-primary-soft)] border border-[var(--border-card)] text-[var(--text-primary)] font-semibold transition-colors"
         >
           {{ letter }}
         </button>
@@ -74,9 +72,9 @@ function handleKey(key) {
           :key="key"
           @click="handleKey(key)"
           :class="[
-            'h-12 sm:h-14 flex items-center justify-center',
+            'h-11 sm:h-12 flex items-center justify-center',
             getKeyClass(key),
-            key === 'ENTER' ? 'flex-grow-0' : 'w-8 sm:w-10'
+            key === 'ENTER' ? 'w-[4.5rem] sm:w-24' : 'min-w-0 flex-1 max-w-10'
           ]"
         >
           {{ key }}

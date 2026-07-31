@@ -1,7 +1,7 @@
 <!-- NorNorkConjugationTable.vue -->
 <template>
     <div class="w-full max-w-4xl mx-auto">
-        <h3 class="text-amber-700 font-semibold text-center mb-4"> {{ TIEMPO_NAMES[tiempo] }}</h3>
+        <h3 class="text-[var(--text-primary)] font-semibold text-center mb-4"> {{ TIEMPO_NAMES[tiempo] }}</h3>
       <!-- Selectores -->
       <div class="flex gap-4 mb-6">
         <div class="flex-1">
@@ -9,14 +9,8 @@
             <select 
               v-model="selectedNor"
               :class="{
-                'transition-all focus:outline-none focus:ring-2 rounded-full p-2 pr-8 w-full': true,
-                'bg-gradient-to-r appearance-none': true,
-                'from-[var(--gradient-from)]': true,
-                'to-[var(--gradient-to)]': true,
-                'hover:from-[var(--gradient-hover-from)]': true,
-                'hover:to-[var(--gradient-hover-to)]': true,
-                'focus:ring-[var(--gradient-from)]': true,
-                'placeholder:text-amber-700': true,
+                'transition-all focus:outline-none focus:ring-2 rounded-md p-2 pr-8 w-full': true,
+                'input appearance-none pr-8 py-2': true,
               }"
             >
             <option value="" disabled>NOR</option>
@@ -33,14 +27,8 @@
               v-model="selectedNork"
               placeholder="NORK" 
               :class="{
-                'transition-all focus:outline-none focus:ring-2 rounded-full p-2 pr-8 w-full': true,
-                'bg-gradient-to-r appearance-none': true,
-                'from-[var(--gradient-from)]': true,
-                'to-[var(--gradient-to)]': true,
-                'hover:from-[var(--gradient-hover-from)]': true,
-                'hover:to-[var(--gradient-hover-to)]': true,
-                'focus:ring-[var(--gradient-from)]': true,
-                'placeholder:text-amber-700': true,
+                'transition-all focus:outline-none focus:ring-2 rounded-md p-2 pr-8 w-full': true,
+                'input appearance-none pr-8 py-2': true,
               }"
             >
             <option value="" disabled>NORK</option>
@@ -54,7 +42,7 @@
       </div>
   
       <!-- Tablas regulares -->
-    <div v-if="!isSpecialCase" class="relative overflow-x-auto bg-white/30 rounded-lg shadow-lg p-4">
+    <div v-if="!isSpecialCase" class="relative overflow-x-auto card p-4">
       <div class="flex">
         <!-- Tabla NOR -->
         <div class="flex-1">
@@ -65,8 +53,8 @@
         :key="index"
         :class="{
           'border p-2': true,
-          'bg-amber-400': index === tableStructure.primaryColumns.nor,
-          'bg-amber-300': index !== tableStructure.primaryColumns.nor
+          'table-heading': index === tableStructure.primaryColumns.nor,
+          'table-subheading': index !== tableStructure.primaryColumns.nor
         }">
       {{ header }}
     </th>
@@ -74,10 +62,10 @@
             </thead>
             <tbody>
               <tr v-for="(mapping, person) in norMappings" :key="person"
-                  :class="{'bg-amber-50': normalizeValue(selectedNor) === person}">
+                  :class="{'table-highlight': normalizeValue(selectedNor) === person}">
                 <td v-for="column in tableStructure.nor.showColumns" 
                     :key="column"
-                    class="border p-2 text-center text-amber-600 min-h-[2.5rem] h-[2.5rem]">
+                    class="border p-2 text-center text-[var(--text-secondary)] min-h-[2.5rem] h-[2.5rem]">
                   {{ mapping[column] || '-' }}
                 </td>
               </tr>
@@ -94,8 +82,8 @@
         :key="index"
         :class="{
           'border p-2': true,
-          'bg-amber-400': index === tableStructure.primaryColumns.nor,
-          'bg-amber-300': index !== tableStructure.primaryColumns.nor
+          'table-heading': index === tableStructure.primaryColumns.nor,
+          'table-subheading': index !== tableStructure.primaryColumns.nor
         }">
       {{ header }}
     </th>
@@ -103,10 +91,10 @@
             </thead>
             <tbody>
               <tr v-for="(mapping, person) in norkMappings" :key="person"
-                  :class="{'bg-amber-50': normalizeValue(selectedNork) === person}">
+                  :class="{'table-highlight': normalizeValue(selectedNork) === person}">
                 <td v-for="column in tableStructure.nork.showColumns" 
                     :key="column"
-                    class="border p-2 text-amber-600 text-center min-h-[2.5rem] h-[2.5rem]">
+                    class="border p-2 text-[var(--text-secondary)] text-center min-h-[2.5rem] h-[2.5rem]">
                   {{ mapping[column] || '-' }}
                 </td>
               </tr>
@@ -117,28 +105,28 @@
     </div>
 
     <!-- Tabla para casos especiales -->
-    <div v-else class="relative overflow-x-auto bg-white/30 rounded-lg shadow-lg p-4">
+    <div v-else class="relative overflow-x-auto card p-4">
       <table class="w-full border-collapse">
         <thead>
           <tr>
-            <th class="border p-2 bg-amber-400">NORK</th>
-            <th class="border p-2 bg-amber-400">{{ selectedNor }}</th>
+            <th class="border p-2 table-heading">NORK</th>
+            <th class="border p-2 table-heading">{{ selectedNor }}</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(forma, nork) in specialForms" 
               :key="nork"
-              :class="{'bg-amber-50': normalizeValue(selectedNork) === normalizeValue(nork)}">
-            <td class="border p-2 text-amber-600 text-center">{{ nork }}</td>
-            <td class="border p-2 text-amber-600 text-center">{{ forma }}</td>
+              :class="{'table-highlight': normalizeValue(selectedNork) === normalizeValue(nork)}">
+            <td class="border p-2 text-[var(--text-secondary)] text-center">{{ nork }}</td>
+            <td class="border p-2 text-[var(--text-secondary)] text-center">{{ forma }}</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <!-- Resultado -->
-    <div v-if="selectedNor && selectedNork" class="mt-4 p-4 bg-white/30 rounded-lg text-center">
-      <span class="font-bold text-amber-700 text-lg">{{ conjugationResult }}</span>
+    <div v-if="selectedNor && selectedNork" class="mt-4 p-4 card p-4 text-center">
+      <span class="font-bold text-[var(--text-primary)] text-lg">{{ conjugationResult }}</span>
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { ChevronRight, RefreshCw, BookOpen, ChartLine } from 'lucide-vue-next'
+import { RefreshCw, BookOpen, ChartLine } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
@@ -58,16 +58,16 @@ const goToStats = () => {
 </script>
 
 <template>
-    <div class="bg-white/30 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8 relative">
+    <div class="card p-8 space-y-8 relative">
       <!-- Palabra principal -->
       <div class="min-h-[6rem] flex items-center justify-center">
         <div class="flex flex-col items-center gap-4 mb-4">
-          <p class="text-xl font-bold text-white bg-gradient-to-r from-rose-500 to-pink-500 rounded-full px-4 py-1 inline-block">
+          <p class="label-chip text-xl">
             {{ selectedWord }}
           </p>
           <button
             @click="handleDefinitionClick"
-            class="inline-flex items-center bg-rose-100 gap-2 px-3 py-1.5 text-sm text-rose-600 hover:bg-rose-200 rounded-lg transition-colors"
+            class="btn-ghost gap-2 px-3 py-1.5 text-sm"
           >
             <BookOpen class="size-4" />
             <span>Esanahia</span>
@@ -86,7 +86,7 @@ const goToStats = () => {
           type="text"
           v-model="answers[index]"
           @keydown="handleEnter($event, index)"
-          class="w-full bg-white/50 rounded-full py-4 px-6 text-lg text-left focus:outline-none focus:ring-2 focus:ring-amber-300"
+          class="input text-lg py-4 px-6 text-left"
         :style="{ color: 'var(--text-primary)'}"
           :placeholder="`${index + 1}. sinonimoa`"
         />
@@ -95,15 +95,7 @@ const goToStats = () => {
       <div class="flex gap-4 mt-6">
         <button
           type="submit"
-          :class="{
-        'w-full text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
-        'bg-gradient-to-r': true,
-        'from-[var(--gradient-from)]': true,
-        'to-[var(--gradient-to)]': true,
-        'hover:from-[var(--gradient-hover-from)]': true,
-        'hover:to-[var(--gradient-hover-to)]': true,
-        'focus:ring-[var(--gradient-from)]': true
-      }"
+          class="btn-primary w-full py-3 px-4 text-lg"
         >
           Baieztatu
         </button>
@@ -111,56 +103,21 @@ const goToStats = () => {
         <button
           type="button"
           @click="handleNext"
-          :class="{
-        'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,          
-          'bg-gradient-to-r': true,
-          'from-[var(--gradient-from)]': true,
-          'to-[var(--gradient-to)]': true,
-          'hover:from-[var(--gradient-hover-from)]': true,
-          'hover:to-[var(--gradient-hover-to)]': true,
-          'focus:ring-[var(--gradient-from)]': true
-        }"
+          class="btn-primary py-3 px-4 text-lg"
+          aria-label="Aldatu hitza"
       >
         <RefreshCw class="w-5 h-5" />
         </button>
         <button 
+        type="button"
         @click="goToStats"
         title="Estatistikak"
-        :class="{
-          'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
-          'bg-gradient-to-r': true,
-          'from-[var(--gradient-from)]': true,
-          'to-[var(--gradient-to)]': true,
-          'hover:from-[var(--gradient-hover-from)]': true,
-          'hover:to-[var(--gradient-hover-to)]': true,
-          'focus:ring-[var(--gradient-from)]': true
-        }"
+        class="btn-primary py-3 px-4 text-lg"
       >
         <ChartLine class="w-5 h-5" />
       </button>
       </div>
     </form>
 
-    <!-- Modal de definición -->
-    <WordDefinition
-      v-model:isOpen="showDefinition"
-      :word="selectedWord"
-      @update:isOpen="handleDefinitionChange"
-    />
   </div>
 </template>
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-input::placeholder {
-  color: var(--text-secondary);
-}
-</style>

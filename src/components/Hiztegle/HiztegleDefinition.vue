@@ -74,59 +74,31 @@ const fetchContent = async () => {
   <div class="definition-container">
     <!-- Timer -->
     <div class="flex items-center justify-center gap-2 mb-6">
-      <Timer class="w-10 h-10 text-orange-600" />
-      <span class="text-5xl font-bold text-orange-600">{{ timeLeft }}</span>
+      <Timer class="w-10 h-10 text-[var(--accent-warning)]" />
+      <span class="text-5xl font-bold text-[var(--accent-warning)]">{{ timeLeft }}</span>
     </div>
 
     <!-- Content -->
-    <div class="bg-white/40 rounded-2xl p-6 shadow-lg max-h-[60vh] overflow-y-auto">
+    <div class="card p-6 max-h-[60vh] overflow-y-auto">
       <!-- Loading state -->
       <div v-if="isLoading" class="flex justify-center items-center py-8">
-        <Loader2 class="w-8 h-8 animate-spin text-orange-600" />
+        <Loader2 class="w-8 h-8 animate-spin text-[var(--accent-primary)]" />
       </div>
 
       <!-- Error state -->
-      <div v-else-if="error" class="text-center py-8 text-red-500 font-medium">
+      <div v-else-if="error" class="text-center py-8 text-[var(--accent-danger)] font-medium">
         {{ error }}
       </div>
 
       <!-- Content -->
       <div v-else-if="content" 
-           class="definition-content"
+           class="rich-definition"
            v-html="content" />
 
       <!-- Empty state -->
-      <div v-else class="text-center py-8 text-orange-500 font-medium">
+      <div v-else class="text-center py-8 text-[var(--text-secondary)] font-medium">
         {{ contentType === 'definition' ? 'Ez dago definiziorik' : 'Ez dago itzulpenik' }}
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.definition-content :deep(ul) {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.definition-content :deep(li) {
-  margin-bottom: 0.75rem;
-  padding: 0.75rem;
-  border-radius: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.265);
-  border: 1px solid rgb(254 215 170); /* orange-200 */
-  color: black;
-}
-
-.definition-content :deep(.azpisarrera) {
-  color: rgb(234 88 12); /* orange-600 */
-  font-weight: 500;
-}
-
-.definition-content :deep(.adibidea) {
-  color: rgb(120 113 108); /* stone-500 */
-  font-style: italic;
-  margin-top: 0.5rem;
-}
-</style>

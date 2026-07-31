@@ -1,6 +1,5 @@
-# SistemaChart.vue
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import Chart from 'apexcharts'
 
 const props = defineProps({
@@ -14,10 +13,10 @@ const chartRef = ref(null)
 const chart = ref(null)
 
 const getPerformanceColor = (percentage) => {
-  if (percentage <= 25) return '#ef4444' // Rojo
-  if (percentage <= 50) return '#f97316' // Naranja
-  if (percentage <= 75) return '#eab308' // Amarillo
-  return '#22c55e' // Verde
+  if (percentage <= 25) return '#B9473A'
+  if (percentage <= 50) return '#B87316'
+  if (percentage <= 75) return '#B68A20'
+  return '#37805F'
 }
 
 const initChart = () => {
@@ -29,8 +28,8 @@ const initChart = () => {
     return percentageA - percentageB // Cambiado de B-A a A-B para ordenar de menor a mayor
   })
 
-  const percentages = sortedData.map(item => 
-    Math.round((item.aciertos / item.total) * 100)
+  const percentages = sortedData.map(item =>
+    item.total ? Math.round((item.aciertos / item.total) * 100) : 0
   )
 
   const options = {
@@ -68,17 +67,10 @@ const initChart = () => {
     },
     xaxis: {
       categories: sortedData.map(item => item.sistema),
+      max: 100,
       labels: {
         style: {
           fontSize: '14px'
-        }
-      }
-    },
-    yaxis: {
-      max: 100,
-      labels: {
-        formatter: function(val) {
-          return val + '%'
         }
       }
     },
@@ -93,7 +85,7 @@ const initChart = () => {
         const sistema = w.globals.labels[dataPointIndex]
         const item = sortedData[dataPointIndex]
         return `
-          <div class="p-2 bg-gray-800 text-white rounded-lg shadow">
+          <div class="chart-tooltip">
             <div class="font-medium">${sistema}</div>
             <div class="text-sm mt-1">
               ${item.aciertos}/${item.total} asmatuta (${series[seriesIndex][dataPointIndex]}%)
@@ -120,6 +112,10 @@ watch(() => props.data, () => {
 
 onMounted(() => {
   initChart()
+})
+
+onUnmounted(() => {
+  chart.value?.destroy()
 })
 </script>
 

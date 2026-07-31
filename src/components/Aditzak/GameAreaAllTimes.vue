@@ -129,7 +129,6 @@ const handleMegaPista = (tiempo) => {
       break
   }
 
-  console.log('MegaPista resultante:', currentMegaPista.value) // Para debug
 
   megaPistas.value[tiempo] = currentMegaPista.value
   showMegaPistaOverlay.value = true
@@ -186,10 +185,10 @@ const goToStats = () => {
     <!-- Game Info -->
     <div class="flex justify-center">
       <div class="space-y-1 text-center">
-        <div class="text-sm text-amber-700">Sistema:</div>
-        <div 
+        <div class="text-sm text-[var(--text-secondary)]">Sistema:</div>
+        <div
           v-if="gameState.selectedSistema"
-          class="text-sm font-semibold text-white bg-gradient-to-r from-amber-500 to-orange-500 rounded-full px-4 py-1 inline-block"
+          class="label-chip"
         >
           {{ getSistemaDisplayName(gameState.selectedSistema) }}
         </div>
@@ -198,35 +197,19 @@ const goToStats = () => {
 
     <!-- Next and Stats Buttons -->
     <div class="flex gap-2">
-      <button 
+      <button
         @click="nextQuestion"
         title="Aldatu esaldia"
-        :class="{
-          'flex-1 text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
-          'bg-gradient-to-r': true,
-          'from-[var(--gradient-from)]': true,
-          'to-[var(--gradient-to)]': true,
-          'hover:from-[var(--gradient-hover-from)]': true,
-          'hover:to-[var(--gradient-hover-to)]': true,
-          'focus:ring-[var(--gradient-from)]': true
-        }"
+        class="flex-1 btn-primary rounded-md py-3 px-4 text-lg"
       >
         <RefreshCw class="w-5 h-5" />
         Hurrengoa
       </button>
 
-      <button 
+      <button
         @click="goToStats"
         title="Estatistikak"
-        :class="{
-          'text-white rounded-full py-3 px-4 flex items-center justify-center gap-2 transition-all text-lg font-semibold focus:outline-none focus:ring-2': true,
-          'bg-gradient-to-r': true,
-          'from-[var(--gradient-from)]': true,
-          'to-[var(--gradient-to)]': true,
-          'hover:from-[var(--gradient-hover-from)]': true,
-          'hover:to-[var(--gradient-hover-to)]': true,
-          'focus:ring-[var(--gradient-from)]': true
-        }"
+        class="btn-secondary rounded-md py-3 px-4"
       >
         <ChartLine class="w-5 h-5" />
       </button>
@@ -240,7 +223,7 @@ const goToStats = () => {
         v-show="tiempo.active" 
         class="space-y-2"
       >
-        <label :for="tiempo.id" class="block text-sm font-medium text-amber-700">
+        <label :for="tiempo.id" class="block text-sm font-medium text-[var(--text-secondary)]">
           {{ tiempo.name }}
         </label>
         <div class="relative flex items-center gap-2">
@@ -249,23 +232,21 @@ const goToStats = () => {
             type="text"
             v-model="answers[tiempo.id]"
             @blur="handleInputBlur(tiempo.id)"
-            class="w-full bg-white/50 rounded-lg py-2 px-4 text-lg focus:outline-none text-[var(--text-primary)] focus:ring-2 focus:ring-amber-300"
+            class="input text-lg"
             :placeholder="getPlaceholder(tiempo)"
           />
           <button
             @click="handleMegaPista(tiempo.id)"
-            class="p-2 rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-200
-                   bg-gradient-to-r from-red-400 to-red-500
-                   hover:shadow-xl hover:scale-105 active:scale-95"
+            class="p-2.5 rounded-md text-white shadow-sm transition-all duration-200 bg-[var(--accent-warning)] hover:bg-[var(--accent-warning-hover)] active:scale-95"
           >
             <Lightbulb class="w-5 h-5" />
           </button>
-          <span 
-            v-if="results[tiempo.id]" 
+          <span
+            v-if="results[tiempo.id]"
             :class="{
-              'absolute right-12 px-3 py-1 rounded-full text-sm font-medium text-center shrink-0': true,
-              'bg-green-500/80 text-white': results[tiempo.id] === 'zuzena',
-              'bg-red-500/80 text-white': results[tiempo.id] === 'okerra'
+              'absolute right-12 px-3 py-1 rounded-md text-sm font-medium text-center shrink-0': true,
+              'bg-[var(--accent-success)] text-white': results[tiempo.id] === 'zuzena',
+              'bg-[var(--accent-danger)] text-white': results[tiempo.id] === 'okerra'
             }"
           >
             {{ results[tiempo.id] }}
@@ -286,11 +267,6 @@ const goToStats = () => {
 </template>
 
 <style scoped>
-input::placeholder {
-  color: var(--text-secondary);
-  font-size: small;
-}
-
 @media (max-width: 640px) {
   .input-container {
     gap: 0.5rem;

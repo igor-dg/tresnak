@@ -329,18 +329,10 @@ onMounted(async () => {
     <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <header class="md:hidden w-full max-w-md mx-auto flex items-center justify-end mb-4 md:max-w-none">
-  <h4 class="font-bold text-white drop-shadow-md mr-4">Ezarpenak</h4>
+  <h4 class="font-bold text-[var(--text-primary)] mr-4">Ezarpenak</h4>
   <div class="flex items-center space-x-4">
     <button 
-      :class="{
-        'transition-all focus:outline-none focus:ring-2 rounded-full p-2': true,
-        'bg-gradient-to-r': true,
-        'from-[var(--gradient-from)]': true,
-        'to-[var(--gradient-to)]': true,
-        'hover:from-[var(--gradient-hover-from)]': true,
-        'hover:to-[var(--gradient-hover-to)]': true,
-        'focus:ring-[var(--gradient-from)]': true
-        }"
+      class="btn-secondary rounded-md p-2"
       @click="showMobileSettings = !showMobileSettings"
     >
       <Settings class="w-6 h-6" />
@@ -367,10 +359,10 @@ onMounted(async () => {
       <div class="hidden md:grid md:grid-cols-[250px_1fr_250px] md:gap-8 items-start">
         <!-- Left Sidebar -->
         <div class="space-y-6">
-          <div class="bg-white/40 backdrop-blur-md rounded-3xl shadow-lg">
+          <div class="card p-4">
             <HitanoSelector v-model:hitanoEnabled="hitanoEnabled" />
           </div>
-          <div class="bg-white/40 backdrop-blur-md rounded-3xl shadow-lg">
+          <div class="card p-4">
             <SystemSelectors
               v-model:sistemas="sistemas"
               @update:sistema="handleSystemUpdate"
@@ -390,7 +382,7 @@ onMounted(async () => {
 />
 
         <!-- Right Sidebar -->
-        <div class="bg-white/40 backdrop-blur-md rounded-3xl shadow-lg h-fit">
+        <div class="card p-4 h-fit">
           <TimeSelectors
             v-model:tiempos="tiempos"
             @update:tiempo="handleTimeUpdate"
@@ -427,24 +419,3 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-<style>
-.ezarpenak:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-.ezarpenak {
-    background: var(--button-transparent-bg);
-    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2), -8px -8px 16px rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    transition: box-shadow 0.3s ease;
-}
-
-.ezarpenak:active {
-    box-shadow: inset 8px 8px 16px rgba(0, 0, 0, 0.2), inset -8px -8px 16px rgba(255, 255, 255, 0.2);
-}
-
-#app {
-  width: 100%;
-}
-
-</style>

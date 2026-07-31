@@ -32,17 +32,14 @@ const emit = defineEmits(['answer-submitted', 'restart-game', 'validate-answer']
 </script>
 
 <template>
-  <div class="w-full max-w-md mx-auto bg-white/40 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8">
+  <div class="w-full max-w-md mx-auto card p-8 space-y-8">
     <!-- Tab Navigation -->
-    <div class="flex space-x-2">
+    <div class="segmented-control">
       <!-- Botón 1 -->
       <button
   @click="activeTab = 'allTimes'"
-  :class="{
-    'flex-1 py-2 px-4 rounded-full transition-all duration-300 bg-transparent': true,
-    'bg-gradient-to-r from-amber-500 to-orange-500 text-white focus:outline-none': activeTab === 'allTimes',
-    'text-amber-700 bg-transparent border-2 border-amber-500 border-solid hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-500 hover:text-white focus:outline-none': activeTab !== 'allTimes'
-  }"
+  class="segmented-control__option"
+  :aria-pressed="activeTab === 'allTimes'"
 >
   Denbora guztiak
 </button>
@@ -50,11 +47,8 @@ const emit = defineEmits(['answer-submitted', 'restart-game', 'validate-answer']
 <!-- Botón 2 -->
 <button
   @click="activeTab = 'classic'"
-  :class="{
-    'flex-1 py-2 px-4 rounded-full transition-all duration-300 bg-transparent': true,
-    'bg-gradient-to-r from-amber-500 to-orange-500 text-white focus:outline-none': activeTab === 'classic',
-    'text-amber-700 bg-transparent border-2 border-amber-500 border-solid hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-500 hover:text-white focus:outline-none': activeTab !== 'classic'
-  }"
+  class="segmented-control__option"
+  :aria-pressed="activeTab === 'classic'"
 >
   Aleatorioa
 </button>

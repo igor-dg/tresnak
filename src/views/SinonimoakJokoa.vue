@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import LexikoView from '@/components/SinonimoakJokoa/LexikoView.vue'
+import PageHeader from '@/components/ui/PageHeader.vue'
 
 const emit = defineEmits(['theme-change'])
 
@@ -14,16 +15,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen mx-auto py-12 px-4 sm:px-6 xl:px-12">
-    <!-- Header con el mismo estilo que Hiztegia -->
-    <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-white mb-6">
-            Sinonimoen jolasa
-          </h1>
-          <p class="text-lg text-[var(--text-secondary)]">
-            Aukeratu hitz bat eta asmatu bere sinonimoak. Jolastu eta ikasi!
-          </p>
-        </header>
+  <div class="page-shell">
+    <PageHeader
+      title="Sinonimoen jolasa"
+      description="Aukeratu hitz bat eta asmatu bere sinonimoak. Jolastu eta ikasi!"
+    />
 
     <!-- Contenido principal con el mismo estilo que Hiztegia -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

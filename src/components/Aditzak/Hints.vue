@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { ChevronRight, Lightbulb, RefreshCw } from 'lucide-vue-next';
+import { Lightbulb } from 'lucide-vue-next'
 import HintOverlay from './HintOverlay.vue'
 import norConjugations from '@/data/nor-conjugations.json'
 import {
@@ -315,9 +315,8 @@ onMounted(() => {
         v-if="activeSystemCount >= 2"
         :disabled="isMobile ? (!canShowPista1 && !canDisplayPista1) : !canShowPista1"
         @click="handleHintClick('pista1')"
-        class="p-3 rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-200
-               bg-gradient-to-r from-purple-400 to-purple-500
-               hover:shadow-xl hover:scale-105 
+        class="p-3 rounded-md text-[var(--accent-primary)] shadow-sm transition-all duration-200
+               bg-[var(--accent-primary-soft)] hover:bg-[var(--bg-soft)]
                disabled:opacity-50 disabled:cursor-not-allowed
                active:scale-95"
       >
@@ -328,9 +327,8 @@ onMounted(() => {
         v-if="activeSystemCount >= 3"
         :disabled="isMobile ? (!canShowPista2 && !canDisplayPista2) : !canShowPista2"
         @click="handleHintClick('pista2')"
-        class="p-3 rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-200
-               bg-gradient-to-r from-purple-400 to-purple-500
-               hover:shadow-xl hover:scale-105 
+        class="p-3 rounded-md text-[var(--accent-primary)] shadow-sm transition-all duration-200
+               bg-[var(--accent-primary-soft)] hover:bg-[var(--bg-soft)]
                disabled:opacity-50 disabled:cursor-not-allowed
                active:scale-95"
       >
@@ -340,9 +338,8 @@ onMounted(() => {
       <button 
         :disabled="isMobile ? (!canShowSuperPista && !canDisplaySuperPista) : !canShowSuperPista"
         @click="handleHintClick('superPista')"
-        class="p-3 rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-200
-               bg-gradient-to-r from-amber-400 to-amber-500
-               hover:shadow-xl hover:scale-105 
+        class="p-3 rounded-md text-white shadow-sm transition-all duration-200
+               bg-[var(--accent-warning)] hover:bg-[var(--accent-warning-hover)]
                disabled:opacity-50 disabled:cursor-not-allowed
                active:scale-95"
       >
@@ -352,9 +349,8 @@ onMounted(() => {
       <button 
         :disabled="isMobile ? (!canShowMegaPista && !canDisplayMegaPista) : !canShowMegaPista"
         @click="handleHintClick('megaPista')"
-        class="p-3 rounded-full text-white shadow-lg backdrop-blur-sm transition-all duration-200
-               bg-gradient-to-r from-red-400 to-red-500
-               hover:shadow-xl hover:scale-105 
+        class="p-3 rounded-md text-white shadow-sm transition-all duration-200
+               bg-[var(--accent-danger)] hover:bg-[var(--accent-danger-hover)]
                disabled:opacity-50 disabled:cursor-not-allowed
                active:scale-95"
       >
@@ -401,29 +397,3 @@ onMounted(() => {
 />
   </div>
 </template>
-
-<style scoped>
-.hint-button {
-  @apply p-3 rounded-full text-white transition-all duration-200 
-         shadow-lg backdrop-blur-sm
-         disabled:opacity-50 disabled:cursor-not-allowed
-         hover:shadow-xl hover:scale-105 
-         active:scale-95;
-}
-
-.hint-card {
-  @apply backdrop-blur-md rounded-xl p-4 shadow-lg
-         border border-white/10;
-}
-
-/* Animations */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

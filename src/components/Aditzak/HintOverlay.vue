@@ -4,6 +4,8 @@ import { TIEMPO_NAMES } from '@/utils.js'
 import NorNorkConjugationTable from './NorNorkConjugationTable.vue'
 import NorNoriConjugationTable from './NorNoriConjugationTable.vue'
 import NorNoriNorkConjugationTable from './NorNoriNorkConjugationTable.vue'
+import BaseModal from '@/components/ui/BaseModal.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 
 defineProps({
   isOpen: {
@@ -28,34 +30,19 @@ function getTiempoDisplayName(tiempoId) {
 </script>
 
 <template>
-  <Teleport to="body">
-    <Transition
-      enter-active-class="transition duration-200 ease-out"
-      enter-from-class="opacity-0 scale-95"
-      enter-to-class="opacity-100 scale-100"
-      leave-active-class="transition duration-150 ease-in"
-      leave-from-class="opacity-100 scale-100"
-      leave-to-class="opacity-0 scale-95"
-    >
-      <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center">
-        <!-- Backdrop -->
-        <div 
-          class="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          @click="$emit('close')"
-        />
-        
-        <!-- Content -->
-        <div class="relative w-full max-w-md mx-4 sm:mx-auto">
-          <div class="w-full max-w-md mx-auto bg-white/60 backdrop-blur-md rounded-3xl p-8 shadow-lg space-y-8">
+  <BaseModal :model-value="isOpen" max-width="max-w-md" :label="title" @close="$emit('close')">
+          <div class="p-5 sm:p-8 space-y-6">
             <!-- Header with title and close button -->
             <div class="flex justify-between items-start mb-4">
-              <h5 class="font-bold text-amber-900">{{ title }}</h5>
-              <button
+              <h5 class="font-bold text-[var(--text-primary)]">{{ title }}</h5>
+              <BaseButton
+                variant="secondary"
+                icon-only
                 @click="$emit('close')"
-                class="p-2 bg-gradient-to-r from-amber-400 to-orange-400 text-white rounded-full hover:from-amber-500 hover:to-orange-500 focus:outline-none focus:ring-2 focus:ring-amber-300 transition-all"
+                aria-label="Itxi pista"
               >
                 <X class="h-5 w-5" />
-              </button>
+              </BaseButton>
             </div>
 
             <!-- Hint content -->
@@ -65,9 +52,9 @@ function getTiempoDisplayName(tiempoId) {
   <ul class="space-y-2">
     <li v-for="item in hint.conjugations" 
         :key="item.person"
-        class="flex justify-between items-center px-4 py-2 bg-amber-50/50 rounded-lg">
-      <span class="text-amber-800 font-medium">{{ item.person }}:</span>
-      <span class="text-amber-700 font-semibold">{{ item.conjugation }}</span>
+        class="flex justify-between items-center px-4 py-2 surface-soft">
+      <span class="text-[var(--text-primary)] font-medium">{{ item.person }}:</span>
+      <span class="text-[var(--accent-primary)] font-semibold">{{ item.conjugation }}</span>
     </li>
   </ul>
 </div>
@@ -99,16 +86,16 @@ function getTiempoDisplayName(tiempoId) {
                 <img 
                   :src="hint.imagen" 
                   :alt="title"
-                  class="w-full rounded-lg"
+                  class="w-full rounded-md border border-[var(--border-card)]"
                 />
               </div>
 
               <!-- Text Content -->
               <div v-else>
-                <div class="text-sm mb-3 font-semibold text-white bg-gradient-to-r from-amber-500 to-orange-500 rounded-full px-4 py-1 inline-block">
-                         <p class="text-white">{{ hint.frase }}</p>
+                <div class="text-sm mb-3 font-semibold text-[var(--accent-primary)] bg-[var(--accent-primary-soft)] rounded-md px-3 py-1 inline-block">
+                         <p>{{ hint.frase }}</p>
                 </div>
-                <div class="space-y-1 text-sm text-amber-700">
+                <div class="space-y-1 text-sm text-[var(--text-secondary)]">
                   <p>
                     <span class="font-semibold">Sistema:</span> {{ hint.sistema }}
                   </p>
@@ -120,8 +107,5 @@ function getTiempoDisplayName(tiempoId) {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </Transition>
-  </Teleport>
+  </BaseModal>
 </template>

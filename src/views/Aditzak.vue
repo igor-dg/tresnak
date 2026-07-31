@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import AditzLaguntzaileakView from '@/components/Aditzak/AditzLaguntzaileakView.vue'
+import PageHeader from '@/components/ui/PageHeader.vue'
 
 const emit = defineEmits(['theme-change'])
 
@@ -14,12 +15,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col mx-auto py-12 px-4 sm:px-6 xl:px-12">
-    <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-white mb-6">
-            Aditz Laguntzaileak
-          </h1>
-        </header>
+  <div class="page-shell flex flex-col">
+    <PageHeader title="Aditz laguntzaileak" description="Praktikatu euskal aditz laguntzaileak" />
 
     <!-- Contenido principal con el mismo estilo que Hiztegia -->
     <div class="flex-1">

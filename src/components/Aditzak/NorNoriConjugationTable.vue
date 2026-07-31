@@ -1,7 +1,7 @@
 <!-- NorNoriConjugationTable.vue -->
 <template>
     <div class="w-full max-w-4xl mx-auto">
-      <h3 class="text-amber-700 font-semibold text-center mb-4">{{ TIEMPO_NAMES[tiempo] }}</h3>
+      <h3 class="text-[var(--text-primary)] font-semibold text-center mb-4">{{ TIEMPO_NAMES[tiempo] }}</h3>
       
       <!-- Selectors -->
       <div class="flex gap-4 mb-6">
@@ -10,14 +10,8 @@
             <select 
               v-model="selectedNor"
               :class="{
-                'transition-all focus:outline-none focus:ring-2 rounded-full p-2 pr-8 w-full': true,
-                'bg-gradient-to-r appearance-none': true,
-                'from-[var(--gradient-from)]': true,
-                'to-[var(--gradient-to)]': true,
-                'hover:from-[var(--gradient-hover-from)]': true,
-                'hover:to-[var(--gradient-hover-to)]': true,
-                'focus:ring-[var(--gradient-from)]': true,
-                'placeholder:text-amber-700': true,
+                'transition-all focus:outline-none focus:ring-2 rounded-md p-2 pr-8 w-full': true,
+                'input appearance-none pr-8 py-2': true,
               }"
             >
               <option value="" disabled>NOR</option>
@@ -34,14 +28,8 @@
               v-model="selectedNori"
               placeholder="NORI"
               :class="{
-                'transition-all focus:outline-none focus:ring-2 rounded-full p-2 pr-8 w-full': true,
-                'bg-gradient-to-r appearance-none': true,
-                'from-[var(--gradient-from)]': true,
-                'to-[var(--gradient-to)]': true,
-                'hover:from-[var(--gradient-hover-from)]': true,
-                'hover:to-[var(--gradient-hover-to)]': true,
-                'focus:ring-[var(--gradient-from)]': true,
-                'placeholder:text-amber-700': true,
+                'transition-all focus:outline-none focus:ring-2 rounded-md p-2 pr-8 w-full': true,
+                'input appearance-none pr-8 py-2': true,
               }"
             >
               <option value="" disabled>NORI</option>
@@ -55,7 +43,7 @@
       </div>
   
       <!-- Regular Tables -->
-      <div v-if="!isSpecialCase" class="relative overflow-x-auto bg-white/30 rounded-lg shadow-lg p-4">
+      <div v-if="!isSpecialCase" class="relative overflow-x-auto card p-4">
   <div class="flex">
     <!-- NOR Table -->
     <div class="flex-1">
@@ -66,8 +54,8 @@
                 :key="index"
                 :class="{
                   'border p-2': true,
-                  'bg-amber-400': index === tableStructure.primaryColumns.nor,
-                  'bg-amber-300': index !== tableStructure.primaryColumns.nor
+                  'table-heading': index === tableStructure.primaryColumns.nor,
+                  'table-subheading': index !== tableStructure.primaryColumns.nor
                 }">
               {{ header }}
             </th>
@@ -75,10 +63,10 @@
         </thead>
         <tbody>
           <tr v-for="(mapping, person) in norMappings" :key="person"
-              :class="{'bg-amber-50': normalizeValue(selectedNor) === person}">
+              :class="{'table-highlight': normalizeValue(selectedNor) === person}">
             <td v-for="column in tableStructure.nor.showColumns" 
                 :key="column"
-                class="border p-2 text-center text-amber-600 min-h-[2.5rem] h-[2.5rem]">
+                class="border p-2 text-center text-[var(--text-secondary)] min-h-[2.5rem] h-[2.5rem]">
               {{ mapping[column] || '-' }}
             </td>
           </tr>
@@ -95,8 +83,8 @@
                 :key="index"
                 :class="{
                   'border p-2': true,
-                  'bg-amber-400': index === tableStructure.primaryColumns.nori,
-                  'bg-amber-300': index !== tableStructure.primaryColumns.nori
+                  'table-heading': index === tableStructure.primaryColumns.nori,
+                  'table-subheading': index !== tableStructure.primaryColumns.nori
                 }">
               {{ header }}
             </th>
@@ -104,10 +92,10 @@
         </thead>
         <tbody>
           <tr v-for="(mapping, person) in noriMappings" :key="person"
-              :class="{'bg-amber-50': normalizeValue(selectedNori) === person}">
+              :class="{'table-highlight': normalizeValue(selectedNori) === person}">
             <td v-for="column in tableStructure.nori.showColumns" 
                 :key="column"
-                class="border p-2 text-amber-600 text-center min-h-[2.5rem] h-[2.5rem]">
+                class="border p-2 text-[var(--text-secondary)] text-center min-h-[2.5rem] h-[2.5rem]">
               {{ mapping[column] || '-' }}
             </td>
           </tr>
@@ -122,7 +110,7 @@
           <tr>
             <th v-for="(header, index) in tableStructure.extraSuffix.headers" 
                 :key="index"
-                class="border p-2 bg-amber-300">
+                class="border p-2 table-subheading">
                 &nbsp;
             </th>
           </tr>
@@ -130,13 +118,13 @@
         <tbody>
           <tr v-for="(mapping, person) in extraSuffixMappings" :key="person"
               :class="{
-                'bg-amber-50': normalizeValue(selectedNor) === person && 
+                'table-highlight': normalizeValue(selectedNor) === person &&
                               person === 'Zuek'
               }">
             <template v-for="column in tableStructure.extraSuffix.showColumns" :key="column">
-  <td class="border p-2 text-center text-amber-600"
+  <td class="border p-2 text-center text-[var(--text-secondary)]"
       :class="{
-        'bg-amber-50': normalizeValue(selectedNor) === person
+        'table-highlight': normalizeValue(selectedNor) === person
       }">
     {{ extraSuffixMappings[person]?.[column] || '-' }}
   </td>
@@ -150,28 +138,28 @@
 
   
       <!-- Special Cases Table -->
-      <div v-else class="relative overflow-x-auto bg-white/30 rounded-lg shadow-lg p-4">
+      <div v-else class="relative overflow-x-auto card p-4">
         <table class="w-full border-collapse">
           <thead>
             <tr>
-              <th class="border p-2 bg-amber-400">NORI</th>
-              <th class="border p-2 bg-amber-400">{{ selectedNor }}</th>
+              <th class="border p-2 table-heading">NORI</th>
+              <th class="border p-2 table-heading">{{ selectedNor }}</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(forma, nori) in specialForms" 
                 :key="nori"
-                :class="{'bg-amber-50': normalizeValue(selectedNori) === normalizeValue(nori)}">
-              <td class="border p-2 text-amber-500 text-center">{{ nori }}</td>
-              <td class="border p-2 text-amber-500 text-center">{{ forma }}</td>
+                :class="{'table-highlight': normalizeValue(selectedNori) === normalizeValue(nori)}">
+              <td class="border p-2 text-[var(--accent-warning)] text-center">{{ nori }}</td>
+              <td class="border p-2 text-[var(--accent-warning)] text-center">{{ forma }}</td>
             </tr>
           </tbody>
         </table>
       </div>
   
       <!-- Result -->
-      <div v-if="selectedNor && selectedNori" class="mt-4 p-4 bg-white/30 rounded-lg text-center">
-        <span class="font-bold text-amber-700 text-lg">{{ conjugationResult }}</span>
+      <div v-if="selectedNor && selectedNori" class="mt-4 p-4 card p-4 text-center">
+        <span class="font-bold text-[var(--text-primary)] text-lg">{{ conjugationResult }}</span>
       </div>
     </div>
   </template>
