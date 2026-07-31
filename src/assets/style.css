@@ -1,6 +1,5 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 /* Design tokens */
 :root[data-theme="default"],
@@ -255,6 +254,16 @@ body {
 .tool-card--aditzak { --card-accent: #A3453A; }
 .tool-card--taulak { --card-accent: #5E567A; }
 .tool-card--estatistikak { --card-accent: #3E6D57; }
+
+/* Flush on mobile (page-shell padding is enough), real card chrome from md up */
+@media (min-width: 768px) {
+  .game-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+  }
+}
 
 /* Action primitives */
 .button,
@@ -620,3 +629,5 @@ a:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+@tailwind utilities;

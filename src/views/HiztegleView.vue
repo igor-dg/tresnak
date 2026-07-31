@@ -308,8 +308,8 @@ onUnmounted(() => {
       </div>
 
       <!-- Fase de definición inicial -->
-      <div v-else-if="gameState === 'definition'" 
-     class="card p-4 sm:p-8">
+      <div v-else-if="gameState === 'definition'"
+     class="game-card md:p-4 lg:p-8">
   <HiztegleDefinition 
     :word="currentWord"
     :time-left="timeLeft"

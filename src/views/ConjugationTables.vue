@@ -56,25 +56,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Orainaldia</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="orain" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="orain" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="orain" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="orain" />
             </div>
@@ -86,25 +86,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Lehenaldia</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="lehen" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="lehen" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="lehen" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="lehen" />
             </div>
@@ -115,25 +115,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Baldintza Hipotetikoa</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="bal_hip" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="bal_hip" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="bal_hip" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="bal_hip" />
             </div>
@@ -144,25 +144,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Ondorioa Orainaldian</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="ond_or" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="ond_or" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="ond_or" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="ond_or" />
             </div>
@@ -173,25 +173,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Ondorioa Lehenaldian</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="ond_leh" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="ond_leh" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="ond_leh" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="ond_leh" />
             </div>
@@ -202,25 +202,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Ahalera Orainaldian</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="ahal_or" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="ahal_or" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="ahal_or" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="ahal_or" />
             </div>
@@ -231,25 +231,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Ahalera Lehenaldian</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="ahal_leh" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="ahal_leh" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="ahal_leh" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="ahal_leh" />
             </div>
@@ -260,25 +260,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Ahalera Hipotetikoa</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="ahal_hip" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="ahal_hip" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="ahal_hip" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="ahal_hip" />
             </div>
@@ -289,25 +289,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Subjuntiboa Orainaldian</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="subj_or" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="subj_or" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="subj_or" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="subj_or" />
             </div>
@@ -318,25 +318,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Subjuntiboa Lehenaldian</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="subj_leh" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="subj_leh" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="subj_leh" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="subj_leh" />
             </div>
@@ -347,25 +347,25 @@
           <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Agintera</h2>
           <div class="flex flex-wrap justify-center gap-6">
             <!-- NOR -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR</h3>
               <NorConjugationTable tiempo="agintera" />
             </div>
   
             <!-- NOR-NORI -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI</h3>
               <NorNoriConjugationTable tiempo="agintera" />
             </div>
   
             <!-- NOR-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORK</h3>
               <NorNorkConjugationTable tiempo="agintera" />
             </div>
   
             <!-- NOR-NORI-NORK -->
-            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="card p-4">
+            <div v-if="!selectedSystem || selectedSystem === 'nor-nori-nork'" class="game-card md:p-4">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">NOR-NORI-NORK</h3>
               <NorNoriNorkConjugationTable tiempo="agintera" />
             </div>

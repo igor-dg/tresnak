@@ -5,6 +5,7 @@ const props = defineProps({
   title: String,
   description: String,
   route: String,
+  icon: [Object, Function],
 });
 
 const toolClass = computed(() => {
@@ -20,11 +21,34 @@ const toolClass = computed(() => {
 
 <template>
   <router-link :to="route" class="text-[var(--text-primary)] no-underline h-full block">
-    <div class="card card-hover tool-card p-6 pl-7 h-full flex flex-col" :class="toolClass">
-      <div class="flex-grow">
-        <h3 class="text-xl font-semibold mb-2 text-[var(--text-primary)]">{{ title }}</h3>
-        <p class="text-[var(--text-secondary)] leading-relaxed">{{ description }}</p>
+    <div class="card card-hover tool-card nav-card p-4 pl-6 h-full flex items-center gap-4" :class="toolClass">
+      <div class="nav-card__icon shrink-0" v-if="icon">
+        <component :is="icon" class="w-5 h-5" />
+      </div>
+      <div class="min-w-0">
+        <h3 class="text-base font-semibold text-[var(--text-primary)] leading-snug">{{ title }}</h3>
+        <p class="text-sm text-[var(--text-secondary)] leading-snug line-clamp-1">{{ description }}</p>
       </div>
     </div>
   </router-link>
 </template>
+
+<style scoped>
+.nav-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background-color: color-mix(in srgb, var(--card-accent, var(--accent-primary)) 16%, transparent);
+  color: var(--card-accent, var(--accent-primary));
+}
+
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>
