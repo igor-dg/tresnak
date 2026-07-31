@@ -73,9 +73,9 @@
 
 /*
  * Section identities. Each tool inherits these through App.vue.
- * Hiztegle/Hiztegia share green, Sinonimoak owns orange, Aditzak/Taulak share
- * blue — three families pitched at the same saturation/lightness as the
- * brand violet so nothing reads as louder or cheaper than the others.
+ * Hiztegle/Hiztegia share fuchsia, Sinonimoak owns gold, Aditzak/Taulak share
+ * teal — a gem-tone trio picked to sit next to the brand violet (its
+ * amethyst) instead of the old traffic-light red/green/blue.
  * Estatistikak has no override: it falls through to the brand violet above,
  * since it represents progress across every game, not one of them.
  */
@@ -83,35 +83,58 @@
 :root[data-section="hiztegle"],
 .section-hiztegia,
 :root[data-section="hiztegia"] {
-  --accent-primary: #15803D;
-  --accent-primary-hover: #106430;
-  --accent-primary-soft: #E3F0E8;
-  --focus-ring: #ADD3BB;
+  --accent-primary: #B23A8C;
+  --accent-primary-hover: #8B2D6D;
+  --accent-primary-soft: #F6E6F1;
+  --focus-ring: #DCA6CB;
+  --topbar-bg: color-mix(in srgb, var(--accent-primary-soft) 60%, var(--bg-page));
 }
 
 .section-sinonimoak,
 :root[data-section="sinonimoak"] {
-  --accent-primary: #C2410C;
-  --accent-primary-hover: #973309;
-  --accent-primary-soft: #F8E8E2;
-  --focus-ring: #EABCAA;
+  --accent-primary: #A6650A;
+  --accent-primary-hover: #814F08;
+  --accent-primary-soft: #F4EDE2;
+  --focus-ring: #D7BA91;
+  --topbar-bg: color-mix(in srgb, var(--accent-primary-soft) 60%, var(--bg-page));
 }
 
 .section-aditzak,
 :root[data-section="aditzak"],
 .section-taulak,
 :root[data-section="taulak"] {
-  --accent-primary: #2563EB;
-  --accent-primary-hover: #1D4DB7;
-  --accent-primary-soft: #E5ECFD;
-  --focus-ring: #B3C8F8;
+  --accent-primary: #128888;
+  --accent-primary-hover: #0E6A6A;
+  --accent-primary-soft: #E3F1F1;
+  --focus-ring: #94C9C9;
+  --topbar-bg: color-mix(in srgb, var(--accent-primary-soft) 60%, var(--bg-page));
 }
 
 :root[data-theme="hitano"][data-section="aditzak"] {
-  --accent-primary: #1E40AF;
-  --accent-primary-hover: #173289;
-  --accent-primary-soft: #E4E8F5;
-  --focus-ring: #B0BCE3;
+  --accent-primary: #0E6A6A;
+  --accent-primary-hover: #0A5252;
+  --accent-primary-soft: #E3F1F1;
+  --focus-ring: #94C9C9;
+}
+
+/*
+ * Home gets its own bold identity: a deep violet field instead of the
+ * neutral page background, per the palette exploration. Only surface/text
+ * tokens shift — accent-primary stays the brand default since nothing on
+ * this page fills a button with it (the one link on a dark ground uses its
+ * own bright violet, set directly in Hasiera.vue, to avoid overloading this
+ * token with a contrast requirement the rest of the app doesn't share).
+ */
+.section-home,
+:root[data-section="home"] {
+  --bg-page: #1C1533;
+  --bg-card: #2A2147;
+  --bg-elevated: #2A2147;
+  --border-card: rgb(255 255 255 / 0.12);
+  --border-strong: rgb(255 255 255 / 0.28);
+  --text-primary: #F6F4FC;
+  --text-secondary: #B7ACDA;
+  --text-muted: #9284BE;
 }
 
 :root {
@@ -183,6 +206,9 @@ body {
   display: none;
 }
 
+/* --topbar-bg is unset by default (neutral); the game sections set it to a
+   tint of their own accent so the topbar echoes the home tile you tapped
+   instead of cutting straight to a neutral bar. */
 .mobile-topbar {
   position: sticky;
   top: 0;
@@ -193,7 +219,7 @@ body {
   justify-content: space-between;
   gap: 1rem;
   padding: 0.375rem 0.75rem 0.375rem 1rem;
-  background-color: color-mix(in srgb, var(--bg-page) 94%, transparent);
+  background-color: var(--topbar-bg, color-mix(in srgb, var(--bg-page) 94%, transparent));
   border-bottom: 1px solid var(--border-card);
   box-shadow: 0 1px 4px rgb(17 17 17 / 0.06);
 }
@@ -222,26 +248,6 @@ body {
   box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
 }
-
-.tool-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.tool-card::before {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 0.3rem;
-  background-color: var(--card-accent, var(--accent-primary));
-  content: '';
-}
-
-.tool-card--hiztegle { --card-accent: #15803D; }
-.tool-card--sinonimoak { --card-accent: #C2410C; }
-.tool-card--hiztegia { --card-accent: #15803D; }
-.tool-card--aditzak { --card-accent: #2563EB; }
-.tool-card--taulak { --card-accent: #2563EB; }
-.tool-card--estatistikak { --card-accent: #6C4CF1; }
 
 /* Flush on mobile (page-shell padding is enough), real card chrome from md up */
 @media (min-width: 768px) {
