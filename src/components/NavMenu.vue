@@ -75,8 +75,11 @@ const navigateTo = (route) => {
 <template>
   <div>
     <header class="mobile-topbar md:hidden">
-      <span class="min-w-0 truncate text-base font-bold text-[var(--text-primary)]">
-        {{ route.meta.title || 'Jokatu' }}
+      <span class="flex items-center gap-2 min-w-0">
+        <img src="/logo_basic.svg" alt="" class="w-5 h-5 shrink-0" />
+        <span class="min-w-0 truncate text-base font-bold text-[var(--text-primary)]">
+          {{ route.meta.title || 'Jokatu' }}
+        </span>
       </span>
       <BaseButton
         variant="ghost"
@@ -90,6 +93,15 @@ const navigateTo = (route) => {
         <X v-else class="w-6 h-6" />
       </BaseButton>
     </header>
+
+    <!-- Marca en escritorio -->
+    <router-link
+      to="/"
+      class="hidden md:flex items-center gap-2 fixed top-5 left-5 z-50 font-bold text-base text-[var(--text-primary)]"
+    >
+      <img src="/logo_basic.svg" alt="" class="w-6 h-6" />
+      <span>Jokatu!</span>
+    </router-link>
 
     <!-- Botón flotante en escritorio -->
     <BaseButton

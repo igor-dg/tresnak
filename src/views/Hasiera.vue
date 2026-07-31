@@ -57,6 +57,7 @@ const baliabideak = [
 
 <template>
   <div class="page-shell">
+    <img src="/logo.svg" alt="Jokatu!" class="hero-logo" />
     <PageHeader
       title="Egunero pixka bat, euskara hobetzeko"
       description="Jolastu, errepasatu eta segi ikasten."
@@ -93,6 +94,21 @@ const baliabideak = [
 </template>
 
 <style scoped>
+.hero-logo {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+}
+
+@media (min-width: 768px) {
+  .hero-logo {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
 .hero-progress-link {
   display: inline-flex;
   align-items: center;
