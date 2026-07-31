@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 *.woff
 *.woff2
+
+# auxiliares
+/scripts/

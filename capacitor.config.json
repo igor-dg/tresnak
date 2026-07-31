@@ -1,5 +1,13 @@
 {
   "appId": "com.jokatu.app",
   "appName": "Jokatu!",
-  "webDir": "dist"
+  "webDir": "dist",
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "style": "DEFAULT",
+      "hidden": false,
+      "animation": "NONE"
+    }
+  }
 }

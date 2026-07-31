@@ -73,7 +73,6 @@ const navigateTo = (route) => {
 </script>
 
 <template>
-  <div>
     <header class="mobile-topbar md:hidden">
       <router-link
         to="/"
@@ -122,18 +121,30 @@ const navigateTo = (route) => {
     <!-- Overlay del menú -->
     <div
       v-if="isOpen"
-      class="fixed inset-0 modal-backdrop z-40"
+      class="fixed inset-0 modal-backdrop z-[55]"
       @click="toggleMenu"
     ></div>
 
     <!-- Menú desplegable -->
     <div
       :class="[
-        'fixed right-0 top-0 h-full w-80 bg-[var(--bg-elevated)] border-l border-[var(--border-card)] z-40 transform transition-transform duration-300 ease-in-out shadow-xl',
+        'fixed right-0 top-0 flex h-full w-80 max-w-[88vw] flex-col bg-[var(--bg-elevated)] border-l border-[var(--border-card)] z-[60] transform transition-transform duration-300 ease-in-out shadow-xl',
         isOpen ? 'translate-x-0' : 'translate-x-full'
       ]"
     >
-      <div class="pt-20 md:pt-24 px-4">
+      <div class="nav-drawer__header flex shrink-0 items-center justify-between border-b border-[var(--border-card)] px-4">
+        <span class="font-bold text-[var(--text-primary)]">Menua</span>
+        <BaseButton
+          variant="ghost"
+          icon-only
+          aria-label="Itxi menua"
+          @click="toggleMenu"
+        >
+          <X class="w-6 h-6" />
+        </BaseButton>
+      </div>
+
+      <div class="min-h-0 flex-1 overflow-y-auto px-4 pt-6 safe-area-bottom">
         <nav>
           <div v-for="(group, index) in navigationGroups" :key="index" class="mb-8">
             <!-- Título del grupo si existe -->
@@ -161,5 +172,4 @@ const navigateTo = (route) => {
         </nav>
       </div>
     </div>
-  </div>
 </template>

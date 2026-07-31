@@ -150,7 +150,9 @@
 
 body {
   margin: 0;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+  padding-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+  padding-right: var(--safe-area-inset-right, env(safe-area-inset-right, 0px));
+  padding-left: var(--safe-area-inset-left, env(safe-area-inset-left, 0px));
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--bg-page);
@@ -211,7 +213,7 @@ body {
    instead of cutting straight to a neutral bar. */
 .mobile-topbar {
   position: sticky;
-  top: 0;
+  top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
   z-index: 50;
   display: flex;
   height: 3.5rem;
@@ -222,6 +224,11 @@ body {
   background-color: var(--topbar-bg, color-mix(in srgb, var(--bg-page) 94%, transparent));
   border-bottom: 1px solid var(--border-card);
   box-shadow: 0 1px 4px rgb(17 17 17 / 0.06);
+}
+
+.nav-drawer__header {
+  min-height: calc(4rem + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));
+  padding-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
 }
 
 /* Surface primitives */
@@ -547,7 +554,7 @@ body {
 }
 
 .safe-area-bottom {
-  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  padding-bottom: max(0.75rem, var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
 }
 
 .fade-in {
