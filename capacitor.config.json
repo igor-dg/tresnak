@@ -1,5 +1,5 @@
 {
-  "appId": "com.jokatu.app",
+  "appId": "eus.idg.jokatu",
   "appName": "Jokatu!",
   "webDir": "dist",
   "plugins": {

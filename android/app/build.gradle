@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.jokatu.app"
+    namespace = "eus.idg.jokatu"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId = "com.jokatu.app"
+        applicationId = "eus.idg.jokatu"
         minSdk = rootProject.ext.minSdkVersion
         targetSdk = rootProject.ext.targetSdkVersion
         versionCode = 1

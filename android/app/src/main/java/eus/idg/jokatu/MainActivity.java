@@ -1,4 +1,4 @@
-package com.jokatu.app;
+package eus.idg.jokatu;
 
 import android.os.Bundle;
 import androidx.core.splashscreen.SplashScreen;
