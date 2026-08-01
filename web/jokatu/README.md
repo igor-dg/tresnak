@@ -10,8 +10,10 @@ web/jokatu/assets/             -> /jokatu/assets/
 web/jokatu/api/*.php           -> /jokatu/api/ (PHPak zerbitzaritik kopiatu ondoren)
 ```
 
-Webgunea HTML eta CSS hutsez eginda dago: ez du konpilaziorik, JavaScriptik, cookierik edo kanpoko
-baliabiderik behar. Lokalean egiaztatzeko, edozein web zerbitzari estatiko erabil daiteke karpeta honetan.
+Webguneak HTML, CSS eta landingeko beta-formulariorako JavaScript txiki bat erabiltzen ditu. Ez du
+konpilaziorik, cookierik edo kanpoko baliabiderik behar. Beta-formularioak `/jokatu/api/beta.php`
+endpointa eta Cloudflare Email Service-ren konfigurazio pribatua behar ditu. Gainerako orriak edozein
+web zerbitzari estatikorekin egiazta daitezke.
 
 Store-etarako URL nagusiak:
 

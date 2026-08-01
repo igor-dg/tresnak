@@ -27,4 +27,6 @@ dist-ssr
 
 # auxiliares
 /scripts/
+/jokatu-beta-config.php
 android/.artifacts/
+android/keys/

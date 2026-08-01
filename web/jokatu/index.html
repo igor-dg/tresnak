@@ -23,7 +23,7 @@
         padding: 2rem 0 4rem;
       }
 
-      .landing-hero__copy { max-width: 39rem; }
+      .landing-hero__copy { min-width: 0; max-width: 39rem; }
       .landing-hero__lead { max-width: 34rem; margin: 1.15rem 0 1.5rem; font-size: clamp(0.95rem, 2vw, 1.1rem); }
 
       .app-mark {
@@ -55,8 +55,61 @@
       .app-mark::after { bottom: 13%; left: 5%; width: 0.75rem; height: 0.75rem; opacity: 0.7; }
       .app-mark img { width: 56%; filter: drop-shadow(0 16px 25px rgb(7 4 18 / 0.28)); }
 
-      .availability { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1rem; color: var(--text-muted); font-size: 0.68rem; font-weight: 700; }
-      .availability::before { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--success); content: ""; box-shadow: 0 0 0 0.2rem rgb(69 196 145 / 0.12); }
+      .availability { position: relative; display: block; max-width: 100%; margin-top: 0.85rem; padding-left: 0.9rem; color: var(--text-muted); font-size: 0.68rem; font-weight: 700; overflow-wrap: anywhere; }
+      .availability::before { position: absolute; top: 0.58em; left: 0; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--success); content: ""; box-shadow: 0 0 0 0.2rem rgb(69 196 145 / 0.12); }
+
+      .beta-signup {
+        width: 100%;
+        min-width: 0;
+        max-width: 38rem;
+        margin-top: 1.5rem;
+        padding: clamp(1rem, 3vw, 1.35rem);
+        border: 1px solid rgb(189 170 255 / 0.22);
+        border-radius: 0.5rem;
+        background: linear-gradient(145deg, rgb(42 33 71 / 0.94), rgb(35 27 61 / 0.94));
+        box-shadow: var(--shadow-card);
+        text-align: left;
+      }
+
+      .beta-signup__title { margin: 0; font-size: 1rem; }
+      .beta-signup__intro { margin: 0.3rem 0 0.9rem; font-size: 0.74rem; }
+      .beta-form { display: grid; min-width: 0; gap: 0.75rem; }
+      .beta-form__label { color: var(--text-primary); font-size: 0.7rem; font-weight: 800; }
+
+      .beta-form__email {
+        width: 100%;
+        min-width: 0;
+        min-height: 3rem;
+        margin-top: 0.35rem;
+        padding: 0.7rem 0.8rem;
+        border: 1px solid var(--border-strong);
+        border-radius: 0.375rem;
+        background: rgb(15 10 29 / 0.52);
+        color: var(--text-primary);
+        font: inherit;
+      }
+
+      .beta-form__email::placeholder { color: var(--text-muted); }
+      .beta-form__email:focus { border-color: var(--accent); }
+
+      .beta-form__consent {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+        gap: 0.55rem;
+        color: var(--text-secondary);
+        font-size: 0.66rem;
+        line-height: 1.5;
+      }
+
+      .beta-form__consent input { width: 1rem; height: 1rem; margin: 0.15rem 0 0; accent-color: var(--accent-strong); }
+      .beta-form__consent span { min-width: 0; overflow-wrap: anywhere; }
+      .beta-form__actions { display: flex; align-items: center; gap: 0.8rem; }
+      .beta-form__status { min-height: 1.2rem; margin: 0; color: var(--text-muted); font-size: 0.68rem; }
+      .beta-form__status[data-state="success"] { color: #73ddb3; }
+      .beta-form__status[data-state="error"] { color: #ffaaa4; }
+      .beta-form button:disabled { cursor: wait; opacity: 0.7; transform: none; }
+      .beta-form__trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
       .landing-section { padding: 3.25rem 0; }
       .landing-section__heading { max-width: 34rem; margin-bottom: 1.25rem; }
@@ -76,10 +129,14 @@
 
       @media (max-width: 760px) {
         .landing-hero { min-height: 0; grid-template-columns: 1fr; padding-top: 0; text-align: center; }
+        .landing-hero__copy { width: 100%; }
         .landing-hero__copy, .landing-hero__lead { margin-inline: auto; }
         .button-row { justify-content: center; }
         .landing-hero__visual { grid-row: 1; }
         .app-mark { width: min(48vw, 10rem); }
+        .beta-signup { margin-inline: auto; }
+        .beta-form__actions { align-items: stretch; flex-direction: column; }
+        .beta-form__actions .button { width: 100%; }
         .privacy-banner { align-items: flex-start; flex-direction: column; }
       }
     </style>
@@ -111,7 +168,45 @@
               <a class="button button--primary" href="laguntza.html">Ezagutu Jokatu!</a>
               <a class="button button--secondary" href="pribatutasuna.html">Pribatutasuna</a>
             </div>
-            <span class="availability">Android eta iOS bertsioak prestatzen</span>
+            <div class="beta-signup">
+              <h2 class="beta-signup__title">Jokatu! probatu nahi duzu?</h2>
+              <p class="beta-signup__intro">
+                Eman izena Android-erako beta itxian, eta lagundu Jokatu! hobetzen.
+              </p>
+              <form class="beta-form" action="api/beta.php" method="post">
+                <label class="beta-form__label" for="beta-email">
+                  Google Play-n erabiltzen duzun Google kontuaren helbidea
+                  <input
+                    class="beta-form__email"
+                    id="beta-email"
+                    name="email"
+                    type="email"
+                    inputmode="email"
+                    autocomplete="email"
+                    maxlength="254"
+                    placeholder="izena@gmail.com"
+                    required
+                  />
+                </label>
+                <label class="beta-form__consent">
+                  <input name="consent" type="checkbox" value="1" required />
+                  <span>
+                    <a href="pribatutasuna.html#beta">Pribatutasun-politika</a> irakurri dut, eta nire helbidea
+                    beta-proba kudeatzeko eta Google Play-ko probatzaileen zerrendan gehitzeko erabiltzea onartzen dut.
+                  </span>
+                </label>
+                <div class="beta-form__trap" aria-hidden="true">
+                  <label for="beta-website">Webgunea</label>
+                  <input id="beta-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+                </div>
+                <input name="started_at" type="hidden" value="" />
+                <div class="beta-form__actions">
+                  <button class="button button--primary" type="submit">Bat egin beta-probarekin</button>
+                  <p class="beta-form__status" role="status" aria-live="polite"></p>
+                </div>
+              </form>
+            </div>
+            <span class="availability">Android beta-proba prestatzen · iOS bertsioa prestatzen</span>
           </div>
           <div class="landing-hero__visual" aria-hidden="true">
             <div class="app-mark"><img src="assets/logo.svg" alt="" /></div>
@@ -173,5 +268,49 @@
         </nav>
       </footer>
     </div>
+    <script>
+      const betaForm = document.querySelector('.beta-form')
+      const betaStatus = betaForm.querySelector('.beta-form__status')
+      const betaButton = betaForm.querySelector('button[type="submit"]')
+      const betaStartedAt = betaForm.elements.started_at
+
+      const resetBetaTimer = () => {
+        betaStartedAt.value = String(Math.floor(Date.now() / 1000))
+      }
+
+      resetBetaTimer()
+
+      betaForm.addEventListener('submit', async event => {
+        event.preventDefault()
+        if (!betaForm.reportValidity()) return
+
+        betaButton.disabled = true
+        betaStatus.dataset.state = ''
+        betaStatus.textContent = 'Eskaera bidaltzen…'
+
+        try {
+          const response = await fetch(betaForm.action, {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: new FormData(betaForm)
+          })
+          const result = await response.json().catch(() => ({}))
+
+          if (!response.ok) {
+            throw new Error(result.message || 'Ezin izan da eskaera bidali.')
+          }
+
+          betaForm.reset()
+          resetBetaTimer()
+          betaStatus.dataset.state = 'success'
+          betaStatus.textContent = result.message || 'Eskerrik asko! Zure eskaera jaso dugu.'
+        } catch (error) {
+          betaStatus.dataset.state = 'error'
+          betaStatus.textContent = error.message || 'Ezin izan da eskaera bidali. Saiatu berriro.'
+        } finally {
+          betaButton.disabled = false
+        }
+      })
+    </script>
   </body>
 </html>
