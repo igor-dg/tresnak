@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="eu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1C1533" />
+    <meta name="description" content="Jokatu! — Euskara egunero praktikatzeko joko labur eta erabilgarriak." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Jokatu! — Euskara praktikatzeko jokoak" />
+    <meta property="og:description" content="Egunero pixka bat, euskara hobetzeko." />
+    <meta property="og:url" content="https://idg.eus/jokatu/" />
+    <link rel="canonical" href="https://idg.eus/jokatu/" />
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <title>Jokatu! — Euskara praktikatzeko jokoak</title>
+    <style>
+      .landing-hero {
+        display: grid;
+        min-height: min(34rem, calc(100vh - 8rem));
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: clamp(2rem, 7vw, 6rem);
+        padding: 2rem 0 4rem;
+      }
+
+      .landing-hero__copy { max-width: 39rem; }
+      .landing-hero__lead { max-width: 34rem; margin: 1.15rem 0 1.5rem; font-size: clamp(0.95rem, 2vw, 1.1rem); }
+
+      .app-mark {
+        position: relative;
+        display: grid;
+        width: min(72vw, 19rem);
+        aspect-ratio: 1;
+        margin-inline: auto;
+        place-items: center;
+        border: 1px solid rgb(255 255 255 / 0.1);
+        border-radius: 28%;
+        background: linear-gradient(145deg, #302653, #21193b);
+        box-shadow: 0 30px 80px rgb(7 4 18 / 0.46), 0 0 70px rgb(108 76 241 / 0.18);
+        transform: rotate(3deg);
+      }
+
+      .app-mark::before,
+      .app-mark::after {
+        position: absolute;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 0.25rem;
+        background: #d9cbff;
+        content: "";
+        clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%);
+      }
+
+      .app-mark::before { top: 12%; right: 8%; }
+      .app-mark::after { bottom: 13%; left: 5%; width: 0.75rem; height: 0.75rem; opacity: 0.7; }
+      .app-mark img { width: 56%; filter: drop-shadow(0 16px 25px rgb(7 4 18 / 0.28)); }
+
+      .availability { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1rem; color: var(--text-muted); font-size: 0.68rem; font-weight: 700; }
+      .availability::before { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--success); content: ""; box-shadow: 0 0 0 0.2rem rgb(69 196 145 / 0.12); }
+
+      .landing-section { padding: 3.25rem 0; }
+      .landing-section__heading { max-width: 34rem; margin-bottom: 1.25rem; }
+
+      .privacy-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: clamp(1.2rem, 4vw, 2rem);
+        border-color: rgb(189 170 255 / 0.28);
+        background: linear-gradient(135deg, #2a2147, #332659);
+      }
+
+      .privacy-banner__copy { max-width: 39rem; }
+      .privacy-banner__copy p { margin-bottom: 0; }
+
+      @media (max-width: 760px) {
+        .landing-hero { min-height: 0; grid-template-columns: 1fr; padding-top: 0; text-align: center; }
+        .landing-hero__copy, .landing-hero__lead { margin-inline: auto; }
+        .button-row { justify-content: center; }
+        .landing-hero__visual { grid-row: 1; }
+        .app-mark { width: min(48vw, 10rem); }
+        .privacy-banner { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#edukia">Joan edukira</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="./" aria-label="Jokatu! hasiera">
+          <img src="assets/logo.svg" alt="" />
+          <span>Jokatu!</span>
+        </a>
+        <nav class="site-nav" aria-label="Nabigazio nagusia">
+          <a href="laguntza.html">Laguntza</a>
+          <a href="pribatutasuna.html">Pribatutasuna</a>
+        </nav>
+      </header>
+
+      <main id="edukia">
+        <section class="landing-hero">
+          <div class="landing-hero__copy">
+            <span class="eyebrow">Euskara · Jokoak · Aurrerapena</span>
+            <h1>Egunero pixka bat,<br />euskara hobetzeko.</h1>
+            <p class="landing-hero__lead">
+              Jokatu! euskarazko hiztegia, sinonimoak eta aditz laguntzaileak modu arin eta dibertigarrian
+              praktikatzeko aplikazioa da.
+            </p>
+            <div class="button-row">
+              <a class="button button--primary" href="laguntza.html">Ezagutu Jokatu!</a>
+              <a class="button button--secondary" href="pribatutasuna.html">Pribatutasuna</a>
+            </div>
+            <span class="availability">Android eta iOS bertsioak prestatzen</span>
+          </div>
+          <div class="landing-hero__visual" aria-hidden="true">
+            <div class="app-mark"><img src="assets/logo.svg" alt="" /></div>
+          </div>
+        </section>
+
+        <section class="landing-section" aria-labelledby="jokoak">
+          <div class="landing-section__heading">
+            <span class="section-kicker">Zure erritmoan ikasteko</span>
+            <h2 id="jokoak">Hiru erronka, helburu bakarra</h2>
+            <p>Saio laburrak egin, aurrerapena ikusi eta landu behar duzuna aurkitu.</p>
+          </div>
+          <div class="feature-grid">
+            <article class="card feature-card">
+              <span class="feature-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19.4 15A7 7 0 1 1 9 4.6"/><path d="M12 2v10l6.5 3.5"/></svg>
+              </span>
+              <strong>Hiztegle</strong>
+              <p>Asmatu eguneko hitza definizioaren laguntzarekin.</p>
+            </article>
+            <article class="card feature-card">
+              <span class="feature-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4"/><path d="M20 7H8a4 4 0 0 0-4 4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h12a4 4 0 0 0 4-4"/></svg>
+              </span>
+              <strong>Sinonimoak</strong>
+              <p>Aberastu hiztegia hitzen arteko loturekin jolastuz.</p>
+            </article>
+            <article class="card feature-card">
+              <span class="feature-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/><path d="M8 9h8M8 13h5"/></svg>
+              </span>
+              <strong>Aditzak</strong>
+              <p>Indartu aditz laguntzaileak sistema eta denbora guztietan.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="landing-section" aria-labelledby="pribatutasuna">
+          <div class="card privacy-banner">
+            <div class="privacy-banner__copy">
+              <span class="section-kicker">Zure datuak, argi eta garbi</span>
+              <h2 id="pribatutasuna">Aurrerapena zure gailuan geratzen da</h2>
+              <p>
+                Jokatu!-k ez du konturik, erabilera-analitikarik, publizitaterik edo jarraipenik. Zure jokoen
+                estatistikak gailuan bakarrik gordetzen dira.
+              </p>
+            </div>
+            <a class="button button--secondary" href="pribatutasuna.html">Irakurri politika</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>© 2026 IDG · Jokatu!</span>
+        <nav aria-label="Oineko nabigazioa">
+          <a href="laguntza.html">Laguntza</a>
+          <a href="pribatutasuna.html">Pribatutasuna</a>
+          <a href="https://idg.eus/">idg.eus</a>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,6 +1,5 @@
 import { differenceInCalendarDays, format } from 'date-fns'
 import dailySequence from '@/data/hitzak/dailySequence.json'
-import validWords from '@/data/hitzak/validWords.json'
 
 const DAILY_STATE_KEY = 'hiztegle_daily_state'
 
@@ -14,8 +13,6 @@ const DAILY_STATE_KEY = 'hiztegle_daily_state'
 // correspondió a cada fecha ya jugada.
 const EPOCH_DATE = new Date('2026-07-31T00:00:00')
 
-const VALID_WORD_SET = new Set(validWords)
-
 export function getDailyDateKey(date = new Date()) {
   return format(date, 'yyyy-MM-dd')
 }
@@ -28,13 +25,6 @@ export function getDailyWord(date = new Date()) {
   const daysSinceEpoch = differenceInCalendarDays(date, EPOCH_DATE)
   const index = ((daysSinceEpoch % dailySequence.length) + dailySequence.length) % dailySequence.length
   return dailySequence[index]
-}
-
-// Lista cerrada de intentos aceptados para el reto diario (5 letras).
-// Validación local: sin red, sin depender de que la API de diccionario
-// reconozca cada forma flexionada.
-export function isValidDailyGuess(word) {
-  return VALID_WORD_SET.has(word.toUpperCase())
 }
 
 // Devuelve el resultado guardado del reto diario si ya se jugó hoy, o null.

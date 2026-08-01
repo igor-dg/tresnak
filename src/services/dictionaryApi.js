@@ -1,6 +1,6 @@
 import { Capacitor, CapacitorHttp } from '@capacitor/core'
 
-const API_BASE_URL = 'https://idg.eus/tresnak'
+const API_BASE_URL = 'https://idg.eus/jokatu/api'
 
 async function requestText(endpoint, params) {
   const url = `${API_BASE_URL}/${endpoint}`

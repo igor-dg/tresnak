@@ -5,11 +5,12 @@ import KeyboardInput from '@/components/Hiztegle/KeyboardInput.vue'
 import { RefreshCw, Languages, BookOpen, CalendarCheck, Shuffle } from 'lucide-vue-next'
 import hiztegiaData from '@/data/hiztegia.json'
 import PageHeader from '@/components/ui/PageHeader.vue'
-import { fetchTranslation } from '@/services/dictionaryApi'
+import { isValidHiztegleGuess } from '@/services/wordValidation'
 import { useStatsService } from '@/composables/useStatsService'
-import { getDailyWord, getDailyChallengeState, saveDailyChallengeResult, isValidDailyGuess } from '@/utils/dailyWord'
+import { getDailyWord, getDailyChallengeState, saveDailyChallengeResult } from '@/utils/dailyWord'
 
 const MODE_KEY = 'hiztegle_mode'
+const playableHiztegiaData = hiztegiaData.filter(word => /^[A-ZÑ]+$/.test(word))
 
 const gameState = ref('initial')
 const mode = ref(localStorage.getItem(MODE_KEY) === 'free' ? 'free' : 'daily')
@@ -59,11 +60,11 @@ function addToUsedWords(word) {
 function selectRandomWord() {
   const usedWords = getUsedWords()
   const recentWords = new Set(usedWords.map(entry => entry.word))
-  const availableWords = hiztegiaData.filter(word => !recentWords.has(word))
+  const availableWords = playableHiztegiaData.filter(word => !recentWords.has(word))
   
   if (availableWords.length === 0) {
     localStorage.removeItem(USED_WORDS_KEY)
-    currentWord.value = hiztegiaData[Math.floor(Math.random() * hiztegiaData.length)]
+    currentWord.value = playableHiztegiaData[Math.floor(Math.random() * playableHiztegiaData.length)]
   } else {
     currentWord.value = availableWords[Math.floor(Math.random() * availableWords.length)]
   }
@@ -198,17 +199,7 @@ async function skipWord() {
 const isCheckingWord = ref(false)
 
 async function checkWordExists(word) {
-  if (mode.value === 'daily') {
-    return isValidDailyGuess(word)
-  }
-
-  try {
-    const data = await fetchTranslation(word)
-    return data && data.trim().length > 0
-  } catch (error) {
-    console.error('Error checking word:', error)
-    return false
-  }
+  return isValidHiztegleGuess(word)
 }
 
 async function handleAttempt() {
@@ -286,6 +277,9 @@ async function handleAttempt() {
       statusMessages.value = `Game Over! Hitza ${currentWord.value} zen.`
       await recordGame(false, attempts.value.length)
     }
+  } catch (error) {
+    console.error('Error loading the local word list:', error)
+    statusMessages.value = 'Ezin izan da hiztegia kargatu. Saiatu berriro.'
   } finally {
     isCheckingWord.value = false
   }
