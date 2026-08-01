@@ -7,7 +7,7 @@
     <meta name="description" content="Jokatu! — Euskara egunero praktikatzeko joko labur eta erabilgarriak." />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Jokatu! — Euskara praktikatzeko jokoak" />
-    <meta property="og:description" content="Egunero pixka bat, euskara hobetzeko." />
+    <meta property="og:description" content="Egunero pixka bat, zure euskara hobetzeko." />
     <meta property="og:url" content="https://idg.eus/jokatu/" />
     <meta property="og:site_name" content="Jokatu!" />
     <meta property="og:locale" content="eu_ES" />
@@ -19,7 +19,7 @@
     <meta property="og:image:alt" content="Jokatu! Egunero pixka bat, zure euskara hobetzeko." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Jokatu! — Euskara praktikatzeko jokoak" />
-    <meta name="twitter:description" content="Egunero pixka bat, euskara hobetzeko." />
+    <meta name="twitter:description" content="Egunero pixka bat, zure euskara hobetzeko." />
     <meta name="twitter:image" content="https://idg.eus/jokatu/assets/jokatu-og.png" />
     <meta name="twitter:image:alt" content="Jokatu! Egunero pixka bat, zure euskara hobetzeko." />
     <link rel="canonical" href="https://idg.eus/jokatu/" />
@@ -31,12 +31,13 @@
         display: grid;
         min-height: min(34rem, calc(100vh - 8rem));
         grid-template-columns: 1.1fr 0.9fr;
-        align-items: center;
+        align-items: start;
         gap: clamp(2rem, 7vw, 6rem);
         padding: 2rem 0 4rem;
       }
 
       .landing-hero__copy { min-width: 0; max-width: 39rem; }
+      .landing-hero__visual { padding-top: 1.5rem; }
       .landing-hero__lead { max-width: 34rem; margin: 1.15rem 0 1.5rem; font-size: clamp(0.95rem, 2vw, 1.1rem); }
 
       .app-mark {
@@ -145,7 +146,7 @@
         .landing-hero__copy { width: 100%; }
         .landing-hero__copy, .landing-hero__lead { margin-inline: auto; }
         .button-row { justify-content: center; }
-        .landing-hero__visual { grid-row: 1; }
+        .landing-hero__visual { grid-row: 1; padding-top: 0; }
         .app-mark { width: min(48vw, 10rem); }
         .beta-signup { margin-inline: auto; }
         .beta-form__actions { align-items: stretch; flex-direction: column; }
@@ -172,7 +173,7 @@
         <section class="landing-hero">
           <div class="landing-hero__copy">
             <span class="eyebrow">Euskara · Jokoak · Aurrerapena</span>
-            <h1>Egunero pixka bat,<br />euskara hobetzeko.</h1>
+            <h1>Egunero pixka bat,<br />zure euskara hobetzeko.</h1>
             <p class="landing-hero__lead">
               Jokatu! euskarazko hiztegia, sinonimoak eta aditz laguntzaileak modu arin eta dibertigarrian
               praktikatzeko aplikazioa da.
