@@ -162,7 +162,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
               </li>
               <li>
                 <span class="privacy-list__icon"><BookOpen /></span>
-                <span><strong>Hiztegiko kontsultak</strong><small>Kontsultatutako hitza idg.eus zerbitzarira bidaltzen da emaitza lortzeko.</small></span>
+                <span><strong>Hiztegiko kontsultak</strong><small>Eduki gehiena gailuan dago; falta denean bakarrik bidaltzen da hitza idg.eus zerbitzarira.</small></span>
               </li>
               <li>
                 <span class="privacy-list__icon"><ShieldCheck /></span>

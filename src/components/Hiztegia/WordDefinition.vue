@@ -4,7 +4,7 @@ import { X, Loader2 } from 'lucide-vue-next'
 import BaseModal from '@/components/ui/BaseModal.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import EmptyState from '@/components/ui/EmptyState.vue'
-import { fetchTranslation } from '@/services/dictionaryApi'
+import { fetchDictionaryEntry } from '@/services/dictionaryApi'
 
 const props = defineProps({
   word: {
@@ -20,6 +20,7 @@ const props = defineProps({
 const emit = defineEmits(['update:isOpen'])
 
 const definition = ref('')
+const source = ref('')
 const isLoading = ref(false)
 const error = ref(null)
 
@@ -35,11 +36,13 @@ const fetchDefinition = async () => {
   
   isLoading.value = true
   error.value = null
+  source.value = ''
   
   try {
-    const data = await fetchTranslation(props.word)
-    if (data) {
-      definition.value = data
+    const entry = await fetchDictionaryEntry(props.word)
+    if (entry.html?.trim()) {
+      definition.value = entry.html
+      source.value = entry.source
     } else {
       error.value = 'Ez dugu ezer aurkitu Elhuyarren'
     }
@@ -55,6 +58,7 @@ const closeModal = () => {
   emit('update:isOpen', false)
   // Limpiar estado al cerrar
   definition.value = ''
+  source.value = ''
   error.value = null
 }
 
@@ -101,7 +105,7 @@ const closeModal = () => {
           <template v-else-if="definition">
             <div class="rich-definition" v-html="definition" />
             <p class="text-xs text-[var(--text-muted)] text-right mt-3">
-              Iturria: Elhuyar Hiztegia
+              Iturria: {{ source }}
             </p>
           </template>
 

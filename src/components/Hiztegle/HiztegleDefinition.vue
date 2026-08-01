@@ -1,9 +1,9 @@
 <!-- HiztegleDefinition.vue -->
 <script setup>
-import { ref, watch, onMounted, computed } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { Loader2 } from 'lucide-vue-next'
 import { Timer } from 'lucide-vue-next'
-import { fetchDefinition, fetchTranslation } from '@/services/dictionaryApi'
+import { fetchHiztegleClue } from '@/services/dictionaryApi'
 
 const emit = defineEmits(['timer-complete', 'content-ready'])
 
@@ -24,6 +24,7 @@ const props = defineProps({
 })
 
 const content = ref('')
+const source = ref('')
 const isLoading = ref(false)
 const error = ref(null)
 
@@ -36,6 +37,7 @@ onMounted(async () => {
 watch(() => [props.word, props.contentType], async () => {
   if (props.word) {
     content.value = ''
+    source.value = ''
     await fetchContent()
   }
 }, { deep: true })
@@ -45,13 +47,13 @@ const fetchContent = async () => {
   
   isLoading.value = true
   error.value = null
+  source.value = ''
   
   try {
-    const data = props.contentType === 'definition'
-      ? await fetchDefinition(props.word)
-      : await fetchTranslation(props.word, true)
-    if (data && data.trim()) {
-      content.value = data
+    const clue = await fetchHiztegleClue(props.word, props.contentType)
+    if (clue.html && clue.html.trim()) {
+      content.value = clue.html
+      source.value = clue.source
     } else {
       error.value = props.contentType === 'definition' 
         ? 'Ez dugu ezer aurkitu Harluxeten'
@@ -66,10 +68,6 @@ const fetchContent = async () => {
   }
 }
 
-const source = computed(() => props.contentType === 'definition'
-  ? 'Harluxet Hiztegi Entziklopedikoa'
-  : 'Elhuyar Hiztegia'
-)
 </script>
 
 <template>

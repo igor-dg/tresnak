@@ -651,7 +651,7 @@
       "itzali",
       "amatatu",
       "emendatu",
-      "itzurugi"
+      "itzungi"
     ]
   },
   {
@@ -904,7 +904,7 @@
     "grupo": [
       "otoi",
       "arren",
-      "mesdez",
+      "mesedez",
       "faborez"
     ]
   },
@@ -965,7 +965,8 @@
     "id": 108,
     "grupo": [
       "SUMINDUTA",
-      "haserre(tuta)",
+      "haserre",
+      "haserretuta",
       "muturtuta",
       "amorratuta"
     ]
