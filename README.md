@@ -2,102 +2,90 @@
 
 ## Deskribapena
 
-Proiektu hau euskara ikasteko tresna multzo bat da, Vue.js-ekin eraikia. Helburua da euskararen ikaskuntzarako baliabide interaktiboak eta erabilgarriak eskaintzea, batez ere C1 mailako hiztegi, aditz eta sinonimoen inguruan.
+Jokatu! euskara ikasteko jokoen aplikazio nagusia da, Vue.js eta Capacitor-ekin eraikia. Web-app soil bezala hasi zen proiektua, baina gaur egun bere identitate propioa duen aplikazio natiboa da (Android eta iOS), Google Play-n beta itxian dagoena.
 
 Eduki guztiak **IKA** euskaltegi sareak (https://ika.eus) eskainitakoak dira.
 
-**Proiektu operatiboa ikusteko: https://idg.eus/tresnak**
+**Beta bertsioan izena emateko eta informazio gehiago: https://idg.eus/jokatu**
 
 ## Ezaugarriak
 
-- **C1 mailako hiztegia**: Euskal hizkuntzaren ikasgaietan erabiltzen diren terminoen bilduma
-- **Aditz laguntzaileak**: Euskal aditz osagarriak ikasteko eta praktikatzeko joko interaktiboa
-- **Sinonimoen jokoa**: Euskal hiztegia aberasteko eta sinonimoak ikasteko jokoa
-- **Hiztegle**: "Wordle" erako jokoa, baina euskarazko definizioekin eta hiztegi-ikaskuntzan oinarrituta
-- **Estatistikak**: Zure ikasketa-prozesua jarraitzeko datu eta grafikoak
-- **Aditz taulak**: Aditz laguntzaileen taula osoak ikusteko aukera
-
-## Instalazioa
-
-```bash
-# Proiektua klonatu
-git clone https://github.com/igor-dg/tresnak.git
-cd tresnak
-
-# Menpekotasunak instalatu
-npm install
-
-# Garapen zerbitzaria abiarazi
-npm run dev
-```
-
-## Erabilera
-
-Proiektua abiarazita, nabigatzailean `http://localhost:5173` helbidean (edo Vite-k adierazitako portuan) sartuko zara.
-
-### Jokoak
-
-- **Hiztegle**: Wordle bezalako joko bat, baina definizioetan oinarrituta, euskarazko hitzak asmatzeko jokoa.
-- **Sinonimoen jokoa**: Hitz batentzat sinonimo posible guztiak idaztea eskatzen duen jokoa.
-- **Sinonimoen Zerrenda**: Ikasgelan erabilitako euskarazko sinonimoen bilduma osoa.
-- **C1-eko hiztegia**: Euskarazko ikasgaietatik bildutako terminoen hiztegia, bilatzaile eta definizio-bistaratzearekin.
-- **Aditz laguntzaileak**: Euskal aditzak praktikatzeko jokoa, sistema guztiekin (NOR, NOR-NORI, NOR-NORK, NOR-NORI-NORK) eta denbora ezberdinekin.
-- **Aditz taulak**: Aditz-sistema eta denbora guztien taula osoak kontsultatzeko.
-- **Estatistikak**: Zure ikaskuntzaren bilakaera eta sistema/denbora bakoitzean duzun trebetasuna aztertzeko grafikoak.
+- **Hiztegle**: "Wordle" erako jokoa, euskarazko definizioekin eta hiztegi-ikaskuntzan oinarrituta. Eguneroko erronka bat dauka (egun bakoitzeko hitz bera denontzat, kalendario finko batekin) eta modu librea, nahi adina aldiz jolasteko.
+- **Sinonimoen jokoa**: Euskal hiztegia aberasteko eta sinonimoak ikasteko jokoa.
+- **Sinonimoen zerrenda**: Ikasgelan erabilitako euskarazko sinonimoen bilduma osoa.
+- **C1 mailako hiztegia**: Euskal hizkuntzaren ikasgaietan erabiltzen diren terminoen bilduma, bilatzaile eta definizio-bistaratzearekin.
+- **Aditz laguntzaileak**: Euskal aditz osagarriak ikasteko eta praktikatzeko joko interaktiboa, sistema guztiekin (NOR, NOR-NORI, NOR-NORK, NOR-NORI-NORK) eta denbora ezberdinekin.
+- **Aditz taulak**: Aditz laguntzaileen taula osoak ikusteko aukera.
+- **Estatistikak eta aurrerapena**: Zure ikasketa-prozesua jarraitzeko datu eta grafikoak (gailuan bertan gordeta, IndexedDB bidez), eguneroko helburu eta jarraipen-serie (streak) batekin.
 
 ## Proiektuaren egitura
 
 ```
 /
-├── src/                # Aplikazioaren iturburu kodea
-│   ├── components/     # Berrerabilgarriak diren osagaiak
-│   │   ├── Aditzak/    # Aditzen jokoari lotutako osagaiak
-│   │   ├── Estatistikak/ # Estatistiken bistaratzea
-│   │   ├── Hiztegia/   # Hiztegiaren osagaiak
-│   │   ├── Hiztegle/   # Hiztegle jokoaren osagaiak
-│   │   └── SinonimoakJokoa/ # Sinonimoen jokoaren osagaiak
-│   ├── composables/    # Aplikazioan zehar erabilgarriak diren funtzioak
-│   ├── data/           # JSON datuak (hiztegiak, aditzak, etab.)
-│   ├── router/         # Nabigazioaren kudeaketa
-│   ├── utils/          # Laguntza-funtzioak
-│   └── views/          # Aplikazioaren orri nagusiak
-├── public/             # Estatiko agertzen diren fitxategiak
-└── vite.config.js      # Vite konfigurazioa
+├── src/                 # Aplikazioaren iturburu kodea (Vue 3 SPA)
+│   ├── components/      # Berrerabilgarriak diren osagaiak, jokoka antolatuta
+│   ├── composables/     # Aplikazioan zehar erabilgarriak diren funtzioak (adib. estatistiken zerbitzua)
+│   ├── data/            # JSON/TXT datuak (hiztegiak, aditzak, Hiztegle-ren hitz-zerrendak eta eguneroko kalendarioa)
+│   ├── router/          # Nabigazioaren kudeaketa (web historia edo hash, plataformaren arabera)
+│   ├── services/        # Hiztegi-APIarekiko konexioa eta hitz-balidazioa
+│   ├── utils/           # Laguntza-funtzioak
+│   └── views/           # Aplikazioaren orri nagusiak
+├── public/              # Web-eraikuntzan estatiko agertzen diren fitxategiak
+├── android/             # Proiektu natibo Android-a (Capacitor)
+├── ios/                 # Proiektu natibo iOS-a (Capacitor)
+├── tools/               # Hitz-zerrendak sortzeko script-ak (garapenerako, ez da runtime-ean erabiltzen)
+└── vite.config.js       # Vite konfigurazioa
 ```
 
-## Teknologiak
-
-- [Vue.js 3](https://vuejs.org/) - JavaScript framework-a
-- [Vue Router](https://router.vuejs.org/) - Orrialdeen kudeaketarako
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework-a
-- [Vite](https://vitejs.dev/) - Eraikitze eta garapen tresna
-- [Apexcharts](https://apexcharts.com/) - Estatistiken bisualizaziorako grafikoak
-- [Lucide](https://lucide.dev/) - Ikonoen liburutegia
-
-## Garapena
+## Instalazioa
 
 ```bash
+# Proiektua klonatu
+git clone https://github.com/igor-dg/jokatu.git
+cd jokatu
+
 # Menpekotasunak instalatu
 npm install
 
 # Garapen zerbitzaria abiarazi
 npm run dev
-
-# Produkziorako aplikazioa eraikitzeko
-npm run build
 ```
 
-## Hedapena
+Proiektua abiarazita, nabigatzailean `http://localhost:5173` helbidean (edo Vite-k adierazitako portuan) sartuko zara, web bertsioarekin.
 
-Proiektua ViteJS-ren bidez eraiki da, eta `npm run build` komandoa erabiliz prestatzen da produkziorako. Ekoizpen bertsioa `/dist` karpetan sortzen da eta edozein web zerbitzarirekin zerbitzatu daiteke.
+## Garapena
 
 ```bash
-# Produkziorako eraikitzeko
+# Web bertsiorako garapen zerbitzaria
+npm run dev
+
+# Web bertsioa produkziorako eraiki
 npm run build
 
-# Eraiki ondoren, aurrebista ikusteko
-npm run preview
+# App natiborako eraiki (Capacitor-ek erabiliko duen bundlea)
+npm run build:native
+
+# Android-en probatu (eraiki + cap sync + gailuan/emuladorean abiarazi)
+npm run cap:android
+
+# iOS-en probatu
+npm run cap:ios
+
+# Capacitor-en proiektu natiboak eguneratu web-eraikuntza berriarekin, eraiki gabe
+npm run cap:sync
 ```
+
+Android edo iOS proiektu natiboetan aldaketaren bat egin ondoren (adib. hitz-zerrenda berri bat gehitu), gogoratu `npm run cap:sync` (edo `cap:android`/`cap:ios`) exekutatzea APK/IPA berri bat sortu aurretik, web-eraikuntza berria proiektu natiboetara kopiatzeko.
+
+## Teknologiak
+
+- [Vue.js 3](https://vuejs.org/) - JavaScript framework-a
+- [Vue Router](https://router.vuejs.org/) - Orrialdeen kudeaketarako
+- [Capacitor](https://capacitorjs.com/) - App natiboa (Android/iOS) sortzeko
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework-a
+- [Vite](https://vitejs.dev/) - Eraikitze eta garapen tresna
+- [Apexcharts](https://apexcharts.com/) - Estatistiken bisualizaziorako grafikoak
+- [Lucide](https://lucide.dev/) - Ikonoen liburutegia
 
 ## Proiektuan laguntzea
 
