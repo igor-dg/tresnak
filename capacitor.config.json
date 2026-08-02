@@ -3,6 +3,11 @@
   "appName": "Jokatu!",
   "webDir": "dist",
   "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false,
+      "backgroundColor": "#6C4CF1",
+      "showSpinner": false
+    },
     "SystemBars": {
       "insetsHandling": "css",
       "style": "DEFAULT",
