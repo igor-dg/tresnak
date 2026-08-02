@@ -17,7 +17,7 @@ MIN_LENGTH = 2
 MAX_LENGTH = 13
 SOURCE = Path("scripts/ehme-2-13-letrak.txt")
 FREE_MODE_WORDS = Path("src/data/hiztegia.json")
-OUTPUT_DIR = Path("public/data/hitzak")
+OUTPUT_DIR = Path("src/data/hitzak")
 PLAYABLE_WORD = re.compile(r"^[A-ZÑ]+$")
 KNOWN_INVALID_WORDS = {"ZETATSUA", "ZETATSUAGOA"}
 
