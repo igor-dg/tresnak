@@ -4,7 +4,7 @@
 
 Jokatu! euskara ikasteko jokoen aplikazio nagusia da, Vue.js eta Capacitor-ekin eraikia. Web-app soil bezala hasi zen proiektua, baina gaur egun bere identitate propioa duen aplikazio natiboa da (Android eta iOS), Google Play-n beta itxian dagoena.
 
-Eduki guztiak **IKA** euskaltegi sareak (https://ika.eus) eskainitakoak dira.
+Edukiak hainbat iturritatik datoz: sinonimoak eta C1 mailako hiztegia **IKA** euskaltegi sareak (https://ika.eus) eskainitakoak dira; Hiztegle-ren hitz-corpusa Euskal Hiztegiaren Maiztasun Egituratik (EHME, https://www.ehu.eus/ehg/ehme/datu.htm) dator; definizioak Harluxet Hiztegi Entziklopedikotik eta itzulpenak Elhuyar Hiztegitik ateratzen dira.
 
 **Beta bertsioan izena emateko eta informazio gehiago: https://idg.eus/jokatu**
 
@@ -112,4 +112,7 @@ MIT lizentzia irekia eta permisiboa da, kodearen erabilera, aldaketa eta banaket
 ## Egileak eta eskerrak
 
 - [Idg.eus](https://idg.eus) - Proiektuaren garapena
-- [IKA Euskaltegiak](https://ika.eus) eta, batez ere, Anjel Txisbert - Edukien hornitzailea
+- [IKA Euskaltegiak](https://ika.eus) eta, batez ere, Anjel Txisbert - Sinonimoak eta C1 mailako hiztegia
+- [EHME - Euskal Hiztegiaren Maiztasun Egitura](https://www.ehu.eus/ehg/ehme/datu.htm) - Hiztegle-ren hitz-corpusa
+- Harluxet Hiztegi Entziklopedikoa - Definizioak
+- Elhuyar Hiztegia - Itzulpenak
